@@ -28,8 +28,8 @@ export default function HeroSection() {
               data-widget_type="text-editor.default"
             >
               <div className="elementor-widget-container">
-                We developed landmark real estate projects that deliver lasting value to investors and
-                communities.{' '}
+                Discover homes that bring together modern living, smart design and a brighter tomorrow.
+                {' '}
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function HeroSection() {
             >
               <div className="elementor-widget-container">
                 <h1 className="elementor-heading-title elementor-size-default">
-                  Defining the standards of real estate development
+                  Your Dream Home, Our Commitment.
                 </h1>{' '}
               </div>
             </div>

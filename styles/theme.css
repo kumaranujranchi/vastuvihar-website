@@ -1270,6 +1270,8 @@ body.home #page .breadcrumb-wrap {
 }
 .site-branding img {
   height: auto;
+  max-height: 60px;
+  width: auto;
   margin: auto;
 }
 .site-branding .site-title {

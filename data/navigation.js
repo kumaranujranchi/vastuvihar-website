@@ -10,7 +10,7 @@ export const companyLinks = [
 export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about-us/', children: companyLinks },
-  { label: 'Projects', href: '/projects/' },
+  { label: 'Models', href: '/projects/' },
   { label: 'Careers', href: '/careers/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contact', href: '/contact/' },
@@ -21,7 +21,7 @@ export const footerGroups = [
   {
     title: 'Explore',
     links: [
-      { label: 'Our Projects', href: '/projects/' },
+      { label: 'Our Models', href: '/projects/' },
       { label: 'Completed Projects', href: '/project-status/completed/' },
       { label: 'Under Construction', href: '/project-status/under-construction/' },
       { label: 'Latest News', href: '/blog/' },

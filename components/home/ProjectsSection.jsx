@@ -250,18 +250,17 @@ export default function ProjectsSection() {
           <div className="elementor-widget-container">
             <div className="elementor-project-wrapper">
               <div className="d-grid">
+                
+                {/* Ananta Bungalow */}
                 <div className="grid-item">
                   <div
                     className="project-item project-style-1"
-                    data-budget="500k-1-7m"
-                    data-type="apartment"
-                    data-status="completed"
-                    data-location="new-york-ny"
+                    data-type="bungalow"
                   >
                     <div className="project-post-thumbnail">
                       <div className="project-status">
-                        <Link href="/project-status/completed/" rel="tag" prefetch={false}>
-                          Completed
+                        <Link href="#" rel="tag" prefetch={false}>
+                          Premium
                         </Link>
                       </div>{' '}
                       <img
@@ -269,38 +268,37 @@ export default function ProjectsSection() {
                         decoding="async"
                         width="1920"
                         height="1344"
-                        src="/images/project_13.jpg"
+                        src="/villa/ananta.webp"
                         className="attachment-full size-full wp-post-image"
-                        alt=""
+                        alt="Ananta Bungalow"
                       />{' '}
                     </div>
                     <div className="project-content">
                       <div className="project-location">
-                        <i className="spaciaz-icon-marker"></i>
-                        <Link href="/project-location/new-york-ny/" rel="tag" prefetch={false}>
-                          New York, NY
+                        {/* <i className="spaciaz-icon-marker"></i> */}
+                        <Link href="/project/ananta-bungalow/" rel="tag" prefetch={false}>
+                          BUA: 1800 Sqft, 50 - 70 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/projects/mixed-use-development/" prefetch={false}>
-                          Mixed-Use Development
+                        <Link href="/project/ananta-bungalow/" prefetch={false}>
+                          Ananta Bungalow
                         </Link>
                       </h4>
                     </div>
                   </div>
                 </div>
+
+                {/* CEO Bungalow */}
                 <div className="grid-item">
                   <div
                     className="project-item project-style-1"
-                    data-budget="600k-1-9m"
-                    data-type="building"
-                    data-location="hollywood-florida"
-                    data-status="under-construction"
+                    data-type="bungalow"
                   >
                     <div className="project-post-thumbnail">
                       <div className="project-status">
-                        <Link href="/project-status/under-construction/" rel="tag" prefetch={false}>
-                          Under Construction
+                        <Link href="#" rel="tag" prefetch={false}>
+                          Premium
                         </Link>
                       </div>{' '}
                       <img
@@ -308,38 +306,37 @@ export default function ProjectsSection() {
                         decoding="async"
                         width="1920"
                         height="1280"
-                        src="/images/project_12.jpg"
+                        src="/villa/ceo.webp"
                         className="attachment-full size-full wp-post-image"
-                        alt=""
+                        alt="CEO Bungalow"
                       />{' '}
                     </div>
                     <div className="project-content">
                       <div className="project-location">
-                        <i className="spaciaz-icon-marker"></i>
-                        <Link href="/project-location/hollywood-florida/" rel="tag" prefetch={false}>
-                          Hollywood, Florida
+                        {/* <i className="spaciaz-icon-marker"></i> */}
+                        <Link href="/project/ceo-bungalow/" rel="tag" prefetch={false}>
+                          BUA: 2500 Sqft, 1.10Cr - 1.80Cr
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/projects/greenview-apartments/" prefetch={false}>
-                          Greenview Apartments
+                        <Link href="/project/ceo-bungalow/" prefetch={false}>
+                          CEO Bungalow
                         </Link>
                       </h4>
                     </div>
                   </div>
                 </div>
+
+                {/* Simplex Bungalow */}
                 <div className="grid-item">
                   <div
                     className="project-item project-style-1"
-                    data-budget="700k-2m"
-                    data-status="completed"
-                    data-location="spotswood-nj"
-                    data-type="villa"
+                    data-type="bungalow"
                   >
                     <div className="project-post-thumbnail">
                       <div className="project-status">
-                        <Link href="/project-status/completed/" rel="tag" prefetch={false}>
-                          Completed
+                        <Link href="#" rel="tag" prefetch={false}>
+                          Budget
                         </Link>
                       </div>{' '}
                       <img
@@ -347,38 +344,37 @@ export default function ProjectsSection() {
                         decoding="async"
                         width="1920"
                         height="1248"
-                        src="/images/project_11.jpg"
+                        src="/villa/simplex.webp"
                         className="attachment-full size-full wp-post-image"
-                        alt=""
+                        alt="Simplex Bungalow"
                       />{' '}
                     </div>
                     <div className="project-content">
                       <div className="project-location">
-                        <i className="spaciaz-icon-marker"></i>
-                        <Link href="/project-location/spotswood-nj/" rel="tag" prefetch={false}>
-                          Spotswood, NJ
+                        {/* <i className="spaciaz-icon-marker"></i> */}
+                        <Link href="/project/simplex-bungalow/" rel="tag" prefetch={false}>
+                          BUA: 1000 Sqft, 30 - 35 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/projects/premier-office-tower/" prefetch={false}>
-                          Premier Office Tower
+                        <Link href="/project/simplex-bungalow/" prefetch={false}>
+                          Simplex Bungalow
                         </Link>
                       </h4>
                     </div>
                   </div>
                 </div>
+
+                {/* Ganga Flat */}
                 <div className="grid-item">
                   <div
                     className="project-item project-style-1"
-                    data-budget="400k-1-2m"
-                    data-type="industrial"
-                    data-location="new-york-ny"
-                    data-status="under-construction"
+                    data-type="flat"
                   >
                     <div className="project-post-thumbnail">
                       <div className="project-status">
-                        <Link href="/project-status/under-construction/" rel="tag" prefetch={false}>
-                          Under Construction
+                        <Link href="#" rel="tag" prefetch={false}>
+                          Flat
                         </Link>
                       </div>{' '}
                       <img
@@ -386,26 +382,27 @@ export default function ProjectsSection() {
                         decoding="async"
                         width="1920"
                         height="1081"
-                        src="/images/project_10.jpg"
+                        src="/villa/ganga.webp"
                         className="attachment-full size-full wp-post-image"
-                        alt=""
+                        alt="Ganga Flat"
                       />{' '}
                     </div>
                     <div className="project-content">
                       <div className="project-location">
-                        <i className="spaciaz-icon-marker"></i>
-                        <Link href="/project-location/new-york-ny/" rel="tag" prefetch={false}>
-                          New York, NY
+                        {/* <i className="spaciaz-icon-marker"></i> */}
+                        <Link href="/project/ganga/" rel="tag" prefetch={false}>
+                          BUA: 510 Sqft, 10 - 16 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/projects/urban-heights-residence/" prefetch={false}>
-                          Urban Heights Residence
+                        <Link href="/project/ganga/" prefetch={false}>
+                          Ganga 
                         </Link>
                       </h4>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

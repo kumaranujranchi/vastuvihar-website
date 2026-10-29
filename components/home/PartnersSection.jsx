@@ -15,7 +15,7 @@ export default function PartnersSection() {
         >
           <div className="elementor-widget-container">
             <h6 className="elementor-heading-title elementor-size-default">
-              we’re proud to partner with best-in-class clients
+              We have partnered with India's leading nationalised and private banks to ensure seamless, secure, and rapid home loan approvals for your dream property.
             </h6>{' '}
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-1.svg"
+                          src="/bank-svg/union-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -48,7 +48,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-2.svg"
+                          src="/bank-svg/state-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -62,7 +62,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-3.svg"
+                          src="/bank-svg/punjab-national-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -76,7 +76,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-4.svg"
+                          src="/bank-svg/lic-housing-finance.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -90,7 +90,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-5.svg"
+                          src="/bank-svg/jharkhand-gramin-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -104,93 +104,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-6.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="elementor-scrolling-inner">
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-1.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-2.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-3.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-4.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-5.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-6.svg"
+                          src="/bank-svg/indian-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -206,7 +120,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-1.svg"
+                          src="/bank-svg/idbi-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -220,7 +134,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-2.svg"
+                          src="/bank-svg/hdfc-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -234,7 +148,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-3.svg"
+                          src="/bank-svg/central-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -248,7 +162,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-4.svg"
+                          src="/bank-svg/canara-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -262,7 +176,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-5.svg"
+                          src="/bank-svg/bank-of-maharashtra.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -276,93 +190,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-6.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="elementor-scrolling-inner">
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-1.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-2.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-3.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-4.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-5.svg"
-                          width="111"
-                          height="87"
-                          alt=""
-                          className="partner-logo"
-                          loading="lazy"
-                        />{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="elementor-scrolling-item">
-                    <div className="elementor-scrolling-item-inner">
-                      <div className="elementor-icon">
-                        <img
-                          src="/icons/partner-6.svg"
+                          src="/bank-svg/bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -378,7 +206,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-1.svg"
+                          src="/bank-svg/bank-of-baroda.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -392,7 +220,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-2.svg"
+                          src="/bank-svg/axis-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -406,7 +234,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-3.svg"
+                          src="/bank-svg/union-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -420,7 +248,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-4.svg"
+                          src="/bank-svg/state-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -434,7 +262,7 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-5.svg"
+                          src="/bank-svg/punjab-national-bank.svg"
                           width="111"
                           height="87"
                           alt=""
@@ -448,7 +276,179 @@ export default function PartnersSection() {
                     <div className="elementor-scrolling-item-inner">
                       <div className="elementor-icon">
                         <img
-                          src="/icons/partner-6.svg"
+                          src="/bank-svg/lic-housing-finance.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="elementor-scrolling-inner">
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/jharkhand-gramin-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/indian-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/idbi-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/hdfc-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/central-bank-of-india.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/canara-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="elementor-scrolling-inner">
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/bank-of-maharashtra.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/bank-of-india.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/bank-of-baroda.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/axis-bank.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/union-bank-of-india.svg"
+                          width="111"
+                          height="87"
+                          alt=""
+                          className="partner-logo"
+                          loading="lazy"
+                        />{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="elementor-scrolling-item">
+                    <div className="elementor-scrolling-item-inner">
+                      <div className="elementor-icon">
+                        <img
+                          src="/bank-svg/state-bank-of-india.svg"
                           width="111"
                           height="87"
                           alt=""

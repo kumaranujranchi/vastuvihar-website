@@ -68,14 +68,16 @@ export default function Footer() {
               </div>
             </div>
             <div className="elementor-element elementor-element-5be06e4 e-con-full e-flex e-con e-child">
-              <div className="elementor-element elementor-element-39f4607 elementor-view-default elementor-widget elementor-widget-icon">
+              {/* <div className="elementor-element elementor-element-39f4607 elementor-view-default elementor-widget elementor-widget-icon">
                 <div className="elementor-widget-container"><div className="elementor-icon-wrapper"><div className="elementor-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="33" height="40" viewBox="0 0 33 40" fill="none" aria-hidden="true">
                     <path d="M16.5012 20L33 10L16.5012 0L0 10L16.5012 20Z" fill="#E4ED64" />
                     <path d="M16.5012 29.4923L0 19.4923V30L16.5012 40L33 30V19.4923L16.5012 29.4923Z" fill="#E4ED64" />
                   </svg>
-                </div></div></div>
-              </div>
+                </div>
+                </div>
+                </div>
+              </div> */}
               <div className="elementor-element elementor-element-94475f1 elementor-widget elementor-widget-heading">
                 <div className="elementor-widget-container"><p className="elementor-heading-title elementor-size-default">{site.name.toLowerCase()}</p></div>
               </div>
@@ -83,7 +85,6 @@ export default function Footer() {
             <div className="elementor-element elementor-element-aa7f6d2 elementor-widget elementor-widget-text-editor">
               <div className="elementor-widget-container">
                 © {new Date().getFullYear()} <Link href="/" prefetch={false}><b>{site.name}</b></Link>. All Rights Reserved.
-                {' '}Template design by <a href="https://wpopal.com/">Opal_WP</a>.
               </div>
             </div>
             <div className="elementor-element elementor-element-e8c3975 elementor-absolute elementor-widget elementor-widget-spacer" aria-hidden="true">

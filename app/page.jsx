@@ -41,7 +41,7 @@ export default function HomePage() {
                 <ValuesSection />
                 <StatsSection />
                 <ImageSection />
-                <NewsSection />
+                {/* <NewsSection /> */}
               </div>
             </main>
           </div>

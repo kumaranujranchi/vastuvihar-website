@@ -25,7 +25,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-3eace46">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -39,7 +39,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -55,7 +55,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-3eace46">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -69,7 +69,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -85,7 +85,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-3eace46">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -99,7 +99,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-3eace46">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -129,7 +129,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -145,7 +145,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-3eace46">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -159,7 +159,7 @@ export default function CompanySection() {
                     <div className="elementor-scrolling-item">
                       <div className="elementor-scrolling-item-inner">
                         <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                          <span>who we are</span>{' '}
+                          <span>vastu vihar</span>{' '}
                         </div>
                       </div>
                     </div>
@@ -184,7 +184,7 @@ export default function CompanySection() {
           >
             <div className="elementor-widget-container">
               <h2 className="elementor-heading-title elementor-size-default">
-                Global leader in construction &amp; real estate
+                Scaling from Patna to 20,000+ homes across Eastern India
               </h2>{' '}
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function CompanySection() {
                 <div className="elementor-widget-container">
                   <ul className="elementor-icon-list-items elementor-inline-items">
                     <li className="elementor-icon-list-item elementor-inline-item">
-                      <span className="elementor-icon-list-text">Commercial</span>
+                      <span className="elementor-icon-list-text">32 Years of Trust</span>
                     </li>
                     <li className="elementor-icon-list-item elementor-inline-item">
                       <span className="elementor-icon-list-icon">
@@ -255,8 +255,7 @@ export default function CompanySection() {
                 data-widget_type="text-editor.default"
               >
                 <div className="elementor-widget-container">
-                  Commercial real estate: where opportunity meets brick and mortar in the world of
-                  business.{' '}
+                  A legacy of delivering promises, building vibrant communities, and ensuring complete peace of mind.{' '}
                 </div>
               </div>
             </div>
@@ -290,7 +289,7 @@ export default function CompanySection() {
                 <div className="elementor-widget-container">
                   <ul className="elementor-icon-list-items elementor-inline-items">
                     <li className="elementor-icon-list-item elementor-inline-item">
-                      <span className="elementor-icon-list-text">Residential</span>
+                      <span className="elementor-icon-list-text">Affordable Luxury</span>
                     </li>
                     <li className="elementor-icon-list-item elementor-inline-item">
                       <span className="elementor-icon-list-icon">
@@ -315,7 +314,7 @@ export default function CompanySection() {
                 data-widget_type="text-editor.default"
               >
                 <div className="elementor-widget-container">
-                  Residential spaces: where comfort and warmth create homes that embrace the heart.{' '}
+                  Co-sponsored by HUDCO & BMTPC, committed to enhancing the housing experience with smart eco-design.{' '}
                 </div>
               </div>
             </div>
@@ -339,11 +338,11 @@ export default function CompanySection() {
                     <span
                       className="elementor-counter-number"
                       data-duration="2000"
-                      data-to-value="40"
+                      data-to-value="32"
                       data-from-value="0"
                       data-delimiter=","
                     >
-                      40
+                      32
                     </span>
                     <span className="elementor-counter-number-suffix"></span>
                   </div>
@@ -360,10 +359,10 @@ export default function CompanySection() {
                 <div className="elementor-icon-box-wrapper">
                   <div className="elementor-icon-box-content">
                     <div className="elementor-icon-box-title">
-                      <span>experiences </span>
+                      <span>years of trust </span>
                     </div>
                     <p className="elementor-icon-box-description">
-                      40+ years of a remarkable journey since 1983{' '}
+                      32+ years of a remarkable journey since 1994{' '}
                     </p>
                   </div>
                 </div>
@@ -389,11 +388,11 @@ export default function CompanySection() {
                     <span
                       className="elementor-counter-number"
                       data-duration="2000"
-                      data-to-value="350"
+                      data-to-value="1700"
                       data-from-value="0"
                       data-delimiter=","
                     >
-                      350
+                      1700
                     </span>
                     <span className="elementor-counter-number-suffix"></span>
                   </div>
@@ -412,7 +411,7 @@ export default function CompanySection() {
                     <div className="elementor-icon-box-title">
                       <span>total employees </span>
                     </div>
-                    <p className="elementor-icon-box-description">350+ team members worldwide </p>
+                    <p className="elementor-icon-box-description">1,700+ team members building communities </p>
                   </div>
                 </div>
               </div>
@@ -437,11 +436,11 @@ export default function CompanySection() {
                     <span
                       className="elementor-counter-number"
                       data-duration="2000"
-                      data-to-value="25"
+                      data-to-value="65"
                       data-from-value="0"
                       data-delimiter=","
                     >
-                      25
+                      65
                     </span>
                     <span className="elementor-counter-number-suffix"></span>
                   </div>
@@ -458,10 +457,10 @@ export default function CompanySection() {
                 <div className="elementor-icon-box-wrapper">
                   <div className="elementor-icon-box-content">
                     <div className="elementor-icon-box-title">
-                      <span>global reach </span>
+                      <span>cities reached </span>
                     </div>
                     <p className="elementor-icon-box-description">
-                      25+ countries globally where we’ve worked{' '}
+                      65+ cities across Eastern India where we operate{' '}
                     </p>
                   </div>
                 </div>
