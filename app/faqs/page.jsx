@@ -2,9 +2,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import Link from 'next/link';
 export const metadata = {
-  title: 'FAQs',
+  title: 'Frequently Asked Questions | Vastu Vihar',
   description:
-    'FAQs HomeFAQs Our global real estate experts are here to help you in this ever-changing market. · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your',
+    'Find answers about Vastu Vihar bungalows and flats, land ownership, township amenities, home loans, project locations, and booking a site visit.',
 };
 export default function FaqsPage() {
   return (
@@ -88,8 +88,7 @@ export default function FaqsPage() {
                         >
                           <div className="elementor-widget-container">
                             <div className="elementor-heading-title elementor-size-default">
-                              Our global real estate experts are here to help you in this ever-changing
-                              market.
+                              Find answers about Vastu Vihar homes, ownership, financing, and the journey to your dream home.
                             </div>{' '}
                           </div>
                         </div>
@@ -141,7 +140,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-0fc43ea">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -155,7 +154,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-b5707e4">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -171,7 +170,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-0fc43ea">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -185,7 +184,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-b5707e4">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -201,7 +200,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-0fc43ea">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -215,7 +214,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-b5707e4">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -231,7 +230,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-0fc43ea">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -245,7 +244,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-b5707e4">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -261,7 +260,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-0fc43ea">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -275,7 +274,7 @@ export default function FaqsPage() {
                                 <div className="elementor-scrolling-item">
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="scrolling-title elementor-repeater-item-b5707e4">
-                                      <span>Find your answer</span>{' '}
+                                      <span>Vastu Vihar FAQs</span>{' '}
                                     </div>
                                   </div>
                                 </div>
@@ -293,7 +292,7 @@ export default function FaqsPage() {
                       >
                         <div className="elementor-widget-container">
                           <h2 className="elementor-heading-title elementor-size-default">
-                            Read most frequent questions{' '}
+                            Everything you need to know {' '}
                           </h2>{' '}
                         </div>
                       </div>
@@ -321,10 +320,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6420"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text">
-                                  {' '}
-                                  What the first step of the home buying process?{' '}
-                                </h6>
+                                <h6 className="e-n-accordion-item-title-text"> What types of homes does Vastu Vihar offer? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -352,11 +348,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Vastu Vihar offers bungalows and flats for different family sizes and budgets. Popular bungalow models include Simplex, Jayanti, Godawari, Ananta, and Yamuna, alongside 2 BHK and 3 BHK flat options. Models and availability vary by project and city.</p>{' '}
                                 </div>
                               </div>
                             </div>
@@ -370,10 +362,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6421"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text">
-                                  {' '}
-                                  How long does it take to buy a home?{' '}
-                                </h6>
+                                <h6 className="e-n-accordion-item-title-text"> Do Vastu Vihar bungalows come with land ownership? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -401,11 +390,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Land ownership is a key feature of Vastu Vihar bungalow offerings. The exact plot area, ownership rights, registration process, and legal terms depend on the project and unit. Please review the property documents with our team before booking.</p>{' '}
                                 </div>
                               </div>
                             </div>
@@ -419,10 +404,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6422"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text">
-                                  {' '}
-                                  What is a seller’s market?{' '}
-                                </h6>
+                                <h6 className="e-n-accordion-item-title-text"> Where are Vastu Vihar projects located? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -450,11 +432,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Vastu Vihar has a presence across 65+ cities in Bihar, Jharkhand, West Bengal, Odisha, Uttar Pradesh, and Nepal. Contact our team to check current projects, available models, and prices in your preferred location.</p>{' '}
                                 </div>
                               </div>
                             </div>
@@ -468,10 +446,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6423"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text">
-                                  {' '}
-                                  What kind of credit score do I need to buy a home?{' '}
-                                </h6>
+                                <h6 className="e-n-accordion-item-title-text"> Can I get a home loan for a Vastu Vihar property? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -499,11 +474,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Vastu Vihar works with leading banks and housing finance institutions to help customers explore home loan options. Loan eligibility, interest rates, down payment requirements, EMIs, and approval depend on the lending institution and your financial profile.</p>{' '}
                                 </div>
                               </div>
                             </div>
@@ -517,10 +488,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6424"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text">
-                                  {' '}
-                                  How much do I need for a down payment?{' '}
-                                </h6>
+                                <h6 className="e-n-accordion-item-title-text"> What amenities are available in Vastu Vihar townships? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -548,11 +516,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Depending on the project, amenities may include gated access, security, landscaped parks, children's play areas, swimming pools, community halls, shopping facilities, and parking. Our team can share the confirmed amenities for the township you are considering.</p>{' '}
                                 </div>
                               </div>
                             </div>
@@ -566,7 +530,7 @@ export default function FaqsPage() {
                               aria-controls="e-n-accordion-item-6425"
                             >
                               <span className="e-n-accordion-item-title-header">
-                                <h6 className="e-n-accordion-item-title-text"> What is earnest money? </h6>
+                                <h6 className="e-n-accordion-item-title-text"> How do I book a home or schedule a site visit? </h6>
                               </span>
                               <span className="e-n-accordion-item-title-icon">
                                 <span className="e-opened">
@@ -594,11 +558,7 @@ export default function FaqsPage() {
                                 data-widget_type="text-editor.default"
                               >
                                 <div className="elementor-widget-container">
-                                  <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                    sequi nesciunt.
-                                  </p>{' '}
+                                  <p>Choose your preferred city and home model, then submit an enquiry through vastuvihar.com or call +91 95340 95340. Our team can help you compare options, review pricing and availability, arrange a site visit, and explain the booking and documentation process.</p>{' '}
                                 </div>
                               </div>
                             </div>
