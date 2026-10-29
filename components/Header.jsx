@@ -3,10 +3,10 @@ import Navigation from './Navigation';
 import { site } from '@/data/site';
 
 /** The rounded, translucent header from the fifth homepage, shared by every page. */
-export default function Header({ isHome = false }) {
+export default function Header() {
   return (
-    <header id="masthead" className={isHome ? 'site-header-home' : 'site-header-inner'} itemScope itemType="https://schema.org/WPHeader">
-      <div className={`elementor elementor-420${isHome ? ' header-absolute' : ''}`}>
+    <header id="masthead" className="site-header-home" itemScope itemType="https://schema.org/WPHeader">
+      <div className="elementor elementor-420 header-absolute">
         <div className="elementor-element elementor-element-cc178a3 e-flex e-con-boxed e-con e-parent">
           <div className="e-con-inner">
             <div className="elementor-element elementor-element-2e0de30 e-con-full e-flex e-con e-child">
