@@ -120,6 +120,11 @@
   color: var( --e-global-color-text );
 }
 
+.hfe-site-logo-img{
+  max-height: 50px;
+  width: auto;
+}
+
 .elementor-420 .elementor-element.elementor-element-090dbea .hfe-site-logo-container, .elementor-420 .elementor-element.elementor-element-090dbea .hfe-caption-width figcaption {
   text-align: center;
 }

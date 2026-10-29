@@ -62,12 +62,12 @@
   padding: 0;
   border: 1px solid var(--border, #e0e0e0);
   border-radius: 50%;
-  background: var(--primary, #e4ed64);
-  color: var(--accent, #000);
+  background: var(--primary, #08AAEC);
+  color: var(--accent, #011C5B);
   font-size: 22px;
   cursor: pointer;
 }
-.next-carousel-controls button:hover { background: var(--primary_hover, #cdd55a); }
+.next-carousel-controls button:hover { background: var(--primary_hover, #08aaec); }
 .next-theme-ready .swiper-pagination .swiper-pagination-bullet { padding: 0; min-height: 0; border: 0; }
 .next-theme-ready .elementor-swiper-button { cursor: pointer; }
 .next-theme-ready .e-n-tabs-content > [role="tabpanel"].e-active { display: flex; }
