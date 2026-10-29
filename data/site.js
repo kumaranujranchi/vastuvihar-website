@@ -6,5 +6,5 @@ export const site = {
   phoneHref: 'tel:+919534095340',
   email: 'info@vastvihar.org',
   logo: '/images/vastu-logo.webp',
-  logoLight: '/images/vastu-logo.webp',
+  logoLight: '/images/logo.svg',
 };
