@@ -1,0 +1,490 @@
+[
+  {
+    "route": "home",
+    "path": "/",
+    "title": "Home",
+    "type": "Home",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-6353 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-6353",
+    "description": "We developed landmark real estate projects that deliver lasting value to investors and communities. Defining the standards of real estate development view all projects we’re proud to partner with best-in-class clients who we are · who we ar"
+  },
+  {
+    "route": "ai-in-real-estate-construction",
+    "path": "/ai-in-real-estate-construction/",
+    "title": "AI in Real Estate & Construction",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-12 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 AI in Real Estate & Construction It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teach"
+  },
+  {
+    "route": "eco-friendly-construction-trends",
+    "path": "/eco-friendly-construction-trends/",
+    "title": "Eco-Friendly Construction Trends",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-14 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 17, 2025 Eco-Friendly Construction Trends It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified "
+  },
+  {
+    "route": "real-estate-investment-basics",
+    "path": "/real-estate-investment-basics/",
+    "title": "Real Estate Investment Basics",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-16 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 16, 2025 Real Estate Investment Basics It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified te"
+  },
+  {
+    "route": "how-design-shapes-well-being",
+    "path": "/how-design-shapes-well-being/",
+    "title": "How Design Shapes Well-Being",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-18 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 16, 2025 How Design Shapes Well-Being It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teac"
+  },
+  {
+    "route": "luxury-meets-minimalism-in-homes",
+    "path": "/luxury-meets-minimalism-in-homes/",
+    "title": "Luxury Meets Minimalism in Homes",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-20 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 Luxury Meets Minimalism in Homes It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teach"
+  },
+  {
+    "route": "sustainable-cities-a-greener-future",
+    "path": "/sustainable-cities-a-greener-future/",
+    "title": "Sustainable Cities: A Greener Future",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-22 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 17, 2025 Sustainable Cities: A Greener Future It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified t"
+  },
+  {
+    "route": "smart-homes-the-future-of-living",
+    "path": "/smart-homes-the-future-of-living/",
+    "title": "Smart Homes: The Future of Living",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-24 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 16, 2025 Smart Homes: The Future of Living It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualifie"
+  },
+  {
+    "route": "biophilic-architecture-nature-in-design",
+    "path": "/biophilic-architecture-nature-in-design/",
+    "title": "Biophilic Architecture: Nature in Design",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-26 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 16, 2025 Biophilic Architecture: Nature in Design It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qu"
+  },
+  {
+    "route": "tiny-homes-big-benefits",
+    "path": "/tiny-homes-big-benefits/",
+    "title": "Tiny Homes: Big Benefits",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-28 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 Tiny Homes: Big Benefits It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teachers, and"
+  },
+  {
+    "route": "revamping-old-spaces",
+    "path": "/revamping-old-spaces/",
+    "title": "Revamping Old Spaces",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-30 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 17, 2025 Revamping Old Spaces It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teachers, an"
+  },
+  {
+    "route": "biophilic-design-bringing-nature-indoors",
+    "path": "/biophilic-design-bringing-nature-indoors/",
+    "title": "Biophilic Design Bringing Nature Indoors",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-32 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 16, 2025 Biophilic Design Bringing Nature Indoors It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, q"
+  },
+  {
+    "route": "are-sustainable-materials-the-future-of-homes",
+    "path": "/are-sustainable-materials-the-future-of-homes/",
+    "title": "Are Sustainable Materials the Future of Homes?",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-34 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 16, 2025 Are Sustainable Materials the Future of Homes? It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructu"
+  },
+  {
+    "route": "exploring-minimalism-with-a-touch-of-luxury",
+    "path": "/exploring-minimalism-with-a-touch-of-luxury/",
+    "title": "Exploring Minimalism with a Touch of Luxury",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-36 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 Exploring Minimalism with a Touch of Luxury It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qual"
+  },
+  {
+    "route": "how-to-get-started-in-buying-your-first-home",
+    "path": "/how-to-get-started-in-buying-your-first-home/",
+    "title": "How to Get Started in Buying Your First Home",
+    "type": "Article",
+    "bodyClass": "wp-singular post-template-default single single-post postid-38 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructur"
+  },
+  {
+    "route": "about-us",
+    "path": "/about-us/",
+    "title": "About us",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-49 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-49",
+    "description": "About us HomeAbout us Whether you’re building, remodeling, buying, or selling, we bring seamless project execution under one roof. · about us · about us · about us · about us · about us · about us · about us · about us · about us · about us"
+  },
+  {
+    "route": "core-values",
+    "path": "/core-values/",
+    "title": "Core values",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-51 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-51",
+    "description": "Core values HomeCore values Whether you’re building, remodeling, buying, or selling, we bring seamless project execution under one roof. · What makes us different · What makes us different · What makes us different · What makes us different"
+  },
+  {
+    "route": "our-awards",
+    "path": "/our-awards/",
+    "title": "Our awards",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-53 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-53",
+    "description": "Our awards HomeOur awards We are a top-performing construction firm and consistently ranks among the top contractors. · awards · awards · awards · awards · awards · awards · awards · awards · awards · awards Recognitions we got We are a dev"
+  },
+  {
+    "route": "our-team",
+    "path": "/our-team/",
+    "title": "Our team",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-55 page-parent wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-55",
+    "description": "Our team HomeOur team Our team brings together licensed contractors and real estate experts who work to help you achieve your goals. meet the team · meet the team · meet the team · meet the team · meet the team · meet the team · meet the te"
+  },
+  {
+    "route": "careers",
+    "path": "/careers/",
+    "title": "Careers",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-57 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-57",
+    "description": "Careers HomeCareers This is the place where talented people who want to do impactful work can create their own path to success. · join our team · join our team · join our team · join our team · join our team · join our team · join our team "
+  },
+  {
+    "route": "faqs",
+    "path": "/faqs/",
+    "title": "FAQs",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-59 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-59",
+    "description": "FAQs HomeFAQs Our global real estate experts are here to help you in this ever-changing market. · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your answer · Find your"
+  },
+  {
+    "route": "contact",
+    "path": "/contact/",
+    "title": "Get in touch",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-61 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-61",
+    "description": "Get in touch HomeGet in touch Our global real estate experts are here to help you in this ever-changing market. Support email support@example.com Email us Phone number +(084) 123 - 456 88 call us Location 401 Broadway, 24th Floor, Orchard V"
+  },
+  {
+    "route": "blog",
+    "path": "/blog/",
+    "title": "Blog",
+    "type": "Page",
+    "bodyClass": "blog wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesCompany Mar 18, 202"
+  },
+  {
+    "route": "our-team/dennis-daniels",
+    "path": "/our-team/dennis-daniels/",
+    "title": "Dennis Daniels",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-1919 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-1919",
+    "description": "founder & ceo Dennis Daniels Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: dennis@example.com (084) 123 – 456 88 About "
+  },
+  {
+    "route": "projects/business-center",
+    "path": "/projects/business-center/",
+    "title": "Business Center",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2178 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2178",
+    "description": "Hollywood, FloridaBusiness Center Status Under Construction Project Type Industrial Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $500k – $1.7M Project description Nemo enim ipsam voluptatem quia voluptas sit asp"
+  },
+  {
+    "route": "projects/vista-at-councill-square",
+    "path": "/projects/vista-at-councill-square/",
+    "title": "Vista at Councill Square",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2180 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2180",
+    "description": "Bay Shore, NYVista at Councill Square Status Under Construction Project Type Industrial Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $900k – $2.5M Project description Nemo enim ipsam voluptatem quia voluptas sit"
+  },
+  {
+    "route": "projects/residential-building",
+    "path": "/projects/residential-building/",
+    "title": "Residential Building",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2182 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2182",
+    "description": "Woodbury, NYResidential Building Status Completed Project Type Office Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $800k – $2.2M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut od"
+  },
+  {
+    "route": "projects/luxury-apartment",
+    "path": "/projects/luxury-apartment/",
+    "title": "Luxury Apartment",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2184 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2184",
+    "description": "Surprise, AZLuxury Apartment Status Completed Project Type Apartment Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $600k – $1.9M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odi"
+  },
+  {
+    "route": "projects/office-building",
+    "path": "/projects/office-building/",
+    "title": "Office Building",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2186 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2186",
+    "description": "Phoenix, AZOffice Building Status Under Construction Project Type Office Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $600k – $1.9M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut"
+  },
+  {
+    "route": "projects/eden-estate",
+    "path": "/projects/eden-estate/",
+    "title": "Eden Estate",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2188 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2188",
+    "description": "Huntsville, AlabamaEden Estate Status Completed Project Type Villa Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $600k – $1.9M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit "
+  },
+  {
+    "route": "projects/residential-complex",
+    "path": "/projects/residential-complex/",
+    "title": "Residential Complex",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2190 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2190",
+    "description": "Chula Vista, CAResidential Complex Status Under Construction Project Type Residential Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $400k – $1.2M Project description Nemo enim ipsam voluptatem quia voluptas sit a"
+  },
+  {
+    "route": "projects/commercial-residential-building",
+    "path": "/projects/commercial-residential-building/",
+    "title": "Commercial & Residential Building",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2192 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2192",
+    "description": "Spotswood, NJCommercial & Residential Building Status Completed Project Type Building Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $600k – $1.9M Project description Nemo enim ipsam voluptatem quia voluptas sit a"
+  },
+  {
+    "route": "projects/apartment-building",
+    "path": "/projects/apartment-building/",
+    "title": "Apartment Building",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2194 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2194",
+    "description": "Bay Shore, NYApartment Building Status Under Construction Project Type Apartment Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $700k – $2M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernat"
+  },
+  {
+    "route": "projects/urban-heights-residence",
+    "path": "/projects/urban-heights-residence/",
+    "title": "Urban Heights Residence",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2196 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2196",
+    "description": "New York, NYUrban Heights Residence Status Under Construction Project Type Industrial Project Area 26,346.74 Sq. Ft. Commencement date 20 May, 2020 Price Range $400k – $1.2M Project description Nemo enim ipsam voluptatem quia voluptas sit a"
+  },
+  {
+    "route": "projects/premier-office-tower",
+    "path": "/projects/premier-office-tower/",
+    "title": "Premier Office Tower",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2198 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2198",
+    "description": "Spotswood, NJPremier Office Tower Status Completed Project Type Villa Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $700k – $2M Project description Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit"
+  },
+  {
+    "route": "projects/greenview-apartments",
+    "path": "/projects/greenview-apartments/",
+    "title": "Greenview Apartments",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2200 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2200",
+    "description": "Hollywood, FloridaGreenview Apartments Status Under Construction Project Type Apartment Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $600k – $1.9M Project description Nemo enim ipsam voluptatem quia voluptas sit"
+  },
+  {
+    "route": "projects/mixed-use-development",
+    "path": "/projects/mixed-use-development/",
+    "title": "Mixed-Use Development",
+    "type": "Project",
+    "bodyClass": "wp-singular spaciaz_project-template-default single single-spaciaz_project postid-2202 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4 elementor-page elementor-page-2202",
+    "description": "New York, NYMixed-Use Development Status Under Construction Project Type Apartment Project Area 26,346.74 Sq. Ft. Commencement date 28 Jun, 2021 Price Range $400K - $1.2M Project description Nemo enim ipsam voluptatem quia voluptas sit aspe"
+  },
+  {
+    "route": "blog-grid",
+    "path": "/blog-grid/",
+    "title": "Blog Grid",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-3356 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-3356",
+    "description": "Blog Grid HomeBlog Grid Latest All Posts Company Social Media Tips & Tricks Uncategorized CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home CategoriesCompany Mar 18, 2025Apr 16, 2025 Exploring Min"
+  },
+  {
+    "route": "our-team/johan-sanford",
+    "path": "/our-team/johan-sanford/",
+    "title": "Johan Sanford",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5117 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5117",
+    "description": "excutive assistant Johan Sanford Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: johansanford@example.com (084) 123 – 456"
+  },
+  {
+    "route": "our-team/floyd-miles",
+    "path": "/our-team/floyd-miles/",
+    "title": "Floyd Miles",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5131 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5131",
+    "description": "director of architecture Floyd Miles Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: floydmiles@example.com (084) 123 – 4"
+  },
+  {
+    "route": "our-team/leslie-alexander",
+    "path": "/our-team/leslie-alexander/",
+    "title": "Leslie Alexander",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5139 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5139",
+    "description": "Development manager Leslie Alexander Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: alexander@example.com (084) 123 – 45"
+  },
+  {
+    "route": "our-team/bernardo-gordon",
+    "path": "/our-team/bernardo-gordon/",
+    "title": "Bernardo Gordon",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5145 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5145",
+    "description": "OPERATIONS Manager Bernardo Gordon Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: bernardo@example.com (084) 123 – 456 8"
+  },
+  {
+    "route": "our-team/ralph-edwards",
+    "path": "/our-team/ralph-edwards/",
+    "title": "Ralph Edwards",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5169 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5169",
+    "description": "Construction Manager Ralph Edwards Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: edwards@example.com (084) 123 – 456 88"
+  },
+  {
+    "route": "projects",
+    "path": "/projects/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "category/company",
+    "path": "/category/company/",
+    "title": "Company",
+    "type": "Collection",
+    "bodyClass": "archive category category-company category-6 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 Exploring Minimalism with a Touch of Luxury We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesCompany Mar 18, 2025Apr 16"
+  },
+  {
+    "route": "project-status/completed",
+    "path": "/project-status/completed/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/phoenix-az",
+    "path": "/project-location/phoenix-az/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "category/social-media",
+    "path": "/category/social-media/",
+    "title": "Social Media",
+    "type": "Collection",
+    "bodyClass": "archive category category-social-media category-7 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesSocial Media Mar 18, 2025Apr 16, 2025 Are Sustainable Materials the Future of Homes? We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesSocial Media Mar 1"
+  },
+  {
+    "route": "project-location/huntsville-alabama",
+    "path": "/project-location/huntsville-alabama/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/bay-shore-ny",
+    "path": "/project-location/bay-shore-ny/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "category/tips-tricks",
+    "path": "/category/tips-tricks/",
+    "title": "Tips & Tricks",
+    "type": "Collection",
+    "bodyClass": "archive category category-tips-tricks category-5 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesTips & Tricks Mar 1"
+  },
+  {
+    "route": "project-status/under-construction",
+    "path": "/project-status/under-construction/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/hollywood-florida",
+    "path": "/project-location/hollywood-florida/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/new-york-ny",
+    "path": "/project-location/new-york-ny/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/spotswood-nj",
+    "path": "/project-location/spotswood-nj/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/surprise-az",
+    "path": "/project-location/surprise-az/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "project-location/woodbury-ny",
+    "path": "/project-location/woodbury-ny/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "blog/page/2",
+    "path": "/blog/page/2/",
+    "title": "Blog – Page 2",
+    "type": "Collection",
+    "bodyClass": "blog paged wp-custom-logo wp-embed-responsive paged-2 wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 Luxury Meets Minimalism in Homes We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesSocial Media Mar 18, 2025Apr 16, 2025"
+  },
+  {
+    "route": "category/uncategorized",
+    "path": "/category/uncategorized/",
+    "title": "Uncategorized",
+    "type": "Collection",
+    "bodyClass": "archive category category-uncategorized category-1 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-sidebar-right elementor-default elementor-kit-4",
+    "description": "Nothing Found It seems we can’t find what you’re looking for. Perhaps searching can help. Search for:"
+  },
+  {
+    "route": "project-location/chula-vista-ca",
+    "path": "/project-location/chula-vista-ca/",
+    "title": "Projects",
+    "type": "Collection",
+    "bodyClass": "archive post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  },
+  {
+    "route": "projects/page/2",
+    "path": "/projects/page/2/",
+    "title": "Projects – Page 2",
+    "type": "Collection",
+    "bodyClass": "archive paged post-type-archive post-type-archive-spaciaz_project wp-custom-logo wp-embed-responsive paged-2 post-type-paged-2 wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
+    "description": "FilterProject StatusCompletedUnder ConstructionProject TypeApartmentBuildingIndustrialOfficeResidentialVillaProject LocationBay Shore, NYChula Vista, CAHollywood, FloridaHuntsville, AlabamaNew York, NYPhoenix, AZSpotswood, NJSurprise, AZWoo"
+  }
+]

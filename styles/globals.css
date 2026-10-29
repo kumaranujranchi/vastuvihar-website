@@ -1,0 +1,23 @@
+/* Import once from app/layout.jsx. Edit the matching file below. */
+@import "./foundation.css";
+@import "./widgets.css";
+@import "./header.css";
+@import "./footer.css";
+@import "./breadcrumbs.css";
+@import "./pages/home.css";
+@import "./pages/about-us.css";
+@import "./pages/core-values.css";
+@import "./pages/awards.css";
+@import "./pages/team.css";
+@import "./pages/careers.css";
+@import "./pages/faqs.css";
+@import "./pages/contact.css";
+@import "./pages/blog-grid.css";
+@import "./pages/project-details.css";
+@import "./pages/team-details.css";
+@import "./theme.css";
+@import "./content.css";
+@import "./compatibility.css";
+@import "./interactions.css";
+@import "./animations.css";
+@import "./layout.css";

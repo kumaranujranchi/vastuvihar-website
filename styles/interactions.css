@@ -1,0 +1,140 @@
+/* Standalone frontend replacements for WordPress/Elementor JavaScript. */
+.elementor-invisible { visibility: visible !important; }
+[hidden] { display: none !important; }
+.next-theme-ready :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #6d7413;
+  outline-offset: 4px;
+}
+.next-theme-ready .spaciaz-mobile-nav { max-width: calc(100vw - 30px); }
+.next-theme-ready .spaciaz-overlay { z-index: 9998; }
+.next-theme-ready .handheld-navigation .next-submenu-toggle { min-width: 42px; min-height: 42px; }
+.next-theme-ready .handheld-navigation .sub-menu:not([hidden]) { display: block; }
+.next-theme-ready .primary-navigation li:focus-within > .sub-menu,
+.next-theme-ready .elementor-nav-menu li:focus-within > .sub-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.next-carousel { max-width: 100%; min-width: 0; }
+.next-carousel .next-carousel-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: var(--next-gap, 30px);
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  transform: none !important;
+  transition: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-bottom: 5px;
+  align-items: stretch;
+  -webkit-overflow-scrolling: touch;
+}
+.next-carousel-track::-webkit-scrollbar { display: none; }
+.next-carousel .next-carousel-track > .swiper-slide {
+  flex: 0 0 var(--next-slide-width, 100%) !important;
+  width: var(--next-slide-width, 100%) !important;
+  min-width: 0;
+  height: auto;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  transform: none;
+  opacity: 1;
+}
+.next-carousel-controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+.next-carousel-controls button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  padding: 0;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 50%;
+  background: var(--primary, #e4ed64);
+  color: var(--accent, #000);
+  font-size: 22px;
+  cursor: pointer;
+}
+.next-carousel-controls button:hover { background: var(--primary_hover, #cdd55a); }
+.next-theme-ready .swiper-pagination .swiper-pagination-bullet { padding: 0; min-height: 0; border: 0; }
+.next-theme-ready .elementor-swiper-button { cursor: pointer; }
+.next-theme-ready .e-n-tabs-content > [role="tabpanel"].e-active { display: flex; }
+.next-theme-ready :is(.video-tab-nav-item, .details-tab-info) { cursor: pointer; }
+.next-theme-ready .elementor-service-content-toggle-wrapper { height: auto; }
+.next-theme-ready .elementor-iconbox-tab-item-wrapper .iconbox-tab-item.active { position: relative; height: auto; }
+.next-theme-ready .video-tabs-element { position: relative; }
+.next-filter-result { flex-basis: 100%; margin: 16px 0 0; font-size: 15px; }
+.next-theme-ready .careers-popup.next-careers-open { display: block !important; position: relative; width: 100%; margin: 24px auto; }
+.next-theme-ready .next-carousel-track .careers-slide :is(.careers-title, .careers-description, .careers-infor-wrap) { opacity: 1; transform: none; }
+.next-theme-ready .elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-wrapper { height: auto; }
+.next-theme-ready .elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-inner {
+  position: relative;
+  top: auto;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 24px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  transform: none !important;
+}
+.next-theme-ready .horizontal-scroll-item { scroll-snap-align: start; }
+
+.next-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(0 0 0 / 72%);
+  overflow-y: auto;
+}
+.next-dialog {
+  width: min(100%, 840px);
+  max-height: min(86vh, 900px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px;
+  color: #000;
+  box-shadow: 0 20px 80px rgb(0 0 0 / 25%);
+}
+.next-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.next-dialog-heading h2 { margin: 0; font-size: clamp(26px, 4vw, 38px); line-height: 1.15; letter-spacing: -1px; color: #000; }
+.next-dialog-close { flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #e4ed64; color: #000; line-height: 1; font-size: 30px; cursor: pointer; }
+.next-dialog .next-search-label { display: block; font-size: 15px; margin-bottom: 8px; }
+.next-dialog input[type="search"] { width: 100%; border: 1px solid #ccc; border-radius: 12px; font: inherit; background: #f6f3ec; padding: 16px 18px; color: #000; }
+.next-search-count { margin: 18px 0; color: #4b4b4b; font-size: 15px; }
+.next-dialog .next-search-results { list-style: none; padding: 0; margin: 0; }
+.next-search-results li { border-top: 1px solid #e0e0e0; }
+.next-search-results a { display: block; padding: 17px 0; text-decoration: none; color: #000; }
+.next-search-results a:hover strong { text-decoration: underline; }
+.next-search-results span { display: block; text-transform: uppercase; font-size: 11px; letter-spacing: .1em; color: #666; margin-bottom: 4px; }
+.next-search-results strong { display: block; font-size: 20px; }
+.next-search-results p { margin: 5px 0 0; font-size: 15px; color: #555; }
+.next-lightbox-video { display: block; width: 100%; border: 0; aspect-ratio: 16 / 9; border-radius: 8px; background: #000; }
+.next-lightbox-image { display: block; max-width: 100%; max-height: 70vh; height: auto; width: auto; margin: auto; object-fit: contain; }
+.next-dialog-video, .next-dialog-file-video, .next-dialog-image { width: min(100%, 1100px); }
+@media (max-width: 600px) {
+  .next-dialog-backdrop { padding: 12px; }
+  .next-dialog { padding: 22px 18px; border-radius: 18px; max-height: 90vh; }
+  .next-carousel-controls { margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .next-carousel .next-carousel-track { scroll-behavior: auto; }
+  .elementor-scrolling-wrapper, .elementor-text-path, .animated { animation: none !important; }
+}
