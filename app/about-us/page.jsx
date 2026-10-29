@@ -2,9 +2,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import Link from 'next/link';
 export const metadata = {
-  title: 'About us',
+  title: 'About Vastu Vihar | Trusted Homes Since 1994',
   description:
-    'About us HomeAbout us Whether you’re building, remodeling, buying, or selling, we bring seamless project execution under one roof. · about us · about us · about us · about us · about us · about us · about us · about us · about us · about us',
+    'Discover Vastu Vihar: over three decades of trusted, affordable homes, bungalows and integrated townships across Eastern India and Nepal.',
 };
 export default function AboutUsPage() {
   return (
@@ -88,8 +88,8 @@ export default function AboutUsPage() {
                         >
                           <div className="elementor-widget-container">
                             <div className="elementor-heading-title elementor-size-default">
-                              Whether you’re building, remodeling, buying, or selling, we bring seamless
-                              project execution under one roof.
+                              For over three decades, Vastu Vihar has helped families find thoughtfully designed,
+                              affordable homes and vibrant communities across Eastern India and Nepal.
                             </div>{' '}
                           </div>
                         </div>
@@ -293,7 +293,7 @@ export default function AboutUsPage() {
                       >
                         <div className="elementor-widget-container">
                           <h2 className="elementor-heading-title elementor-size-default">
-                            Shaping the world of things to come{' '}
+                            Making home ownership a reality since 1994{' '}
                           </h2>{' '}
                         </div>
                       </div>
@@ -312,8 +312,8 @@ export default function AboutUsPage() {
                       >
                         <div className="elementor-widget-container">
                           <div className="elementor-heading-title elementor-size-default">
-                            We’d love to share more with you, please complete this form and our dedicated team
-                            will get back to you shortly.{' '}
+                            Explore Vastu Vihar bungalows, flats and integrated townships. Our property advisors
+                            can help you choose a home that fits your family, location and budget.{' '}
                           </div>{' '}
                         </div>
                       </div>
@@ -326,10 +326,10 @@ export default function AboutUsPage() {
                       >
                         <div className="elementor-widget-container">
                           <div className="elementor-heading-title elementor-size-default">
-                            In markets from renewable energy, sports and entertainment, to data centers and
-                            healthcare, we work to ensure the built environment leaves a lasting positive
-                            impact. Together, we strive to make your project better than you imagined
-                            possible.
+                            Founded in Patna in 1994, Technoculture Building Centre Pvt. Ltd. (Vastu Vihar)
+                            has grown into a trusted residential developer with more than 20,000 homes
+                            across Eastern India. Our focus is on accessible homeownership, quality construction,
+                            thoughtful layouts and community amenities.
                           </div>{' '}
                         </div>
                       </div>
@@ -343,7 +343,7 @@ export default function AboutUsPage() {
                         <div className="elementor-widget-container">
                           <div className="elementor-button-wrapper">
                             <Link
-                              href="/our-team/"
+                              href="/contact/"
                               className="elementor-button-link elementor-button elementor-size-sm"
                               role="button"
                               prefetch={false}
@@ -365,8 +365,8 @@ export default function AboutUsPage() {
                                     </span>
                                   </span>
                                 </span>
-                                <span className="elementor-button-text" data-name="meet the team">
-                                  <span>meet the team</span>
+                                <span className="elementor-button-text" data-name="contact our team">
+                                  <span>contact our team</span>
                                 </span>
                               </span>
                             </Link>
@@ -488,17 +488,17 @@ export default function AboutUsPage() {
                             >
                               <div className="elementor-widget-container">
                                 <div className="elementor-counter">
-                                  <div className="elementor-counter-title">projects in development</div>{' '}
+                                  <div className="elementor-counter-title">homes built</div>{' '}
                                   <div className="elementor-counter-number-wrapper">
                                     <span className="elementor-counter-number-prefix"></span>
                                     <span
                                       className="elementor-counter-number"
                                       data-duration="2000"
-                                      data-to-value="40"
+                                      data-to-value="20000"
                                       data-from-value="0"
                                       data-delimiter=","
                                     >
-                                      40
+                                      20,000
                                     </span>
                                     <span className="elementor-counter-number-suffix">
                                       <sup>+</sup>
@@ -576,20 +576,20 @@ export default function AboutUsPage() {
                             >
                               <div className="elementor-widget-container">
                                 <div className="elementor-counter">
-                                  <div className="elementor-counter-title">square feet of property</div>{' '}
+                                  <div className="elementor-counter-title">cities served</div>{' '}
                                   <div className="elementor-counter-number-wrapper">
                                     <span className="elementor-counter-number-prefix"></span>
                                     <span
                                       className="elementor-counter-number"
                                       data-duration="2000"
-                                      data-to-value="18"
+                                      data-to-value="65"
                                       data-from-value="0"
                                       data-delimiter=","
                                     >
-                                      18
+                                      65
                                     </span>
                                     <span className="elementor-counter-number-suffix">
-                                      m<sup>+</sup>
+                                      <sup>+</sup>
                                     </span>
                                   </div>
                                 </div>
@@ -649,20 +649,20 @@ export default function AboutUsPage() {
                             >
                               <div className="elementor-widget-container">
                                 <div className="elementor-counter">
-                                  <div className="elementor-counter-title">total projects cost</div>{' '}
+                                  <div className="elementor-counter-title">years of trust</div>{' '}
                                   <div className="elementor-counter-number-wrapper">
                                     <span className="elementor-counter-number-prefix"></span>
                                     <span
                                       className="elementor-counter-number"
                                       data-duration="2000"
-                                      data-to-value="2.5"
+                                      data-to-value="32"
                                       data-from-value="0"
                                       data-delimiter=","
                                     >
-                                      2.5
+                                      32
                                     </span>
                                     <span className="elementor-counter-number-suffix">
-                                      b<sup>+</sup>
+                                      <sup>+</sup>
                                     </span>
                                   </div>
                                 </div>
@@ -860,7 +860,7 @@ export default function AboutUsPage() {
                       >
                         <div className="elementor-widget-container">
                           <h2 className="elementor-heading-title elementor-size-default">
-                            40+ years of a remarkable journey
+                            32+ years of a remarkable journey
                           </h2>{' '}
                         </div>
                       </div>
@@ -901,7 +901,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h2 className="elementor-heading-title elementor-size-default">
-                                          1983
+                                          1994
                                         </h2>{' '}
                                       </div>
                                     </div>
@@ -951,8 +951,8 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <p>
-                                          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                          accusm doloremque laudtium, totam rem aperiam, eaque ipsa.
+                                          Technoculture Building Centre Pvt. Ltd. was founded in Patna,
+                                          beginning a journey to make quality housing more accessible.
                                         </p>{' '}
                                       </div>
                                     </div>
@@ -980,7 +980,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h2 className="elementor-heading-title elementor-size-default">
-                                          1996
+                                          2001
                                         </h2>{' '}
                                       </div>
                                     </div>
@@ -1030,8 +1030,8 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <p>
-                                          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                          accusm doloremque laudtium, totam rem aperiam, eaque ipsa.
+                                          The Vastu Vihar brand introduced planned bungalow communities
+                                          for families in Bihar and Jharkhand.
                                         </p>{' '}
                                       </div>
                                     </div>
@@ -1059,7 +1059,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h2 className="elementor-heading-title elementor-size-default">
-                                          2005
+                                          2008
                                         </h2>{' '}
                                       </div>
                                     </div>
@@ -1109,7 +1109,8 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <p>
-                                          Natus error sit voluptatem accusantium doloremque laudtium.
+                                          Advanced earthquake-resistant construction technology and
+                                          engineered building methods became key priorities.
                                         </p>{' '}
                                       </div>
                                     </div>
@@ -1137,7 +1138,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h2 className="elementor-heading-title elementor-size-default">
-                                          2013
+                                          2020
                                         </h2>{' '}
                                       </div>
                                     </div>
@@ -1188,8 +1189,8 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <p>
-                                          Quae ab illoentore veritatis et quasi architecto beatae vitae dicta
-                                          sunt explicabo.
+                                          Vastu Vihar grew its network of townships with parks, community
+                                          facilities and thoughtfully planned residential spaces.
                                         </p>{' '}
                                       </div>
                                     </div>
@@ -1217,7 +1218,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h2 className="elementor-heading-title elementor-size-default">
-                                          2024
+                                          2026
                                         </h2>{' '}
                                       </div>
                                     </div>
@@ -1267,8 +1268,8 @@ export default function AboutUsPage() {
                                       data-widget_type="text-editor.default"
                                     >
                                       <div className="elementor-widget-container">
-                                        Soloremque laudtium, totam rem aperiam, eaque ipsa quae ab illoentore
-                                        veritatis.{' '}
+                                        Continuing our journey across Eastern India and Nepal with
+                                         thoughtfully designed homes and integrated townships.{' '}
                                       </div>
                                     </div>
                                   </div>
@@ -1302,7 +1303,7 @@ export default function AboutUsPage() {
                                     >
                                       <div className="elementor-widget-container">
                                         <h6 className="elementor-heading-title elementor-size-default">
-                                          Get your free quote
+                                          Plan your site visit
                                         </h6>{' '}
                                       </div>
                                     </div>
@@ -1514,7 +1515,7 @@ export default function AboutUsPage() {
                     >
                       <div className="elementor-widget-container">
                         <h2 className="elementor-heading-title elementor-size-default">
-                          Learn more <br /> about us
+                          Discover <br /> Vastu Vihar
                         </h2>{' '}
                       </div>
                     </div>
@@ -1564,8 +1565,8 @@ export default function AboutUsPage() {
                           >
                             <div className="elementor-widget-container">
                               <p>
-                                We maintain this by ensuring transparency and professional conduct in every
-                                aspect.
+                                We offer bungalows, flats and thoughtfully planned townships with a focus on
+                                affordable, quality living for families across Eastern India.
                               </p>{' '}
                             </div>
                           </div>
@@ -1690,8 +1691,8 @@ export default function AboutUsPage() {
                           >
                             <div className="elementor-widget-container">
                               <p>
-                                We work with both investors and developers to create landmarks that make an
-                                impact.
+                                Our communities bring homes, parks, play areas and everyday conveniences
+                                together to support a better way of life.
                               </p>{' '}
                             </div>
                           </div>
@@ -1835,8 +1836,8 @@ export default function AboutUsPage() {
                           >
                             <div className="elementor-widget-container">
                               <p>
-                                To empower businesses with cutting-edge web solutions that enhance their
-                                digital presence and drive growth.
+                                We value trust, transparent communication, quality engineering and accessible
+                                housing that makes long-term homeownership possible.
                               </p>{' '}
                             </div>
                           </div>
@@ -1849,7 +1850,7 @@ export default function AboutUsPage() {
                             <div className="elementor-widget-container">
                               <div className="elementor-button-wrapper">
                                 <Link
-                                  href="/core-values/"
+                                  href="/about-us/"
                                   className="elementor-button-link elementor-button elementor-size-sm"
                                   role="button"
                                   prefetch={false}
@@ -1889,7 +1890,7 @@ export default function AboutUsPage() {
                           <div className="elementor-widget-container">
                             <div className="elementor-button-wrapper">
                               <Link
-                                href="/core-values/"
+                                href="/about-us/"
                                 className="elementor-button-link elementor-button elementor-size-sm"
                                 role="button"
                                 prefetch={false}
@@ -1948,7 +1949,7 @@ export default function AboutUsPage() {
                             decoding="async"
                             width="140"
                             height="140"
-                            src="/images/h1_img-4.jpg"
+                            src="/villa/yamuna2.webp"
                             className="attachment-full size-full wp-image-510"
                             alt=""
                           />{' '}
@@ -1974,14 +1975,14 @@ export default function AboutUsPage() {
                         data-id="cc3d78d"
                         data-element_type="widget"
                         data-settings={
-                          '{"text":"what people says · what people says ·  what people says ·  what people says · ","align":"center","link":{"url":"","is_external":"","nofollow":"","custom_attributes":""},"start_point":{"unit":"%","size":0,"sizes":[]}}'
+                          '{"text":"the vastu vihar promise · the vastu vihar promise · ","align":"center","link":{"url":"","is_external":"","nofollow":"","custom_attributes":""},"start_point":{"unit":"%","size":0,"sizes":[]}}'
                         }
                         data-widget_type="text-path.default"
                       >
                         <div className="elementor-widget-container">
                           <div
                             className="e-text-path"
-                            data-text="what people says · what people says ·  what people says ·  what people says · "
+                            data-text="the vastu vihar promise · the vastu vihar promise · "
                             data-link-url=""
                           ></div>
                         </div>
@@ -2033,15 +2034,15 @@ export default function AboutUsPage() {
                                   <div className="content-head">
                                     <div className="content">
                                       <p>
-                                        “A wonderful experience! They knew what they were doing and were
-                                        incredibly knowledgeable throughout the process.”
+                                        “Discover homes designed to bring together comfort, modern living and
+                                        affordability across our growing communities.”
                                       </p>
                                     </div>
                                   </div>
                                   <div className="details">
                                     <div className="details-info">
-                                      <span className="name">John McConnor</span>{' '}
-                                      <span className="job">Senior Marketing Manager</span>
+                                      <span className="name">Vastu Vihar</span>{' '}
+                                      <span className="job">Our commitment</span>
                                     </div>
                                   </div>
                                 </div>
@@ -2053,15 +2054,15 @@ export default function AboutUsPage() {
                                   <div className="content-head">
                                     <div className="content">
                                       <p>
-                                        "Your team were great to work with on our basement remodel! I will
-                                        definitely be working with them for future projects!"
+                                        "Explore thoughtfully planned bungalows and flats supported by
+                                        community amenities and convenient locations."
                                       </p>
                                     </div>
                                   </div>
                                   <div className="details">
                                     <div className="details-info">
-                                      <span className="name">Floyd Miles</span>{' '}
-                                      <span className="job">Bond Projects Coordinator</span>
+                                      <span className="name">Vastu Vihar</span>{' '}
+                                      <span className="job">Our communities</span>
                                     </div>
                                   </div>
                                 </div>
@@ -2073,15 +2074,15 @@ export default function AboutUsPage() {
                                   <div className="content-head">
                                     <div className="content">
                                       <p>
-                                        "I asked to have the area rebuilt and they were very prompt! Mud and
-                                        texture came out great! Would highly recommend!"
+                                        "From your first enquiry to your site visit, our team can help you
+                                        compare home options that suit your requirements."
                                       </p>
                                     </div>
                                   </div>
                                   <div className="details">
                                     <div className="details-info">
-                                      <span className="name">Esther Howard</span>{' '}
-                                      <span className="job">Assistant Project Manager</span>
+                                      <span className="name">Vastu Vihar</span>{' '}
+                                      <span className="job">Our approach</span>
                                     </div>
                                   </div>
                                 </div>
@@ -2093,15 +2094,15 @@ export default function AboutUsPage() {
                                   <div className="content-head">
                                     <div className="content">
                                       <p>
-                                        “ They knew what they were doing and were incredibly knowledgeable
-                                        throughout the process. A wonderful!”
+                                        “At Vastu Vihar, we focus on quality homes, lasting relationships
+                                        and more accessible homeownership.”
                                       </p>
                                     </div>
                                   </div>
                                   <div className="details">
                                     <div className="details-info">
-                                      <span className="name">Esther Howard</span>{' '}
-                                      <span className="job">Assistant Project Manager</span>
+                                      <span className="name">Vastu Vihar</span>{' '}
+                                      <span className="job">Our approach</span>
                                     </div>
                                   </div>
                                 </div>
@@ -2133,7 +2134,7 @@ export default function AboutUsPage() {
                       >
                         <div className="elementor-widget-container">
                           <h2 className="elementor-heading-title elementor-size-default">
-                            we’re proud to partner with best-in-class clients
+                            Our home financing partners
                           </h2>{' '}
                         </div>
                       </div>
@@ -2151,7 +2152,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-1.svg"
+                                        src="/bank-svg/union-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2165,7 +2166,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-2.svg"
+                                        src="/bank-svg/state-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2179,7 +2180,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-3.svg"
+                                        src="/bank-svg/punjab-national-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2193,7 +2194,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-4.svg"
+                                        src="/bank-svg/lic-housing-finance.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2207,7 +2208,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-5.svg"
+                                        src="/bank-svg/jharkhand-gramin-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2221,93 +2222,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-6.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="elementor-scrolling-inner">
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-1.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-2.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-3.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-4.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-5.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-6.svg"
+                                        src="/bank-svg/indian-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2323,7 +2238,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-1.svg"
+                                        src="/bank-svg/idbi-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2337,7 +2252,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-2.svg"
+                                        src="/bank-svg/hdfc-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2351,7 +2266,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-3.svg"
+                                        src="/bank-svg/central-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2365,7 +2280,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-4.svg"
+                                        src="/bank-svg/canara-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2379,7 +2294,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-5.svg"
+                                        src="/bank-svg/bank-of-maharashtra.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2393,93 +2308,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-6.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="elementor-scrolling-inner">
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-1.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-2.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-3.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-4.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-5.svg"
-                                        width="111"
-                                        height="87"
-                                        alt=""
-                                        className="partner-logo"
-                                        loading="lazy"
-                                      />{' '}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="elementor-scrolling-item">
-                                  <div className="elementor-scrolling-item-inner">
-                                    <div className="elementor-icon">
-                                      <img
-                                        src="/icons/partner-6.svg"
+                                        src="/bank-svg/bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2495,7 +2324,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-1.svg"
+                                        src="/bank-svg/bank-of-baroda.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2509,7 +2338,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-2.svg"
+                                        src="/bank-svg/axis-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2523,7 +2352,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-3.svg"
+                                        src="/bank-svg/union-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2537,7 +2366,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-4.svg"
+                                        src="/bank-svg/state-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2551,7 +2380,7 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-5.svg"
+                                        src="/bank-svg/punjab-national-bank.svg"
                                         width="111"
                                         height="87"
                                         alt=""
@@ -2565,7 +2394,179 @@ export default function AboutUsPage() {
                                   <div className="elementor-scrolling-item-inner">
                                     <div className="elementor-icon">
                                       <img
-                                        src="/icons/partner-6.svg"
+                                        src="/bank-svg/lic-housing-finance.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="elementor-scrolling-inner">
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/jharkhand-gramin-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/indian-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/idbi-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/hdfc-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/central-bank-of-india.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/canara-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="elementor-scrolling-inner">
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/bank-of-maharashtra.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/bank-of-india.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/bank-of-baroda.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/axis-bank.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/union-bank-of-india.svg"
+                                        width="111"
+                                        height="87"
+                                        alt=""
+                                        className="partner-logo"
+                                        loading="lazy"
+                                      />{' '}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="elementor-scrolling-item">
+                                  <div className="elementor-scrolling-item-inner">
+                                    <div className="elementor-icon">
+                                      <img
+                                        src="/bank-svg/state-bank-of-india.svg"
                                         width="111"
                                         height="87"
                                         alt=""
