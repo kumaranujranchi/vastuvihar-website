@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,63 +7,63 @@ const testimonials = [
     name: "Deepak",
     initials: "DK",
     job: "Patna • Ananta Bungalow",
-    review: "Vastu Vihar ke saath apna ghar lena ekdum sahi decision tha. Unhone budget ke andar itna shandaar bungalow bana ke diya ki poori family khush hai. Construction quality aur finishing top-notch hai.",
+    review: "Buying a home with Vastu Vihar was the absolute right decision. They built such a magnificent bungalow within our budget that the whole family is thrilled. The construction quality and finishing are top-notch.",
     color: "#1E293B",
   },
   {
     name: "Jayanti",
     initials: "JY",
     job: "Ranchi • Jayanti Bungalow",
-    review: "Hamara sapno ka ghar bilkul time par ready hoke mil gaya. Society ka mahaul bahut peaceful hai aur bacchon ke khelne ke liye kaafi open space hai. Team ne har step par poora support kiya.",
+    review: "Our dream home was handed over right on time. The society atmosphere is very peaceful, and there is ample open space for kids to play. The team provided full support at every step.",
     color: "#7C2D12",
   },
   {
     name: "Rehan",
     initials: "RH",
     job: "Jamshedpur • Simplex Bungalow",
-    review: "Working with the Vastu Vihar team was a truly smooth experience. Booking se lekar registry aur handover tak koi tension nahi hui, sab kuch transparent tha aur staff ka behaviour bahut helpful raha.",
+    review: "Working with the Vastu Vihar team was a truly smooth experience. From booking to registry and handover, there was zero tension. Everything was transparent, and the staff's behavior was very helpful.",
     color: "#0F5338",
   },
   {
     name: "Manish",
     initials: "MN",
     job: "Gaya • Kaveri Bungalow",
-    review: "Itne affordable price mein apna independent bungalow milna mushkil tha. Vastu Vihar ne middle-class family ka apna ghar hone ka sapna sach kar dikhaya. Room layout aur ventilation kamaal ka hai.",
+    review: "Finding an independent bungalow at such an affordable price was difficult. Vastu Vihar made a middle-class family's dream of owning a home come true. The room layout and ventilation are amazing.",
     color: "#3B0764",
   },
   {
     name: "Manoj",
     initials: "MJ",
     job: "Dhanbad • Godawari Bungalow",
-    review: "Paperwork aur loan process mein team ne bahut help ki. Jab hum pehli baar site visit par aaye the tabhi decide kar liya tha ki ghar yahin lena hai. Aaj hum yahan bahut sukoon se reh rahe hain.",
+    review: "The team really helped with the paperwork and loan process. When we came for the first site visit, we decided right then that we would buy a house here. Today, we are living here very peacefully.",
     color: "#1E3A8A",
   },
   {
     name: "Niranjan",
     initials: "NR",
     job: "Muzaffarpur • 2 & 3 BHK Flat",
-    review: "Ghar ka Vastu aur design dono hi dil ko chhoo gaye. Har kamre mein natural roshni aati hai aur parking ki bhi acchhi suvidha hai. Main apne doston ko bhi Vastu Vihar recommend karta hoon.",
+    review: "Both the Vastu and design of the house touched our hearts. There is natural light in every room, and the parking facility is also good. I highly recommend Vastu Vihar to my friends.",
     color: "#701A75",
   },
   {
     name: "AK Pathak",
     initials: "AP",
     job: "Bhagalpur • CEO Bungalow",
-    review: "Retirement ke baad ek shant aur safe township chahiye thi. Vastu Vihar mein security, sadak aur paani ki vyavastha bahut badhiya hai. Yahan aakar lagta hai sahi jagah invest kiya.",
+    review: "After retirement, I wanted a quiet and safe township. The security, roads, and water arrangements in Vastu Vihar are excellent. Coming here, I feel I invested in the right place.",
     color: "#14532D",
   },
   {
     name: "Ragvendra",
     initials: "RG",
     job: "Darbhanga • Ganga New 2BHK",
-    review: "Kam budget mein itna sundar aur majboot ghar milna badi baat hai. Kiraye ke makaan se nikal kar apne khud ke ghar mein shift hona hamare parivaar ke liye sabse badi khushi ka pal tha.",
+    review: "Getting such a beautiful and sturdy home on a low budget is a big deal. Moving from a rented house to our own home was the happiest moment for our family.",
     color: "#7F1D1D",
   },
   {
     name: "Mithlesh",
     initials: "MT",
     job: "Begusarai • Ananta Bungalow",
-    review: "Vastu Vihar ka naam bharose ka doosra naam hai. Jo commitment unhone booking ke waqt kiya tha, usse badhkar kaam karke dikhaya. Poori team ko dil se dhanyavaad!",
+    review: "The name Vastu Vihar is synonymous with trust. They went above and beyond the commitment they made at the time of booking. A heartfelt thank you to the entire team!",
     color: "#312E81",
   },
 ];
