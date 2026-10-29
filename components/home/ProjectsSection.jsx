@@ -336,7 +336,7 @@ export default function ProjectsSection() {
                     <div className="project-post-thumbnail">
                       <div className="project-status">
                         <Link href="#" rel="tag" prefetch={false}>
-                          Budget
+                          2-BHK
                         </Link>
                       </div>{' '}
                       <img

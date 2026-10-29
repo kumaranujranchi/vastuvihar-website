@@ -1,6 +1,19 @@
+'use client';
+
+import { useState } from 'react';
+import './HeroSectionFullBackgroundFix.css';
+
 import Link from 'next/link';
 
+const YOUTUBE_IDS = [
+  '6mSbVDkUPn4',
+  'w_x03DkwmOY',
+  'x52x2VKPUcg',
+];
+
 export default function HeroSection() {
+  const [activeVideo, setActiveVideo] = useState(0);
+
   return (
     <div
       className="elementor-element elementor-element-71f6b7a e-con-full e-flex e-con e-parent"
@@ -9,6 +22,19 @@ export default function HeroSection() {
       id="tab_video"
       data-settings={'{"background_background":"classic"}'}
     >
+      {/* Direct child of the outer hero: covers the entire hero, not an inner column. */}
+      <div className="vv-hero-background" aria-hidden="true">
+        <iframe
+          key={YOUTUBE_IDS[activeVideo]}
+          className="vv-hero-background-player"
+          src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_IDS[activeVideo]}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_IDS[activeVideo]}&controls=0&playsinline=1&rel=0`}
+          title="Vastu Vihar background video"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
+          tabIndex={-1}
+          allowFullScreen
+        />
+      </div>
       <div
         className="elementor-element elementor-element-ec08bea e-flex e-con-boxed e-con e-child"
         data-id="ec08bea"
@@ -100,92 +126,38 @@ export default function HeroSection() {
             >
               <div className="elementor-widget-container">
                 <div className="video-tabs-element" data-relative="#tab_video">
-                  <div className="video-tabs-content">
-                    <div className="video-tab-content active" id="video-tab-0">
-                      <div className="video-container">
-                        <iframe
-                          className=""
-                          src={
-                            'https://player.vimeo.com/video/1190405141?loop=1&muted=1&controls=0&autoplay=1'
-                          }
-                          loading="lazy"
-                          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                          title="Video player"
-                        ></iframe>
-                      </div>{' '}
-                    </div>
-                    <div className="video-tab-content " id="video-tab-1">
-                      <div className="video-container">
-                        <video
-                          width="100%"
-                          height="auto"
-                          loop={true}
-                          autoPlay={true}
-                          playsInline={true}
-                          muted={true}
-                          crossOrigin="anonymous"
-                          preload="auto"
-                        >
-                          <source
-                            src="https://videos.pexels.com/video-files/2818546/2818546-uhd_2560_1440_24fps.mp4"
-                            type="video/mp4"
-                          />
-                        </video>
-                      </div>{' '}
-                    </div>
-                    <div className="video-tab-content " id="video-tab-2">
-                      <div className="video-container">
-                        <video
-                          width="100%"
-                          height="auto"
-                          loop={true}
-                          autoPlay={true}
-                          playsInline={true}
-                          muted={true}
-                          crossOrigin="anonymous"
-                          preload="auto"
-                        >
-                          <source
-                            src="https://videos.pexels.com/video-files/3648257/3648257-uhd_2560_1440_30fps.mp4"
-                            type="video/mp4"
-                          />
-                        </video>
-                      </div>{' '}
-                    </div>
-                  </div>
                   <div className="video-tabs-nav">
-                    <div className="video-tab-nav-item active" data-tab="video-tab-0">
+                    <div className={`video-tab-nav-item ${activeVideo === 0 ? "active" : ""}`} data-tab="video-tab-0" role="button" tabIndex={0} aria-label="Play video 1" aria-pressed={activeVideo === 0} onClick={() => setActiveVideo(0)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveVideo(0); } }}>
                       <div className="elementor-video-tabs-image">
                         <img
                           decoding="async"
                           width="190"
                           height="80"
-                          src="/images/h5_video-1.jpg"
+                          src="/villa/yamuna2.webp"
                           className="attachment-full size-full wp-image-7480"
                           alt=""
                         />{' '}
                       </div>
                     </div>
-                    <div className="video-tab-nav-item " data-tab="video-tab-1">
+                    <div className={`video-tab-nav-item ${activeVideo === 1 ? "active" : ""}`} data-tab="video-tab-1" role="button" tabIndex={0} aria-label="Play video 2" aria-pressed={activeVideo === 1} onClick={() => setActiveVideo(1)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveVideo(1); } }}>
                       <div className="elementor-video-tabs-image">
                         <img
                           decoding="async"
                           width="190"
                           height="80"
-                          src="/images/h5_video-2.jpg"
+                          src="/villa/simplex.webp"
                           className="attachment-full size-full wp-image-7481"
                           alt=""
                         />{' '}
                       </div>
                     </div>
-                    <div className="video-tab-nav-item " data-tab="video-tab-2">
+                    <div className={`video-tab-nav-item ${activeVideo === 2 ? "active" : ""}`} data-tab="video-tab-2" role="button" tabIndex={0} aria-label="Play video 3" aria-pressed={activeVideo === 2} onClick={() => setActiveVideo(2)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveVideo(2); } }}>
                       <div className="elementor-video-tabs-image">
                         <img
                           decoding="async"
                           width="190"
                           height="80"
-                          src="/images/h5_video-3.jpg"
+                          src="/villa/ceo.webp"
                           className="attachment-full size-full wp-image-7479"
                           alt=""
                         />{' '}
@@ -223,7 +195,7 @@ export default function HeroSection() {
             decoding="async"
             width="1920"
             height="1000"
-            src="/images/h5_bg-1.jpg"
+            src="/villa/yamuna2.webp"
             className="attachment-full size-full wp-image-6383"
             alt=""
           />{' '}
