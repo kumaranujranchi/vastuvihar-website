@@ -1,189 +1,44 @@
-// Sample project content retained from the uploaded theme. Edit these records to update a project.
-export const projects = [
-  {
-    slug: 'business-center',
-    title: 'Business Center',
-    location: 'Hollywood, Florida',
-    locationHref: '/project-location/hollywood-florida/',
-    status: 'Under Construction',
-    type: 'Industrial',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$500k – $1.7M',
-    image: '/images/project_1-1290x600.jpg',
-    previousSlug: null,
-    nextSlug: 'vista-at-councill-square',
-  },
-  {
-    slug: 'vista-at-councill-square',
-    title: 'Vista at Councill Square',
-    location: 'Bay Shore, NY',
-    locationHref: '/project-location/bay-shore-ny/',
-    status: 'Under Construction',
-    type: 'Industrial',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$900k – $2.5M',
-    image: '/images/project_2-1290x600.jpg',
-    previousSlug: 'business-center',
-    nextSlug: 'residential-building',
-  },
-  {
-    slug: 'residential-building',
-    title: 'Residential Building',
-    location: 'Woodbury, NY',
-    locationHref: '/project-location/woodbury-ny/',
-    status: 'Completed',
-    type: 'Office',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$800k – $2.2M',
-    image: '/images/project_3-1290x600.jpg',
-    previousSlug: 'vista-at-councill-square',
-    nextSlug: 'luxury-apartment',
-  },
-  {
-    slug: 'luxury-apartment',
-    title: 'Luxury Apartment',
-    location: 'Surprise, AZ',
-    locationHref: '/project-location/surprise-az/',
-    status: 'Completed',
-    type: 'Apartment',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$600k – $1.9M',
-    image: '/images/project_4-1290x600.jpg',
-    previousSlug: 'residential-building',
-    nextSlug: 'office-building',
-  },
-  {
-    slug: 'office-building',
-    title: 'Office Building',
-    location: 'Phoenix, AZ',
-    locationHref: '/project-location/phoenix-az/',
-    status: 'Under Construction',
-    type: 'Office',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$600k – $1.9M',
-    image: '/images/project_5-1290x600.jpg',
-    previousSlug: 'luxury-apartment',
-    nextSlug: 'eden-estate',
-  },
-  {
-    slug: 'eden-estate',
-    title: 'Eden Estate',
-    location: 'Huntsville, Alabama',
-    locationHref: '/project-location/huntsville-alabama/',
-    status: 'Completed',
-    type: 'Villa',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$600k – $1.9M',
-    image: '/images/project_6-1290x600.jpg',
-    previousSlug: 'office-building',
-    nextSlug: 'residential-complex',
-  },
-  {
-    slug: 'residential-complex',
-    title: 'Residential Complex',
-    location: 'Chula Vista, CA',
-    locationHref: '/project-location/chula-vista-ca/',
-    status: 'Under Construction',
-    type: 'Residential',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$400k – $1.2M',
-    image: '/images/project_7-1290x600.jpg',
-    previousSlug: 'eden-estate',
-    nextSlug: 'commercial-residential-building',
-  },
-  {
-    slug: 'commercial-residential-building',
-    title: 'Commercial & Residential Building',
-    location: 'Spotswood, NJ',
-    locationHref: '/project-location/spotswood-nj/',
-    status: 'Completed',
-    type: 'Building',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$600k – $1.9M',
-    image: '/images/project_8-1290x600.jpg',
-    previousSlug: 'residential-complex',
-    nextSlug: 'apartment-building',
-  },
-  {
-    slug: 'apartment-building',
-    title: 'Apartment Building',
-    location: 'Bay Shore, NY',
-    locationHref: '/project-location/bay-shore-ny/',
-    status: 'Under Construction',
-    type: 'Apartment',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$700k – $2M',
-    image: '/images/project_9-1290x600.jpg',
-    previousSlug: 'commercial-residential-building',
-    nextSlug: 'urban-heights-residence',
-  },
-  {
-    slug: 'urban-heights-residence',
-    title: 'Urban Heights Residence',
-    location: 'New York, NY',
-    locationHref: '/project-location/new-york-ny/',
-    status: 'Under Construction',
-    type: 'Industrial',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '20 May, 2020',
-    priceRange: '$400k – $1.2M',
-    image: '/images/project_10-1290x600.jpg',
-    previousSlug: 'apartment-building',
-    nextSlug: 'premier-office-tower',
-  },
-  {
-    slug: 'premier-office-tower',
-    title: 'Premier Office Tower',
-    location: 'Spotswood, NJ',
-    locationHref: '/project-location/spotswood-nj/',
-    status: 'Completed',
-    type: 'Villa',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$700k – $2M',
-    image: '/images/project_11-1290x600.jpg',
-    previousSlug: 'urban-heights-residence',
-    nextSlug: 'greenview-apartments',
-  },
-  {
-    slug: 'greenview-apartments',
-    title: 'Greenview Apartments',
-    location: 'Hollywood, Florida',
-    locationHref: '/project-location/hollywood-florida/',
-    status: 'Under Construction',
-    type: 'Apartment',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$600k – $1.9M',
-    image: '/images/project_12-1290x600.jpg',
-    previousSlug: 'premier-office-tower',
-    nextSlug: 'mixed-use-development',
-  },
-  {
-    slug: 'mixed-use-development',
-    title: 'Mixed-Use Development',
-    location: 'New York, NY',
-    locationHref: '/project-location/new-york-ny/',
-    status: 'Under Construction',
-    type: 'Apartment',
-    area: '26,346.74 Sq. Ft.',
-    commencementDate: '28 Jun, 2021',
-    priceRange: '$400K - $1.2M',
-    image: '/images/project_13-1290x600.jpg',
-    previousSlug: 'greenview-apartments',
-    nextSlug: null,
-  },
-];
+// Project-detail view model from the supplied 16 models; no sample projects.
+// Install this file as data/projects.js next to data/project.js.
+import { projectsData } from './project';
 
+const normalizedStat = (label) => label.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+function getStat(model, labels) {
+  const accepted = new Set(labels.map(normalizedStat));
+  const stats = (model.modelTypes || []).flatMap((type) => type.stats || []);
+  const match = stats.find((item) => accepted.has(normalizedStat(item.label)));
+  if (!match || match.value === '' || match.value === null || match.value === undefined) return 'Not specified';
+  return `${match.value}${match.unit ? ` ${match.unit}` : ''}`;
+}
+
+function getHomeType(model) {
+  if (['nano', 'aditi', 'ganga-new-2bhk'].includes(model.slug)) return 'Apartment';
+  if (model.name.toLowerCase().includes('row house')) return 'Row House';
+  return 'Bungalow';
+}
+
+const modelSlugs = Object.keys(projectsData);
+export const projects = modelSlugs.map((slug, index) => {
+  const model = projectsData[slug];
+  return {
+    ...model,
+    slug,
+    title: model.name,
+    type: getHomeType(model),
+    image: model.gallery?.[0] || '',
+    bedrooms: getStat(model, ['Bedrooms', 'Bedroom']),
+    bathrooms: getStat(model, ['Bathrooms', 'Bathroom']),
+    builtUp: getStat(model, ['Built-up', 'Built-up Area', 'Builtup Area']),
+    plotArea: getStat(model, ['Plot Area', 'Land Area']),
+    priceRange: model.price,
+    location: 'Vastu Vihar Home Models',
+    locationHref: '/projects/',
+    previousSlug: index ? modelSlugs[index - 1] : null,
+    nextSlug: index < modelSlugs.length - 1 ? modelSlugs[index + 1] : null,
+  };
+});
+const projectBySlug = new Map(projects.map((project) => [project.slug, project]));
 export function getProject(slug) {
-  return projects.find((project) => project.slug === slug);
+  return projectBySlug.get(slug) ?? null;
 }

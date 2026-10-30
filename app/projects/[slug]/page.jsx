@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const project = getProject(slug);
   return project ? {
     title: project.title,
-    description: `${project.title} in ${project.location}. Explore project details, features, media and enquiries.`,
+    description: `${project.title} by Vastu Vihar. Explore model specifications, floor plans, photos, pricing and township amenities.`,
   } : { title: 'Project not found' };
 }
 

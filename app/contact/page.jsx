@@ -3,9 +3,9 @@ import PageLayout from '@/components/PageLayout';
 import ContactForm from '@/components/ContactForm';
 import Link from 'next/link';
 export const metadata = {
-  title: 'Get in touch',
+  title: 'Contact Vastu Vihar | Get in Touch',
   description:
-    'Get in touch HomeGet in touch Our global real estate experts are here to help you in this ever-changing market. Support email support@example.com Email us Phone number +(084) 123 - 456 88 call us Location 401 Broadway, 24th Floor, Orchard V',
+    'Contact Vastu Vihar for bungalow and home enquiries, project details, site visits and customer support. Call +91 95340 95340 or email info@vastuvihar.org.',
 };
 export default function ContactPage() {
   return (
@@ -89,8 +89,8 @@ export default function ContactPage() {
                         >
                           <div className="elementor-widget-container">
                             <div className="elementor-heading-title elementor-size-default">
-                              Our global real estate experts are here to help you in this ever-changing
-                              market.
+                              The Vastu Vihar team is here to help you explore homes and bungalows,
+                              arrange site visits, and answer your property enquiries.
                             </div>{' '}
                           </div>
                         </div>
@@ -145,11 +145,11 @@ export default function ContactPage() {
                               </div>
                               <div className="elementor-icon-box-content">
                                 <h5 className="elementor-icon-box-title">
-                                  <span>Support email </span>
+                                  <span>Enquiry email </span>
                                 </h5>
                                 <p className="elementor-icon-box-description">
-                                  <a href="mailto:support@example.com" className="">
-                                    support@example.com
+                                  <a href="mailto:info@vastuvihar.org" className="">
+                                    info@vastuvihar.org
                                   </a>{' '}
                                 </p>
                               </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
                           <div className="elementor-widget-container">
                             <div className="elementor-button-wrapper">
                               <a
-                                href="#"
+                                href="mailto:info@vastuvihar.org"
                                 className="elementor-button-link elementor-button elementor-size-sm"
                                 role="button"
                               >
@@ -205,7 +205,7 @@ export default function ContactPage() {
                                 <h5 className="elementor-icon-box-title">
                                   <span>Phone number </span>
                                 </h5>
-                                <p className="elementor-icon-box-description">+(084) 123 - 456 88 </p>
+                                <p className="elementor-icon-box-description">+91 95340 95340 </p>
                               </div>
                             </div>
                           </div>
@@ -219,13 +219,13 @@ export default function ContactPage() {
                           <div className="elementor-widget-container">
                             <div className="elementor-button-wrapper">
                               <a
-                                href="#"
+                                href="tel:+919534095340"
                                 className="elementor-button-link elementor-button elementor-size-sm"
                                 role="button"
                               >
                                 <span className="elementor-button-content-wrapper">
-                                  <span className="elementor-button-text" data-name="call us">
-                                    <span>call us</span>
+                                  <span className="elementor-button-text" data-name="Call us">
+                                    <span>Call us</span>
                                   </span>
                                 </span>
                               </a>
@@ -260,7 +260,8 @@ export default function ContactPage() {
                                   <span>Location </span>
                                 </h5>
                                 <p className="elementor-icon-box-description">
-                                  401 Broadway, 24th Floor, Orchard View, London{' '}
+                                  417, 419, 4th Floor, Aashiana Tower, Exhibition Road,
+                                  Old Jakkanpur, Lodipur, Patna, Bihar - 800001{' '}
                                 </p>
                               </div>
                             </div>
@@ -275,13 +276,13 @@ export default function ContactPage() {
                           <div className="elementor-widget-container">
                             <div className="elementor-button-wrapper">
                               <a
-                                href="#"
+                                href="https://www.google.com/maps/search/?api=1&query=417%2C%20419%2C%204th%20Floor%2C%20Aashiana%20Tower%2C%20Exhibition%20Road%2C%20Old%20Jakkanpur%2C%20Lodipur%2C%20Patna%2C%20Bihar%20800001"
                                 className="elementor-button-link elementor-button elementor-size-sm"
                                 role="button"
                               >
                                 <span className="elementor-button-content-wrapper">
-                                  <span className="elementor-button-text" data-name="visit us">
-                                    <span>visit us</span>
+                                  <span className="elementor-button-text" data-name="Visit us">
+                                    <span>Visit us</span>
                                   </span>
                                 </span>
                               </a>
@@ -308,7 +309,7 @@ export default function ContactPage() {
                         >
                           <div className="elementor-widget-container">
                             <h3 className="elementor-heading-title elementor-size-default">
-                              Leave a message
+                              Send us a message
                             </h3>{' '}
                           </div>
                         </div>
@@ -495,10 +496,10 @@ export default function ContactPage() {
                             <iframe
                               loading="lazy"
                               src={
-                                'https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=10&output=embed&iwloc=near'
+                                'https://maps.google.com/maps?q=417%2C%20419%2C%204th%20Floor%2C%20Aashiana%20Tower%2C%20Exhibition%20Road%2C%20Old%20Jakkanpur%2C%20Lodipur%2C%20Patna%2C%20Bihar%20800001&t=m&z=15&output=embed&iwloc=near'
                               }
-                              title="London Eye, London, United Kingdom"
-                              aria-label="London Eye, London, United Kingdom"
+                              title="Vastu Vihar Corporate Office, Patna"
+                              aria-label="Vastu Vihar Corporate Office, Patna"
                             ></iframe>
                           </div>
                         </div>

@@ -23,9 +23,9 @@ export default function ProjectFacts({ project }) {
               </div>
               <div className="elementor-icon-box-content">
                 <h3 className="elementor-icon-box-title">
-                  <span>Status </span>
+                  <span>Bedrooms </span>
                 </h3>
-                <p className="elementor-icon-box-description">{project.status}</p>
+                <p className="elementor-icon-box-description">{project.bedrooms}</p>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@ export default function ProjectFacts({ project }) {
               </div>
               <div className="elementor-icon-box-content">
                 <h3 className="elementor-icon-box-title">
-                  <span>Project Type </span>
+                  <span>Home Type </span>
                 </h3>
                 <p className="elementor-icon-box-description">{project.type}</p>
               </div>
@@ -67,9 +67,9 @@ export default function ProjectFacts({ project }) {
               </div>
               <div className="elementor-icon-box-content">
                 <h3 className="elementor-icon-box-title">
-                  <span>Project Area </span>
+                  <span>Built-up Area </span>
                 </h3>
-                <p className="elementor-icon-box-description">{project.area}</p>
+                <p className="elementor-icon-box-description">{project.builtUp}</p>
               </div>
             </div>
           </div>
@@ -89,9 +89,9 @@ export default function ProjectFacts({ project }) {
               </div>
               <div className="elementor-icon-box-content">
                 <h3 className="elementor-icon-box-title">
-                  <span>Commencement date </span>
+                  <span>Plot / Land Area </span>
                 </h3>
-                <p className="elementor-icon-box-description">{project.commencementDate}</p>
+                <p className="elementor-icon-box-description">{project.plotArea}</p>
               </div>
             </div>
           </div>

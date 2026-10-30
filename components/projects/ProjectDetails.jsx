@@ -9,7 +9,7 @@ import ProjectLocation from './ProjectLocation';
 import ProjectEnquiry from './ProjectEnquiry';
 import ProjectNavigation from './ProjectNavigation';
 
-/** One editable layout for all thirteen project-detail URLs. */
+/** One reusable project layout for all Vastu Vihar home models. */
 export default function ProjectDetails({ project }) {
   return (
     <>
@@ -31,10 +31,10 @@ export default function ProjectDetails({ project }) {
                 <div className="elementor elementor-2178">
                   <ProjectFacts project={project} />
                   <ProjectHero project={project} />
-                  <ProjectDescription />
+                  <ProjectDescription project={project} />
                   <ProjectAmenities />
-                  <ProjectMedia />
-                  <ProjectLocation />
+                  <ProjectMedia project={project} />
+                  <ProjectLocation project={project} />
                   <ProjectEnquiry project={project} />
                   <ProjectNavigation project={project} />
                 </div>
