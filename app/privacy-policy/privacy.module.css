@@ -1,0 +1,349 @@
+.page {
+    background: #fff;
+    color: #262626;
+    padding: 68px 20px 90px;
+    font-family: inherit
+}
+
+.container {
+    max-width: 1120px;
+    margin: 0 auto
+}
+
+.intro {
+    max-width: 950px;
+    margin-bottom: 46px
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: 12px;
+    font-weight: 700;
+    color: #b1874b;
+    margin: 0 0 16px
+}
+
+.intro h1 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.12;
+    font-weight: 600;
+    letter-spacing: -.035em;
+    margin: 0 0 17px;
+    color: #181818
+}
+
+.lead {
+    font-size: clamp(17px, 2vw, 21px);
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 22px
+}
+
+.revised {
+    font-size: 13px;
+    font-weight: 600;
+    color: #745a3a;
+    margin: 0 0 30px;
+    padding: 12px 0;
+    border-block: 1px solid #eee
+}
+
+.revised span {
+    margin: 0 12px;
+    color: #ccc
+}
+
+.intro>p:not(.eyebrow):not(.lead):not(.revised) {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #555;
+    margin: 0 0 16px
+}
+
+.sections {
+    display: grid;
+    gap: 26px
+}
+
+.section {
+    border: 1px solid #eae7e2;
+    background: #fff;
+    padding: clamp(22px, 3vw, 42px);
+    scroll-margin-top: 100px
+}
+
+.section h2 {
+    font-size: clamp(21px, 2.6vw, 28px);
+    font-weight: 600;
+    letter-spacing: -.02em;
+    color: #202020;
+    line-height: 1.35;
+    margin: 0 0 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start
+}
+
+.section h2 span {
+    font-size: 13px;
+    letter-spacing: .06em;
+    color: #ad834e;
+    border-top: 2px solid #ad834e;
+    padding-top: 7px;
+    flex-shrink: 0
+}
+
+.section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: #242424
+}
+
+.section p,
+.section li {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #5b5b5b
+}
+
+.section p {
+    margin: 0 0 14px
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 22px;
+    margin: 0 0 18px
+}
+
+.section li {
+    padding-left: 4px;
+    margin-bottom: 11px
+}
+
+.section li p {
+    margin: 5px 0 10px
+}
+
+.section a {
+    color: #936c3a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere
+}
+
+.section a:hover {
+    color: #1b1b1b
+}
+
+.section strong {
+    font-weight: 650;
+    color: #303030
+}
+
+.definitionGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px
+}
+
+.infoCard {
+    border: 1px solid #eae6df;
+    padding: 24px;
+    background: #fcfbf9
+}
+
+.icon {
+    display: inline-flex;
+    color: #aa824b;
+    font-size: 26px;
+    line-height: 1
+}
+
+.infoCard h3 {
+    font-size: 17px;
+    margin: 12px 0 8px
+}
+
+.infoCard p {
+    font-size: 14px;
+    margin: 0
+}
+
+.contactPanel {
+    padding: clamp(20px, 3vw, 30px);
+    background: #f9f7f3;
+    border-left: 3px solid #b18a57;
+    margin: 25px 0
+}
+
+.contactPanel h3 {
+    margin: 0 0 6px
+}
+
+.panelSub {
+    font-size: 13px !important
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 25px;
+    margin: 20px 0 0
+}
+
+.contactGrid>div {
+    border-top: 1px solid #e7e0d5;
+    padding-top: 12px;
+    min-width: 0
+}
+
+.contactGrid dt {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: #8e795d;
+    margin-bottom: 5px
+}
+
+.contactGrid dd {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.65;
+    margin: 0;
+    overflow-wrap: anywhere
+}
+
+.cookieArea {
+    margin: 19px 0 8px
+}
+
+.cookieButton {
+    border: 1px solid #9d774a;
+    background: #9d774a;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 19px;
+    cursor: pointer;
+    transition: background .2s, color .2s
+}
+
+.cookieButton span {
+    margin-left: 12px
+}
+
+.cookieButton:hover {
+    background: #1e1e1e;
+    border-color: #1e1e1e
+}
+
+.cookiePanel {
+    border: 1px solid #e7e0d6;
+    padding: 24px;
+    margin-top: 15px;
+    background: #fff
+}
+
+.cookiePanel h3 {
+    margin: 0 0 7px
+}
+
+.cookieOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer
+}
+
+.cookieOption span {
+    display: grid;
+    gap: 3px
+}
+
+.cookieOption strong {
+    font-size: 14px
+}
+
+.cookieOption small {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5
+}
+
+.cookieOption input {
+    accent-color: #9d774a;
+    width: 18px;
+    height: 18px;
+    flex: none
+}
+
+.cookieActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 19px
+}
+
+.cookieActions button {
+    background: #fff;
+    border: 1px solid #9d774a;
+    padding: 10px 14px;
+    color: #60411e;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px
+}
+
+.cookieActions button:hover {
+    background: #9d774a;
+    color: white
+}
+
+.savedMessage {
+    color: #497a51 !important;
+    margin: 12px 0 !important;
+    font-size: 13px !important
+}
+
+@media(max-width:700px) {
+    .page {
+        padding: 36px 16px 60px
+    }
+
+    .intro {
+        margin-bottom: 27px
+    }
+
+    .sections {
+        gap: 15px
+    }
+
+    .section h2 {
+        gap: 10px
+    }
+
+    .definitionGrid,
+    .contactGrid {
+        grid-template-columns: 1fr
+    }
+
+    .infoCard {
+        padding: 20px
+    }
+
+    .revised span {
+        margin: 0 5px
+    }
+
+    .cookieActions button {
+        flex: 1 1 130px
+    }
+}
