@@ -381,3 +381,120 @@
     transition: none;
   }
 }
+
+/* =========================================================
+   CONTACT SECTION LAYOUT FIX
+   Desktop: Form/content on the left, full-width map on right.
+   Mobile: Stack everything vertically.
+   ========================================================= */
+
+/* The main contact wrapper must occupy the full available width. */
+.elementor-61 .elementor-element.elementor-element-b6aa9a7 {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Make the map and its inner Elementor wrappers use all available space. */
+.elementor-61 .elementor-element.elementor-element-e070db1,
+.elementor-61 .elementor-element.elementor-element-00b0c2a,
+.elementor-61 .elementor-element.elementor-element-00b0c2a > .elementor-widget-container,
+.elementor-61 .elementor-element.elementor-element-00b0c2a .elementor-custom-embed {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.elementor-61 .elementor-element.elementor-element-00b0c2a iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  /* Two-column desktop layout.
+     Left: heading, form and contact-image links
+     Right: map */
+  .elementor-61 .elementor-element.elementor-element-b6aa9a7 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 30px;
+    row-gap: 30px;
+    align-items: stretch;
+    --width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  /* Form */
+  .elementor-61 .elementor-element.elementor-element-b969834 {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Site Contact / Branch Contact cards */
+  .elementor-61 .elementor-element.elementor-element-67b88a0 {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    align-self: start;
+  }
+
+  /* Map occupies the complete right side */
+  .elementor-61 .elementor-element.elementor-element-e070db1 {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    --width: 100% !important;
+    width: 100% !important;
+    min-width: 0;
+    padding: 0 !important;
+    align-self: stretch;
+  }
+
+  .elementor-61 .elementor-element.elementor-element-00b0c2a,
+  .elementor-61 .elementor-element.elementor-element-00b0c2a > .elementor-widget-container,
+  .elementor-61 .elementor-element.elementor-element-00b0c2a .elementor-custom-embed {
+    height: 100%;
+  }
+
+  .elementor-61 .elementor-element.elementor-element-00b0c2a iframe {
+    height: 100% !important;
+    min-height: 750px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Stack cleanly on mobile */
+  .elementor-61 .elementor-element.elementor-element-b6aa9a7 {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    --width: 100% !important;
+    gap: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .elementor-61 .elementor-element.elementor-element-b969834,
+  .elementor-61 .elementor-element.elementor-element-67b88a0,
+  .elementor-61 .elementor-element.elementor-element-e070db1 {
+    width: 100% !important;
+    --width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .elementor-61 .elementor-element.elementor-element-e070db1 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .elementor-61 .elementor-element.elementor-element-00b0c2a iframe {
+    width: 100% !important;
+    height: 350px !important;
+    min-height: 350px;
+  }
+}

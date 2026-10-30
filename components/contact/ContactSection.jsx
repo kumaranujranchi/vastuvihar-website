@@ -172,9 +172,9 @@ export default function ContactSection() {
             >
               <img
                 decoding="async"
-                width="190"
-                height="80"
-                src="/images/h3_img-3.jpg"
+                width="150"
+                height="70"
+                src="/branch-contact.png"
                 className="attachment-full bimg size-full wp-image-852"
                 alt="Site Contact"
               />
@@ -214,9 +214,9 @@ export default function ContactSection() {
             >
               <img
                 decoding="async"
-                width="190"
-                height="80"
-                src="/images/h3_img-4.jpg"
+                width="150"
+                height="70"
+                src="/site-contact.png"
                 className="attachment-full bimg size-full wp-image-850"
                 alt="Branch Contact"
               />

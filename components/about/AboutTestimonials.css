@@ -16,9 +16,11 @@
   --padding-right: 30px;
 }
 
-.elementor-49 .elementor-element.elementor-element-f78d434:not(.elementor-motion-effects-element-type-background), .elementor-49 .elementor-element.elementor-element-f78d434 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+.elementor-49 .elementor-element.elementor-element-f78d434:not(.elementor-motion-effects-element-type-background),
+.elementor-49 .elementor-element.elementor-element-f78d434 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
   background-color: transparent;
-  background-image: linear-gradient(180deg, var( --e-global-color-background_light ) 0%, #F6F3EC00 100%);
+  margin-top: 200px;
+  background-image: linear-gradient(180deg, var(--e-global-color-background_light) 0%, #F6F3EC00 100%);
 }
 
 .elementor-49 .elementor-element.elementor-element-f78d434 .spaciaz-border-shape {
@@ -31,7 +33,7 @@
   --display: flex;
   --justify-content: center;
   --align-items: center;
-  --container-widget-width: calc( ( 1 - var( --container-widget-flex-grow ) ) * 100% );
+  --container-widget-width: calc((1 - var(--container-widget-flex-grow)) * 100%);
   --margin-top: -100px;
   --margin-bottom: 150px;
   --margin-left: 0px;
@@ -80,12 +82,14 @@
   background-color: #FFFFFF;
 }
 
-.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-framed .elementor-icon, .elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-default .elementor-icon {
+.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-framed .elementor-icon,
+.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-default .elementor-icon {
   color: #FFFFFF;
   border-color: #FFFFFF;
 }
 
-.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-framed .elementor-icon, .elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-default .elementor-icon svg {
+.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-framed .elementor-icon,
+.elementor-49 .elementor-element.elementor-element-8aa9af9.elementor-view-default .elementor-icon svg {
   fill: #FFFFFF;
 }
 
@@ -170,7 +174,7 @@
   padding: 0px 0px 150px 0px;
   border-style: solid;
   border-width: 0px 0px 1px 0px;
-  border-color: var( --e-global-color-border );
+  border-color: var(--e-global-color-border);
 }
 
 .elementor-49 .elementor-element.elementor-element-8ee7234 .spaciaz-border-shape {
@@ -184,7 +188,7 @@
 }
 
 .elementor-49 .elementor-element.elementor-element-8ee7234 .content {
-  color: var( --e-global-color-accent );
+  color: var(--e-global-color-accent);
   margin: 0px 0px 90px 0px;
 }
 
@@ -195,14 +199,16 @@
   letter-spacing: -2px;
 }
 
-.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-prev, .elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-next {
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-prev,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-next {
   border-style: solid;
   border-width: 0px 0px 0px 0px;
   background-color: #FFFFFF;
 }
 
-.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-prev:hover, .elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-next:hover {
-  background-color: var( --e-global-color-primary );
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-prev:hover,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-next:hover {
+  background-color: var(--e-global-color-primary);
 }
 
 .elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-swiper-button.elementor-swiper-button-next {
@@ -257,7 +263,7 @@
   text-transform: uppercase;
   line-height: 1.167em;
   letter-spacing: 0px;
-  color: var( --e-global-color-accent );
+  color: var(--e-global-color-accent);
 }
 
 .elementor-49 .elementor-element.elementor-element-801eddd .spaciaz-border-shape {
@@ -276,8 +282,8 @@
 }
 
 .elementor-49 .elementor-element.elementor-element-801eddd .elementor-scrolling-wrapper .elementor-scrolling-item {
-  padding-left: calc(25px/2);
-  padding-right: calc(25px/2);
+  padding-left: calc(25px / 2);
+  padding-right: calc(25px / 2);
 }
 
 .elementor-49 .elementor-element.elementor-element-801eddd {
@@ -304,10 +310,10 @@
 }
 
 .elementor-49 .elementor-element.elementor-element-801eddd .elementor-scrolling-item:hover .elementor-icon {
-  background-color: var( --e-global-color-primary );
+  background-color: var(--e-global-color-primary);
 }
 
-@media(max-width:1200px) {
+@media (max-width: 1200px) {
 
   .elementor-49 .elementor-element.elementor-element-69ea2b3 {
     --margin-top: -100px;
@@ -325,7 +331,7 @@
   }
 }
 
-@media(max-width:1024px) {
+@media (max-width: 1024px) {
 
   .elementor-49 .elementor-element.elementor-element-69ea2b3 {
     --margin-top: -100px;
@@ -365,7 +371,7 @@
   }
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
 
   .elementor-49 .elementor-element.elementor-element-f78d434 {
     --margin-top: 0px;
@@ -435,5 +441,86 @@
 
   .elementor-49 .elementor-element.elementor-element-76152b0 > .elementor-widget-container {
     margin: 0px 0px 30px 0px;
+  }
+}
+
+/* =========================================================
+   TESTIMONIAL LAYOUT FIX
+   Keeps testimonial copy inside its content area and makes
+   the Yamuna image a true circle at every breakpoint.
+   ========================================================= */
+.elementor-49 .elementor-element.elementor-element-8ee7234,
+.elementor-49 .elementor-element.elementor-element-8ee7234 > .elementor-widget-container,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-testimonial-item-wrapper,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .swiper,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .swiper-wrapper,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .swiper-slide,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .testimonial-content,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .wrap_content {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.elementor-49 .elementor-element.elementor-element-8ee7234 .elementor-testimonial-item-wrapper {
+  width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.elementor-49 .elementor-element.elementor-element-8ee7234 .wrap_content {
+  width: 100%;
+  padding-inline: clamp(20px, 5vw, 70px);
+}
+
+.elementor-49 .elementor-element.elementor-element-8ee7234 .content,
+.elementor-49 .elementor-element.elementor-element-8ee7234 .content p {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.elementor-49 .elementor-element.elementor-element-8ee7234 .content p {
+  margin-top: 0;
+}
+
+/* Keep the testimonial text from visually climbing into the image layout. */
+.elementor-49 .elementor-element.elementor-element-8ee7234 {
+  position: relative;
+  z-index: 1;
+}
+
+.elementor-49 .elementor-element.elementor-element-2e05536,
+.elementor-49 .elementor-element.elementor-element-2e05536 .elementor-widget-container {
+  width: 140px !important;
+  height: 140px !important;
+  min-width: 140px;
+  min-height: 140px;
+  aspect-ratio: 1 / 1;
+}
+
+.elementor-49 .elementor-element.elementor-element-2e05536 img {
+  display: block;
+  width: 140px !important;
+  height: 140px !important;
+  max-width: none !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-49 .elementor-element.elementor-element-8ee7234 .wrap_content {
+    padding-inline: 15px;
+  }
+
+  .elementor-49 .elementor-element.elementor-element-8ee7234 .grid-item .content {
+    font-size: clamp(26px, 8vw, 36px);
+    line-height: 1.25em;
+    letter-spacing: -1px;
   }
 }
