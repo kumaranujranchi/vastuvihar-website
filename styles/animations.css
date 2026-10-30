@@ -1,9 +1,0 @@
-/* Animation adapters: reduced motion and keyboard-friendly job disclosures. */
-.next-theme-ready .elementor-careersshowcase-item[role="button"] { cursor: pointer; }
-.next-theme-ready .careers-popup.next-careers-open { scroll-margin-top: 110px; }
-.next-carousel-track:focus-visible { outline-offset: -3px; }
-.next-theme-ready .video-tab-content[hidden] { display: none !important; }
-@media (prefers-reduced-motion: reduce) {
-  .next-carousel .next-carousel-track { scroll-behavior: auto !important; }
-  .next-theme-ready .project-post-thumbnail { transition-duration: .01ms !important; }
-}
