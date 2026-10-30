@@ -438,7 +438,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                       <div
-                        className="elementor-element elementor-element-67b88a0 e-con-full elementor-hidden-mobile e-flex e-con e-child"
+                        className="elementor-element elementor-element-67b88a0 e-con-full e-flex e-con e-child"
                         data-id="67b88a0"
                         data-element_type="container"
                       >
@@ -450,14 +450,38 @@ export default function ContactPage() {
                           data-widget_type="image.default"
                         >
                           <div className="elementor-widget-container">
-                            <img
-                              decoding="async"
-                              width="190"
-                              height="80"
-                              src="/images/h3_img-3.jpg"
-                              className="attachment-full size-full wp-image-852"
-                              alt=""
-                            />{' '}
+                            <Link
+                              href="/contact/site-contact"
+                              prefetch={false}
+                              className="vv-contact-image-link"
+                              aria-label="Go to Site Contact"
+                            >
+                              <img
+                                decoding="async"
+                                width="190"
+                                height="80"
+                                src="/images/h3_img-3.jpg"
+                                className="attachment-full bimg size-full wp-image-852"
+                                alt=""
+                              />
+                              <span className="vv-contact-image-link-label">
+                                Site Contact
+                                <svg
+                                  className="vv-contact-external-icon"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="1.8"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path d="M7 17 17 7M7 7h10v10" />
+                                </svg>
+                              </span>
+                            </Link>
                           </div>
                         </div>
                         <div
@@ -468,14 +492,38 @@ export default function ContactPage() {
                           data-widget_type="image.default"
                         >
                           <div className="elementor-widget-container">
-                            <img
-                              decoding="async"
-                              width="190"
-                              height="80"
-                              src="/images/h3_img-4.jpg"
-                              className="attachment-full size-full wp-image-850"
-                              alt=""
-                            />{' '}
+                            <Link
+                              href="/contact/branch-contact"
+                              prefetch={false}
+                              className="vv-contact-image-link"
+                              aria-label="Go to Branch Contact"
+                            >
+                              <img
+                                decoding="async"
+                                width="190"
+                                height="80"
+                                src="/images/h3_img-4.jpg"
+                                className="attachment-full bimg size-full wp-image-850"
+                                alt=""
+                              />
+                              <span className="vv-contact-image-link-label">
+                                Branch Contact
+                                <svg
+                                  className="vv-contact-external-icon"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="1.8"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path d="M7 17 17 7M7 7h10v10" />
+                                </svg>
+                              </span>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -512,6 +560,84 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <style>{`
+        /* Only the existing image-links: no added card spacing or padding. */
+        .vv-contact-image-link {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          vertical-align: top;
+          width: auto;
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+          gap: 0;
+          border: 0;
+          background: transparent;
+          color: inherit;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .vv-contact-image-link img {
+          display: block;
+          margin: 0;
+          padding: 0;
+        }
+        .vv-contact-image-link-label {
+          display: block;
+          position: relative;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          font: inherit;
+          font-weight: 600;
+          line-height: 1.25;
+          text-align: center;
+        }
+        .vv-contact-external-icon {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          opacity: 0;
+          transform: translate(-4px, calc(-50% + 4px));
+          transition: opacity 200ms ease, transform 200ms ease;
+          pointer-events: none;
+        }
+        .vv-contact-image-link:hover .vv-contact-external-icon,
+        .vv-contact-image-link:focus-visible .vv-contact-external-icon {
+          opacity: 1;
+          transform: translate(0, -50%);
+        }
+        .vv-contact-image-link:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+          
+
+        @media (max-width: 767px) {
+        .elementor-61 .elementor-element.elementor-element-67b88a0 {
+        margin-top: 50px !important;}
+
+        .bimg{height: 80px; width: 150px;}
+          .elementor-element-67b88a0 {
+            display: flex !important;
+            visibility: visible !important;
+          }
+          .elementor-element-67b88a0 .elementor-invisible {
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+        }
+        @media (hover: none) {
+          .vv-contact-external-icon {
+            opacity: 1;
+            transform: translate(0, -50%);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .vv-contact-external-icon { transition: none; }
+        }
+      `}</style>
     </PageLayout>
   );
 }
