@@ -1,6 +1,6 @@
 // Project-detail view model from the supplied 16 models; no sample projects.
 // Install this file as data/projects.js next to data/project.js.
-import { projectsData } from './project';
+import { projectsData } from './project.js';
 
 const normalizedStat = (label) => label.toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -32,6 +32,9 @@ export const projects = modelSlugs.map((slug, index) => {
     builtUp: getStat(model, ['Built-up', 'Built-up Area', 'Builtup Area']),
     plotArea: getStat(model, ['Plot Area', 'Land Area']),
     priceRange: model.price,
+    minPrice: model.minPrice,
+    maxPrice: model.maxPrice,
+    priceRangeNumeric: [model.minPrice, model.maxPrice],
     location: 'Vastu Vihar Home Models',
     locationHref: '/projects/',
     previousSlug: index ? modelSlugs[index - 1] : null,

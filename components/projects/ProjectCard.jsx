@@ -1,17 +1,19 @@
 import './ProjectCard.css';
 import Link from 'next/link';
-import { modelType } from '@/data/project-filters';
+import { modelType, getBudgetCategories } from '@/data/project-filters';
 
 export default function ProjectCard({ model }) {
+  const budgetCategories = getBudgetCategories(model).join(',');
   return (
     <div className="grid-item">
       <div
         className="project-item project-style-2"
-        data-budget={model.priceRange}
+        data-budget={budgetCategories}
+        data-min-price={model.minPrice}
+        data-max-price={model.maxPrice}
         data-type={modelType(model)}
         data-status={model.youtubeId ? 'walkthrough' : 'no-walkthrough'}
         data-beds={model.bedrooms}
-        title={model.description}
       >
         <div className="project-post-thumbnail">
           <img

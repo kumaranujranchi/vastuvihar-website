@@ -15,6 +15,8 @@ export const projectsData = {
         slug: "ananta-bungalow",
         name: "Ananta Bungalow",
         price: "₹ 50 - 70 Lac",
+        minPrice: 50,
+        maxPrice: 70,
         description: "ANANTA = INFINITE (अनंत घर, अनंत सपने). Luxury 3 BHK Bungalow with G+1 and exclusive Rooftop Amenities.",
         youtubeId: "fBQ4S7vQ0ws",
         features: [
@@ -101,6 +103,8 @@ export const projectsData = {
         slug: "ceo-bungalow",
         name: "CEO Bungalow",
         price: "₹ 1.10 Cr - 1.80 Cr",
+        minPrice: 110,
+        maxPrice: 180,
         description: "CEO BUNGALOW – Super Luxury Dream Home. 5 BHK | G+1 with Rooftop Amenities.",
         youtubeId: "x52x2VKPUcg",
         features: [
@@ -180,6 +184,8 @@ export const projectsData = {
         slug: "yamuna-bungalow",
         name: "Yamuna Bungalow (5 BHK)",
         price: "₹55 - 70 Lac*",
+        minPrice: 55,
+        maxPrice: 70,
         description: "Learn more about this Classic Bungalow. The Yamuna Bungalow 5 BHK layout.",
         youtubeId: "6mSbVDkUPn4",
         features: [
@@ -251,6 +257,8 @@ export const projectsData = {
         slug: "yamuna-bungalow-7bhk",
         name: "Yamuna Bungalow (7 BHK)",
         price: "₹60 Lac - 1 Cr",
+        minPrice: 60,
+        maxPrice: 100,
         description: "Learn more about this Classic Bungalow. The Yamuna Bungalow 7 BHK layout.",
         youtubeId: "6mSbVDkUPn4",
         features: [
@@ -325,6 +333,8 @@ export const projectsData = {
         slug: "godawari-bungalow",
         name: "Godawari Bungalow",
         price: "₹ 30 - 40 Lac*",
+        minPrice: 30,
+        maxPrice: 40,
         description:
             "A well-designed 2 BHK bungalow offering modern living and comfort on a 1,000 sq. ft. plot, with 900 sq. ft. built-up area and 710 sq. ft. carpet area. The thoughtfully planned layout includes spacious living areas and a practical floor plan for family living.",
         youtubeId: "sx0GPUWDuBQ",
@@ -408,6 +418,8 @@ export const projectsData = {
         slug: "ambika-bungalow",
         name: "Ambika G+2",
         price: "₹ 40 - 50 Lac",
+        minPrice: 40,
+        maxPrice: 50,
         description:
             "Ambika Bungalow is a three-floor home designed for comfortable modern living, offering 4 bedrooms, a dedicated study room, and parking. Its concrete frame structure, flat slab design, and raft foundation provide a durable construction approach, complemented by quality plumbing, drainage, sewerage, and electrical fittings.",
         youtubeId: "",
@@ -539,6 +551,8 @@ export const projectsData = {
         slug: "simplex-bungalow",
         name: "Simplex Bungalow",
         price: "₹ 30 - 35 Lac*",
+        minPrice: 30,
+        maxPrice: 35,
         description:
             "A compact 2 BHK home designed for modern living, featuring a spacious hall, kitchen, and comfortable layout that combines simplicity with contemporary style.",
 
@@ -619,6 +633,8 @@ export const projectsData = {
         slug: "nano",
         name: "Nano Apartment",
         price: "7 - 15 Lac",
+        minPrice: 7,
+        maxPrice: 15,
         description:
             "A compact and efficient apartment offering a comfortable living space with an open kitchen, hall, and bedroom. Designed to combine comfort, affordability, and great value in every location.",
         youtubeId: "",
@@ -684,6 +700,8 @@ export const projectsData = {
         slug: "ganga-new-2bhk",
         name: "Ganga New 2 BHK",
         price: "₹ 10 - 16 Lac*",
+        minPrice: 10,
+        maxPrice: 16,
         description:
             "A practical 2BHK Apartment with an open kitchen and spacious layouts. Designed to combine comfort, affordability, and great value in every location.",
         youtubeId: "",
@@ -755,6 +773,8 @@ export const projectsData = {
         slug: "jayanti-bungalow",
         name: "Jayanti Bungalow",
         price: "₹ 40 - 50 Lac*",
+        minPrice: 40,
+        maxPrice: 50,
         description:
             "A thoughtfully designed 3 BHK bungalow offering comfortable living for small and medium-sized families, with spacious bedrooms, inviting balconies, elegant dining spaces, and a practical two-floor layout.",
         youtubeId: "wHHl7NEM2M4",
@@ -843,6 +863,8 @@ export const projectsData = {
         slug: "business-bungalow",
         name: "Business Bungalow",
         price: "35 - 50Lac",
+        minPrice: 35,
+        maxPrice: 50,
         description:
             "A spacious multi-floor bungalow designed for modern family living, featuring 3 bedrooms, a drawing hall, dining area, study room, and dedicated parking. Its concrete frame structure and flat-slab design offer a practical, contemporary layout.",
         youtubeId: "uGxMCG1SIq8",
@@ -959,6 +981,8 @@ export const projectsData = {
         slug: "aditi",
         name: "Aditi 1.0",
         price: "16 - 24Lac",
+        minPrice: 16,
+        maxPrice: 24,
         description:
             "Modern apartments designed for comfortable living, combining thoughtful layouts, contemporary design, and a peaceful residential environment. The 3 BHK configuration includes bedrooms, a living and dining area, a kitchen, bathrooms, and a balcony.",
         youtubeId: "",
@@ -1013,6 +1037,8 @@ export const projectsData = {
         slug: "classic-ceo-bungalow",
         name: "Classic CEO Bungalow",
         price: "₹ 1 Cr - 1.8 Cr*",
+        minPrice: 100,
+        maxPrice: 180,
         description: "An exclusive luxury bungalow featuring five bedrooms, elegant interiors, a modern modular kitchen, and a private rooftop retreat with a swimming pool, gym, pergola, and sit-out area. Designed for premium family living with comfort and sophistication.",
         youtubeId: "z91BiGkSOSA",
         features: [
@@ -1113,6 +1139,8 @@ export const projectsData = {
         slug: "kaveri-bungalow",
         name: "Kaveri Bungalow",
         price: "₹ 35 - 55 Lac*",
+        minPrice: 35,
+        maxPrice: 55,
         description:
             "A spacious double-storey bungalow designed for single or extended families, featuring four bedrooms, two halls, two kitchens, and single-car parking. Its flexible layout offers comfortable living for one large family or two separate households.",
         youtubeId: "9n4FbqhOQYE",
@@ -1198,6 +1226,8 @@ export const projectsData = {
         slug: "gayatri-row-house",
         name: "Gayatri Row House",
         price: "₹ 28 - 35 Lac*",
+        minPrice: 28,
+        maxPrice: 35,
         description:
             "An exclusive bungalow featuring elegant architecture, spacious living areas, and refined craftsmanship. The thoughtfully designed kitchen opens into the dining and main living areas, while two bedrooms are situated on the first floor.",
         youtubeId: "",
@@ -1300,6 +1330,8 @@ export const projectsData = {
         slug: "rainbow-house-bungalow",
         name: "Rainbow Row House",
         price: "₹ 35 - 45 Lac*",
+        minPrice: 35,
+        maxPrice: 45,
         description:
             "A spacious three-floor luxury bungalow designed with a strong concrete frame structure, flat slab construction, and raft foundation. Featuring four bedrooms, five bathrooms, a shop or parking space, and a rooftop pool, it combines modern amenities with durable construction.",
         youtubeId: "",

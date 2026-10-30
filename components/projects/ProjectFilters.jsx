@@ -9,12 +9,6 @@ export default function ProjectFilters({ filters = {} }) {
         action="/projects/"
       >
         <h4 className="filter-title">Filter</h4>
-        <select name="status" aria-label="Available media" defaultValue={filters.status}>
-          <option value="">All Models</option>
-          <option value="with-video">With Video</option>
-          <option value="with-2d">With 2D Plans</option>
-          <option value="with-3d">With 3D Plans</option>
-        </select>
         <select name="type" aria-label="Home type" defaultValue={filters.type}>
           <option value="">Home Type</option>
           <option value="bungalow">Bungalow</option>

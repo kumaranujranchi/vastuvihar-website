@@ -1,7 +1,7 @@
 /** Filter the retained project grid in place; no WordPress/AJAX endpoint needed. */
 export function initProjectFilters(context) {
   const { listen, created } = context;
-  const allowed = new Set(['status', 'type', 'location', 'budget', 's']);
+  const allowed = new Set(['status', 'type', 'location', 'budget', 'beds', 's']);
   function filter(form) {
     const values = [...new FormData(form).entries()].filter(([key, value]) => value && allowed.has(key));
     const container = form.closest('.project-archive-content') || document.querySelector('.project-archive-content') || document.getElementById('main');
@@ -13,6 +13,26 @@ export function initProjectFilters(context) {
       const parent = card.closest('article, .grid-item') || card;
       const text = `${card.textContent} ${JSON.stringify(card.dataset)}`.toLowerCase().replace(/[_-]+/g, ' ');
       const show = values.every(([key, value]) => {
+        if (key === 'budget') {
+          const budget = card.dataset.budget || '';
+          if (budget && budget.split(',').includes(value)) return true;
+          const min = parseFloat(card.dataset.minPrice);
+          if (!isNaN(min)) {
+            switch (value) {
+              case 'under-20': return min < 20;
+              case '20-40': return min >= 20 && min < 40;
+              case '40-60': return min >= 40 && min < 60;
+              case '60-100': return min >= 60 && min < 100;
+              case '100-plus': return min >= 100;
+              default: return true;
+            }
+          }
+          return false;
+        }
+        if (key === 'beds') {
+          const beds = card.dataset.beds;
+          return beds ? String(beds) === String(value) : false;
+        }
         const explicit = card.dataset[key] || parent.dataset[key];
         return explicit ? explicit.split(',').includes(value) : text.includes(String(value).toLowerCase().replace(/[_-]+/g, ' '));
       });

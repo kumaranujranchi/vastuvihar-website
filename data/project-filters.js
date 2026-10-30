@@ -10,16 +10,41 @@ export function startingPriceLakhs(price) {
   return Number(match[1]) * (/^cr$/i.test(match[2] || '') ? 100 : 1);
 }
 
-export function isInStartingBudget(price, budget) {
+export function getStartingBudget(minPrice) {
+  if (minPrice == null || isNaN(minPrice)) return '';
+  if (minPrice < 20) return 'under-20';
+  if (minPrice < 40) return '20-40';
+  if (minPrice < 60) return '40-60';
+  if (minPrice < 100) return '60-100';
+  return '100-plus';
+}
+
+export function getBudgetCategories(model) {
+  const min = typeof model === 'number'
+    ? model
+    : (model.minPrice ?? startingPriceLakhs(model.priceRange || model.price));
+
+  const category = getStartingBudget(min);
+  return category ? [category] : [];
+}
+
+export function isInStartingBudget(modelOrPrice, budget) {
   if (!budget) return true;
-  const amount = startingPriceLakhs(price);
-  if (amount === null) return false;
+  let min = null;
+  if (typeof modelOrPrice === 'object' && modelOrPrice !== null) {
+    min = modelOrPrice.minPrice ?? startingPriceLakhs(modelOrPrice.priceRange || modelOrPrice.price);
+  } else if (typeof modelOrPrice === 'number') {
+    min = modelOrPrice;
+  } else {
+    min = startingPriceLakhs(modelOrPrice);
+  }
+  if (min === null || isNaN(min)) return false;
   switch (budget) {
-    case 'under-20': return amount < 20;
-    case '20-40': return amount >= 20 && amount < 40;
-    case '40-60': return amount >= 40 && amount < 60;
-    case '60-100': return amount >= 60 && amount < 100;
-    case '100-plus': return amount >= 100;
+    case 'under-20': return min < 20;
+    case '20-40': return min >= 20 && min < 40;
+    case '40-60': return min >= 40 && min < 60;
+    case '60-100': return min >= 60 && min < 100;
+    case '100-plus': return min >= 100;
     default: return true;
   }
 }
@@ -37,8 +62,8 @@ export function filterProjects(projects, filters = {}) {
   return projects.filter((model) =>
     matchesMedia(model, filters.status) &&
     (!filters.type || modelType(model) === filters.type) &&
-    (!filters.beds || model.bedrooms === filters.beds) &&
-    isInStartingBudget(model.priceRange, filters.budget)
+    (!filters.beds || String(model.bedrooms) === String(filters.beds)) &&
+    isInStartingBudget(model, filters.budget)
   );
 }
 
