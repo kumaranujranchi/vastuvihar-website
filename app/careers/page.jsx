@@ -1,3 +1,4 @@
+import '../../styles/pages/careers.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import CareersHeader from '@/components/careers/CareersHeader';
@@ -15,7 +16,7 @@ export const metadata = createPageMetadata({
 export default function CareersPage() {
   return (
     <PageLayout route="careers">
-      <Breadcrumb title="Careers" />
+      {/* <Breadcrumb title="Careers" /> */}
       <div id="content" className="site-content-page clear" tabIndex="-1">
         <div className="col-fluid">
           <div id="primary" className="content-area">

@@ -1,3 +1,4 @@
+import './ProjectFacts.css';
 // Shared project section. Its layout is reused for every project.
 
 export default function ProjectFacts({ project }) {

@@ -1,0 +1,99 @@
+/*-------------------------------------------------------------
+12.0 Media
+--------------------------------------------------------------*/
+.page-content img.wp-smiley,
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+  display: inline-block;
+  border-radius: 0;
+}
+
+/*-------------------------------------------------------------
+12.1 Galleries
+--------------------------------------------------------------*/
+.gallery {
+  margin-bottom: 1.41575em;
+}
+.gallery::before, .gallery::after {
+  content: "";
+  display: table;
+}
+.gallery::after {
+  clear: both;
+}
+.gallery .gallery-item {
+  float: left;
+}
+.gallery .gallery-item .gallery-icon a {
+  display: block;
+}
+.gallery .gallery-item .gallery-icon img {
+  border: none;
+  height: auto;
+  margin: 0 auto;
+}
+.gallery .gallery-item .gallery-caption {
+  margin: 0;
+  text-align: center;
+}
+.gallery.gallery-columns-1 .gallery-item {
+  width: 100%;
+}
+.gallery.gallery-columns-2 .gallery-item {
+  width: 50%;
+}
+.gallery.gallery-columns-3 .gallery-item {
+  width: 33.3%;
+}
+.gallery.gallery-columns-4 .gallery-item {
+  width: 25%;
+}
+.gallery.gallery-columns-5 .gallery-item {
+  width: 20%;
+}
+.gallery.gallery-columns-6 .gallery-item {
+  width: 16.666666667%;
+}
+.gallery.gallery-columns-7 .gallery-item {
+  width: 14.285714286%;
+}
+.gallery.gallery-columns-8 .gallery-item {
+  width: 12.5%;
+}
+.gallery.gallery-columns-9 .gallery-item {
+  width: 11.111111111%;
+}
+
+/*-------------------------------------------------------------
+12.2 Embeds
+--------------------------------------------------------------*/
+embed,
+iframe,
+object,
+video {
+  max-width: 100%;
+}
+
+/*-------------------------------------------------------------
+13.0 Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1em;
+  max-width: 100%;
+}
+.wp-caption img[class*=wp-image-] {
+  display: block;
+  margin: 0 auto;
+}
+.wp-caption .wp-caption-text {
+  text-align: left;
+  font-style: italic;
+  border-bottom: 2px solid #E4E4E4;
+  padding: 5px 0;
+  font-size: 14px;
+  line-height: 20px;
+}

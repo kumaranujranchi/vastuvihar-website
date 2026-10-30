@@ -1,0 +1,31 @@
+.single-post .spaciaz-social-share a {
+  color: var(--accent);
+}
+.single-post .spaciaz-social-share a:hover {
+  color: var(--primary);
+}
+.single-post .single-content {
+  overflow: hidden;
+}
+.single-post .single-content .entry-header-content {
+  margin-bottom: 50px;
+}
+.single-post .single-content .post-thumbnail {
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
+.single-post .single-content .entry-title {
+  margin-bottom: 37px;
+}
+.single-post .single-content .entry-content:before {
+  display: none;
+}
+.single-post .single-content .entry-content .wp-block-image img {
+  border-radius: 20px;
+  height: 543px;
+  object-fit: cover;
+}
+
+.single-post .hidden-spaciaz-title-single-yes .spaciaz-title {
+  display: none;
+}

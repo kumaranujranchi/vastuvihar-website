@@ -1,0 +1,95 @@
+.elementor-6353 .elementor-element.elementor-element-4c78a6e {
+  --display: flex;
+  --flex-direction: column;
+  --container-widget-width: 100%;
+  --container-widget-height: initial;
+  --container-widget-flex-grow: 0;
+  --container-widget-align-self: initial;
+  --flex-wrap-mobile: wrap;
+  --margin-top: -20px;
+  --margin-bottom: 150px;
+  --margin-left: 0px;
+  --margin-right: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 30px;
+  --padding-right: 30px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-4c78a6e .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-bf6d545 > .elementor-widget-container {
+  margin: 0px 0px 200px 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-bf6d545 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-bf6d545 .d-grid {
+  grid-gap: 30px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-bf6d545 .iconbox-content {
+  text-align: left;
+}
+
+.elementor-6353 .elementor-element.elementor-element-bf6d545 .swiper-pagination {
+  justify-content: center;
+}
+
+@media(max-width:1200px) {
+
+  .elementor-6353 .elementor-element.elementor-element-4c78a6e {
+    --margin-top: 0px;
+    --margin-bottom: 120px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-bf6d545 .iconbox-content {
+    padding: 80px 40px 40px 40px;
+  }
+}
+
+@media(max-width:1024px) {
+
+  .elementor-6353 .elementor-element.elementor-element-4c78a6e {
+    --margin-top: 0px;
+    --margin-bottom: 100px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-bf6d545 > .elementor-widget-container {
+    margin: 30px 0px 50px 0px;
+  }
+}
+
+@media(max-width:767px) {
+
+  .elementor-6353 .elementor-element.elementor-element-4c78a6e {
+    --margin-top: 0px;
+    --margin-bottom: 60px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    --padding-left: 15px;
+    --padding-right: 15px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-bf6d545 > .elementor-widget-container {
+    margin: 0px 0px 30px 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-bf6d545 .iconbox-content {
+    min-height: 300px;
+  }
+}

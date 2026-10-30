@@ -1,5 +1,7 @@
 'use client';
 
+import '../../../styles/pages/contact.css';
+import '../../../components/contact/ContactHeader.css';
 import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
@@ -9,7 +11,7 @@ import styles from './branch-contact.module.css';
 export default function BranchContactPage() {
   return (
     <PageLayout route="contact">
-      <Breadcrumb title="Branch Contact" />
+      {/* <Breadcrumb title="Branch Contact" /> */}
       <div id="content" className={`site-content-page clear ${styles.page}`} tabIndex={-1}>
         <div className="col-fluid">
           <div id="primary" className="content-area">

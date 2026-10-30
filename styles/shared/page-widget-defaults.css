@@ -1,0 +1,880 @@
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-item:not(:last-child):after {
+  border-color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-counter .elementor-counter-number-wrapper {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-framed .elementor-icon, .elementor-widget-icon-box.elementor-view-default .elementor-icon {
+  fill: var( --e-global-color-primary );
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box:has(:hover) .elementor-icon-box-title,
+					 .elementor-widget-icon-box:has(:focus) .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-description {
+  color: var( --e-global-color-text );
+}
+
+.elementor-page-6353 {
+  --page-breadcrumb-display: none;
+}
+
+.theme-page.elementor-page-6353 {
+  --page-title-display: none;
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-6353 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-counter .elementor-counter-number-wrapper {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-page-49 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-49 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap, .elementor-page-51 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/core-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.elementor-page-51 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap, .elementor-page-53 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/awards-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.elementor-page-53 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-framed .elementor-icon, .elementor-widget-icon-box.elementor-view-default .elementor-icon {
+  fill: var( --e-global-color-primary );
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box:has(:hover) .elementor-icon-box-title,
+					 .elementor-widget-icon-box:has(:focus) .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-description {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.breadcrumb-wrap, .elementor-page-55 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/brc_team.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-55 .breadcrumb-wrap .breadcrumb-overlay {
+  background-color: #000000;
+  opacity: 0.4;
+}
+
+.elementor-page-55 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-item:not(:last-child):after {
+  border-color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-1919 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap, .elementor-page-57 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/careers-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.elementor-page-57 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-item:not(:last-child):after {
+  border-color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-57 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-spaciaz-slide-scrolling .elementor-scrolling-item:hover .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap, .elementor-page-59 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/faq-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.elementor-page-59 {
+  --page-breadcrumb-display: none;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-framed .elementor-icon, .elementor-widget-icon-box.elementor-view-default .elementor-icon {
+  fill: var( --e-global-color-primary );
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box:has(:hover) .elementor-icon-box-title,
+					 .elementor-widget-icon-box:has(:focus) .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-description {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-image .widget-image-caption {
+  color: var( --e-global-color-text );
+}
+
+.breadcrumb-wrap, .elementor-page-61 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/faq-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.elementor-page-61 {
+  --page-breadcrumb-display: none;
+}
+
+.vv-contact-image-link img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-wrap, .elementor-page-2202 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
+  background-image: url("/images/projects-bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-2202 .breadcrumb-wrap .breadcrumb-overlay {
+  background-color: var( --e-global-color-accent );
+  opacity: 0.4;
+}
+
+.elementor-widget-icon-box.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box.elementor-view-framed .elementor-icon, .elementor-widget-icon-box.elementor-view-default .elementor-icon {
+  fill: var( --e-global-color-primary );
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box:has(:hover) .elementor-icon-box-title,
+					 .elementor-widget-icon-box:has(:focus) .elementor-icon-box-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-box .elementor-icon-box-description {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-item:not(:last-child):after {
+  border-color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-nested-tabs.elementor-widget-n-tabs > .elementor-widget-container > .e-n-tabs[data-touch-mode='false'] > .e-n-tabs-heading > .e-n-tab-title[aria-selected="false"]:hover {
+  background: var( --e-global-color-accent );
+}
+
+.elementor-widget-nested-tabs.elementor-widget-n-tabs > .elementor-widget-container > .e-n-tabs > .e-n-tabs-heading > .e-n-tab-title[aria-selected="true"], .elementor-widget-nested-tabs.elementor-widget-n-tabs > .elementor-widget-container > .e-n-tabs[data-touch-mode='true'] > .e-n-tabs-heading > .e-n-tab-title[aria-selected="false"]:hover {
+  background: var( --e-global-color-accent );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-2178 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}
+
+.elementor-widget-page-title .elementor-heading-title, .elementor-widget-page-title .hfe-page-title a {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-page-title .hfe-page-title-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-page-3356 {
+  --page-breadcrumb-display: none;
+}

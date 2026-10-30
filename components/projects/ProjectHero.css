@@ -1,0 +1,29 @@
+.elementor-2178 .elementor-element.elementor-element-c7f6b67 {
+  --display: flex;
+  --flex-direction: column;
+  --container-widget-width: 100%;
+  --container-widget-height: initial;
+  --container-widget-flex-grow: 0;
+  --container-widget-align-self: initial;
+  --flex-wrap-mobile: wrap;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-2178 .elementor-element.elementor-element-c7f6b67 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-0019a3b .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-0019a3b .elementor-post-thumbnail img {
+  border-radius: 30px 30px 30px 30px;
+}

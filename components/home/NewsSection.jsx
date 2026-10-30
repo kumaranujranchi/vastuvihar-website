@@ -1,3 +1,5 @@
+import './NewsSection.css';
+import '../common/ScrollingTicker.css';
 import Link from 'next/link';
 
 export default function NewsSection() {

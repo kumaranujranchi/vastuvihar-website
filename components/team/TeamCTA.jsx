@@ -1,3 +1,4 @@
+import './TeamCTA.css';
 import Link from 'next/link';
 
 export default function TeamCTA() {

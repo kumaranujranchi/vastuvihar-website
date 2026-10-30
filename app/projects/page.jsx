@@ -1,3 +1,4 @@
+import '../../styles/pages/projects.css';
 import PageLayout from '@/components/PageLayout';
 import Link from 'next/link';
 import { projects } from '@/data/projects';

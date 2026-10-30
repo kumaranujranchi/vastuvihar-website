@@ -1,3 +1,5 @@
+import './ValuesSection.css';
+import '../common/ScrollingTicker.css';
 
 export default function ValuesSection() {
   const scrollingItems = [

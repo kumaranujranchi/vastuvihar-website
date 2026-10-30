@@ -1,0 +1,13 @@
+/*-------------------------------------------------------------
+3.0 Main content area
+--------------------------------------------------------------*/
+.site-content {
+  outline: none;
+}
+/* Minimal React/accessibility adjustments; the original theme CSS supplies the design. */
+.theme-page { min-height: 100vh; }
+
+/* Full-width page layouts do not have the theme's off-canvas sidebar divider. */
+.site-content-page .content-area::before {
+  display: none;
+}

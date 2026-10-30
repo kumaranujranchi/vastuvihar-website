@@ -1,3 +1,5 @@
+import './ArticleLayout.css';
+import '../projects/ProjectBreadcrumb.css';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import ContactForm from '@/components/ContactForm';

@@ -1,3 +1,4 @@
+import './ProjectLocation.css';
 // The supplied models are house designs rather than geolocated projects.
 // Replace the template's fake US location/map/transport with the real room data.
 export default function ProjectLocation({ project }) {

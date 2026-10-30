@@ -1,0 +1,157 @@
+/* Existing ProjectMedia styles; the local scope preserves styled-jsx isolation and specificity. */
+
+:global(.vv-project-media).mediaScope {
+  overflow: visible;
+}
+
+:global(.vv-project-media).mediaScope>:global(.e-con-inner).mediaScope {
+  display: block;
+}
+
+:global(.vv-media-widget).mediaScope,
+:global(.vv-media-widget).mediaScope>:global(.elementor-widget-container).mediaScope,
+:global(.vv-media-tabs).mediaScope,
+:global(.vv-media-content).mediaScope {
+  width: 100%;
+  overflow: visible;
+}
+
+:global(.vv-media-tabs).mediaScope {
+  display: block;
+}
+
+:global(.vv-media-buttons).mediaScope :global(.vv-media-tab):global(.e-active).mediaScope,
+:global(.vv-media-buttons).mediaScope :global(.vv-media-tab)[aria-selected="true"].mediaScope {
+  background-color: var(
+    --primary,
+    var(--e-global-color-accent, #e3ec64)
+  ) !important;
+  border-color: var(
+    --primary,
+    var(--e-global-color-accent, #e3ec64)
+  ) !important;
+  color: #111 !important;
+}
+
+:global(.vv-media-toolbar).mediaScope {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 42px;
+}
+
+:global(.vv-media-toolbar).mediaScope :global(h3).mediaScope {
+  margin: 0;
+  color: #080808;
+  font-size: clamp(36px, 5vw, 54px);
+  line-height: 1.08;
+  font-weight: 650;
+  letter-spacing: -.04em;
+}
+
+:global(.vv-media-buttons).mediaScope {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+:global(.vv-media-tab).mediaScope {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 51px;
+  padding: 11px 26px;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .25s ease, border-color .25s ease;
+}
+
+/* Colors, borders and active tab backgrounds come from the existing Spaciaz/Elementor theme. */
+
+:global(.vv-media-tab-svg).mediaScope {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  color: inherit;
+}
+
+:global(.vv-media-tab-svg).mediaScope :global(svg) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 22px !important;
+  height: 22px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+:global(.vv-media-content).mediaScope {
+  display: block;
+}
+
+:global(.vv-media-empty).mediaScope {
+  display: grid;
+  place-items: center;
+  min-height: 340px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #555;
+  background: #f7f7f7;
+  border-radius: 24px;
+}
+
+:global(.vv-video-frame).mediaScope {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+:global(.vv-video-frame).mediaScope :global(iframe).mediaScope {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 22px;
+}
+
+@media (max-width: 767px) {
+  :global(.vv-media-arrow).mediaScope {
+    display: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  :global(.vv-media-toolbar).mediaScope {
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  :global(.vv-media-buttons).mediaScope {
+    width: 100%;
+    gap: 8px;
+  }
+
+  :global(.vv-media-tab).mediaScope {
+    padding: 10px 16px;
+    font-size: 14px;
+    min-height: 45px;
+    gap: 7px;
+  }
+
+  :global(.vv-media-empty).mediaScope {
+    min-height: 230px;
+  }
+}

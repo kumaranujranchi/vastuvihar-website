@@ -1,0 +1,104 @@
+
+
+.cookieArea {
+    margin: 19px 0 8px
+}
+
+.cookieButton {
+    border: 1px solid #9d774a;
+    background: #9d774a;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 19px;
+    cursor: pointer;
+    transition: background .2s, color .2s
+}
+
+.cookieButton span {
+    margin-left: 12px
+}
+
+.cookieButton:hover {
+    background: #1e1e1e;
+    border-color: #1e1e1e
+}
+
+.cookiePanel {
+    border: 1px solid #e7e0d6;
+    padding: 24px;
+    margin-top: 15px;
+    background: #fff
+}
+
+.cookiePanel h3 {
+    margin: 0 0 7px
+}
+
+.cookieOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer
+}
+
+.cookieOption span {
+    display: grid;
+    gap: 3px
+}
+
+.cookieOption strong {
+    font-size: 14px
+}
+
+.cookieOption small {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5
+}
+
+.cookieOption input {
+    accent-color: #9d774a;
+    width: 18px;
+    height: 18px;
+    flex: none
+}
+
+.cookieActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 19px
+}
+
+.cookieActions button {
+    background: #fff;
+    border: 1px solid #9d774a;
+    padding: 10px 14px;
+    color: #60411e;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px
+}
+
+.cookieActions button:hover {
+    background: #9d774a;
+    color: white
+}
+
+.savedMessage {
+    color: #497a51 !important;
+    margin: 12px 0 !important;
+    font-size: 13px !important
+}
+
+@media(max-width:700px) {
+
+    .cookieActions button {
+        flex: 1 1 130px
+    }
+}

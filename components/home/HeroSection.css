@@ -1,0 +1,382 @@
+/* Homepage */
+
+.elementor-6353 .elementor-element.elementor-element-71f6b7a {
+  --display: flex;
+  --min-height: 1000px;
+  --flex-direction: column;
+  --container-widget-width: 100%;
+  --container-widget-height: initial;
+  --container-widget-flex-grow: 0;
+  --container-widget-align-self: initial;
+  --flex-wrap-mobile: wrap;
+  --justify-content: flex-end;
+  --overlay-opacity: 0.5;
+  --margin-top: 0px;
+  --margin-bottom: 50px;
+  --margin-left: 0px;
+  --margin-right: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-71f6b7a::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-background-video-container::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .e-con-inner > .elementor-background-video-container::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-background-slideshow::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .e-con-inner > .elementor-background-slideshow::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-motion-effects-container > .elementor-motion-effects-layer::before {
+  background-color: #000000;
+  --background-overlay: '';
+}
+
+.elementor-6353 .elementor-element.elementor-element-71f6b7a .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-ec08bea {
+  --display: flex;
+  --flex-direction: row;
+  --container-widget-width: initial;
+  --container-widget-height: 100%;
+  --container-widget-flex-grow: 1;
+  --container-widget-align-self: stretch;
+  --flex-wrap-mobile: wrap;
+  --gap: 30px 30px;
+  --row-gap: 30px;
+  --column-gap: 30px;
+  --margin-top: 0px;
+  --margin-bottom: 80px;
+  --margin-left: 0px;
+  --margin-right: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 30px;
+  --padding-right: 30px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-ec08bea .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-9593ae9 {
+  --display: flex;
+  --justify-content: flex-end;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-9593ae9 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-ee6dccb {
+  width: var( --container-widget-width, 520px );
+  max-width: 520px;
+  --container-widget-width: 520px;
+  --container-widget-flex-grow: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #FFFFFF99;
+}
+
+.elementor-6353 .elementor-element.elementor-element-ee6dccb .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-d8f80a9 {
+  --display: flex;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-d8f80a9 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-49eaa0f {
+  width: var( --container-widget-width, 850px );
+  max-width: 850px;
+  --container-widget-width: 850px;
+  --container-widget-flex-grow: 0;
+}
+
+.elementor-6353 .elementor-element.elementor-element-49eaa0f > .elementor-widget-container {
+  margin: 0px 0px 25px 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-49eaa0f .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-49eaa0f .elementor-heading-title {
+  color: #FFFFFF;
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 .elementor-button {
+  background-color: #FFFFFF;
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 > .elementor-widget-container {
+  margin: 0px 0px 210px 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 .elementor-button .elementor-button-text {
+  color: var( --e-global-color-accent );
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 .elementor-button-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-6353 .elementor-element.elementor-element-d452400 .elementor-button:hover .elementor-button-content-wrapper:before {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-6353 .elementor-element.elementor-element-3b2477b .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-3b2477b .video-tabs-nav {
+  gap: 20px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-1e6e2a6 {
+  --spacer-size: 50px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-1e6e2a6 > .elementor-widget-container {
+  background-color: #FFFFFF;
+  border-radius: 50px 50px 0px 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-1e6e2a6 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+body:not(.rtl) .elementor-6353 .elementor-element.elementor-element-88c322d {
+  left: 0px;
+}
+
+body.rtl .elementor-6353 .elementor-element.elementor-element-88c322d {
+  right: 0px;
+}
+
+.elementor-6353 .elementor-element.elementor-element-88c322d {
+  top: 0px;
+  z-index: -2;
+}
+
+.elementor-6353 .elementor-element.elementor-element-88c322d .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-6353 .elementor-element.elementor-element-88c322d img {
+  width: 100%;
+  height: 100%;
+}
+
+@media(min-width:768px) {
+
+  .elementor-6353 .elementor-element.elementor-element-ec08bea {
+    --content-width: 1730px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-9593ae9 {
+    --width: 37%;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-d8f80a9 {
+    --width: 63%;
+  }
+}
+
+@media(max-width:880px) and (min-width:768px) {
+
+  .elementor-6353 .elementor-element.elementor-element-9593ae9 {
+    --width: 100%;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-d8f80a9 {
+    --width: 100%;
+  }
+}
+
+@media(max-width:1024px) {
+
+  .elementor-6353 .elementor-element.elementor-element-71f6b7a {
+    --min-height: 850px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-ee6dccb {
+    font-size: 18px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-d452400 > .elementor-widget-container {
+    margin: 0px 0px 100px 0px;
+  }
+}
+
+@media(max-width:880px) {
+
+  .elementor-6353 .elementor-element.elementor-element-71f6b7a {
+    --min-height: 800px;
+    --margin-top: 0px;
+    --margin-bottom: 10px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-ec08bea {
+    --flex-wrap: wrap;
+    --margin-top: 0px;
+    --margin-bottom: 60px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-9593ae9.e-con {
+    --order: 99999 /* order end hack */;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-d452400 > .elementor-widget-container {
+    margin: 0px 0px 80px 0px;
+  }
+}
+
+@media(max-width:767px) {
+
+  .elementor-6353 .elementor-element.elementor-element-71f6b7a {
+    --min-height: 700px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-ec08bea {
+    --margin-top: 0px;
+    --margin-bottom: 60px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    --padding-left: 15px;
+    --padding-right: 15px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-ee6dccb {
+    font-size: 18px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-49eaa0f .elementor-heading-title {
+    font-size: 40px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-d452400 > .elementor-widget-container {
+    margin: 0px 0px 30px 0px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-3b2477b .elementor-video-tabs-image img {
+    height: 50px;
+  }
+
+  .elementor-6353 .elementor-element.elementor-element-3b2477b .video-tabs-nav {
+    gap: 5px;
+  }
+}
+
+.elementor-6353 .elementor-element.elementor-element-88c322d {
+  width: 100%;
+  height: 100%;
+}
+
+.elementor-6353 .elementor-element.elementor-element-88c322d img {
+  object-fit: cover;
+}
+
+/* Local still image keeps Demo 5's hero visible while remote video loads. */
+#tab_video {
+  background: #1b1f12 url('/images/h5_bg-1.jpg') center / cover no-repeat;
+}/* Function/position fix only: original Elementor visual styles are retained. */
+#tab_video {
+  position: relative !important;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* The background is a DIRECT child of the full-width hero. */
+#tab_video > .vv-hero-background {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* YouTube renders 16:9; use CSS cover sizing relative to the hero's own box. */
+#tab_video > .vv-hero-background > .vv-hero-background-player {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: max(100%, 177.7778cqh) !important;
+  height: max(100%, 56.25cqw) !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  border: 0 !important;
+  pointer-events: none;
+}
+#tab_video > .vv-hero-background {
+  container-type: size;
+}
+
+/* Keep all pre-existing hero content in normal layout flow, over the movie. */
+#tab_video > .elementor-element-ec08bea,
+#tab_video > .elementor-element-1e6e2a6 {
+  position: relative;
+  z-index: 2;
+}
+
+/* This original decorative image must not hide the video. */
+#tab_video > .elementor-element-88c322d {
+  pointer-events: none;
+  z-index: 0 !important;
+}
+
+/* Avoid the old theme's fixed video rule, without moving thumbnails. */
+#tab_video .elementor-widget-spaciaz-video-tabs.elementor-video-style-container .video-tabs-content {
+  display: none !important;
+}
+#tab_video .elementor-widget-spaciaz-video-tabs.elementor-video-style-container .video-tabs-nav {
+  position: static !important;
+  z-index: 3;
+}
+#tab_video .video-tab-nav-item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

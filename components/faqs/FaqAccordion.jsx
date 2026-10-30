@@ -1,3 +1,4 @@
+import './FaqAccordion.css';
 import { faqs } from '@/data/faqs';
 
 export default function FaqAccordion() {

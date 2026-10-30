@@ -1,0 +1,80 @@
+/*-------------------------------------------------------------
+9.0 404 Styles
+--------------------------------------------------------------*/
+.error404 #page .site-content {
+  margin-top: 120px;
+}
+
+.error-404 .page-content {
+  display: block;
+  position: relative;
+  z-index: 1;
+  max-width: 730px;
+  margin: auto;
+}
+.error-404 .error-content {
+  position: relative;
+  text-align: center;
+}
+.error-404 .error-content .text-404 {
+  color: #C01130;
+  font-family: var(--e-global-typography-accent-font-family);
+  font-size: clamp(200px, 18vw, 300px);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+}
+.error-404 .error-content .error-title {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 40px;
+}
+@media (max-width: 568px) {
+  .error-404 .error-content .error-title {
+    font-size: 36px;
+  }
+}
+.error-404 .error-content .button-error {
+  text-align: center;
+}
+.error-404 .error-content .button-error .elementor-button {
+  padding: 5px 5px 5px 30px;
+}
+.error-404 .error-content .button-error .elementor-button .btn-icon-wrap {
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.error-404 .error-content .button-error .elementor-button .btn-icon, .error-404 .error-content .button-error .elementor-button .btn-icon-hover {
+  display: flex;
+  color: var(--accent);
+  transition: transform 0.35s linear;
+  font-size: 13px;
+}
+.error-404 .error-content .button-error .elementor-button .btn-icon {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+  transform-style: preserve-3d;
+}
+.error-404 .error-content .button-error .elementor-button .btn-icon-hover {
+  position: absolute;
+  transform: translate3d(-17px, 17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.error-404 .error-content .button-error .elementor-button:hover .btn-icon {
+  transform: translate3d(17px, -17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.error-404 .error-content .button-error .elementor-button:hover .btn-icon-hover {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+}
+.error-404.right-sidebar .content-area, .error-404.left-sidebar .content-area {
+  width: 100%;
+  display: block;
+}
+.next-route-error { max-width: 920px; margin: auto; padding: 130px 24px; text-align: center; }
+.next-route-error h1 { font-family: Involve, sans-serif; font-size: clamp(48px, 8vw, 100px); line-height: 1.1; }
+.next-route-error p { font-size: 19px; }
+.next-route-error a { display: inline-flex; background: #e4ed64; padding: 14px 28px; border-radius: 30px; color: #111; margin-top: 20px; }

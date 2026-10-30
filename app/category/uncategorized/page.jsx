@@ -1,3 +1,4 @@
+import '../../../styles/pages/blog.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import Link from 'next/link';

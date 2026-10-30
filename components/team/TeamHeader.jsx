@@ -1,3 +1,4 @@
+import './TeamHeader.css';
 import Link from 'next/link';
 
 export default function TeamHeader() {

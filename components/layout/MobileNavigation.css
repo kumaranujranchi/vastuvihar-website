@@ -1,0 +1,176 @@
+.spaciaz-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  width: 330px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  transition: transform 0.25s ease;
+  transform: translate3d(-330px, 0, 0);
+}
+@media (min-width: 410px) {
+  .spaciaz-mobile-nav {
+    width: 410px;
+    transform: translate3d(-410px, 0, 0);
+  }
+}
+.mobile-nav-active .spaciaz-mobile-nav {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.spaciaz-mobile-nav .menu-scroll-mobile {
+  padding-top: 1.2em;
+}
+.spaciaz-mobile-nav .menu-scroll-mobile .site-branding {
+  margin: 0 30px 15px;
+}
+.admin-bar .spaciaz-mobile-nav {
+  top: 46px;
+}
+@media (min-width: 783px) {
+  .admin-bar .spaciaz-mobile-nav {
+    top: 32px;
+  }
+}
+@media (min-width: 601px) and (max-width: 782px) {
+  .admin-bar .spaciaz-mobile-nav {
+    top: 46px;
+  }
+}
+.spaciaz-mobile-nav .search-form {
+  margin-top: 1em;
+}
+.spaciaz-mobile-nav .spaciaz-social {
+  border-top: 1px solid #0e0e0e;
+  padding: 0.5em;
+  margin-top: 1rem;
+}
+body .spaciaz-mobile-nav .spaciaz-social ul li a:before {
+  color: #fff;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile {
+  line-height: 0;
+  padding: 0 30px;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .menu {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid;
+  border-top-color: var(--border);
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .item {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .item .language-switcher-head {
+  padding-right: 5px;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .item a {
+  display: block;
+  padding: 0 5px;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .item:last-child {
+  margin-right: 0;
+}
+.spaciaz-mobile-nav .spaciaz-language-switcher-mobile .item img {
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs {
+  clear: both;
+  padding: 0 30px;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  color: var(--text_light);
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul li i {
+  color: #000000;
+  font-size: 15px;
+  margin-right: 10px;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul li:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  transition: all 0.35s ease;
+  background-color: var(--primary);
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul li.active {
+  color: var(--accent);
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul li.active:before {
+  width: 100%;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul .mobile-pages-title {
+  margin-right: 15px;
+}
+.spaciaz-mobile-nav .mobile-nav-tabs ul .mobile-categories-title {
+  margin-left: 15px;
+}
+.spaciaz-mobile-nav .mobile-menu-tab {
+  display: none;
+  padding: 15px 30px;
+}
+.spaciaz-mobile-nav .mobile-menu-tab.active {
+  display: block;
+}
+
+.spaciaz-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 997;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s ease;
+}
+.mobile-nav-active .spaciaz-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+.next-theme-ready .spaciaz-mobile-nav { max-width: calc(100vw - 30px); }
+.next-theme-ready .spaciaz-overlay { z-index: 9998; }
+.next-theme-ready .handheld-navigation .next-submenu-toggle { min-width: 42px; min-height: 42px; }
+.next-theme-ready .handheld-navigation .sub-menu:not([hidden]) { display: block; }
+
+.spaciaz-mobile-nav .mobile-nav-close {
+  margin: 0;
+  padding: 0;
+  min-height: 40px;
+  width: 40px;
+  border: 0;
+  background: transparent;
+  color: #111;
+}

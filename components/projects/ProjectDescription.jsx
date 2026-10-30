@@ -1,3 +1,4 @@
+import './ProjectDescription.css';
 // Keeps the existing Spaciaz description + key-details layout, with real model data.
 export default function ProjectDescription({ project }) {
   const modelType = project.modelTypes?.[0];

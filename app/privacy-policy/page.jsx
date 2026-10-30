@@ -1,7 +1,7 @@
 import PageLayout from '@/components/PageLayout';
 import Breadcrumb from '@/components/Breadcrumb';
-import CookiePreferences from '@/components/privacy/CookiePreferences';
 import styles from './privacy.module.css';
+import CookiePreferences from '@/components/privacy/CookiePreferences';
 
 import { createPageMetadata } from '@/lib/metadata';
 

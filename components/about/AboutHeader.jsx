@@ -1,3 +1,4 @@
+import './AboutHeader.css';
 import Link from 'next/link';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
 

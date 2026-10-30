@@ -1,3 +1,4 @@
+import './ValueCard.css';
 export default function ValueCard({ value, index }) {
   const animationDelay = index > 0 ? (index % 4) * 100 : undefined;
   return (

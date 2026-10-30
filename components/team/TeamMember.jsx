@@ -1,3 +1,5 @@
+import './TeamMember.css';
+import '../projects/ProjectBreadcrumb.css';
 import Link from 'next/link';
 
 /** Keeps the original profile styling while sharing one editable layout. */

@@ -1,5 +1,6 @@
 'use client';
 
+import './common/SearchDialog.css';
 import Link from 'next/link';
 
 const localPath = (value) => typeof value === 'string' && value.startsWith('/') && !value.startsWith('//') ? value : '/';

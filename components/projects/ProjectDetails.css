@@ -1,0 +1,12 @@
+.single-projects-header .project-location {
+  margin-bottom: 20px;
+}
+.single-projects-header .project-location a {
+  font-size: 16px;
+  font-weight: 600;
+}
+.single-projects-header .project-location i {
+  color: var(--primary);
+  padding-right: 10px;
+  font-size: 24px;
+}

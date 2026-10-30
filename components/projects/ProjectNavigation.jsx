@@ -1,3 +1,4 @@
+import './ProjectNavigation.css';
 import Link from 'next/link';
 import { getProject } from '@/data/projects';
 export default function ProjectNavigation({ project }) {

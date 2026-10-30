@@ -109,18 +109,6 @@
   clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
 }
 
-.breadcrumb-wrap, .elementor-page-2202 .breadcrumb-wrap, .single-spaciaz-breadcrumb .elementor-section-wrap {
-  background-image: url("/images/projects-bc.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-2202 .breadcrumb-wrap .breadcrumb-overlay {
-  background-color: var( --e-global-color-accent );
-  opacity: 0.4;
-}
-
 @media(min-width:768px) {
 
   .elementor-4326 .elementor-element.elementor-element-c4ae009 {

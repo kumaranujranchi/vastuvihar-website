@@ -1,3 +1,4 @@
+import '../styles/pages/home.css';
 import NewsSection from '@/components/home/NewsSection';
 import ImageSection from '@/components/home/ImageSection';
 import StatsSection from '@/components/home/StatsSection';

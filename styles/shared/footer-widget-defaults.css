@@ -1,0 +1,45 @@
+.elementor-widget-text-editor {
+  color: var( --e-global-color-text );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap, .elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-item:not(:last-child):after {
+  border-color: var( --e-global-color-text );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon i {
+  color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon-list .elementor-icon-list-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-stacked .elementor-icon {
+  background-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon {
+  color: var( --e-global-color-primary );
+  border-color: var( --e-global-color-primary );
+}
+
+.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg {
+  fill: var( --e-global-color-primary );
+}
+
+.elementor-widget-heading .elementor-heading-title {
+  color: var( --e-global-color-primary );
+}
+
+.breadcrumb-wrap .breadcrumb-overlay, .elementor-page-6355 .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5;
+}

@@ -1,3 +1,5 @@
+import './TeamGrid.css';
+import './TeamCard.css';
 import { getTeamMember } from '@/data/team';
 import TeamCard from './TeamCard';
 import ScrollingTicker from '@/components/common/ScrollingTicker';

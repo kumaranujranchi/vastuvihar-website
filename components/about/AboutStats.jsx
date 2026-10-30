@@ -1,3 +1,4 @@
+import './AboutStats.css';
 import StatCounter from '@/components/common/StatCounter';
 
 export default function AboutStats() {

@@ -1,3 +1,4 @@
+import './ProjectAmenities.css';
 import { AMENITIES_DATA } from '@/data/amenities';
 
 // One shared amenities layout on every model detail page.

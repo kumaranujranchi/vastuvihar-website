@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { SITE_CONTACT_DATA, TOTAL_SITES } from '@/data/site-contacts';
-import styles from '@/app/contact/site-contact/site-contact.module.css';
+import styles from './SiteContactView.module.css';
 
 function Icon({ name, size = 18 }) {
   const attrs = {

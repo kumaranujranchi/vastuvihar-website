@@ -1,3 +1,4 @@
+import './layout/Footer.css';
 import Link from 'next/link';
 import { footerGroups } from '@/data/navigation';
 import { site } from '@/data/site';

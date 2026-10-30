@@ -1,3 +1,4 @@
+import './ScrollingTicker.css';
 /**
  * Generic infinite scrolling marquee ribbon atom styled for the Spaciaz/Elementor theme.
  *

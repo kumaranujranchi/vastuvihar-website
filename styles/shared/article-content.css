@@ -1,0 +1,1055 @@
+/* ===== End ICONS CSS ===== */
+.editor-styles-wrapper blockquote,
+.editor-styles-wrapper .wp-block-quote,
+.hentry .entry-content blockquote,
+.hentry .entry-content .wp-block-quote {
+  position: relative;
+}
+.editor-styles-wrapper blockquote:before,
+.editor-styles-wrapper .wp-block-quote:before,
+.hentry .entry-content blockquote:before,
+.hentry .entry-content .wp-block-quote:before {
+  position: absolute;
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+  top: 60px;
+  font-size: 60px;
+  color: var(--primary);
+}
+.editor-styles-wrapper blockquote:after,
+.editor-styles-wrapper .wp-block-quote:after,
+.hentry .entry-content blockquote:after,
+.hentry .entry-content .wp-block-quote:after {
+  position: absolute;
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  right: -16px;
+  bottom: 0;
+  font-size: 230px;
+  color: #fff;
+  z-index: 0;
+}
+
+.spaciaz-social ul {
+  margin: 0;
+  list-style-type: none;
+}
+.spaciaz-social ul li {
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1;
+}
+.spaciaz-social ul li:last-child {
+  margin-right: 0;
+}
+.spaciaz-social ul li a:before {
+  position: relative;
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.spaciaz-social ul li a[href*=twitter]:before {
+  content: "";
+  color: #1DA1F2;
+}
+.spaciaz-social ul li a[href*=instagram]:before {
+  content: "";
+  color: #262626;
+}
+.spaciaz-social ul li a[href*=docker]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=dochub]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=yelp]:before {
+  content: "";
+  color: #af0606;
+}
+.spaciaz-social ul li a[href*=flickr]:before {
+  content: "";
+  color: #0063dc;
+}
+.spaciaz-social ul li a[href*=github]:before {
+  content: "";
+  color: #333333;
+}
+.spaciaz-social ul li a[href*=dribbble]:before {
+  content: "";
+  color: #ea4c89;
+}
+.spaciaz-social ul li a[href*=wordpress]:before {
+  content: "";
+  color: #21759b;
+}
+.spaciaz-social ul li a[href*=tumblr]:before {
+  content: "";
+  color: #35465c;
+}
+.spaciaz-social ul li a[href*=angular]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=atlassian]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=snapchat]:before {
+  content: "";
+  color: #fffc00;
+}
+.spaciaz-social ul li a[href*=apper]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=codepen]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=gulp]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=cpanel]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=skype]:before {
+  content: "";
+  color: #00AFF0;
+}
+.spaciaz-social ul li a[href*=reddit]:before {
+  content: "";
+  color: #ff4500;
+}
+.spaciaz-social ul li a[href*=whatsapp]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=slack]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=amazon]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=android]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=grunt]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=firefox]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=adobe]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=behance]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=dropbox]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=facebook]:before {
+  content: "";
+  color: #3b5998;
+}
+.spaciaz-social ul li a[href*=linkedin]:before {
+  content: "";
+  color: #0077b5;
+}
+.spaciaz-social ul li a[href*=paypal]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=trello]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=vimeo]:before {
+  content: "";
+  color: #1ab7ea;
+}
+.spaciaz-social ul li a[href*=youtube]:before {
+  content: "";
+  color: #cd201f;
+}
+.spaciaz-social ul li a[href*=apple]:before {
+  content: "";
+  color: #999999;
+}
+.spaciaz-social ul li a[href*=bitbucket]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=bitcoin]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=bluetooth]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=bity]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*="google/chrome"]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=drupal]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=html5]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=mailchimp]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=jenkins]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=spotify]:before {
+  content: "";
+  color: #2ebd59;
+}
+.spaciaz-social ul li a[href*=ebay]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=telegram]:before {
+  content: "";
+  color: #2CA5E0;
+}
+.spaciaz-social ul li a[href*=yoast]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=btc-e]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=discord]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=google]:before {
+  content: "";
+  color: #dd4b39;
+}
+.spaciaz-social ul li a[href*=google-plus]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=figma]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=joomla]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=opencart]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=pinterest]:before {
+  content: "";
+  color: #bd081c;
+}
+.spaciaz-social ul li a[href*=vimeo]:before {
+  content: "";
+  color: #1ab7ea;
+}
+.spaciaz-social ul li a[href*=centos]:before {
+  content: "";
+}
+.spaciaz-social ul li a[href*=whatsapp]:before {
+  content: "";
+}
+
+#comments .commentlist .bypostauthor > .comment-body cite::after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+
+#respond #cancel-comment-reply-link::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  display: block;
+}
+
+#comments .comment-list .reply a.comment-reply-link:before, #comments .comment-list .reply a.comment-edit-link:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 14px;
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#comments .comment-list .reply a.comment-reply-link:hover:before, #comments .comment-list .reply a.comment-edit-link:hover:before {
+  background-color: var(--primary);
+  color: var(--accent);
+}
+#comments .comment-list .reply a.comment-reply-link:before {
+  content: "";
+}
+#comments .comment-list .reply a.comment-edit-link:before {
+  content: "";
+}
+
+.sticky .entry-title {
+  display: inline-flex;
+  align-items: center;
+}
+.sticky .entry-title::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+.nav-next a,
+.nav-previous a {
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.nav-next a .reader-text:after, .nav-next a .reader-text:before,
+.nav-previous a .reader-text:after,
+.nav-previous a .reader-text:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  margin-top: -2px;
+}
+
+.nav-previous .nav-content .reader-text:before {
+  content: "";
+  margin-right: 10px;
+}
+
+.nav-next .nav-content .reader-text:after {
+  content: "";
+  margin-left: 10px;
+}
+
+button.loading,
+.button.loading {
+  position: relative;
+}
+button.loading::after,
+.button.loading::after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  display: block;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.main-navigtion ul li a::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+.mobile-navigation ul li button::before, .mobile-navigation-categories ul li button::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 8px;
+}
+.mobile-navigation ul li button.toggled-on::before, .mobile-navigation-categories ul li button.toggled-on::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.widget_search form::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translate(0, -50%);
+  z-index: 9;
+  color: #000;
+  pointer-events: none;
+  font-size: 16px;
+}
+.widget_search.widget_block form::before {
+  content: none;
+}
+.widget_search.widget_block form .wp-block-search__inside-wrapper {
+  position: relative;
+}
+.widget_search.widget_block form .wp-block-search__inside-wrapper:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  z-index: 1;
+  font-size: 20px;
+  background-color: transparent;
+  height: 54px;
+  width: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.widget_search form::before {
+  color: var(--accent);
+  right: 0;
+  height: 55px;
+  width: 55px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.widget.widget_recent_entries .post-date:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  color: var(--accent);
+}
+
+a.remove {
+  display: block;
+  width: 1.618em;
+  height: 1.618em;
+  line-height: 1.618;
+  font-weight: 400;
+  text-indent: -9999px;
+  position: relative;
+}
+a.remove::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #999999;
+  line-height: 1.618;
+  text-indent: 0;
+  text-align: center;
+}
+
+.blockUI::before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+}
+
+.pagination .next:before, .pagination .next:after,
+.pagination .prev:before,
+.pagination .prev:after {
+  font-size: 16px;
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+}
+.pagination .next:after {
+  content: "";
+}
+.pagination .prev:before {
+  content: "";
+}
+
+@media (min-width: 768px) {
+
+  .addresses header.title a {
+    display: block;
+    width: 1em;
+    height: 1em;
+    text-indent: -9999px;
+    position: relative;
+    padding: 0.875em;
+    margin-top: 0.6180469716em;
+  }
+  .addresses header.title a::before {
+    font-family: "spaciaz-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    line-height: 1.618;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    text-indent: 0;
+  }
+}
+body.loading {
+  position: relative;
+}
+body.loading::after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: block;
+  z-index: 999999;
+  color: #fff;
+}
+body.loading:before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999998;
+}
+
+.elementor-widget-spaciaz-language-switcher .spaciaz-language-switcher .language-switcher-head:after {
+  position: relative;
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 5px;
+  line-height: 12px;
+}
+
+.popup-navigation ul.menu > li.menu-item-has-children > a:after, .popup-navigation ul.menu > li.page_item_has_children > a:after, .popup-navigation ul.menu > li.has-mega-menu > a:after,
+.popup-navigation ul.nav-menu > li.menu-item-has-children > a:after,
+.popup-navigation ul.nav-menu > li.page_item_has_children > a:after,
+.popup-navigation ul.nav-menu > li.has-mega-menu > a:after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5em;
+  font-size: 14px;
+}
+
+.popup-navigation ul.menu ul li.menu-item-has-children > a::after, .popup-navigation ul.menu ul li.page_item_has_children > a::after,
+.popup-navigation ul.nav-menu ul li.menu-item-has-children > a::after,
+.popup-navigation ul.nav-menu ul li.page_item_has_children > a::after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  float: right;
+  margin-left: 0.5em;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.elementor-widget-spaciaz-image-gallery .grid__item a[href*=youtube]:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  transform: scale(0);
+  transition: all ease 0.3s;
+  font-size: 100px;
+}
+
+.elementor-widget-spaciaz-image-carousel .image-carousel-item a[href*=youtube]:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  transform: scale(0);
+  transition: all ease 0.3s;
+  font-size: 100px;
+}
+
+.service-cat-link .service-content-right a:after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.elementor-link-showcase-title .title:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 14px;
+}
+
+@keyframes mf-spin-fast {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  to {
+    -webkit-transform: rotate(1800deg);
+    transform: rotate(1800deg);
+  }
+}
+@-webkit-keyframes mf-spin-fast {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  to {
+    -webkit-transform: rotate(1800deg);
+    transform: rotate(1800deg);
+  }
+}
+@-o-keyframes mf-spin-fast {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  to {
+    -webkit-transform: rotate(1800deg);
+    transform: rotate(1800deg);
+  }
+}
+@-ms-keyframes mf-spin-fast {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  to {
+    -webkit-transform: rotate(1800deg);
+    transform: rotate(1800deg);
+  }
+}
+.elementor-widget-n-accordion .e-n-accordion .e-n-accordion-item .e-n-accordion-item-title:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  left: 0;
+  font-size: 36px;
+}
+
+.form-style .mc4wp-form .mc4wp-form-fields:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.widget_mc4wp_form_widget .mc4wp-form .mc4wp-form-fields:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.widget_mc4wp_form_widget .mc4wp-form button[type=submit]:after {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.spaciaz-project-filter ul li label input:checked ~ span:before {
+  font-family: "spaciaz-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 881px) {
+  .service-item.service-style-8 .service-inner:before {
+    font-family: "spaciaz-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+  }
+}
+.overflow-to-both .spaciaz-swiper {
+  overflow: visible;
+}
+
+.overflow-to-left .spaciaz-swiper {
+  overflow: visible;
+  clip-path: inset(0 0 0 -100%);
+}
+
+.overflow-to-right .spaciaz-swiper {
+  overflow: visible;
+  clip-path: inset(0 -100% 0 0);
+}
+
+.swiper-autowidth .swiper-slide {
+  width: auto;
+}
+
+.swiper-pagination {
+  z-index: 1;
+}
+
+.swiper-pagination-bullets {
+  display: flex;
+  align-items: center;
+}
+.swiper-pagination-bullets.swiper-pagination-vertical {
+  flex-direction: column;
+}
+
+.swiper-pagination-bullet {
+  --swiper-pagination-bullet-size: 6px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  background: var(--border);
+  opacity: 1;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--primary);
+  width: calc(var(--swiper-pagination-bullet-size) * 10/6);
+  height: calc(var(--swiper-pagination-bullet-size) * 10/6);
+}
+
+.elementor-swiper-button {
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  display: inline-flex;
+  z-index: 1;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 12px;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.elementor-swiper-button i {
+  font-size: 24px;
+  color: var(--accent);
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.elementor-swiper-button.elementor-swiper-button-next {
+  right: 10px;
+}
+.elementor-swiper-button.elementor-swiper-button-prev {
+  left: 10px;
+}
+.elementor-swiper-button:hover {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+.elementor-swiper-button:hover i {
+  color: var(--accent);
+}
+
+.swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
+  position: static;
+  width: 100%;
+  margin-top: 30px;
+  height: 1px;
+}
+
+.swiper-scrollbar-drag {
+  background-color: var(--primary);
+}
+
+.elementor-lightbox .swiper .elementor-swiper-button {
+  border: none;
+}
+.elementor-lightbox .swiper .elementor-swiper-button:hover {
+  background: transparent;
+}

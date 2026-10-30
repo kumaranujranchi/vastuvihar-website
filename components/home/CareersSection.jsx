@@ -1,3 +1,4 @@
+import './CareersSection.css';
 import Link from 'next/link';
 
 export default function CareersSection() {

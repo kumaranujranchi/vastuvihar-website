@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BRANCH_GROUPS, TOTAL_BRANCHES } from '@/data/branch-contacts';
-import styles from '@/app/contact/branch-contact/branch-contact.module.css';
+import styles from './BranchContactView.module.css';
 
 function Icon({ name, size = 18 }) {
   const a = {

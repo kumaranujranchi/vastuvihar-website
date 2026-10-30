@@ -1,3 +1,4 @@
+import './ProjectBreadcrumb.css';
 // Shared project section. Its layout is reused for every project.
 import Link from 'next/link';
 export default function ProjectBreadcrumb({ project }) {

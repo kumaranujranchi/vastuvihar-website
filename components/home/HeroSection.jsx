@@ -1,7 +1,7 @@
 'use client';
 
+import './HeroSection.css';
 import { useState } from 'react';
-import './HeroSectionFullBackgroundFix.css';
 
 import Link from 'next/link';
 

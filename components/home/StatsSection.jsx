@@ -1,3 +1,4 @@
+import './StatsSection.css';
 
 export default function StatsSection() {
   return (

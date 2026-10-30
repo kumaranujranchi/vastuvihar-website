@@ -1,3 +1,4 @@
+import './StatCounter.css';
 /**
  * Standard Elementor counter widget atom for displaying animated / formatted statistics.
  *

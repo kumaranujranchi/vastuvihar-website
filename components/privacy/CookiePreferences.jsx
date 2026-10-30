@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styles from '@/app/privacy-policy/privacy.module.css';
+import styles from './CookiePreferences.module.css';
 
 const STORAGE_KEY = 'vastuvihar-cookie-preferences';
 const defaults = { necessary: true, analytics: false, marketing: false };

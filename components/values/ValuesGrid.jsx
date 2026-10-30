@@ -1,3 +1,4 @@
+import './ValuesGrid.css';
 import { coreValues } from '@/data/core-values';
 import ValueCard from './ValueCard';
 

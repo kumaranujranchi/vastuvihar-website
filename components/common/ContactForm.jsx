@@ -1,5 +1,6 @@
 'use client';
 
+import './ContactForm.css';
 import { useId, useState } from 'react';
 
 /** Keeps the theme's original field markup while replacing Contact Form 7. */

@@ -1,3 +1,4 @@
+import './ProjectEnquiry.css';
 // Shared project section. Its layout is reused for every project.
 import ContactForm from '@/components/ContactForm';
 export default function ProjectEnquiry({ project }) {

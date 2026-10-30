@@ -1,3 +1,4 @@
+import './PageLayout.css';
 import SiteLayout from './SiteLayout';
 import ThemeRuntime from '@/components/common/ThemeRuntime';
 import pages from '@/data/pages.json';

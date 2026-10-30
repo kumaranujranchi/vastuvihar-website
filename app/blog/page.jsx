@@ -1,3 +1,4 @@
+import '../../styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
 import Link from 'next/link';
 import SearchForm from '@/components/SearchForm';

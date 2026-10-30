@@ -1,0 +1,10 @@
+.next-form-fields { border: 0; margin: 0; padding: 0; min-width: 0; }
+.next-form-fields:disabled { opacity: .65; }
+.next-form-status { font-size: 13px; line-height: 1.6; margin: 12px 0 0; }
+.next-form-status:empty { display: none; }
+.next-form-status-error { color: #b42318; }
+.next-form-status-success { color: #166534; }
+.next-contact-form .wpcf7-response-output,
+.next-contact-form .wpcf7-spinner,
+.next-contact-form .hidden-fields-container { display: none !important; }
+.next-contact-form :is(input, select, textarea):focus-visible { outline: 2px solid #8d9425; outline-offset: 3px; }

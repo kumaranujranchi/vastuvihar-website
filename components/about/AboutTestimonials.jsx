@@ -1,3 +1,5 @@
+import './AboutTestimonials.css';
+import '../common/ScrollingTicker.css';
 export default function AboutTestimonials() {
   return (
     <>

@@ -1,3 +1,4 @@
+import './FaqsTicker.css';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
 
 export default function FaqsTicker() {

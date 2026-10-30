@@ -1,5 +1,6 @@
 'use client';
 
+import './SearchForm.css';
 export default function SearchForm({ children, className = '', ...props }) {
   return (
     <form {...props} className={`${className} next-search-form`} role="search" onSubmit={(event) => {

@@ -15,7 +15,7 @@ export const metadata = createPageMetadata({
 export default function OurAwardsPage() {
   return (
     <PageLayout route="our-awards">
-      <Breadcrumb title="Our awards" />
+      {/* <Breadcrumb title="Our awards" /> */}
       <div id="content" className="site-content-page clear" tabIndex="-1">
         <div className="col-fluid">
           <div id="primary" className="content-area">

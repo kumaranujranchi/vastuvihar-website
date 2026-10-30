@@ -1,3 +1,4 @@
+import './CareersShowcase.css';
 import Link from 'next/link';
 import { jobPositions } from '@/data/careers';
 

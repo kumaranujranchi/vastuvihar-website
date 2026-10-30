@@ -1,3 +1,4 @@
+import '../../styles/pages/contact.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import ContactHeader from '@/components/contact/ContactHeader';
@@ -16,7 +17,7 @@ export const metadata = createPageMetadata({
 export default function ContactPage() {
   return (
     <PageLayout route="contact">
-      <Breadcrumb title="Get in touch" />
+      {/* <Breadcrumb title="Get in touch" /> */}
       <div id="content" className="site-content-page clear" tabIndex="-1">
         <div className="col-fluid">
           <div id="primary" className="content-area">

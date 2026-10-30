@@ -1,3 +1,4 @@
+import './AwardsList.css';
 import { awards } from '@/data/awards';
 
 export default function AwardsList() {

@@ -1,3 +1,6 @@
+import './CompanySection.css';
+import '../common/ScrollingTicker.css';
+import '../common/StatCounter.css';
 export default function CompanySection() {
   return (
     <div

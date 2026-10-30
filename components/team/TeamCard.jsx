@@ -1,3 +1,4 @@
+import './TeamCard.css';
 import Link from 'next/link';
 
 export default function TeamCard({ member, priority = false }) {

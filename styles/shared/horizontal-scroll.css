@@ -1,0 +1,46 @@
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-wrapper {
+  height: 300vh;
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-inner {
+  display: flex;
+  flex-direction: row;
+  overflow: visible;
+  position: sticky;
+  top: calc(100% - 670px);
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-item {
+  flex: none;
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-line {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  z-index: -1;
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-line:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  z-index: 3;
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-line .line-base {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--border);
+  z-index: 1;
+}
+.elementor-widget-spaciaz-horizontal-scroll .horizontal-scroll-line .line-active {
+  height: 100%;
+  position: absolute;
+  background: var(--primary);
+  z-index: 2;
+}

@@ -1,3 +1,4 @@
+import './ProjectCard.css';
 import Link from 'next/link';
 import { modelType } from '@/data/project-filters';
 

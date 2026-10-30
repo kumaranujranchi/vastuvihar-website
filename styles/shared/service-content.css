@@ -1,0 +1,839 @@
+.elementor-service-content-toggle-wrapper {
+  position: relative;
+}
+.elementor-service-content-toggle-wrapper .service-content-style-6 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+.elementor-service-content-toggle-wrapper .service-content-style-6.active {
+  position: static;
+  pointer-events: all;
+  opacity: 1;
+}
+.elementor-service-content-toggle-wrapper .description {
+  margin-bottom: 35px;
+  font-size: 22px;
+  line-height: 1.4545454545;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.elementor-service-content-toggle-wrapper .service-post-thumbnail {
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding-top: 77.4%;
+}
+.elementor-service-content-toggle-wrapper .service-post-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.service-item .description {
+  font-size: 18px;
+  line-height: 1.5555555556;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.service-item .description p {
+  margin-bottom: 0;
+}
+.service-item .service-button {
+  background: var(--primary);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item .service-button .btn-icon-wrap {
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.service-item .service-button .btn-icon, .service-item .service-button .btn-icon-hover {
+  display: flex;
+  color: var(--accent);
+  transition: transform 0.35s linear;
+  font-size: 13px;
+}
+.service-item .service-button .btn-icon {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+  transform-style: preserve-3d;
+}
+.service-item .service-button .btn-icon-hover {
+  position: absolute;
+  transform: translate3d(-17px, 17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.service-item .service-button:hover .btn-icon {
+  transform: translate3d(17px, -17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.service-item .service-button:hover .btn-icon-hover {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+}
+.service-item .service-post-thumbnail {
+  padding-top: 77%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.service-item .service-post-thumbnail img {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  transform: translate3d(-6.66%, 0, 0) scale(1.2);
+  -webkit-transform: translate3d(-6.66%, 0, 0) scale(1.2);
+  transition: opacity 0.35s, transform 0.45s, filter 0.35s;
+  border-radius: 25px;
+}
+.service-item .decor-border {
+  position: absolute;
+  width: 100px;
+  height: 34px;
+  bottom: 0;
+  right: 26px;
+  z-index: 3;
+}
+.service-item .decor-border:after {
+  content: "";
+  width: 100px;
+  height: 33px;
+  clip-path: path("M0 33H100C90.7952 33 83.6787 25.1703 79.2588 17.1769C73.5989 6.94119 62.6183 0 50 0C37.3818 0 26.4011 6.94119 20.7412 17.1769C16.3213 25.1703 9.20474 33 0 33Z");
+  background-color: var(--background);
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  display: block;
+  z-index: -1;
+}
+.service-item .service-style-inner {
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  padding: 10px;
+  background-color: var(--background);
+}
+.service-item .service-style-inner .service-title {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+.service-item .service-style-inner .service-title a {
+  width: 100%;
+  display: block;
+}
+@media (min-width: 1366px) {
+  .service-item .service-style-inner .service-title a {
+    width: calc(100% - 85px);
+  }
+}
+.service-item .service-style-inner .service-title a:hover {
+  color: var(--accent);
+}
+.service-item.service-style-1 .service-content {
+  position: relative;
+}
+.service-item.service-style-1 .service-button {
+  position: absolute;
+  right: 51px;
+  bottom: -27px;
+  z-index: 4;
+}
+.service-item.service-style-1 .description {
+  min-height: 85px;
+}
+.service-item.service-style-1 .service-info {
+  padding: clamp(20px, 2.5vmax, 30px);
+}
+@media (max-width: 767px) {
+  .service-item.service-style-1 .service-info {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.service-item.service-style-1:hover .service-post-thumbnail img {
+  transform: translate3d(0, 0, 0) scale(1.2);
+  -webkit-transform: translate3d(0, 0, 0) scale(1.2);
+}
+.service-item.service-style-1:hover .service-button {
+  background: var(--accent);
+}
+.service-item.service-style-1:hover .service-button .btn-icon, .service-item.service-style-1:hover .service-button .btn-icon-hover {
+  color: white;
+}
+.service-item.service-style-2 .service-inner {
+  position: relative;
+}
+.service-item.service-style-2 .service-post-thumbnail {
+  z-index: 1;
+  padding-top: 117%;
+  border-radius: 30px;
+}
+.service-item.service-style-2 .service-post-thumbnail:before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-2 .service-content {
+  position: absolute;
+  left: -1px;
+  bottom: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  z-index: 3;
+  background: var(--background_light);
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  padding: clamp(25px, 3.5vmax, 40px);
+  border-radius: 30px;
+}
+.service-item.service-style-2 .service-button {
+  position: absolute;
+  right: 51px;
+  bottom: -27px;
+  z-index: 4;
+  background-color: var(--accent);
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-2 .service-button .btn-icon, .service-item.service-style-2 .service-button .btn-icon-hover {
+  color: #fff;
+}
+.service-item.service-style-2 .icon-wrap {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+.service-item.service-style-2 .icon-wrap img {
+  width: 64px;
+  height: 64px;
+}
+.service-item.service-style-2:hover .service-content {
+  background: transparent;
+}
+.service-item.service-style-2:hover .service-content:before {
+  color: #fff;
+}
+.service-item.service-style-2:hover .service-title a, .service-item.service-style-2:hover .description {
+  color: #fff;
+}
+.service-item.service-style-2:hover .icon-wrap img {
+  filter: invert(1) brightness(100%) grayscale(100%) sepia(100%) hue-rotate(0deg);
+}
+.service-item.service-style-2:hover .service-button {
+  background-color: var(--primary);
+}
+.service-item.service-style-2:hover .service-button .btn-icon, .service-item.service-style-2:hover .service-button .btn-icon-hover {
+  color: var(--accent);
+}
+.service-item.service-style-3 .service-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .service-item.service-style-3 .service-inner {
+    flex-wrap: nowrap;
+  }
+}
+.service-item.service-style-3 .service-inner:hover {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+.service-item.service-style-3 .service-inner:hover .service-post-thumbnail img {
+  transform: translate3d(0, 0, 0) scale(1.2);
+  -webkit-transform: translate3d(0, 0, 0) scale(1.2);
+}
+.service-item.service-style-3 .service-inner:hover .service-title {
+  border-color: var(--accent);
+}
+.service-item.service-style-3 .service-inner:hover .service-button {
+  background-color: #fff;
+}
+.service-item.service-style-3 .service-thumbnail-wrap {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .service-item.service-style-3 .service-thumbnail-wrap {
+    flex: 0 0 51%;
+    max-width: 51%;
+  }
+}
+.service-item.service-style-3 .service-content {
+  padding: 30px 80px;
+}
+.service-item.service-style-3 .service-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+}
+.service-item.service-style-3:nth-child(even) .service-inner {
+  flex-direction: row-reverse;
+}
+.service-item.service-style-3:nth-child(even) .service-inner .service-button {
+  left: 10px;
+  right: auto;
+}
+.service-item.service-style-5 .service-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 443px;
+  justify-content: space-between;
+}
+.service-item.service-style-5 .service-inner .service-title {
+  max-width: 260px;
+}
+.service-item.service-style-5 .service-button-wrap {
+  position: relative;
+  width: 50px;
+  height: 80px;
+  border-radius: 40px;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.service-item.service-style-5 .service-button-wrap:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-5 .service-button {
+  position: relative;
+  background-color: var(--accent);
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-5 .service-button .btn-icon, .service-item.service-style-5 .service-button .btn-icon-hover {
+  color: #fff;
+}
+.service-item.service-style-5 .icon-wrap {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.service-item.service-style-5 .icon-wrap img {
+  width: 64px;
+  height: 64px;
+}
+.service-item.service-style-5:hover .service-button-wrap {
+  width: 100%;
+  height: 80px;
+}
+.service-item.service-style-5:hover .service-button-wrap:before {
+  background-color: transparent;
+}
+.service-item.service-style-5:hover .service-button {
+  background-color: var(--primary);
+  margin-right: 20px;
+}
+.service-item.service-style-5:hover .service-button .btn-icon, .service-item.service-style-5:hover .service-button .btn-icon-hover {
+  color: var(--accent);
+}
+.service-item.service-style-6 .service-title {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+  padding: 20px 0;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-6 .service-title a {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  gap: 5px;
+}
+.service-item.service-style-6 .service-title a .service-button {
+  margin-left: auto;
+  background: var(--white);
+}
+.service-item.service-style-6 .service-title:hover, .service-item.service-style-6 .service-title.active {
+  border-color: var(--accent);
+}
+.service-item.service-style-6 .service-title:hover a, .service-item.service-style-6 .service-title.active a {
+  color: var(--accent);
+}
+.service-item.service-style-6 .service-title:hover a .service-button, .service-item.service-style-6 .service-title.active a .service-button {
+  background: var(--primary);
+}
+.service-item.service-style-6 .service-title:hover a .service-button .btn-icon, .service-item.service-style-6 .service-title.active a .service-button .btn-icon {
+  transform: translate3d(17px, -17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.service-item.service-style-6 .service-title:hover a .service-button .btn-icon-hover, .service-item.service-style-6 .service-title.active a .service-button .btn-icon-hover {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+}
+.service-item.service-style-7 .service-inner {
+  position: relative;
+  height: 370px;
+  padding: 40px;
+  border-radius: 30px;
+  background-color: var(--white);
+  display: flex;
+}
+.service-item.service-style-7 .service-inner .service-title {
+  max-width: 260px;
+}
+.service-item.service-style-7 .service-inner .service-title a {
+  color: var(--accent);
+}
+.service-item.service-style-7 .service-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.service-item.service-style-7 .description {
+  margin-top: auto;
+}
+.service-item.service-style-7 .service-button-wrap {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.service-item.service-style-7 .service-button {
+  position: relative;
+  background-color: var(--accent);
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-item.service-style-7 .service-button .btn-icon, .service-item.service-style-7 .service-button .btn-icon-hover {
+  color: #fff;
+}
+.service-item.service-style-7 .icon-wrap {
+  margin-bottom: 30px;
+}
+.service-item.service-style-7 .icon-wrap img {
+  width: 64px;
+  height: 64px;
+}
+.service-item.service-style-7:hover .service-button {
+  background-color: var(--primary);
+}
+.service-item.service-style-7:hover .service-button .btn-icon, .service-item.service-style-7:hover .service-button .btn-icon-hover {
+  color: var(--accent);
+}
+.service-item.service-style-8 {
+  padding-bottom: var(--gutter-width);
+  padding-top: var(--gutter-width);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: -1px;
+  height: auto;
+  position: relative;
+}
+.service-item.service-style-8:last-child {
+  border-bottom: none;
+}
+.service-item.service-style-8 .number {
+  font-family: var(--e-global-typography-accent-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8 .number {
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+}
+.service-item.service-style-8 .service-inner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 30px;
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8 .service-inner {
+    flex-direction: row;
+    padding-left: 80px;
+  }
+  .service-item.service-style-8 .service-inner:before {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--accent);
+    transition: all ease 0.35s;
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+.service-item.service-style-8 .service-post-thumbnail {
+  width: 330px;
+  margin-left: auto;
+  transition: all linear 0.5s;
+  padding-top: 78px;
+  position: relative;
+  order: 2;
+}
+@media (max-width: 880px) {
+  .service-item.service-style-8 .service-post-thumbnail {
+    width: 100%;
+    padding-top: 50%;
+    border-radius: 20px;
+    order: -1;
+  }
+}
+.service-item.service-style-8 .service-post-thumbnail .thumbnail-overlay {
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transition: all linear 0.5s;
+}
+@media (max-width: 880px) {
+  .service-item.service-style-8 .service-post-thumbnail .thumbnail-overlay {
+    padding-top: 50%;
+  }
+}
+.service-item.service-style-8 .service-post-thumbnail .thumbnail-overlay img {
+  height: 380px;
+  transition: all linear 0.5s;
+}
+.service-item.service-style-8 .service-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 30px;
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8 .service-content {
+    flex-direction: row;
+    max-width: 800px;
+    flex: 1;
+  }
+  .service-item.service-style-8 .service-content .service-info {
+    max-width: 330px;
+    margin-left: auto;
+  }
+}
+.service-item.service-style-8 .service-content .service-info {
+  display: flex;
+  flex-direction: column;
+}
+.service-item.service-style-8 .service-content .service-title {
+  max-width: 290px;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.service-item.service-style-8 .description {
+  margin-bottom: auto;
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8 .service-button-wrap {
+    transition: all ease 0.4s;
+    transform: translateY(-20px);
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
+  }
+}
+.service-item.service-style-8 .service-button-link {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7142857143;
+  font-family: var(--e-global-typography-accent-font-family);
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 30px;
+}
+.service-item.service-style-8 .service-button-link .btn-icon-wrap {
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.service-item.service-style-8 .service-button-link .btn-icon, .service-item.service-style-8 .service-button-link .btn-icon-hover {
+  display: flex;
+  color: var(--white);
+  transition: transform 0.35s linear;
+  font-size: 13px;
+}
+.service-item.service-style-8 .service-button-link .btn-icon {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+  transform-style: preserve-3d;
+}
+.service-item.service-style-8 .service-button-link .btn-icon-hover {
+  position: absolute;
+  transform: translate3d(-17px, 17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.service-item.service-style-8 .service-button-link:hover .btn-icon {
+  transform: translate3d(17px, -17px, 0px) scale3d(0.2, 0.2, 1) rotate(-45deg);
+}
+.service-item.service-style-8 .service-button-link:hover .btn-icon-hover {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate(-45deg);
+}
+.service-item.service-style-8 .service-button-link .elementor-button-icon {
+  background-color: var(--accent);
+}
+.service-item.service-style-8 .service-button-link:hover {
+  color: var(--accent);
+}
+.service-item.service-style-8 .service-button-link:hover .elementor-button-icon {
+  background-color: var(--primary);
+}
+.service-item.service-style-8 .service-button-link:hover .elementor-button-icon .btn-icon, .service-item.service-style-8 .service-button-link:hover .elementor-button-icon .btn-icon-hover {
+  color: var(--accent);
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8.active .service-inner:before {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    font-size: 0;
+    border: none;
+  }
+}
+@media (min-width: 881px) {
+  .service-item.service-style-8.active .service-post-thumbnail {
+    padding-top: 380px;
+  }
+  .service-item.service-style-8.active .service-post-thumbnail .thumbnail-overlay {
+    padding-top: 380px;
+  }
+  .service-item.service-style-8.active .service-button-wrap {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 80px;
+    transition: all 0.4s ease;
+    transition-delay: 0.3s;
+    pointer-events: auto;
+  }
+}
+.service-item.service-style-8.active .service-title a {
+  color: var(--accent);
+}
+
+@media (min-width: 1024px) {
+  .elementor-service-style-7 {
+    --offset: 100px;
+  }
+  .elementor-service-style-7 .column-2 {
+    padding-bottom: var(--offset);
+  }
+  .elementor-service-style-7 .column-2 .service-item:nth-child(2n+2) {
+    transform: translateY(calc((1) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-3 {
+    padding-bottom: var(--offset);
+  }
+  .elementor-service-style-7 .column-3 .service-item:nth-child(3n+2) {
+    transform: translateY(calc((1) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-3 .service-item:nth-child(3n+3) {
+    transform: translateY(calc((2) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-4 {
+    padding-bottom: var(--offset);
+  }
+  .elementor-service-style-7 .column-4 .service-item:nth-child(4n+2) {
+    transform: translateY(calc((1) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-4 .service-item:nth-child(4n+3) {
+    transform: translateY(calc((2) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-4 .service-item:nth-child(4n+4) {
+    transform: translateY(calc((3) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-5 {
+    padding-bottom: var(--offset);
+  }
+  .elementor-service-style-7 .column-5 .service-item:nth-child(5n+2) {
+    transform: translateY(calc((1) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-5 .service-item:nth-child(5n+3) {
+    transform: translateY(calc((2) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-5 .service-item:nth-child(5n+4) {
+    transform: translateY(calc((3) * var(--offset)));
+  }
+  .elementor-service-style-7 .column-5 .service-item:nth-child(5n+5) {
+    transform: translateY(calc((4) * var(--offset)));
+  }
+}
+.elementor-service-style-8 .d-grid {
+  grid-gap: 0 !important;
+}
+
+.elementor-service-style-4 .service-style_list {
+  box-shadow: 0 -1px 0 0 var(--border);
+  transition: all ease 0.35s;
+}
+.elementor-service-style-4 .service-style_list:first-child {
+  box-shadow: none;
+}
+.elementor-service-style-4 .service-style_list .service-title {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.elementor-service-style-4 .service-style_list .service-title a {
+  padding: 16px 20px 16px 0;
+  display: flex;
+  align-items: center;
+  transition: all ease 0.35s;
+  color: var(--accent);
+  position: relative;
+}
+.elementor-service-style-4 .service-style_list .service-title a span {
+  margin-right: auto;
+}
+.elementor-service-style-4 .service-style_list .service-title a i {
+  color: var(--border);
+  font-weight: bold;
+}
+.elementor-service-style-4 .service-style_list:hover {
+  box-shadow: none;
+}
+.elementor-service-style-4 .service-style_list:hover a {
+  padding-left: 20px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+.elementor-service-style-4 .service-style_list:hover a i {
+  color: var(--accent);
+}
+.elementor-service-style-4 .service-style_list:hover + .service-style_list {
+  box-shadow: none;
+}
+.elementor-service-style-4 .service-style_list.current_post {
+  box-shadow: none;
+}
+.elementor-service-style-4 .service-style_list.current_post .service-title a {
+  padding-left: 20px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+.elementor-service-style-4 .service-style_list.current_post .service-title a i {
+  color: var(--accent);
+}
+.elementor-service-style-4 .service-style_list.current_post + .service-style_list {
+  box-shadow: none;
+}
+
+.elementor-service-style-2 .d-grid,
+.elementor-service-style-5 .d-grid {
+  counter-reset: count;
+}
+.elementor-service-style-2 .d-grid .service-content:before,
+.elementor-service-style-5 .d-grid .service-content:before {
+  counter-increment: count;
+  content: counter(count, decimal-leading-zero) ".";
+  font-size: 12px;
+  line-height: 1.1666666667;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--e-global-typography-accent-font-family);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  display: block;
+}
+
+.elementor-service-enable-sticky-yes .grid-item {
+  position: sticky;
+  top: 0;
+}
+.elementor-service-enable-sticky-yes .grid-item .service-inner {
+  transition: transform 0.3s ease-out, cubic-bezier(0, 0.7, 0.3, 0.9), transform 0.5s cubic-bezier(0, 0.7, 0.3, 0.9);
+  opacity: 1;
+  will-change: transform;
+}
+.elementor-service-enable-sticky-yes .grid-item .service-inner .service-post-thumbnail img {
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+}
+.elementor-service-enable-sticky-yes .grid-item .service-inner:hover .service-post-thumbnail img {
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+}

@@ -1,3 +1,4 @@
+import './ProjectFilters.css';
 export default function ProjectFilters({ filters = {} }) {
   return (
     <div className="spaciaz-project-filter">

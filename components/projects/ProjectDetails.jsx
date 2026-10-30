@@ -1,3 +1,4 @@
+import './ProjectDetails.css';
 import Link from 'next/link';
 import ProjectBreadcrumb from './ProjectBreadcrumb';
 import ProjectFacts from './ProjectFacts';

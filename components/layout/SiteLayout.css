@@ -1,0 +1,104 @@
+/* Scroll to top CSS */
+.hfe-scroll-to-top-wrap.hfe-scroll-to-top-hide {
+    display: none;
+}
+
+.hfe-scroll-to-top-wrap.edit-mode,
+.hfe-scroll-to-top-wrap.single-page-off {
+    display: none !important;
+}
+
+.hfe-scroll-to-top-button {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 9999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    opacity: 1;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.hfe-scroll-to-top-button i {
+    color: #fff;
+    font-size: 16px;
+}
+
+.scrollup {
+  display: block;
+  position: fixed;
+  right: 30px;
+  bottom: 80px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-decoration: none;
+  background: var(--primary);
+  color: var(--accent);
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  transform: scale(0);
+  z-index: 999;
+  text-align: center;
+  font-size: 14px;
+  transition: all ease 0.35s;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 1024px) {
+  .scrollup {
+    bottom: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .scrollup {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+}
+.scrollup:hover {
+  color: var(--white);
+}
+.scrollup i {
+  margin-top: -5px;
+}
+.scrollup.activate {
+  transform: scale(1);
+}
+
+.site-skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100001;
+  padding: 12px 20px;
+  background: #e4ed64;
+  color: #111;
+  border-radius: 8px;
+}
+
+.site-skip-link:focus {
+  top: 16px;
+}
+
+.scrollup {
+  padding: 0;
+  border: 0;
+}

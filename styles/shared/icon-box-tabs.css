@@ -1,0 +1,157 @@
+.elementor-iconbox-tab-item-wrapper .details-tab-info {
+  cursor: pointer;
+  width: 25%;
+}
+.elementor-iconbox-tab-item-wrapper .iconbox-content {
+  display: flex;
+}
+
+.elementor-iconbox-tab-item-wrapper .iconbox-tab-content {
+  position: relative;
+  margin-bottom: 70px;
+  overflow: hidden;
+}
+.elementor-iconbox-tab-item-wrapper .iconbox-content {
+  flex-direction: row;
+  justify-content: end;
+}
+.elementor-iconbox-tab-item-wrapper .iconbox-tab-item {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.elementor-iconbox-tab-item-wrapper .iconbox-tab-item.active {
+  opacity: 1;
+  z-index: 9;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  pointer-events: auto;
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image {
+  padding-top: 71%;
+  position: relative;
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image .decor-border {
+  position: absolute;
+  width: 220px;
+  height: 60px;
+  background-color: var(--background);
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 30px;
+  bottom: -1px;
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image .decor-border:after, .elementor-iconbox-tab-item-wrapper .elementor-iconbox-image .decor-border:before {
+  background-color: var(--background);
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+  content: "";
+  position: absolute;
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image .decor-border:before {
+  bottom: 100%;
+  left: 0;
+  transform: rotate(0deg);
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image .decor-border:after {
+  bottom: 0;
+  left: 100%;
+  transform: rotate(0deg);
+}
+.elementor-iconbox-tab-item-wrapper .elementor-iconbox-image img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.iconbox-details-wrap {
+  position: relative;
+  display: flex;
+  gap: 30px;
+}
+@media (max-width: 880px) {
+  .iconbox-details-wrap {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 880px) {
+  .iconbox-details-wrap .details-tab-info {
+    width: 47%;
+  }
+}
+@media (max-width: 560px) {
+  .iconbox-details-wrap .details-tab-info {
+    width: 100%;
+  }
+}
+.iconbox-details-wrap .details-tab-info .icon svg, .iconbox-details-wrap .details-tab-info .icon i {
+  width: 48px;
+  font-size: 48px;
+  height: 48px;
+  color: var(--border);
+  fill: var(--border);
+}
+.iconbox-details-wrap .details-tab-info .content {
+  font-size: 18px;
+  line-height: 1.5555555556;
+  color: var(--text_light);
+}
+.iconbox-details-wrap .details-tab-info .content p {
+  margin-bottom: 0 !important;
+}
+.iconbox-details-wrap .details-tab-info .title {
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  position: relative;
+  border-top: 1px solid var(--border);
+  transition: all ease 0.35s;
+  color: var(--text_light);
+}
+.iconbox-details-wrap .details-tab-info .title a {
+  color: var(--text_light);
+}
+.iconbox-details-wrap .details-tab-info .title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: all ease 0.35s;
+}
+.iconbox-details-wrap .details-tab-info.active .title {
+  color: var(--accent);
+}
+.iconbox-details-wrap .details-tab-info.active .title a {
+  color: var(--accent);
+}
+.iconbox-details-wrap .details-tab-info.active .title:after {
+  width: 100%;
+}
+.iconbox-details-wrap .details-tab-info.active .content {
+  color: var(--text);
+}
+.iconbox-details-wrap .details-tab-info.active svg, .iconbox-details-wrap .details-tab-info.active i {
+  color: var(--primary);
+  fill: var(--primary);
+}
+
+.iconbox-tab-right {
+  flex-basis: calc(50% - 15px);
+  flex-shrink: 0;
+  position: relative;
+}

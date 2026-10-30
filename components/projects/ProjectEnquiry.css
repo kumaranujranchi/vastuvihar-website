@@ -1,0 +1,91 @@
+.elementor-2178 .elementor-element.elementor-element-c8a32ef {
+  --display: flex;
+  --flex-direction: column;
+  --container-widget-width: calc( ( 1 - var( --container-widget-flex-grow ) ) * 100% );
+  --container-widget-height: initial;
+  --container-widget-flex-grow: 0;
+  --container-widget-align-self: initial;
+  --flex-wrap-mobile: wrap;
+  --align-items: center;
+  --margin-top: 0px;
+  --margin-bottom: 90px;
+  --margin-left: 0px;
+  --margin-right: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-2178 .elementor-element.elementor-element-c8a32ef .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-2c32b85 {
+  width: var( --container-widget-width, 465px );
+  max-width: 465px;
+  --container-widget-width: 465px;
+  --container-widget-flex-grow: 0;
+  text-align: center;
+}
+
+.elementor-2178 .elementor-element.elementor-element-2c32b85 > .elementor-widget-container {
+  margin: 0px 0px 30px 0px;
+}
+
+.elementor-2178 .elementor-element.elementor-element-2c32b85 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-2c32b85 .elementor-heading-title {
+  color: var( --e-global-color-accent );
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f {
+  width: var( --container-widget-width, 630px );
+  max-width: 630px;
+  --container-widget-width: 630px;
+  --container-widget-flex-grow: 0;
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .wpcf7-button {
+  text-align: center;
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .elementor-button-content-wrapper {
+  flex-direction: row;
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .wpcf7-form button {
+  border-color: var( --e-global-color-primary );
+  background-color: var( --e-global-color-primary );
+  padding: 5px 5px 5px 30px;
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .wpcf7-form button .elementor-button-icon {
+  background-color: var( --e-global-color-background );
+}
+
+.elementor-2178 .elementor-element.elementor-element-981758f .wpcf7-form button:hover {
+  color: var( --e-global-color-accent );
+}
+
+@media(max-width:767px) {
+
+  .elementor-2178 .elementor-element.elementor-element-c8a32ef {
+    --margin-top: 0px;
+    --margin-bottom: 60px;
+    --margin-left: 0px;
+    --margin-right: 0px;
+  }
+}

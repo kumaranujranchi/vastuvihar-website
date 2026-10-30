@@ -1,0 +1,163 @@
+/* Existing MediaCarousel styles; the local scope preserves styled-jsx isolation and specificity. */
+
+:global(.vv-media-carousel).carouselScope {
+  width: min(100vw, 1500px);
+  max-width: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+:global(.vv-media-slider).carouselScope {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+:global(.vv-media-track).carouselScope {
+  --slide-width: min(82%, 980px);
+  display: flex;
+  align-items: stretch;
+  gap: 28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-inline: max(16px, calc((100% - var(--slide-width)) / 2));
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  transform: none !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+}
+
+:global(.vv-media-track).carouselScope:active {
+  cursor: grabbing;
+}
+
+:global(.vv-media-track).carouselScope::-webkit-scrollbar {
+  display: none;
+}
+
+:global(.vv-media-slide).carouselScope {
+  flex: 0 0 var(--slide-width) !important;
+  width: var(--slide-width) !important;
+  height: auto;
+  overflow: hidden;
+  border-radius: 28px;
+  scroll-snap-align: center;
+  opacity: .24;
+  transform: scale(.985);
+  transition: opacity .48s ease, transform .48s ease;
+  background: #f6f6f6;
+}
+
+:global(.vv-media-current).carouselScope {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:global(.vv-media-slide).carouselScope :global(.photo__bounce-wrap).carouselScope {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.38 / 1;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+:global(.vv-media-slide).carouselScope :global(img).carouselScope {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+:global(.vv-media-slide).carouselScope :global(img):global(.vv-plan-image).carouselScope {
+  object-fit: contain;
+  background: #fff;
+}
+
+:global(.vv-plan-label).carouselScope {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+:global(.vv-media-arrow).carouselScope {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  color: #111;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  cursor: pointer;
+}
+
+:global(.vv-media-prev).carouselScope {
+  left: max(20px, calc((100% - min(82%, 980px)) / 2 + 18px));
+}
+
+:global(.vv-media-next).carouselScope {
+  right: max(20px, calc((100% - min(82%, 980px)) / 2 + 18px));
+}
+
+:global(.vv-media-arrow).carouselScope:hover {
+  opacity: .9;
+}
+
+@media (max-width: 700px) {
+  :global(.vv-media-track).carouselScope {
+    --slide-width: 88%;
+    gap: 14px;
+  }
+
+  :global(.vv-media-slide).carouselScope {
+    border-radius: 18px;
+  }
+
+  :global(.vv-media-slide).carouselScope :global(.photo__bounce-wrap).carouselScope {
+    aspect-ratio: 4 / 3;
+  }
+
+  :global(.vv-media-arrow).carouselScope {
+    width: 36px;
+    height: 36px;
+  }
+
+  :global(.vv-media-prev).carouselScope {
+    left: 7%;
+  }
+
+  :global(.vv-media-next).carouselScope {
+    right: 7%;
+  }
+
+  :global(.vv-media-arrow).carouselScope {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.vv-media-track).carouselScope {
+    scroll-behavior: auto;
+  }
+
+  :global(.vv-media-slide).carouselScope {
+    transition: none;
+  }
+}

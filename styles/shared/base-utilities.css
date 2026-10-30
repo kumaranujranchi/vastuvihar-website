@@ -1,0 +1,311 @@
+/*-------------------------------------------------------------
+1.2 Global styles
+--------------------------------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+.site-content,
+.header-widget-region {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.shape-primary .elementor-shape-fill {
+  fill: primary;
+}
+
+.color-primary {
+  color: var(--primary);
+}
+
+.outline-primary {
+  outline-color: primary;
+}
+
+.bd-primary {
+  border-color: var(--primary);
+}
+
+.bd-t-primary {
+  border-top-color: var(--primary);
+}
+
+.bd-b-primary {
+  border-bottom-color: var(--primary);
+}
+
+.bd-r-primary {
+  border-right-color: var(--primary);
+}
+
+.bd-l-primary {
+  border-left-color: var(--primary);
+}
+
+.bg-primary_hover {
+  background-color: var(--primary_hover);
+}
+
+.shape-primary_hover .elementor-shape-fill {
+  fill: primary_hover;
+}
+
+.color-primary_hover {
+  color: var(--primary_hover);
+}
+
+.outline-primary_hover {
+  outline-color: primary_hover;
+}
+
+.bd-primary_hover {
+  border-color: var(--primary_hover);
+}
+
+.bd-t-primary_hover {
+  border-top-color: var(--primary_hover);
+}
+
+.bd-b-primary_hover {
+  border-bottom-color: var(--primary_hover);
+}
+
+.bd-r-primary_hover {
+  border-right-color: var(--primary_hover);
+}
+
+.bd-l-primary_hover {
+  border-left-color: var(--primary_hover);
+}
+
+.bg-tertiary {
+  background-color: var(--tertiary);
+}
+
+.shape-tertiary .elementor-shape-fill {
+  fill: tertiary;
+}
+
+.color-tertiary {
+  color: var(--tertiary);
+}
+
+.outline-tertiary {
+  outline-color: tertiary;
+}
+
+.bd-tertiary {
+  border-color: var(--tertiary);
+}
+
+.bd-t-tertiary {
+  border-top-color: var(--tertiary);
+}
+
+.bd-b-tertiary {
+  border-bottom-color: var(--tertiary);
+}
+
+.bd-r-tertiary {
+  border-right-color: var(--tertiary);
+}
+
+.bd-l-tertiary {
+  border-left-color: var(--tertiary);
+}
+
+.bg-body {
+  background-color: var(--body);
+}
+
+.shape-body .elementor-shape-fill {
+  fill: body;
+}
+
+.color-body {
+  color: var(--body);
+}
+
+.outline-body {
+  outline-color: body;
+}
+
+.bd-body {
+  border-color: var(--body);
+}
+
+.bd-t-body {
+  border-top-color: var(--body);
+}
+
+.bd-b-body {
+  border-bottom-color: var(--body);
+}
+
+.bd-r-body {
+  border-right-color: var(--body);
+}
+
+.bd-l-body {
+  border-left-color: var(--body);
+}
+
+.bg-heading {
+  background-color: var(--heading);
+}
+
+.shape-heading .elementor-shape-fill {
+  fill: heading;
+}
+
+.color-heading {
+  color: var(--heading);
+}
+
+.outline-heading {
+  outline-color: heading;
+}
+
+.bd-heading {
+  border-color: var(--heading);
+}
+
+.bd-t-heading {
+  border-top-color: var(--heading);
+}
+
+.bd-b-heading {
+  border-bottom-color: var(--heading);
+}
+
+.bd-r-heading {
+  border-right-color: var(--heading);
+}
+
+.bd-l-heading {
+  border-left-color: var(--heading);
+}
+
+.bg-light {
+  background-color: var(--light);
+}
+
+.shape-light .elementor-shape-fill {
+  fill: light;
+}
+
+.color-light {
+  color: var(--light);
+}
+
+.outline-light {
+  outline-color: light;
+}
+
+.bd-light {
+  border-color: var(--light);
+}
+
+.bd-t-light {
+  border-top-color: var(--light);
+}
+
+.bd-b-light {
+  border-bottom-color: var(--light);
+}
+
+.bd-r-light {
+  border-right-color: var(--light);
+}
+
+.bd-l-light {
+  border-left-color: var(--light);
+}
+
+.bg-border {
+  background-color: var(--border);
+}
+
+.shape-border .elementor-shape-fill {
+  fill: border;
+}
+
+.color-border {
+  color: var(--border);
+}
+
+.outline-border {
+  outline-color: border;
+}
+
+.bd-border {
+  border-color: var(--border);
+}
+
+.bd-t-border {
+  border-top-color: var(--border);
+}
+
+.bd-b-border {
+  border-bottom-color: var(--border);
+}
+
+.bd-r-border {
+  border-right-color: var(--border);
+}
+
+.bd-l-border {
+  border-left-color: var(--border);
+}
+
+.bg-background {
+  background-color: var(--background);
+}
+
+.shape-background .elementor-shape-fill {
+  fill: background;
+}
+
+.color-background {
+  color: var(--background);
+}
+
+.outline-background {
+  outline-color: background;
+}
+
+.bd-background {
+  border-color: var(--background);
+}
+
+.bd-t-background {
+  border-top-color: var(--background);
+}
+
+.bd-b-background {
+  border-bottom-color: var(--background);
+}
+
+.bd-r-background {
+  border-right-color: var(--background);
+}
+
+.bd-l-background {
+  border-left-color: var(--background);
+}
+
+.lazyloaded {
+  transition: all 0.3s !important;
+}
+
+#page .site-content {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+body.home #page .breadcrumb-wrap {
+  display: none;
+}

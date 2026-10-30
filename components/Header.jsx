@@ -1,3 +1,4 @@
+import './layout/Header.css';
 import Link from 'next/link';
 import Navigation from './Navigation';
 import { site } from '@/data/site';

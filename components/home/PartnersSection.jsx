@@ -1,3 +1,5 @@
+import './PartnersSection.css';
+import '../common/ScrollingTicker.css';
 export default function PartnersSection() {
   return (
     <div

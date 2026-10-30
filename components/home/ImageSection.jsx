@@ -1,5 +1,6 @@
 "use client";
 
+import './ImageSection.css';
 import { useEffect, useState } from "react";
 
 const testimonials = [

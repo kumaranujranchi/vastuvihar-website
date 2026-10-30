@@ -1,3 +1,4 @@
+import './ProjectHero.css';
 // Shared project section. Its layout is reused for every project.
 
 export default function ProjectHero({ project }) {

@@ -15,7 +15,7 @@ export const metadata = createPageMetadata({
 export default function CoreValuesPage() {
   return (
     <PageLayout route="core-values">
-      <Breadcrumb title="Core values" />
+      {/* <Breadcrumb title="Core values" /> */}
       <div id="content" className="site-content-page clear" tabIndex="-1">
         <div className="col-fluid">
           <div id="primary" className="content-area">

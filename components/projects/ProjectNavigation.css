@@ -1,0 +1,71 @@
+.elementor-2178 .elementor-element.elementor-element-a95c38b {
+  --display: flex;
+  --flex-direction: column;
+  --container-widget-width: 100%;
+  --container-widget-height: initial;
+  --container-widget-flex-grow: 0;
+  --container-widget-align-self: initial;
+  --flex-wrap-mobile: wrap;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+}
+
+.elementor-2178 .elementor-element.elementor-element-a95c38b .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-2178 .elementor-element.elementor-element-e8bb0a5 .spaciaz-border-shape {
+  width: 30px;
+  height: 30px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+
+.elementor-widget-spaciaz-projects-navigation .post-navigation {
+  border: 1px solid var(--border);
+  border-radius: 30px;
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next {
+  padding: 25px 50px;
+  display: flex;
+  justify-content: center;
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous .reader-text, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next .reader-text {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: bold;
+  color: var(--accent);
+  text-transform: lowercase;
+  margin-bottom: 0;
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous a, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next a {
+  max-width: 270px;
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous a:hover .reader-text, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next a:hover .reader-text {
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next {
+    padding: 30px 15px;
+  }
+  .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous .reader-text, .elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next .reader-text {
+    margin-bottom: 0;
+  }
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous {
+  border-right: 1px solid var(--border);
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-previous .reader-text:before {
+  font-size: 20px;
+  color: var(--primary);
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next {
+  border-left: 1px solid var(--border);
+}
+.elementor-widget-spaciaz-projects-navigation .post-navigation .nav-next .reader-text:after {
+  font-size: 20px;
+  color: var(--primary);
+}

@@ -1,0 +1,11 @@
+.site-breadcrumb-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  vertical-align: middle;
+}
+
+.breadcrumb-wrap .hfe-breadcrumbs {
+  list-style: none;
+}
