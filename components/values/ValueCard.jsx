@@ -1,29 +1,43 @@
 import './ValueCard.css';
+
 export default function ValueCard({ value, index }) {
   const animationDelay = index > 0 ? (index % 4) * 100 : undefined;
+
+  // Remove accidental outer curly braces from SVG strings.
+  const cleanSvg = String(value.svg || '')
+    .trim()
+    .replace(/^\{\s*/, '')
+    .replace(/\s*\}$/, '');
+
+  const settings = {
+    animation: 'opal-move-up',
+    ...(animationDelay ? { animation_delay: animationDelay } : {}),
+  };
+
   return (
     <div
-      className={`elementor-element elementor-element-${value.id} e-con-full animated-fast e-flex elementor-invisible e-con e-child`}
+      className={`value-card elementor-element elementor-element-${value.id} e-con-full animated-fast e-flex elementor-invisible e-con e-child`}
       data-id={value.id}
       data-element_type="container"
-      data-settings={JSON.stringify({ animation: 'opal-move-up', ...(animationDelay ? { animation_delay: animationDelay } : {}) })}
+      data-settings={JSON.stringify(settings)}
     >
       <div
-        className="elementor-element elementor-view-default elementor-widget elementor-widget-icon"
+        className="value-card__icon elementor-element elementor-view-default elementor-widget elementor-widget-icon"
         data-element_type="widget"
         data-widget_type="icon.default"
       >
-        <div className="elementor-widget-container">
+        {/* <div className="elementor-widget-container">
           <div className="elementor-icon-wrapper">
             <div
               className="elementor-icon"
-              dangerouslySetInnerHTML={{ __html: value.svg }}
+              dangerouslySetInnerHTML={{ __html: cleanSvg }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
+
       <div
-        className="elementor-element elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
+        className="value-card__divider elementor-element elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
         data-element_type="widget"
         data-widget_type="divider.default"
       >
@@ -33,8 +47,9 @@ export default function ValueCard({ value, index }) {
           </div>
         </div>
       </div>
+
       <div
-        className="elementor-element elementor-widget elementor-widget-heading"
+        className="value-card__title elementor-element elementor-widget elementor-widget-heading"
         data-element_type="widget"
         data-widget_type="heading.default"
       >
@@ -45,8 +60,9 @@ export default function ValueCard({ value, index }) {
           />
         </div>
       </div>
+
       <div
-        className="elementor-element elementor-widget elementor-widget-heading"
+        className="value-card__description elementor-element elementor-widget elementor-widget-heading"
         data-element_type="widget"
         data-widget_type="heading.default"
       >
@@ -59,4 +75,3 @@ export default function ValueCard({ value, index }) {
     </div>
   );
 }
-
