@@ -52,9 +52,9 @@ export default function ProjectDetails({ project }) {
                   <ProjectFacts project={modelProject} />
                   <ProjectHero project={modelProject} />
                   <ProjectDescription project={modelProject} />
+                  <ProjectLocation project={modelProject} />
                   <ProjectAmenities />
                   <ProjectMedia project={modelProject} />
-                  <ProjectLocation project={modelProject} />
                   <ProjectEnquiry project={modelProject} />
                   <ProjectNavigation project={modelProject} />
                 </div>

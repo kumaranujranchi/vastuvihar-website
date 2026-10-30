@@ -90,4 +90,30 @@ export const AMENITIES_DATA = [
       </svg>
     ),
   },
+  {
+    id: 'temple',
+    name: 'Temple',
+    tag: 'Peace & Spirituality',
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M4 21h16" />
+        <path d="M6 21v-8h12v8" />
+        <path d="M8 13V9h8v4" />
+        <path d="M10 9V6h4v3" />
+        <path d="M12 6V2" />
+        <path d="M10 4h4" />
+        <path d="M9 21v-5h6v5" />
+      </svg>
+    ),
+  },
 ];

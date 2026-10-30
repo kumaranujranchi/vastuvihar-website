@@ -1,163 +1,1003 @@
-/* Existing MediaCarousel styles; the local scope preserves styled-jsx isolation and specificity. */
+/* =========================================================
+   CAROUSEL
+========================================================= */
 
 :global(.vv-media-carousel).carouselScope {
-  width: min(100vw, 1500px);
-  max-width: none;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
-:global(.vv-media-slider).carouselScope {
-  position: relative;
   width: 100%;
+
+  max-width: none;
+
+  margin: 0;
+
   overflow: visible;
 }
 
+
+:global(.elementor-element-37fe374).carouselScope {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  --container-widget-width: 100% !important;
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+:global(.vv-media-slider).carouselScope {
+  position: relative;
+
+  width: 100%;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
 :global(.vv-media-track).carouselScope {
-  --slide-width: min(82%, 980px);
-  display: flex;
+  --slide-width:
+    min(
+      76%,
+      920px
+    );
+
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  flex-wrap: nowrap !important;
+
   align-items: stretch;
+
+  width: 100%;
+
   gap: 28px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-inline: max(16px, calc((100% - var(--slide-width)) / 2));
+
+  overflow-x: auto !important;
+
+  overflow-y: hidden !important;
+
+  padding-top: 8px;
+
+  padding-bottom: 22px;
+
+  padding-left:
+    max(
+      16px,
+      calc(
+        (
+          100% -
+          var(--slide-width)
+        ) /
+        2
+      )
+    );
+
+  padding-right:
+    max(
+      16px,
+      calc(
+        (
+          100% -
+          var(--slide-width)
+        ) /
+        2
+      )
+    );
+
   scroll-snap-type: x mandatory;
+
   scroll-behavior: smooth;
-  transform: none !important;
+
   scrollbar-width: none;
+
   -ms-overflow-style: none;
-  touch-action: pan-x pan-y;
+
+  overscroll-behavior-x: contain;
+
+  touch-action: pan-x;
+
   cursor: grab;
 }
+
+
+:global(.vv-media-track).carouselScope
+  > * {
+  flex-shrink: 0 !important;
+}
+
 
 :global(.vv-media-track).carouselScope:active {
   cursor: grabbing;
 }
 
+
 :global(.vv-media-track).carouselScope::-webkit-scrollbar {
   display: none;
 }
 
+
+/* =========================================================
+   SLIDE
+========================================================= */
+
 :global(.vv-media-slide).carouselScope {
-  flex: 0 0 var(--slide-width) !important;
-  width: var(--slide-width) !important;
+  display: block !important;
+
+  position: relative;
+
+  flex:
+    0 0
+    var(--slide-width) !important;
+
+  width:
+    var(--slide-width) !important;
+
+  min-width:
+    var(--slide-width) !important;
+
+  max-width:
+    var(--slide-width) !important;
+
   height: auto;
+
+  margin: 0 !important;
+
   overflow: hidden;
+
   border-radius: 28px;
-  scroll-snap-align: center;
-  opacity: .24;
-  transform: scale(.985);
-  transition: opacity .48s ease, transform .48s ease;
+
   background: #f6f6f6;
+
+  scroll-snap-align: center;
+
+  scroll-snap-stop: always;
+
+  opacity: 0.25;
+
+  transform: scale(0.975);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
+
 
 :global(.vv-media-current).carouselScope {
   opacity: 1;
+
   transform: scale(1);
 }
 
-:global(.vv-media-slide).carouselScope :global(.photo__bounce-wrap).carouselScope {
-  display: block;
+
+/* =========================================================
+   CLICKABLE IMAGE
+========================================================= */
+
+.mediaButton {
+  appearance: none;
+
   position: relative;
-  width: 100%;
-  aspect-ratio: 1.38 / 1;
-  overflow: hidden;
-  border-radius: inherit;
-}
 
-:global(.vv-media-slide).carouselScope :global(img).carouselScope {
-  width: 100%;
-  height: 100%;
   display: block;
-  object-fit: cover;
+
+  width: 100%;
+
+  aspect-ratio: 1.45 / 1;
+
+  padding: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  border: 0;
+
+  border-radius: inherit;
+
+  background: #f5f5f5;
+
+  color: inherit;
+
+  font: inherit;
+
+  text-align: left;
+
+  cursor: zoom-in;
+
+  pointer-events: auto !important;
+
+  z-index: 3;
 }
 
-:global(.vv-media-slide).carouselScope :global(img):global(.vv-plan-image).carouselScope {
+
+.mediaButton img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+.mediaButton img.planImage {
   object-fit: contain;
+
+  padding: 15px;
+
   background: #fff;
 }
 
-:global(.vv-plan-label).carouselScope {
+
+/* =========================================================
+   PLAN LABEL
+========================================================= */
+
+.planLabel {
   position: absolute;
+
   left: 18px;
+
   bottom: 18px;
-  padding: 9px 14px;
+
+  z-index: 4;
+
+  max-width:
+    calc(
+      100% -
+      36px
+    );
+
+  padding: 8px 13px;
+
+  border:
+    1px solid
+    rgba(
+      0,
+      0,
+      0,
+      0.06
+    );
+
   border-radius: 999px;
-  background: rgba(255,255,255,.92);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
   color: #111;
-  font-size: 13px;
+
+  font-size: 12px;
+
   font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  pointer-events: none;
 }
 
-:global(.vv-media-arrow).carouselScope {
+
+/* =========================================================
+   ZOOM ICON
+========================================================= */
+
+.zoomIcon {
   position: absolute;
-  z-index: 2;
-  top: 50%;
-  transform: translateY(-50%);
+
+  top: 18px;
+
+  right: 18px;
+
+  z-index: 5;
+
   display: grid;
+
   place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid #eee;
+
+  width: 42px;
+
+  height: 42px;
+
   border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
   color: #111;
-  background: rgba(255,255,255,.94);
-  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 5px 20px
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+
+  opacity: 0;
+
+  transform: scale(0.9);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+
+  pointer-events: none;
+}
+
+
+.mediaButton:hover .zoomIcon {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
+
+:global(.vv-media-arrow).carouselScope {
+  appearance: none;
+
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 20;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 46px;
+
+  height: 46px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    #e8e8e8;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.96
+    );
+
+  color: #111;
+
+  box-shadow:
+    0 5px 20px
+    rgba(
+      0,
+      0,
+      0,
+      0.1
+    );
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+:global(.vv-media-arrow).carouselScope:hover {
+  transform:
+    translateY(-50%)
+    scale(1.06);
+
+  box-shadow:
+    0 8px 25px
+    rgba(
+      0,
+      0,
+      0,
+      0.14
+    );
+}
+
+
+:global(.vv-media-prev).carouselScope {
+  left:
+    max(
+      25px,
+      calc(
+        (
+          100% -
+          min(
+            76%,
+            920px
+          )
+        ) /
+        2 +
+        20px
+      )
+    );
+}
+
+
+:global(.vv-media-next).carouselScope {
+  right:
+    max(
+      25px,
+      calc(
+        (
+          100% -
+          min(
+            76%,
+            920px
+          )
+        ) /
+        2 +
+        20px
+      )
+    );
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 70px 90px;
+
+  background:
+    rgba(
+      7,
+      7,
+      7,
+      0.94
+    );
+
+  backdrop-filter: blur(8px);
+
+  animation:
+    lightboxFade
+    0.2s ease;
+}
+
+
+@keyframes lightboxFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   LIGHTBOX CONTENT
+========================================================= */
+
+.lightboxContent {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  max-width:
+    min(
+      86vw,
+      1400px
+    );
+
+  max-height: 86vh;
+}
+
+
+.lightboxContent img {
+  display: block;
+
+  width: auto;
+
+  height: auto;
+
+  max-width: 100%;
+
+  max-height: 86vh;
+
+  object-fit: contain;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 80px
+    rgba(
+      0,
+      0,
+      0,
+      0.4
+    );
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+.lightboxPlan {
+  width:
+    min(
+      86vw,
+      1200px
+    );
+
+  height: 84vh;
+
+  padding: 24px;
+
+  border-radius: 18px;
+
+  background: #fff;
+}
+
+
+.lightboxPlan img {
+  width: 100%;
+
+  height: 100%;
+
+  max-width: 100%;
+
+  max-height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.lightboxClose {
+  appearance: none;
+
+  position: fixed;
+
+  top: 24px;
+
+  right: 28px;
+
+  z-index: 20;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  color: #fff;
+
   cursor: pointer;
 }
 
-:global(.vv-media-prev).carouselScope {
-  left: max(20px, calc((100% - min(82%, 980px)) / 2 + 18px));
+
+.lightboxClose:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.24
+    );
 }
 
-:global(.vv-media-next).carouselScope {
-  right: max(20px, calc((100% - min(82%, 980px)) / 2 + 18px));
+
+/* =========================================================
+   LIGHTBOX ARROWS
+========================================================= */
+
+.lightboxArrow {
+  appearance: none;
+
+  position: fixed;
+
+  top: 50%;
+
+  z-index: 20;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 52px;
+
+  height: 52px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  color: #fff;
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%);
 }
 
-:global(.vv-media-arrow).carouselScope:hover {
-  opacity: .9;
+
+.lightboxArrow:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
 }
+
+
+.lightboxPrev {
+  left: 28px;
+}
+
+
+.lightboxNext {
+  right: 28px;
+}
+
+
+/* =========================================================
+   COUNTER
+========================================================= */
+
+.lightboxCounter {
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 24px;
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 9px 14px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.03em;
+
+  transform:
+    translateX(-50%);
+
+  backdrop-filter: blur(8px);
+}
+
+
+.lightboxCounter span {
+  opacity: 0.5;
+}
+
+
+/* =========================================================
+   LIGHTBOX LABEL
+========================================================= */
+
+.lightboxLabel {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 20px;
+
+  z-index: 5;
+
+  max-width:
+    calc(
+      100% -
+      40px
+    );
+
+  padding: 9px 15px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.72
+    );
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  transform:
+    translateX(-50%);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  :global(.vv-media-track).carouselScope {
+    --slide-width: 82%;
+
+    gap: 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
   :global(.vv-media-track).carouselScope {
     --slide-width: 88%;
+
     gap: 14px;
+
+    padding-bottom: 14px;
   }
+
 
   :global(.vv-media-slide).carouselScope {
     border-radius: 18px;
   }
 
-  :global(.vv-media-slide).carouselScope :global(.photo__bounce-wrap).carouselScope {
+
+  .mediaButton {
     aspect-ratio: 4 / 3;
   }
 
-  :global(.vv-media-arrow).carouselScope {
-    width: 36px;
-    height: 36px;
+
+  .mediaButton img.planImage {
+    padding: 10px;
   }
 
-  :global(.vv-media-prev).carouselScope {
-    left: 7%;
-  }
-
-  :global(.vv-media-next).carouselScope {
-    right: 7%;
-  }
 
   :global(.vv-media-arrow).carouselScope {
     display: none !important;
   }
+
+
+  .zoomIcon {
+    display: none;
+  }
+
+
+  .lightbox {
+    padding:
+      65px
+      12px
+      55px;
+  }
+
+
+  .lightboxContent {
+    max-width: 100%;
+
+    max-height: 82vh;
+  }
+
+
+  .lightboxContent img {
+    max-height: 82vh;
+
+    border-radius: 8px;
+  }
+
+
+  .lightboxPlan {
+    width:
+      calc(
+        100vw -
+        24px
+      );
+
+    height: 78vh;
+
+    padding: 10px;
+  }
+
+
+  .lightboxClose {
+    top: 14px;
+
+    right: 14px;
+
+    width: 42px;
+
+    height: 42px;
+  }
+
+
+  .lightboxArrow {
+    width: 42px;
+
+    height: 42px;
+  }
+
+
+  .lightboxPrev {
+    left: 8px;
+  }
+
+
+  .lightboxNext {
+    right: 8px;
+  }
+
+
+  .lightboxCounter {
+    bottom: 13px;
+
+    padding: 7px 11px;
+
+    font-size: 11px;
+  }
+
+
+  .lightboxLabel {
+    bottom: 12px;
+
+    max-width:
+      calc(
+        100% -
+        24px
+      );
+
+    padding: 7px 10px;
+
+    font-size: 11px;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
   :global(.vv-media-track).carouselScope {
     scroll-behavior: auto;
   }
 
-  :global(.vv-media-slide).carouselScope {
+
+  :global(.vv-media-slide).carouselScope,
+  :global(.vv-media-arrow).carouselScope,
+  .zoomIcon,
+  .lightbox {
     transition: none;
+
+    animation: none;
   }
 }
