@@ -133,7 +133,7 @@ export default async function ProjectsPage({ searchParams }) {
                   <div className="archive-content-inner">
                     <div
                       style={{ '--gutter-width': '30px' }}
-                      className="d-grid grid-columns-desktop-3 grid-columns-tablet-2 grid-columns-1"
+                      className="d-grid grid-columns-desktop-4 grid-columns-tablet-2 grid-columns-1"
                     >
                       {filteredModels.map((model) => (
                         <ProjectCard key={model.slug} model={model} />

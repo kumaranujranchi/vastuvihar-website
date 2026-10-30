@@ -188,7 +188,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 40px;
+  padding: 30px 24px;
   z-index: 3;
   color: #fff;
 }
@@ -204,14 +204,17 @@
 }
 .project-item.project-style-2 .project-content .project-status a {
   color: var(--accent);
+  padding: 8px 16px;
 }
 .project-item.project-style-2 .project-content .project-location {
-  margin-top: 30px;
+  margin-top: 20px;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 20px;
+  padding-bottom: 14px;
 }
 .project-item.project-style-2 .project-content .project-title {
   margin-bottom: 0;
+  font-size: clamp(20px, 1.5vw, 26px);
+  line-height: 1.25;
 }
 .project-item.project-style-2:hover .project-post-thumbnail img {
   transform: translate3d(0, 0, 0) scale(1.2);
