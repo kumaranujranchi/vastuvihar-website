@@ -65,7 +65,7 @@ for (const file of files) {
       const ref = match[2].startsWith('@/') ? path.join(root, match[2].slice(2)) : path.resolve(path.dirname(file), match[2]);
       if (![ref, ...['.jsx', '.js', '.json', '.css', '/index.jsx', '/index.js'].map((suffix) => ref + suffix)].some(fs.existsSync)) problem(file, `Missing import: ${match[2]}`);
     }
-    for (const match of text.matchAll(/(?<![\w-])(src|href|poster|action|xlinkHref)\s*=\s*(?:\{\s*)?(["'])((?:\\.|(?!\2)[^\\])*)\2/g)) checkReference(match[3], file, match[1] === 'href' ? 'link' : 'asset');
+    for (const match of text.matchAll(/(?<![\w-])(src|href|poster|action|xlinkHref)\s*=\s*(?:\{\s*)?(["'])((?:\\.|(?!\2)[^\\])*)\2/g)) checkReference(match[3], file, (match[1] === 'href' || match[1] === 'action') ? 'link' : 'asset');
     // Asset paths and navigation config held in ordinary JS data objects.
     if (relative(file).startsWith('data/')) for (const match of text.matchAll(/(['"])(\/[^'"\n]+)\1/g)) checkReference(match[2], file, /\.(?:svg|png|jpe?g|webp|woff2?)(?:[?#]|$)/.test(match[2]) ? 'asset' : 'link');
   }

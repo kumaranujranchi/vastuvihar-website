@@ -971,3 +971,91 @@
 .elementor-61 .elementor-element.elementor-element-d07b84b .hfe-breadcrumbs-home-icon {
   margin: 0;
 }
+
+/* Contact page image links and mobile layout */
+.vv-contact-image-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: top;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.vv-contact-image-link img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.vv-contact-image-link-label {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.vv-contact-external-icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  opacity: 0;
+  transform: translate(-4px, calc(-50% + 4px));
+  transition: opacity 200ms ease, transform 200ms ease;
+  pointer-events: none;
+}
+
+.vv-contact-image-link:hover .vv-contact-external-icon,
+.vv-contact-image-link:focus-visible .vv-contact-external-icon {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.vv-contact-image-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .elementor-61 .elementor-element.elementor-element-67b88a0 {
+    margin-top: 50px !important;
+  }
+  .bimg {
+    height: 80px;
+    width: 150px;
+  }
+  .elementor-element-67b88a0 {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  .elementor-element-67b88a0 .elementor-invisible {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (hover: none) {
+  .vv-contact-external-icon {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vv-contact-external-icon {
+    transition: none;
+  }
+}

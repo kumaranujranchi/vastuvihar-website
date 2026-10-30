@@ -276,12 +276,12 @@ export default function ProjectsSection() {
                     <div className="project-content">
                       <div className="project-location">
                         {/* <i className="spaciaz-icon-marker"></i> */}
-                        <Link href="/project/ananta-bungalow/" rel="tag" prefetch={false}>
+                        <Link href="/projects/ananta-bungalow/" rel="tag" prefetch={false}>
                           BUA: 1800 Sqft, 50 - 70 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/project/ananta-bungalow/" prefetch={false}>
+                        <Link href="/projects/ananta-bungalow/" prefetch={false}>
                           Ananta Bungalow
                         </Link>
                       </h4>
@@ -314,12 +314,12 @@ export default function ProjectsSection() {
                     <div className="project-content">
                       <div className="project-location">
                         {/* <i className="spaciaz-icon-marker"></i> */}
-                        <Link href="/project/ceo-bungalow/" rel="tag" prefetch={false}>
+                        <Link href="/projects/ceo-bungalow/" rel="tag" prefetch={false}>
                           BUA: 2500 Sqft, 1.10Cr - 1.80Cr
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/project/ceo-bungalow/" prefetch={false}>
+                        <Link href="/projects/ceo-bungalow/" prefetch={false}>
                           CEO Bungalow
                         </Link>
                       </h4>
@@ -352,12 +352,12 @@ export default function ProjectsSection() {
                     <div className="project-content">
                       <div className="project-location">
                         {/* <i className="spaciaz-icon-marker"></i> */}
-                        <Link href="/project/simplex-bungalow/" rel="tag" prefetch={false}>
+                        <Link href="/projects/simplex-bungalow/" rel="tag" prefetch={false}>
                           BUA: 1000 Sqft, 30 - 35 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/project/simplex-bungalow/" prefetch={false}>
+                        <Link href="/projects/simplex-bungalow/" prefetch={false}>
                           Simplex Bungalow
                         </Link>
                       </h4>
@@ -390,12 +390,12 @@ export default function ProjectsSection() {
                     <div className="project-content">
                       <div className="project-location">
                         {/* <i className="spaciaz-icon-marker"></i> */}
-                        <Link href="/project/ganga/" rel="tag" prefetch={false}>
+                        <Link href="/projects/ganga-new-2bhk/" rel="tag" prefetch={false}>
                           BUA: 510 Sqft, 10 - 16 Lac
                         </Link>
                       </div>{' '}
                       <h4 className="project-title delta">
-                        <Link href="/project/ganga/" prefetch={false}>
+                        <Link href="/projects/ganga-new-2bhk/" prefetch={false}>
                           Ganga 
                         </Link>
                       </h4>

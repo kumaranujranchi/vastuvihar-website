@@ -2144,3 +2144,16 @@
 .elementor-53 .elementor-element.elementor-element-b5b8a6c .hfe-breadcrumbs-home-icon {
   margin: 0;
 }
+
+/* Awards card grid layout */
+.elementor-element.elementor-element-f354a83 > .e-con-inner > .elementor-element.elementor-element-60db682 {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.elementor-element.elementor-element-f354a83 .elementor-element-60db682 > .box-img-hover {
+  min-width: 0;
+}

@@ -1,12 +1,16 @@
 import PageLayout from '@/components/PageLayout';
 import Breadcrumb from '@/components/Breadcrumb';
-import CookiePreferences from './CookiePreferences';
+import CookiePreferences from '@/components/privacy/CookiePreferences';
 import styles from './privacy.module.css';
 
-export const metadata = {
-  title: 'Privacy Notice & Policy | Vastu Vihar',
-  description: 'Privacy Notice and Policy of Technoculture Building Centre Private Limited (Vastu Vihar), including personal data rights, processing, security, and grievance contact details.',
-};
+import { createPageMetadata } from '@/lib/metadata';
+
+export const metadata = createPageMetadata({
+  title: 'Privacy Policy | Vastu Vihar',
+  description:
+    'Learn how Vastu Vihar collects, uses, and safeguards your personal data, and manage your cookie preferences.',
+  path: '/privacy-policy/',
+});
 
 const Icon = ({ children }) => <span className={styles.icon} aria-hidden="true">{children}</span>;
 

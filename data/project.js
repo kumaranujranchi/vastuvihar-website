@@ -581,21 +581,6 @@ export const projectsData = {
                         url: "/simplex/ff2d.webp",
                         label: "First Floor",
                     },
-                    // {
-                    //     type: "3D",
-                    //     url: "/simplex/gf3d.webp",
-                    //     label: "Ground Floor 3D Layout",
-                    // },
-                    // {
-                    //     type: "3D",
-                    //     url: "/simplex/ff3d.webp",
-                    //     label: "First Floor 3D Layout",
-                    // },
-                    // {
-                    //     type: "3D",
-                    //     url: "/simplex/tarrace_3d.webp",
-                    //     label: "Terrace 3D Layout",
-                    // },
                 ],
                 "areaBreakdown": [
                     {

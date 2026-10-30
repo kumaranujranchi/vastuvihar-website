@@ -2,10 +2,14 @@ import PageLayout from '@/components/PageLayout';
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './terms.module.css';
 
-export const metadata = {
-  title: 'Terms & Conditions | Vastu Vihar',
-  description: 'Terms and Conditions of the Vastu Vihar website. Last updated October 2026.',
-};
+import { createPageMetadata } from '@/lib/metadata';
+
+export const metadata = createPageMetadata({
+  title: 'Terms and Conditions | Vastu Vihar',
+  description:
+    'Review the terms and conditions governing the use of Vastu Vihar services, website, property bookings, and content.',
+  path: '/terms-and-conditions/',
+});
 
 export default function TermsAndConditionsPage() {
   return (

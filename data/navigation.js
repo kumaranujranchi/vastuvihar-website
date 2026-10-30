@@ -22,8 +22,8 @@ export const footerGroups = [
     title: 'Explore',
     links: [
       { label: 'Our Models', href: '/projects/' },
-      { label: 'Completed Projects', href: '/project-status/completed/' },
-      { label: 'Under Construction', href: '/project-status/under-construction/' },
+      { label: 'Branch Offices', href: '/contact/branch-contact/' },
+      { label: 'Site Offices', href: '/contact/site-contact/' },
       { label: 'Latest News', href: '/blog/' },
     ],
   },
