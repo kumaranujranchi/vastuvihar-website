@@ -30,15 +30,23 @@ export default function FaqAccordion() {
                 aria-controls={faq.id}
               >
                 <span className="e-n-accordion-item-title-header">
+                  <span className="faq-question-badge" aria-hidden="true">?</span>
                   <h6 className="e-n-accordion-item-title-text">{faq.question}</h6>
                 </span>
-                <span className="e-n-accordion-item-title-icon">
-                  <span className="e-opened">
-                    <i aria-hidden="true" className="spaciaz-icon- spaciaz-icon-chevron-up" />
-                  </span>
-                  <span className="e-closed">
-                    <i aria-hidden="true" className="spaciaz-icon- spaciaz-icon-chevron-down" />
-                  </span>
+                <span className="e-n-accordion-item-title-icon" aria-hidden="true">
+                  <svg
+                    className="faq-toggle-chevron"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </span>
               </summary>
               <div
