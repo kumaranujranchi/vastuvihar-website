@@ -1,17 +1,74 @@
 /* VASTU VIHAR / BRANCH CONTACT — CSS MODULE
    Imported directly by page.jsx. Both files must be in the same folder. */
 
-.page { width: 100%; min-height: 100vh; }
-.banner { background: #f2f1ee; padding: 65px 28px; }
-.bannerBox { width: 100%; }
-.bannerInner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
-.bannerInner h1 { margin: 0; font-family: inherit; color: #191919; font-size: clamp(32px, 4vw, 55px); font-weight: 500; line-height: 1.15; }
-.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: #666; font-size: 13px; }
-.breadcrumbs a { color: #444; text-decoration: none; }
-.breadcrumbs a:hover { color: #a18054; }
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.banner {
+  background: #f2f1ee;
+  padding: 65px 28px;
+}
+
+.bannerBox {
+  width: 100%;
+}
+
+.bannerInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+.bannerInner h1 {
+  margin: 0;
+  font-family: inherit;
+  color: #191919;
+  font-size: clamp(32px, 4vw, 55px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #666;
+  font-size: 13px;
+}
+
+.breadcrumbs a {
+  color: #444;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: #a18054;
+}
+
 @media (max-width: 640px) {
-  .banner { padding: 40px 18px; }
-  .bannerInner { gap: 13px; align-items: flex-start; flex-direction: column; }
-  .bannerInner h1 { font-size: 32px; }
-  .breadcrumbs { gap: 8px; font-size: 12px; }
+  .banner {
+    padding: 40px 18px;
+  }
+
+  .bannerInner {
+    gap: 13px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bannerInner h1 {
+    font-size: 32px;
+  }
+
+  .breadcrumbs {
+    gap: 8px;
+    font-size: 12px;
+  }
 }
