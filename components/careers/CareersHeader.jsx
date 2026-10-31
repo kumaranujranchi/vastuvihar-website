@@ -17,7 +17,7 @@ export default function CareersHeader() {
           data-element_type="container"
         >
           <div className="e-con-inner">
-            <div
+            {/* <div
               className="elementor-element elementor-element-b86a822 elementor-widget elementor-widget-page-title"
               data-id="b86a822"
               data-element_type="widget"
@@ -28,7 +28,7 @@ export default function CareersHeader() {
                   <h2 className="elementor-heading-title elementor-size-default">Careers</h2>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               className="elementor-element elementor-element-9e12080 e-con-full e-flex e-con e-child"
               data-id="9e12080"
@@ -70,7 +70,7 @@ export default function CareersHeader() {
                   </nav>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="elementor-element elementor-element-b529949 elementor-widget__width-initial elementor-hidden-mobile elementor-widget elementor-widget-heading"
                 data-id="b529949"
                 data-element_type="widget"
@@ -81,7 +81,7 @@ export default function CareersHeader() {
                     We’re a team of designers, engineers, and real estate professionals who believe in creating exceptional spaces.
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function CareersHeader() {
             data-id="2244a03"
             data-element_type="container"
           >
-            <ScrollingTicker text="Join our team" widgetId="a2bf2a4" />
+            {/* <ScrollingTicker text="Join our team" widgetId="a2bf2a4" /> */}
           </div>
         </div>
       </div>

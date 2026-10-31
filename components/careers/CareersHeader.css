@@ -21,6 +21,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 500px;
 }
 
 .elementor-57 .elementor-element.elementor-element-b227e97::before, .elementor-57 .elementor-element.elementor-element-b227e97 > .elementor-background-video-container::before, .elementor-57 .elementor-element.elementor-element-b227e97 > .e-con-inner > .elementor-background-video-container::before, .elementor-57 .elementor-element.elementor-element-b227e97 > .elementor-background-slideshow::before, .elementor-57 .elementor-element.elementor-element-b227e97 > .e-con-inner > .elementor-background-slideshow::before, .elementor-57 .elementor-element.elementor-element-b227e97 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before {
@@ -200,7 +201,7 @@
 .elementor-57 .elementor-element.elementor-element-2fe4001 .spaciaz-border-shape {
   width: 30px;
   height: 30px;
-  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z") !important;
 }
 
 .elementor-57 .elementor-element.elementor-element-ae6025e {
