@@ -4,6 +4,7 @@ import './ProjectsSection.css';
 import '../projects/ProjectCard.css';
 import '../common/ScrollingTicker.css';
 
+
 const tickerItems = ['selected projects', '·', 'selected projects', '·'];
 
 const projects = [
@@ -25,7 +26,7 @@ const projects = [
     imageWidth: 1920,
     imageHeight: 1280,
     href: '/projects/ceo-bungalow/',
-    details: 'BUA: 2500 Sqft, 1.10Cr - 1.80Cr',
+    details: 'BUA: 2500 Sqft, 90 Lac - 1.80Cr',
   },
   {
     name: 'Simplex Bungalow',
