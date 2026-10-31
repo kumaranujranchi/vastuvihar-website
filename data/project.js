@@ -27,6 +27,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/ananta/ananta.webp",
             "/ananta/gallery-1.webp",
             "/ananta/gallery-2.webp",
             "/ananta/gallery-3.webp",
@@ -115,6 +116,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/ceo/ceo.webp",
             "/ceo/modern-home-1.webp",
             "/ceo/modern-home-2.webp",
             "/ceo/modern-home-3.webp",

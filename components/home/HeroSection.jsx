@@ -133,7 +133,7 @@ export default function HeroSection() {
                           decoding="async"
                           width="190"
                           height="80"
-                          src="/villa/yamuna2.webp"
+                          src="/villa/yamuna.webp"
                           className="attachment-full size-full wp-image-7480"
                           alt=""
                         />{' '}
