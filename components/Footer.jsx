@@ -78,7 +78,13 @@ export default function Footer() {
             </div>
             <div className="elementor-element elementor-element-aa7f6d2 elementor-widget elementor-widget-text-editor">
               <div className="elementor-widget-container">
-                © {new Date().getFullYear()} <Link href="/" prefetch={false}><b>{site.name}</b></Link>. All Rights Reserved.
+                <p>
+                  © {new Date().getFullYear()} <Link href="/" prefetch={false}><b>{site.name}</b></Link>. All Rights Reserved.
+                  {' | '}
+                  <Link href="/privacy-policy" prefetch={false}>Privacy Policy</Link>
+                  {' | '}
+                  <Link href="/terms-and-conditions" prefetch={false}>Terms & Conditions</Link>
+                </p>
               </div>
             </div>
           </div>
