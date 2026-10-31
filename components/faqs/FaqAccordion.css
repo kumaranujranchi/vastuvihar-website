@@ -8,7 +8,7 @@
 }
 
 .elementor-59 .elementor-element.elementor-element-222c53f > .e-con-inner {
-  max-width: 1140px;
+  max-width: 1140px !important;
   width: 100%;
   margin: 0 auto;
 }
@@ -206,4 +206,15 @@
   .elementor-59 .e-n-accordion-item > .e-con {
     padding: 0 0 20px 0 !important;
   }
+
+
+.elementor-element-062102f {
+  padding-inline: 15px !important;
+}
+}
+
+.elementor-element-062102f {
+  width: 100%;
+  max-width: 900px !important; /* Controls the total width of the FAQ block */
+  margin: 0 auto;
 }

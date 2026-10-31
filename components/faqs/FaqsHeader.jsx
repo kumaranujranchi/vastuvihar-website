@@ -68,7 +68,7 @@ export default function FaqsHeader() {
                 </nav>
               </div>
             </div>
-            <div
+            {/* <div
               className="elementor-element elementor-element-d2639a9 elementor-widget__width-initial elementor-hidden-mobile elementor-widget elementor-widget-heading"
               data-id="d2639a9"
               data-element_type="widget"
@@ -79,7 +79,7 @@ export default function FaqsHeader() {
                   Find answers about Vastu Vihar homes, ownership, financing, and the journey to your dream home.
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

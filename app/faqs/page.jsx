@@ -24,15 +24,8 @@ export default function FaqsPage() {
               <div data-elementor-type="wp-page" data-elementor-id="59" className="elementor elementor-59">
                 <FaqsHeader />
                 <FaqsTicker />
-                <div
-                  className="elementor-element elementor-element-222c53f e-flex e-con-boxed e-con e-parent"
-                  data-id="222c53f"
-                  data-element_type="container"
-                >
-                  <div className="e-con-inner">
-                    <FaqAccordion />
-                  </div>
-                </div>
+
+                <FaqAccordion />
               </div>
             </main>
           </div>
