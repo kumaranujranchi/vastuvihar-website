@@ -36,7 +36,15 @@ export default function Footer() {
     <footer id="colophon" itemType="https://schema.org/WPFooter" itemScope>
       <div className="footer-width-fixer">
         <div className="elementor elementor-6350">
-          <div className="elementor-element elementor-element-2979ffc e-con-full e-flex e-con e-parent">
+          <div
+            className="elementor-element elementor-element-2979ffc e-con-full e-flex e-con e-parent"
+            style={{
+              backgroundImage: "url('/images/footer-bg.jpg')",
+              backgroundPosition: 'center 30%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
             <div className="elementor-element elementor-element-e376b42 elementor-widget elementor-widget-spacer" aria-hidden="true">
               <div className="elementor-widget-container"><div className="elementor-spacer"><div className="elementor-spacer-inner" /></div></div>
             </div>
@@ -67,8 +75,6 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="elementor-element elementor-element-5be06e4 e-con-full e-flex e-con e-child">
             </div>
             <div className="elementor-element elementor-element-aa7f6d2 elementor-widget elementor-widget-text-editor">
               <div className="elementor-widget-container">

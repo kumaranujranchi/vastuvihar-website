@@ -71,14 +71,16 @@ const testimonials = [
 
 export default function ImageSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
 
   const prevSlide = () => {
     setActiveIndex(
@@ -151,6 +153,8 @@ export default function ImageSection() {
             <div
               className="elementor-testimonial-item-wrapper spaciaz-swiper swiper"
               dir="ltr"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             >
               <div className="layout-1 swiper-wrapper">
                 {testimonials.map((testimonial, index) => (
@@ -159,9 +163,6 @@ export default function ImageSection() {
                     className={`grid-item swiper-slide elementor-testimonial-item ${
                       index === activeIndex ? "swiper-slide-active" : ""
                     }`}
-                    style={{
-                      display: index === activeIndex ? "block" : "none",
-                    }}
                   >
                     <div className="testimonial-content">
                       <div className="wrap_content">
