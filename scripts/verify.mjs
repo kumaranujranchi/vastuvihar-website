@@ -25,11 +25,17 @@ for (const required of ['', 'about-us', 'projects', 'contact', 'careers', 'core-
 if (routes.size !== pages.length) errors.add('Duplicate route in data/pages.json.');
 for (const page of pages) {
   if (removed.test(key(page.path))) errors.add(`Removed route remains: ${page.path}`);
-  const routeFile = path.join(root, 'app', key(page.path), 'page.jsx');
+  const routeExists = ['page.jsx', 'page.tsx', 'page.js', 'page.ts'].some((name) =>
+    fs.existsSync(path.join(root, 'app', key(page.path), name))
+  );
   const dynamicFile = page.path.startsWith('/projects/') && !page.path.startsWith('/projects/page/')
     ? path.join(root, 'app/projects/[slug]/page.jsx')
-    : page.path.startsWith('/our-team/') ? path.join(root, 'app/our-team/[slug]/page.jsx') : null;
-  if (!fs.existsSync(routeFile) && !(dynamicFile && fs.existsSync(dynamicFile))) errors.add(`No page component for ${page.path}`);
+    : page.path.startsWith('/our-team/')
+    ? path.join(root, 'app/our-team/[slug]/page.jsx')
+    : page.path.startsWith('/price-list/')
+    ? path.join(root, 'app/price-list/[slug]/page.tsx')
+    : null;
+  if (!routeExists && !(dynamicFile && fs.existsSync(dynamicFile))) errors.add(`No page component for ${page.path}`);
 }
 
 function checkReference(raw, file, kind = 'asset') {
