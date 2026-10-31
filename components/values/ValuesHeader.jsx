@@ -76,11 +76,11 @@ export default function ValuesHeader() {
                 data-element_type="widget"
                 data-widget_type="heading.default"
               >
-                <div className="elementor-widget-container">
+                {/* <div className="elementor-widget-container">
                   <div className="elementor-heading-title elementor-size-default">
                     Whether you’re building, remodeling, buying, or selling, we bring seamless project execution under one roof.
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

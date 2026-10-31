@@ -1,0 +1,484 @@
+.page {
+    background: #fff;
+    color: #111
+}
+
+.container {
+    width: min(1730px, calc(100% - 60px));
+    margin: 0 auto
+}
+
+.hero {
+    position: relative;
+    min-height: 480px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    background: linear-gradient(rgb(0 0 0/48%), rgb(0 0 0/48%)), url('/images/about-bc.jpeg') center/cover no-repeat
+}
+
+.heroInner {
+    width: min(1730px, calc(100% - 60px));
+    margin: 0 auto;
+}
+
+.date,
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase
+}
+
+.date {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: rgb(255 255 255/80%);
+    font-size: 14px;
+}
+
+.hero h1 {
+    max-width: 1250px;
+    margin: 0;
+    color: #fff;
+    /* Scaled down heading size */
+    font-size: clamp(40px, 5vw, 72px); 
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -.03em
+}
+
+.heroBottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 32px;
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    color: rgb(255 255 255/60%);
+    font-size: 14px;
+    font-weight: 600
+}
+
+.breadcrumbs a {
+    color: inherit;
+    text-decoration: none
+}
+
+.breadcrumbs a:hover {
+    color: #ed3237
+}
+
+.breadcrumbs>span {
+    width: 4px;
+    height: 4px;
+    flex: 0 0 auto;
+    background: currentColor
+}
+
+.breadcrumbs strong {
+    color: #fff;
+    font-weight: 600
+}
+
+.heroCurve {
+    height: 50px;
+    border-radius: 50px 50px 0 0;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.projectIntro {
+    padding: 60px 0 105px
+}
+
+.projectIntroGrid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 80px
+}
+
+.kicker {
+    padding: 4px 15px;
+    color: #ed3237;
+    border: 1px solid currentColor;
+    border-radius: 999px
+}
+
+.projectIntro h2,
+.sectionTitleRow h2,
+.notesGrid h2,
+.footerCta h2 {
+    margin: 16px 0 0;
+    /* Scaled down heading size */
+    font-size: clamp(32px, 3.5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -.03em
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid #ddd
+}
+
+.infoItem {
+    min-height: 128px;
+    padding: 24px 28px 24px 0;
+    border-bottom: 1px solid #ddd
+}
+
+.infoItem:nth-child(odd) {
+    border-right: 1px solid #ddd
+}
+
+.infoItem:nth-child(even) {
+    padding-left: 28px
+}
+
+.infoItem span {
+    display: block;
+    margin-bottom: 12px;
+    color: #888;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em
+}
+
+.infoItem strong,
+.infoItem a {
+    color: #111;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.55;
+    text-decoration: none
+}
+
+.infoItem a:hover {
+    color: #ed3237
+}
+
+.dataSection,
+.paymentSection {
+    padding: 0 0 105px
+}
+
+.sectionTitleRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 34px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #d8d8d8
+}
+
+.sectionTitleRow>span {
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase
+}
+
+.tableShell {
+    overflow-x: auto;
+    border: 1px solid #dfdfdf;
+    border-radius: 24px
+}
+
+.table {
+    width: 100%;
+    min-width: 880px;
+    border-collapse: collapse;
+    background: #fff
+}
+
+.table th,
+.table td {
+    padding: 21px 22px;
+    text-align: left;
+    border-bottom: 1px solid #e7e7e7;
+    vertical-align: middle
+}
+
+.table th {
+    color: #777;
+    background: #f5f5f5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase
+}
+
+.table td {
+    color: #555;
+    font-size: 15px
+}
+
+.table td strong {
+    color: #111
+}
+
+.table tr:last-child td {
+    border-bottom: 0
+}
+
+.priceCell {
+    color: #111 !important;
+    font-weight: 700;
+    white-space: nowrap
+}
+
+.specNote {
+    margin: 18px 0 0;
+    padding: 20px 24px;
+    color: #666;
+    border-left: 3px solid #ed3237;
+    background: #f7f7f7;
+    line-height: 1.65
+}
+
+.scheduleGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px
+}
+
+.scheduleCard {
+    position: relative;
+    padding: 34px;
+    border-radius: 26px;
+    background: #f4f4f4
+}
+
+.scheduleNumber {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .1em
+}
+
+.scheduleCard h3 {
+    max-width: 80%;
+    margin: 0 0 24px;
+    font-size: 22px; /* Scaled down */
+    line-height: 1.25;
+    letter-spacing: -.02em
+}
+
+.scheduleCard ol {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.scheduleCard li {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid #ddd
+}
+
+.scheduleCard li>span {
+    color: #ed3237;
+    font-size: 12px;
+    font-weight: 800
+}
+
+.scheduleCard p {
+    margin: 0;
+    color: #555;
+    line-height: 1.55
+}
+
+.notesSection {
+    padding: 0 0 105px
+}
+
+.notesGrid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 80px;
+    padding: 52px;
+    border-radius: 30px;
+    color: #fff;
+    background: #0588bc; 
+}
+
+.notesGrid .kicker {
+    color: #fff;
+    border-color: rgb(255 255 255/45%)
+}
+
+.notesList {
+    border-top: 1px solid rgb(255 255 255/18%)
+}
+
+.noteItem {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(255 255 255/18%)
+}
+
+.noteItem span {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800
+}
+
+.noteItem p {
+    margin: 0;
+    color: rgb(255 255 255/90%);
+    line-height: 1.6
+}
+
+.footerCta {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 100px;
+    padding: 52px;
+    border-radius: 30px;
+    background: #f3f3f3
+}
+
+.footerActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.footerActions a {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22px;
+    border-radius: 999px;
+    color: #fff;
+    background: #32366b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.footerActions a:last-child {
+    background: #ed3237
+}
+
+.footerActions a:hover {
+    transform: translateY(-2px)
+}
+
+@media(max-width:1024px) {
+    .hero {
+        min-height: 420px
+    }
+
+    .projectIntroGrid,
+    .notesGrid {
+        grid-template-columns: 1fr;
+        gap: 44px
+    }
+
+    .scheduleGrid {
+        grid-template-columns: 1fr
+    }
+
+    .footerCta {
+        align-items: flex-start;
+        flex-direction: column
+    }
+}
+
+@media(max-width:767px) {
+    .container,
+    .heroInner {
+        width: min(100% - 30px, 1730px)
+    }
+
+    .hero {
+        min-height: 380px
+    }
+
+    .hero h1 {
+        margin: 12px 0 16px;
+        font-size: 36px /* Scaled down for mobile */
+    }
+
+    .heroBottom {
+        padding-bottom: 20px
+    }
+
+    .heroCurve {
+        height: 24px;
+        border-radius: 16px 16px 0 0
+    }
+
+    .projectIntro {
+        padding: 40px 0 70px
+    }
+
+    .projectIntroGrid {
+        gap: 32px
+    }
+
+    .contactGrid {
+        grid-template-columns: 1fr
+    }
+
+    .infoItem,
+    .infoItem:nth-child(even) {
+        min-height: auto;
+        padding: 20px 0;
+        border-right: 0
+    }
+
+    .dataSection,
+    .paymentSection,
+    .notesSection {
+        padding-bottom: 72px
+    }
+
+    .sectionTitleRow {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    .projectIntro h2,
+    .sectionTitleRow h2,
+    .notesGrid h2,
+    .footerCta h2 {
+        font-size: 28px /* Scaled down for mobile */
+    }
+
+    .scheduleCard,
+    .notesGrid,
+    .footerCta {
+        padding: 28px 22px;
+        border-radius: 22px
+    }
+
+    .footerCta {
+        margin-bottom: 70px
+    }
+}
