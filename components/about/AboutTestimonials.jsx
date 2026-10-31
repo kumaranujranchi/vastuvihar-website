@@ -94,7 +94,7 @@ export default function AboutTestimonials() {
                 decoding="async"
                 width="140"
                 height="140"
-                src="/villa/yamuna2.webp"
+                src="/villa/yamuna.webp"
                 className="attachment-full size-full wp-image-510"
                 alt=""
               />
