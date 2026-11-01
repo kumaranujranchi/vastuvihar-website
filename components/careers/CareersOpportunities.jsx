@@ -81,7 +81,7 @@ export default function CareersOpportunities() {
                 <span className="elementor-button-content-wrapper">
                   <span className="elementor-button-text" data-name="careers@example.com">
                     <span>
-                      <span>careers@example.com</span>
+                      <span>hr@vastuvihar.org</span>
                     </span>
                   </span>
                 </span>

@@ -5,19 +5,24 @@ import CareersHeader from '@/components/careers/CareersHeader';
 import CareersOpportunities from '@/components/careers/CareersOpportunities';
 import CareersShowcase from '@/components/careers/CareersShowcase';
 import { createPageMetadata } from '@/lib/metadata';
+import { prisma } from '@/lib/prisma'; // <-- Import Prisma
 
 export const metadata = createPageMetadata({
   title: 'Careers | Vastu Vihar',
-  description:
-    'Join our team of architects, engineers, project managers, and property specialists shaping the future of affordable and quality living across Eastern India.',
+  description: 'Join our team shaping the future of affordable and quality living across Eastern India.',
   path: '/careers/',
 });
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  // Dynamically fetch active job vacancies directly from the database
+  const activeJobs = await prisma.jobVacancy.findMany({
+    where: { isActive: true },
+    orderBy: { createdAt: 'desc' },
+  });
+
   return (
     <PageLayout route="careers">
-      {/* <Breadcrumb title="Careers" /> */}
-      <div id="content" className="site-content-page clear" tabIndex="-1">
+      <div id="content" className="site-content-page clear" tabIndex={-1}>
         <div className="col-fluid">
           <div id="primary" className="content-area">
             <main id="main" className="site-main">
@@ -30,7 +35,8 @@ export default function CareersPage() {
                 >
                   <div className="e-con-inner">
                     <CareersOpportunities />
-                    <CareersShowcase />
+                    {/* Pass the fetched jobs to the showcase component */}
+                    <CareersShowcase jobs={activeJobs} />
                   </div>
                 </div>
               </div>
