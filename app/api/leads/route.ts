@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// Helper to determine if an IP is local/private
 function isPrivateIp(ip: string): boolean {
   return (
     ip === '127.0.0.1' ||
@@ -22,36 +21,23 @@ function isPrivateIp(ip: string): boolean {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const {
-      fullName,
-      phone,
-      email,
-      city,
-      budget,
-      project,
-      address,
-      message,
-      source,
-      website_url, // Honeypot field (hidden from real users)
-    } = body;
+    
+    // FOOLPROOF EXTRACTION: Accepts standard field names from any contact form
+    const fullName = body.fullName || body.name || '';
+    const phone = body.phone || body.mobile || body.contact || '';
+    const email = body.email || '';
+    const city = body.city || '';
+    const budget = body.budget || '';
+    const project = body.project || '';
+    const address = body.address || '';
+    const message = body.message || '';
+    const source = body.source || 'website_inquiry';
+    const website_url = body.website_url; // Honeypot
 
-    // 1. HONEYPOT BOT TRAP:
-    // Bots automatically populate any input element they find.
-    // If 'website_url' is present, silently return fake success so bots do not retry or mutate.
+    // 1. HONEYPOT BOT TRAP
     if (website_url && String(website_url).trim().length > 0) {
-      console.warn('[SPAM_BLOCKED] Honeypot triggered by automated bot:', {
-        fullName,
-        email,
-        phone,
-        website_url,
-      });
-      return NextResponse.json(
-        {
-          success: true,
-          message: 'Inquiry received successfully! Our team will contact you shortly.',
-        },
-        { status: 200 }
-      );
+      console.warn('[SPAM_BLOCKED] Honeypot triggered by automated bot:', { fullName, email, phone });
+      return NextResponse.json({ success: true, message: 'Inquiry received successfully!' }, { status: 200 });
     }
 
     // 2. EXTRACT CLIENT IP & COUNTRY
@@ -61,7 +47,6 @@ export async function POST(request: Request) {
     const rawIp = (cfIp || forwarded?.split(',')[0] || realIp || '127.0.0.1').trim();
     const clientIp = rawIp.replace(/^::ffff:/, '');
 
-    // Header-based Country detection (Cloudflare / Vercel / Nginx CDN)
     let country = (
       request.headers.get('cf-ipcountry') ||
       request.headers.get('x-vercel-ip-country') ||
@@ -69,7 +54,6 @@ export async function POST(request: Request) {
       null
     )?.toUpperCase() || null;
 
-    // Direct VPS / Lightsail GeoIP resolution fallback
     if (!country && clientIp && !isPrivateIp(clientIp)) {
       try {
         const controller = new AbortController();
@@ -81,11 +65,12 @@ export async function POST(request: Request) {
         if (geoRes.ok) {
           const geoData = await geoRes.json();
           if (geoData.countryCode) {
+            // FIXED SYNTAX ERROR HERE
             country = `${geoData.countryCode} - ${geoData.country}`;
           }
         }
       } catch {
-        // Continue gracefully without blocking lead submission
+        // Continue gracefully
       }
     }
 
@@ -99,7 +84,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Phone validation (simple digits check)
     const cleanPhone = String(phone).replace(/[^\d+]/g, '');
     if (cleanPhone.length < 10) {
       return NextResponse.json(
@@ -108,8 +92,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 4. RATE LIMITING:
-    // Max 5 submissions per IP within 5 minutes
+    // 4. RATE LIMITING
     if (clientIp && !isPrivateIp(clientIp)) {
       const recentCount = await prisma.lead.count({
         where: {
@@ -120,14 +103,13 @@ export async function POST(request: Request) {
 
       if (recentCount >= 5) {
         return NextResponse.json(
-          { success: false, error: 'Too many submissions. Please wait a few minutes before trying again.' },
+          { success: false, error: 'Too many submissions. Please wait a few minutes.' },
           { status: 429 }
         );
       }
     }
 
-    // 5. RAPID DUPLICATE GUARD:
-    // If the same phone submitted within 90 seconds, return success without polluting database
+    // 5. RAPID DUPLICATE GUARD
     const recentDuplicate = await prisma.lead.findFirst({
       where: {
         phone: cleanPhone,
@@ -137,16 +119,12 @@ export async function POST(request: Request) {
 
     if (recentDuplicate) {
       return NextResponse.json(
-        {
-          success: true,
-          message: 'Inquiry received successfully! Our team will contact you shortly.',
-          leadId: recentDuplicate.id,
-        },
+        { success: true, message: 'Inquiry received successfully!', leadId: recentDuplicate.id },
         { status: 200 }
       );
     }
 
-    // Save verified lead to database with IP, Country, and User-Agent
+    // 6. SAVE TO DB
     const lead = await prisma.lead.create({
       data: {
         fullName: String(fullName).trim(),
@@ -157,7 +135,7 @@ export async function POST(request: Request) {
         project: project ? String(project).trim() : null,
         address: address ? String(address).trim() : null,
         message: message ? String(message).trim() : null,
-        source: source ? String(source).trim() : 'website_inquiry',
+        source: String(source).trim(),
         status: 'NEW',
         ipAddress: clientIp,
         country: country || (isPrivateIp(clientIp) ? 'Local Development' : 'Unknown'),
@@ -166,11 +144,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Inquiry received successfully! Our team will contact you shortly.',
-        leadId: lead.id,
-      },
+      { success: true, message: 'Inquiry received successfully! Our team will contact you shortly.', leadId: lead.id },
       { status: 201 }
     );
   } catch (error) {
@@ -182,19 +156,14 @@ export async function POST(request: Request) {
   }
 }
 
-// GET endpoint to retrieve leads (protected by ADMIN_API_KEY)
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const key = searchParams.get('key');
     const adminKey = process.env.ADMIN_API_KEY;
 
-    // Check basic auth key if ADMIN_API_KEY is defined in environment
     if (adminKey && key !== adminKey) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized access.' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Unauthorized access.' }, { status: 401 });
     }
 
     const leads = await prisma.lead.findMany({
@@ -205,9 +174,6 @@ export async function GET(request: Request) {
     return NextResponse.json({ success: true, count: leads.length, leads });
   } catch (error) {
     console.error('Error fetching leads:', error);
-    return NextResponse.json(
-      { success: false, error: 'Failed to fetch leads.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: 'Failed to fetch leads.' }, { status: 500 });
   }
 }

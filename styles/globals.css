@@ -22363,11 +22363,11 @@ nav.post-navigation .nav-next {
         clear: both;
     }
 
-    .content-area {
+    /* .content-area {
         width: calc(100% - 470px);
         float: left;
         position: relative;
-    }
+    } */
 
     .content-area:before {
         content: "";

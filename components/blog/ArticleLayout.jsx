@@ -2,7 +2,6 @@ import './ArticleLayout.css';
 import '../projects/ProjectBreadcrumb.css';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
-import ContactForm from '@/components/ContactForm';
 
 export default function ArticleLayout({
   route,
@@ -150,10 +149,14 @@ export default function ArticleLayout({
                       />
                     </div>
                   )}
+                  
                   <div className="entry-content">
+                    {/* The dynamic blog content and new CommentForm will render here from page.tsx */}
                     {children}
                   </div>
+                  
                   <aside className="entry-taxonomy" />
+                  
                   {(prevPost || nextPost) && (
                     <nav
                       id="post-navigation"
@@ -186,111 +189,6 @@ export default function ArticleLayout({
                       </div>
                     </nav>
                   )}
-                  <section id="comments" className="comments-area" aria-label="Post Comments">
-                    <div id="respond" className="comment-respond">
-                      <span id="reply-title" className="gamma comment-reply-title">
-                        Leave a Reply{' '}
-                        <small>
-                          <Link
-                            rel="nofollow"
-                            id="cancel-comment-reply-link"
-                            href={`/${route}/#respond`}
-                            style={{ display: 'none' }}
-                            prefetch={false}
-                          >
-                            Cancel reply
-                          </Link>
-                        </small>
-                      </span>
-                      <ContactForm id="commentform" className="comment-form">
-                        <p className="comment-notes">
-                          <span id="email-notes">Your email address will not be published.</span>{' '}
-                          <span className="required-field-message">
-                            Required fields are marked <span className="required">*</span>
-                          </span>
-                        </p>
-                        <p className="comment-form-comment">
-                          <textarea
-                            id="comment"
-                            name="comment"
-                            cols="45"
-                            rows="4"
-                            maxLength="65525"
-                            required
-                            placeholder="Comment"
-                            defaultValue=""
-                          />
-                        </p>
-                        <p className="comment-form-author">
-                          <input
-                            id="author"
-                            name="author"
-                            type="text"
-                            placeholder="Your Name *"
-                            defaultValue=""
-                            size="30"
-                            aria-required="true"
-                            required
-                          />
-                        </p>
-                        <p className="comment-form-email">
-                          <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="Email Address *"
-                            defaultValue=""
-                            size="30"
-                            aria-required="true"
-                            required
-                          />
-                        </p>
-                        <p className="comment-form-url">
-                          <input
-                            id="url"
-                            name="url"
-                            type="url"
-                            placeholder="Your Website"
-                            defaultValue=""
-                            size="30"
-                          />
-                        </p>
-                        <p className="comment-form-cookies-consent">
-                          <input
-                            id="wp-comment-cookies-consent"
-                            name="wp-comment-cookies-consent"
-                            type="checkbox"
-                            defaultValue="yes"
-                          />{' '}
-                          <label htmlFor="wp-comment-cookies-consent">
-                            Save my name, email, and website in this browser for the next time I comment.
-                          </label>
-                        </p>
-                        <p className="form-submit">
-                          <button name="submit" type="submit" id="submit" className="submit button-style">
-                            <span className="button-text">Post Comment</span>
-                            <span className="button-icon">
-                              <span className="btn-icon-wrap">
-                                <span className="btn-icon">
-                                  <i className="spaciaz-icon-arrow-long-right" />
-                                </span>
-                                <span className="btn-icon-hover">
-                                  <i className="spaciaz-icon-arrow-long-right" />
-                                </span>
-                              </span>
-                            </span>
-                          </button>
-                          <input
-                            type="hidden"
-                            name="comment_post_ID"
-                            defaultValue={postId}
-                            id="comment_post_ID"
-                          />
-                          <input type="hidden" name="comment_parent" id="comment_parent" defaultValue="0" />
-                        </p>
-                      </ContactForm>
-                    </div>
-                  </section>
                 </div>
               </article>
             </main>
@@ -300,4 +198,3 @@ export default function ArticleLayout({
     </PageLayout>
   );
 }
-

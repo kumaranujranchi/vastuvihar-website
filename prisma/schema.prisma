@@ -89,19 +89,37 @@ model ChatMessage {
   @@index([sessionId])
 }
 
-// blog Section
+
+
+// Update your existing BlogPost model to include the comments array
 model BlogPost {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
-  slug        String   @unique
-  category    String   @default("Uncategorized")
+  slug        String    @unique
+  category    String    @default("Uncategorized")
   excerpt     String?
-  content     String   // Stores the full HTML of the blog
+  content     String
   imagePath   String?
-  isPublished Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isPublished Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  comments    Comment[] 
 
   @@index([createdAt])
   @@index([slug])
+}
+
+// Add the new Comment model at the bottom of the file
+model Comment {
+  id          String   @id @default(cuid())
+  post        BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+  authorName  String
+  authorEmail String?
+  content     String
+  isApproved  Boolean  @default(true) // Set false if you want admin approval first
+  createdAt   DateTime @default(now())
+
+  @@index([postId])
+  @@index([createdAt])
 }
