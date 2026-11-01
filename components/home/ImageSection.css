@@ -20,7 +20,7 @@
 }
 
 .elementor-6353 .elementor-element.elementor-element-4b0bf33:not(.elementor-motion-effects-element-type-background), .elementor-6353 .elementor-element.elementor-element-4b0bf33 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-  background-image: url("/images/h5_bg-4.jpg");
+  background-image: url("/testimonials.png");
   background-position: center center;
   background-size: cover;
 }
@@ -179,10 +179,10 @@
 }
 
 .elementor-6353 .elementor-element.elementor-element-7445366 .content {
-  color: #FFFFFF;
+  color: #000000;
   border-style: solid;
   border-width: 0px 0px 1px 0px;
-  border-color: #FFFFFF4D;
+  border-color: #7b7b7b4d;
   margin: 0px 0px 35px 0px;
   padding: 0px 0px 15px 0px;
 }
@@ -200,7 +200,7 @@
 }
 
 .elementor-6353 .elementor-element.elementor-element-7445366 .name, .elementor-6353 .elementor-element.elementor-element-7445366 .name a {
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .elementor-6353 .elementor-element.elementor-element-7445366 .layout-1 .name:before {
@@ -208,7 +208,7 @@
 }
 
 .elementor-6353 .elementor-element.elementor-element-7445366 .job {
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .elementor-6353 .elementor-element.elementor-element-7445366 .elementor-swiper-button.elementor-swiper-button-prev, .elementor-6353 .elementor-element.elementor-element-7445366 .elementor-swiper-button.elementor-swiper-button-next {
