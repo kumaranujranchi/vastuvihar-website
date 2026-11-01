@@ -67,7 +67,7 @@ const CITIES_LIST = [
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'leads' | 'vacancies' | 'applications'>('leads');
+  const [activeTab, setActiveTab] = useState<'leads' | 'vacancies' | 'applications' | 'blogs'>('leads');
   const [loading, setLoading] = useState(true);
 
   // Leads State
@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
   const [leadFilterCity, setLeadFilterCity] = useState('All Cities');
   const [dateRange, setDateRange] = useState('ALL');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
-
+  const [blogs, setBlogs] = useState<any[]>([]);
   // Vacancies State
   const [vacancies, setVacancies] = useState<JobVacancy[]>([]);
   const [showJobModal, setShowJobModal] = useState(false);
@@ -168,6 +168,39 @@ export default function AdminDashboardPage() {
       console.error('Failed to load applications:', err);
     }
   }, [appSearch, appFilterStatus]);
+
+
+  const fetchBlogs = useCallback(async () => {
+    try {
+      const res = await fetch('/api/admin/blogs');
+      const data = await res.json();
+      if (data.success) setBlogs(data.blogs);
+    } catch (err) {
+      console.error('Failed to load blogs:', err);
+    }
+  }, []);
+
+  // Update your main useEffect to trigger it:
+  useEffect(() => {
+    if (!loading) {
+      if (activeTab === 'leads') fetchLeads();
+      if (activeTab === 'vacancies') fetchVacancies();
+      if (activeTab === 'applications') fetchApplications();
+      if (activeTab === 'blogs') fetchBlogs(); // <-- Add this
+    }
+  }, [activeTab, loading, fetchLeads, fetchVacancies, fetchApplications, fetchBlogs]);
+
+  // Delete handler
+  const handleDeleteBlog = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this blog post?')) return;
+    try {
+      const res = await fetch(`/api/admin/blogs?id=${id}`, { method: 'DELETE' });
+      if (res.ok) setBlogs((prev) => prev.filter((b) => b.id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   useEffect(() => {
     if (!loading) {
@@ -456,8 +489,39 @@ export default function AdminDashboardPage() {
             </div>
             <span className={styles.navBadge}>{appStats.totalCount}</span>
           </button>
+          {/* Nav Item: Blog Posts */}
+          <button
+            onClick={() => setActiveTab('blogs')}
+            className={`${styles.navItem} ${activeTab === 'blogs' ? styles.navItemActive : ''}`}
+          >
+            <div className={styles.navItemLeft}>
+              <span className={styles.navIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+              </span>
+              <span>Blog Posts</span>
+            </div>
+          </button>
 
           <div className={styles.navSectionTitle}>QUICK ACTIONS</div>
+
+          {/* //blog button */}
+
+          <button onClick={() => router.push('/admin/blogs/new')} className={styles.navItem}>
+            <div className={styles.navItemLeft}>
+              <span className={styles.navIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              </span>
+              <span>Post New Blog</span>
+            </div>
+          </button>
+
+
 
           <button onClick={() => setShowJobModal(true)} className={styles.navItem}>
             <div className={styles.navItemLeft}>
@@ -821,7 +885,7 @@ export default function AdminDashboardPage() {
                               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <a href={`tel:${lead.phone}`} className={styles.callPill}>
                                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                   </svg>
                                   <span>{lead.phone}</span>
                                 </a>
@@ -833,7 +897,7 @@ export default function AdminDashboardPage() {
                                   title="WhatsApp Chat"
                                 >
                                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                                   </svg>
                                   <span>WhatsApp</span>
                                 </a>
@@ -932,6 +996,101 @@ export default function AdminDashboardPage() {
               </div>
             </div>
           )}
+
+
+          {/* ================= TAB 4: BLOGS ================= */}
+          {activeTab === 'blogs' && (
+            <div>
+              <div className={styles.filterBar}>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 800 }}>Manage Blog Posts</h3>
+                  <span style={{ fontSize: '12px', color: '#64748b' }}>
+                    Publish and manage articles on your live website.
+                  </span>
+                </div>
+                <button onClick={() => router.push('/admin/blogs/new')} className={styles.exportCrimsonBtn}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                  <span>Write New Post</span>
+                </button>
+              </div>
+
+              <div className={styles.mainCard}>
+                {blogs.length === 0 ? (
+                  <div className={styles.emptyStateContainer}>
+                    <div className={styles.emptyIconWrapper}>
+                      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                      </svg>
+                    </div>
+                    <h2 className={styles.emptyTitle}>Manage Your Articles</h2>
+                    <p className={styles.emptySubtitle}>
+                      Click "Write New Post" above to open the blog editor and publish a new article.
+                    </p>
+                  </div>
+                ) : (
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date Posted</th>
+                        <th>Status</th>
+                        <th style={{ textAlign: 'right' }}>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {blogs.map((blog) => (
+                        <tr key={blog.id}>
+                          <td>
+                            <div style={{ fontWeight: 600, color: '#0f172a' }}>{blog.title}</div>
+                            <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>/{blog.slug}</div>
+                          </td>
+                          <td>
+                            <span className={styles.cityBadge}>{blog.category}</span>
+                          </td>
+                          <td>
+                            <span className={styles.dateBadge}>
+                              <span>{new Date(blog.createdAt).toLocaleDateString('en-GB')}</span>
+                            </span>
+                          </td>
+                          <td>
+                            <span style={{
+                              fontSize: '11.5px', fontWeight: 700, padding: '3px 8px', borderRadius: '9999px',
+                              background: blog.isPublished ? '#dcfce7' : '#f1f5f9',
+                              color: blog.isPublished ? '#15803d' : '#64748b'
+                            }}>
+                              {blog.isPublished ? 'Published' : 'Draft'}
+                            </span>
+                          </td>
+                          <td style={{ textAlign: 'right' }}>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                              <a href={`/blog/${blog.slug}`} target="_blank" rel="noreferrer" className={styles.viewActionBtn} title="View Live">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                  <circle cx="12" cy="12" r="3" />
+                                </svg>
+                              </a>
+                              <button onClick={() => handleDeleteBlog(blog.id)} className={styles.deleteActionBtn} title="Delete Post">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="3 6 5 6 21 6" />
+                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                </svg>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
+          )}
+
 
           {/* ================= TAB 2: VACANCIES ================= */}
           {activeTab === 'vacancies' && (
@@ -1145,7 +1304,7 @@ export default function AdminDashboardPage() {
                           <strong>Phone:</strong>{' '}
                           <a href={`tel:${app.phone}`} className={styles.callPill}>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                             <span>{app.phone}</span>
                           </a>
@@ -1214,7 +1373,7 @@ export default function AdminDashboardPage() {
                 <strong>Phone Number:</strong>{' '}
                 <a href={`tel:${selectedLead.phone}`} className={styles.callPill}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                   <span>{selectedLead.phone}</span>
                 </a>

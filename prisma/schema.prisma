@@ -88,3 +88,20 @@ model ChatMessage {
 
   @@index([sessionId])
 }
+
+// blog Section
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String   @default("Uncategorized")
+  excerpt     String?
+  content     String   // Stores the full HTML of the blog
+  imagePath   String?
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([slug])
+}
