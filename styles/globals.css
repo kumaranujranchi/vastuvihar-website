@@ -9672,7 +9672,7 @@ body:not(.editor-styles-wrapper) .wp-block-cover:not(.wp-block-cover:has(.wp-blo
     padding: 0 .5em
 }
 
-:where(.wp-block-form-input__input)[type=date],
+/* :where(.wp-block-form-input__input)[type=date],
 :where(.wp-block-form-input__input)[type=datetime-local],
 :where(.wp-block-form-input__input)[type=datetime],
 :where(.wp-block-form-input__input)[type=email],
@@ -9689,7 +9689,7 @@ body:not(.editor-styles-wrapper) .wp-block-cover:not(.wp-block-cover:has(.wp-blo
     border-width: 1px;
     line-height: 2;
     min-height: 2em
-}
+} */
 
 textarea.wp-block-form-input__input {
     min-height: 10em
@@ -20777,22 +20777,6 @@ form {
     margin-bottom: 1.618em;
 }
 
-button,
-input,
-select,
-textarea {
-    font-size: 100%;
-    /* Corrects font size not being inherited in all browsers */
-    margin: 0;
-    /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
-    vertical-align: baseline;
-    /* Improves appearance and consistency in all browsers */
-    /* stylelint-disable */
-    *vertical-align: middle;
-    /* Improves appearance and consistency in all browsers */
-    /* stylelint-enable */
-}
-
 /* Button Outline */
 .button-outline {
     display: inline-flex;
@@ -20847,7 +20831,7 @@ textarea {
     opacity: 0.5 !important;
 }
 
-button,
+/* button,
 input[type=button],
 input[type=reset],
 input[type=submit],
@@ -20871,7 +20855,7 @@ input[type=submit],
     background-color: var(--primary);
     transition: all ease 0.3s;
     position: relative;
-}
+} */
 
 button:hover,
 input[type=button]:hover,
