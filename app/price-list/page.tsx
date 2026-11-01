@@ -76,7 +76,7 @@ export default function PriceListPage() {
           <span className={styles.cityState}>{group.state}</span>
           <h3 className={styles.cityName}>{city.name}</h3>
           
-          {city.phases.length > 0 && (
+          {city.phases.length > 0 ? (
             <div className={styles.phaseGrid}>
               {city.phases.map((phase) => (
                 <Link key={phase.link} href={phase.link} className={styles.phaseItem}>
@@ -87,6 +87,10 @@ export default function PriceListPage() {
                   </svg>
                 </Link>
               ))}
+            </div>
+          ) : (
+            <div className={styles.phaseEmpty}>
+              <span>Upcoming Projects</span>
             </div>
           )}
         </div>
