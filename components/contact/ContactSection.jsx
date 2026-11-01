@@ -59,7 +59,7 @@ export default function ContactSection() {
                           className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
                           aria-required="true"
                           aria-invalid="false"
-                          placeholder="First Name*"
+                          placeholder="First Nameeee*"
                           defaultValue=""
                           type="text"
                           name="first-name"

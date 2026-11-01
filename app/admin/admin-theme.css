@@ -1,0 +1,18 @@
+/* Apple San Francisco font stack for entire Admin Portal */
+:root {
+  --admin-apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -apple-system-body, -apple-system-subheadline, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.admin-apple-root,
+.admin-apple-root *,
+.admin-apple-root input,
+.admin-apple-root button,
+.admin-apple-root select,
+.admin-apple-root textarea,
+.admin-apple-root option,
+.admin-apple-root optgroup {
+  font-family: var(--admin-apple-font) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility;
+}
