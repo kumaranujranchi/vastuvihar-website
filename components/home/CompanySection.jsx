@@ -484,7 +484,8 @@ export default function CompanySection() {
               decoding="async"
               width="690"
               height="383"
-              src="/images/h4-vector.png"
+
+              src="/black-white.png"
               className="attachment-full size-full wp-image-814"
               alt=""
             />{' '}
@@ -494,3 +495,6 @@ export default function CompanySection() {
     </div>
   );
 }
+
+
+              // src="/images/h4-vector.png"
