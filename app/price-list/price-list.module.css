@@ -15,7 +15,7 @@
     padding: 4px 16px;
     border: 1px solid currentColor;
     border-radius: 999px;
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -23,7 +23,7 @@
 }
 
 .intro {
-    padding: 60px 0 90px; 
+    padding: 60px 0 90px;
 }
 
 .introGrid {
@@ -33,8 +33,7 @@
 }
 
 .intro h2,
-.sectionHead h2,
-.staticSectionHead h2 {
+.sectionHead h2 {
     margin: 16px 0 0;
     max-width: 720px;
     font-size: clamp(2rem, 3.5vw, 2.75rem);
@@ -50,7 +49,7 @@
     max-width: 650px;
     margin: 0 0 32px;
     color: #565656;
-    font-size: 1rem; 
+    font-size: 1rem;
     line-height: 1.6;
 }
 
@@ -63,7 +62,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: 13px 15px 13px 50px !important;
-    border-radius: 5px !important; 
+    border-radius: 5px !important;
     font-size: 1rem;
     color: #111;
     background: #fff;
@@ -133,56 +132,20 @@
 }
 
 /* =========================================
-   STATIC SEARCH LAYOUT STYLES
+   STATIC LAYOUT (NO GSAP)
 ========================================= */
-.staticWrapper {
+.projectsWrapper {
     width: 100%;
     padding-bottom: 80px;
 }
 
-.staticProjects {
-    padding: 40px 0 80px;
+.projects {
+    padding: 60px 0 120px;
     border-top: 1px solid #eee;
 }
 
-.staticSectionHead {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 30px;
-    padding-bottom: 24px;
-    margin-bottom: 40px;
-}
-
-.staticCityGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-/* =========================================
-   ANIMATED PINNING LAYOUT STYLES
-========================================= */
-.stackingWrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.projects {
-    position: relative;
-    background: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 80px 0;
-    box-shadow: 0 -15px 40px rgba(0,0,0,0.06); 
-    margin-bottom: 150vh; 
-    overflow: hidden;
-}
-
-.projects:last-child {
-    margin-bottom: 0;
+.projects:first-child {
+    border-top: none;
 }
 
 .sectionHead {
@@ -190,23 +153,8 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: 30px;
-    padding-top: 20px; 
     padding-bottom: 24px;
     margin-bottom: 60px;
-    position: relative;
-    z-index: 10;
-}
-
-.sectionHead::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -50vw;
-    right: -50vw;
-    top: -100vh; 
-    background: #ffffff;
-    z-index: -1;
-    border-bottom: 1px solid #d8d8d8;
 }
 
 .count {
@@ -217,23 +165,30 @@
     letter-spacing: .08em;
 }
 
-.cityGridWrapper {
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
-
+/* 4-COLUMN MULTI-ROW GRID (Desktop) */
 .cityGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    padding-bottom: 240px; 
+    /* Bottom padding accommodates the 180px transform on the 4th column */
+    padding-bottom: 180px;
 }
 
-.cityGrid > article:nth-child(4n + 1) { transform: translateY(0); }
-.cityGrid > article:nth-child(4n + 2) { transform: translateY(60px); }
-.cityGrid > article:nth-child(4n + 3) { transform: translateY(120px); }
-.cityGrid > article:nth-child(4n + 4) { transform: translateY(180px); }
+.cityGrid>article:nth-child(4n + 1) {
+    transform: translateY(0);
+}
+
+.cityGrid>article:nth-child(4n + 2) {
+    transform: translateY(60px);
+}
+
+.cityGrid>article:nth-child(4n + 3) {
+    transform: translateY(120px);
+}
+
+.cityGrid>article:nth-child(4n + 4) {
+    transform: translateY(180px);
+}
 
 /* =========================================
    UNIVERSAL CARD DESIGN
@@ -279,11 +234,19 @@
     height: var(--box_icon);
     border-radius: 50%;
     background-color: #0ea5e9;
+    /* Restored the blue paint */
     color: #ffffff;
-    font-size: 20px;
+    /* White number */
+    font-size: 15px;
     font-weight: 700;
     z-index: 4;
     transition: all 0.4s ease;
+    opacity: 1;
+}
+
+.cityCard:hover .cardCircle {
+    /* opacity: 0; */
+    transform: scale(0.95);
 }
 
 .decorBorder {
@@ -307,8 +270,17 @@
     clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
 }
 
-.decorBorder::before { top: 100%; left: 0; transform: rotate(90deg); }
-.decorBorder::after { top: 0; left: 100%; transform: rotate(90deg); }
+.decorBorder::before {
+    top: 100%;
+    left: 0;
+    transform: rotate(90deg);
+}
+
+.decorBorder::after {
+    top: 0;
+    left: 100%;
+    transform: rotate(90deg);
+}
 
 .cardContent {
     position: relative;
@@ -338,7 +310,7 @@
     font-size: 24px;
     font-weight: 700;
     color: #111;
-    margin-top: 20px;
+    margin: 0 0 20px 0;
     transition: color 0.4s ease;
 }
 
@@ -348,12 +320,12 @@
     gap: 12px;
     margin-top: auto;
     padding-top: 20px;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     transition: border-color 0.4s ease;
 }
 
 .cityCard:hover .phaseGrid {
-    border-top-color: rgba(255,255,255,0.2);
+    border-top-color: rgba(255, 255, 255, 0.2);
 }
 
 .phaseItem {
@@ -377,55 +349,106 @@
     transform: translate(3px, -3px);
 }
 
+/* =========================================
+   MEDIA QUERIES
+========================================= */
 @media(max-width:1024px) {
-    .introGrid { grid-template-columns: 1fr; gap: 40px; }
-    
-    .projects {
-        min-height: auto;
-        margin-bottom: 0 !important;
-        padding: 40px 0 60px;
-        box-shadow: none;
+    .introGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
-    .sectionHead::before { display: none; }
-    .cityGrid { padding-bottom: 20px; }
-    
-    .cityGrid, .staticCityGrid { grid-template-columns: repeat(3, 1fr); }
-    .cityGrid > article:nth-child(4n + 1),
-    .cityGrid > article:nth-child(4n + 2),
-    .cityGrid > article:nth-child(4n + 3),
-    .cityGrid > article:nth-child(4n + 4) {
+
+    .cityGrid {
+        grid-template-columns: repeat(3, 1fr);
+        padding-bottom: 100px;
+    }
+
+    .cityGrid>article:nth-child(4n + 1),
+    .cityGrid>article:nth-child(4n + 2),
+    .cityGrid>article:nth-child(4n + 3),
+    .cityGrid>article:nth-child(4n + 4) {
         transform: translateY(0);
     }
-    .cityGrid > article:nth-child(3n + 2) { transform: translateY(50px); }
-    .cityGrid > article:nth-child(3n + 3) { transform: translateY(100px); }
+
+    .cityGrid>article:nth-child(3n + 2) {
+        transform: translateY(50px);
+    }
+
+    .cityGrid>article:nth-child(3n + 3) {
+        transform: translateY(100px);
+    }
 }
 
 @media(max-width:767px) {
-    .container { width: min(100% - 30px, 1730px); }
-    .intro { padding: 40px 0 60px; }
-    .introGrid { gap: 24px; }
-    .intro h2, .sectionHead h2, .staticSectionHead h2 { font-size: 1.75rem; }
-    .stats { justify-content: space-between; }
-    .stats>div { min-width: 0; padding-right: 18px; }
-    
-    .cityGrid, .staticCityGrid { 
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important; 
-        gap: 16px;
+    .container {
+        width: min(100% - 30px, 1730px);
     }
-    
-    .cityGrid > article:nth-child(3n + 2),
-    .cityGrid > article:nth-child(3n + 3) {
+
+    .intro {
+        padding: 40px 0 60px;
+    }
+
+    .introGrid {
+        gap: 24px;
+    }
+
+    .intro h2,
+    .sectionHead h2 {
+        font-size: 1.75rem;
+    }
+
+    .stats {
+        justify-content: space-between;
+    }
+
+    .stats>div {
+        min-width: 0;
+        padding-right: 18px;
+    }
+
+    .projects {
+        padding: 40px 0 80px;
+    }
+
+    .cityGrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding-bottom: 40px;
+    }
+
+
+    .cityState {
+        margin-top: 20px;
+    }
+
+    .cityGrid>article:nth-child(3n + 2),
+    .cityGrid>article:nth-child(3n + 3) {
         transform: translateY(0);
     }
-    .cityGrid > article:nth-child(2n + 2) { 
-        transform: translateY(40px); 
+
+    .cityGrid>article:nth-child(2n + 2) {
+        transform: translateY(40px);
     }
-    
-    .cardContent { padding: 60px 20px 20px 20px; } 
-    .cityName { font-size: 18px; }
-    .phaseGrid { grid-template-columns: 1fr; }
-    
-    .decorBorder { border-bottom-right-radius: 20px; }
-    .cityCard { border-radius: 0 20px 20px 20px; min-height: 280px; }
+
+    .cardContent {
+        padding: 60px 20px 20px 20px;
+    }
+
+    .cityName {
+        font-size: 18px;
+    }
+
+    .phaseGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .decorBorder {
+        border-bottom-right-radius: 20px;
+    }
+
+    .cityCard {
+        border-radius: 0 20px 20px 20px;
+        min-height: 280px;
+    }
 }
