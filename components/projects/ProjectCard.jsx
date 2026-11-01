@@ -6,7 +6,9 @@ export default function ProjectCard({ model }) {
   const budgetCategories = getBudgetCategories(model).join(',');
   return (
     <div className="grid-item">
-      <div
+      <Link
+        href={`/projects/${model.slug}/`}
+        prefetch={false}
         className="project-item project-style-2"
         data-budget={budgetCategories}
         data-min-price={model.minPrice}
@@ -14,6 +16,7 @@ export default function ProjectCard({ model }) {
         data-type={modelType(model)}
         data-status={model.youtubeId ? 'walkthrough' : 'no-walkthrough'}
         data-beds={model.bedrooms}
+        aria-label={`${model.title} - ${model.priceRange}`}
       >
         <div className="project-post-thumbnail">
           <img
@@ -28,9 +31,9 @@ export default function ProjectCard({ model }) {
         </div>
         <div className="project-content">
           <div className="project-status">
-            <Link href={`/projects/${model.slug}/`} prefetch={false}>
+            <span className="project-status-badge">
               {model.priceRange}
-            </Link>
+            </span>
           </div>
           <div className="project-location">
             <i className="spaciaz-icon-marker" />
@@ -39,12 +42,10 @@ export default function ProjectCard({ model }) {
             </span>
           </div>
           <h4 className="project-title delta">
-            <Link href={`/projects/${model.slug}/`} prefetch={false}>
-              {model.title}
-            </Link>
+            <span>{model.title}</span>
           </h4>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

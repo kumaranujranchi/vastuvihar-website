@@ -34,6 +34,10 @@ for (const page of pages) {
     ? path.join(root, 'app/our-team/[slug]/page.jsx')
     : page.path.startsWith('/price-list/')
     ? path.join(root, 'app/price-list/[slug]/page.tsx')
+    : page.path.startsWith('/blog/') && page.path !== '/blog/'
+    ? path.join(root, 'app/blog/[slug]/page.tsx')
+    : page.path.startsWith('/category/')
+    ? path.join(root, 'app/category/[slug]/page.tsx')
     : null;
   if (!routeExists && !(dynamicFile && fs.existsSync(dynamicFile))) errors.add(`No page component for ${page.path}`);
 }
@@ -69,7 +73,7 @@ for (const file of files) {
   if (/\.[jm]sx?$/.test(file)) {
     for (const match of text.matchAll(/(?:from\s+|import\s*)(['"])(@\/[^'"\n]+|\.[^'"\n]+)\1/g)) {
       const ref = match[2].startsWith('@/') ? path.join(root, match[2].slice(2)) : path.resolve(path.dirname(file), match[2]);
-      if (![ref, ...['.jsx', '.js', '.json', '.css', '/index.jsx', '/index.js'].map((suffix) => ref + suffix)].some(fs.existsSync)) problem(file, `Missing import: ${match[2]}`);
+      if (![ref, ...['.jsx', '.js', '.tsx', '.ts', '.json', '.css', '/index.jsx', '/index.js', '/index.tsx', '/index.ts'].map((suffix) => ref + suffix)].some(fs.existsSync)) problem(file, `Missing import: ${match[2]}`);
     }
     for (const match of text.matchAll(/(?<![\w-])(src|href|poster|action|xlinkHref)\s*=\s*(?:\{\s*)?(["'])((?:\\.|(?!\2)[^\\])*)\2/g)) checkReference(match[3], file, (match[1] === 'href' || match[1] === 'action') ? 'link' : 'asset');
     // Asset paths and navigation config held in ordinary JS data objects.

@@ -16,7 +16,8 @@
 .project-item .project-status {
   margin-bottom: 13px;
 }
-.project-item .project-status a {
+.project-item .project-status a,
+.project-item .project-status .project-status-badge {
   background-color: var(--primary);
   padding: 10px 20px;
   gap: 10px;
@@ -157,6 +158,14 @@
 .project-item.project-style-2 {
   position: relative;
   border-radius: 30px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+}
+.project-item.project-style-2:hover,
+.project-item.project-style-2:focus {
+  text-decoration: none;
 }
 .project-item.project-style-2 .project-post-thumbnail {
   margin-bottom: 0;
@@ -202,7 +211,8 @@
 .project-item.project-style-2 .project-content .project-status {
   margin-bottom: auto;
 }
-.project-item.project-style-2 .project-content .project-status a {
+.project-item.project-style-2 .project-content .project-status a,
+.project-item.project-style-2 .project-content .project-status .project-status-badge {
   color: var(--accent);
   padding: 8px 16px;
 }
@@ -215,6 +225,11 @@
   margin-bottom: 0;
   font-size: clamp(20px, 1.5vw, 26px);
   line-height: 1.25;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+.project-item.project-style-2:hover .project-content .project-title {
+  color: var(--primary);
 }
 .project-item.project-style-2:hover .project-post-thumbnail img {
   transform: translate3d(0, 0, 0) scale(1.2);

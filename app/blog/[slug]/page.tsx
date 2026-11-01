@@ -5,19 +5,38 @@ import CommentForm from '../CommentForm';
 
 // 1. Await params in Metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params; // <-- MUST AWAIT PARAMS
+    const { slug } = await params;
 
     const post = await prisma.blogPost.findUnique({
         where: { slug },
     });
 
-    if (!post) return { title: 'Post Not Found' };
+    if (!post) return { title: 'Post Not Found | Vastu Vihar' };
+
+    const pageTitle = post.metaTitle ? `${post.metaTitle} | Vastu Vihar` : `${post.title} | Vastu Vihar`;
+    const pageDesc = post.metaDesc || post.excerpt || post.title;
+    const ogImages = post.imagePath ? [{ url: post.imagePath, alt: post.imageAlt || post.title }] : [];
 
     return {
-        title: `${post.title} | Vastu Vihar`,
-        description: post.excerpt || post.title,
+        title: pageTitle,
+        description: pageDesc,
+        keywords: post.keywords ? post.keywords.split(',').map((k: string) => k.trim()) : undefined,
+        authors: [{ name: post.author || 'Vastu Vihar' }],
         openGraph: {
-            images: post.imagePath ? [post.imagePath] : [],
+            title: pageTitle,
+            description: pageDesc,
+            url: `https://vastuvihar.org/blog/${post.slug}`,
+            siteName: 'Vastu Vihar',
+            images: ogImages,
+            type: 'article',
+            publishedTime: post.createdAt.toISOString(),
+            modifiedTime: post.updatedAt.toISOString(),
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: pageTitle,
+            description: pageDesc,
+            images: ogImages.map(img => img.url),
         },
     };
 }
@@ -64,6 +83,7 @@ export default async function DynamicSingleBlogPage({ params }: { params: Promis
             updatedDate={formatDate(post.updatedAt)}
             updatedIso={post.updatedAt.toISOString()}
             image={post.imagePath || ''}
+            imageAlt={post.imageAlt || post.title}
             prevPost={previousPost ? { title: previousPost.title, href: `/blog/${previousPost.slug}/` } : undefined}
             nextPost={nextPost ? { title: nextPost.title, href: `/blog/${nextPost.slug}/` } : undefined}
         >

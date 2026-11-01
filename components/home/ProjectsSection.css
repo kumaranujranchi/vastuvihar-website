@@ -97,9 +97,9 @@
 }
 
 .elementor-6353 .elementor-element.elementor-element-5791868 {
-  width: var( --container-widget-width, 500px );
-  max-width: 500px;
-  --container-widget-width: 500px;
+  width: var( --container-widget-width, 680px );
+  max-width: 680px;
+  --container-widget-width: 680px;
   --container-widget-flex-grow: 0;
   z-index: 2;
   text-align: left;
@@ -200,11 +200,11 @@
 @media(min-width:768px) {
 
   .elementor-6353 .elementor-element.elementor-element-2df9746 {
-    --width: 50%;
+    --width: 65%;
   }
 
   .elementor-6353 .elementor-element.elementor-element-b1d967b {
-    --width: 50%;
+    --width: 35%;
   }
 }
 

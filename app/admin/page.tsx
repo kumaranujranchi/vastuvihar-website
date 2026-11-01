@@ -82,6 +82,7 @@ export default function AdminDashboardPage() {
   // Vacancies State
   const [vacancies, setVacancies] = useState<JobVacancy[]>([]);
   const [showJobModal, setShowJobModal] = useState(false);
+  const [editingJobId, setEditingJobId] = useState<string | null>(null);
   const [jobForm, setJobForm] = useState({
     title: '',
     department: '',
@@ -282,18 +283,54 @@ export default function AdminDashboardPage() {
     document.body.removeChild(link);
   };
 
-  // Create Job Vacancy
-  const handleCreateJob = async (e: React.FormEvent) => {
+  // Open Create Job Modal
+  const handleOpenCreateJob = () => {
+    setEditingJobId(null);
+    setJobForm({
+      title: '',
+      department: '',
+      location: 'Ranchi, JH',
+      type: 'Full - Time',
+      description: '',
+      requirements: '',
+      isActive: true,
+    });
+    setShowJobModal(true);
+  };
+
+  // Open Edit Job Modal
+  const handleEditVacancy = (job: JobVacancy) => {
+    setEditingJobId(job.id);
+    setJobForm({
+      title: job.title || '',
+      department: job.department || '',
+      location: job.location || 'Ranchi, JH',
+      type: job.type || 'Full - Time',
+      description: job.description || '',
+      requirements: job.requirements || '',
+      isActive: job.isActive !== false,
+    });
+    setShowJobModal(true);
+  };
+
+  // Create or Update Job Vacancy
+  const handleSaveJob = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/admin/vacancies', {
-        method: 'POST',
+      const isEdit = Boolean(editingJobId);
+      const url = '/api/admin/vacancies';
+      const method = isEdit ? 'PATCH' : 'POST';
+      const payload = isEdit ? { id: editingJobId, ...jobForm } : jobForm;
+
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(jobForm),
+        body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (res.ok && data.success) {
         setShowJobModal(false);
+        setEditingJobId(null);
         setJobForm({
           title: '',
           department: '',
@@ -305,7 +342,7 @@ export default function AdminDashboardPage() {
         });
         fetchVacancies();
       } else {
-        alert(data.error || 'Failed to post vacancy');
+        alert(data.error || `Failed to ${isEdit ? 'update' : 'post'} vacancy`);
       }
     } catch (err) {
       console.error(err);
@@ -1102,7 +1139,7 @@ export default function AdminDashboardPage() {
                     Active vacancies show automatically on https://vastuvihar.com/careers
                   </span>
                 </div>
-                <button onClick={() => setShowJobModal(true)} className={styles.exportCrimsonBtn}>
+                <button onClick={handleOpenCreateJob} className={styles.exportCrimsonBtn}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -1124,7 +1161,7 @@ export default function AdminDashboardPage() {
                     <p className={styles.emptySubtitle}>
                       Click "Post New Job" above to create and publish career opportunities for Vastu Vihar.
                     </p>
-                    <button onClick={() => setShowJobModal(true)} className={styles.clearFilterBtn}>
+                    <button onClick={handleOpenCreateJob} className={styles.clearFilterBtn}>
                       + Post First Job
                     </button>
                   </div>
@@ -1182,6 +1219,13 @@ export default function AdminDashboardPage() {
 
                       <p className={styles.jobDesc}>{job.description}</p>
 
+                      {job.requirements && (
+                        <div style={{ fontSize: '12.5px', color: '#475569', background: '#f8fafc', padding: '10px 12px', borderRadius: '8px', marginBottom: '14px', border: '1px solid #eef2f6' }}>
+                          <strong style={{ color: '#011c5b', display: 'block', marginBottom: '4px', fontSize: '11.5px', textTransform: 'uppercase', letterSpacing: '0.4px' }}>Requirements:</strong>
+                          <span style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{job.requirements}</span>
+                        </div>
+                      )}
+
                       <div className={styles.jobCardFooter}>
                         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
                           <input
@@ -1192,13 +1236,31 @@ export default function AdminDashboardPage() {
                           <span>{job.isActive ? 'Published on Careers' : 'Hidden / Draft'}</span>
                         </label>
 
-                        <button
-                          onClick={() => handleDeleteVacancy(job.id)}
-                          className={styles.deleteIconBtn}
-                          style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#dc2626', fontWeight: 600 }}
-                        >
-                          Delete
-                        </button>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <button
+                            type="button"
+                            onClick={() => handleEditVacancy(job)}
+                            className={styles.editActionBtn}
+                            title="Edit Opening"
+                          >
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M12 20h9" />
+                              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                            <span>Edit</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteVacancy(job.id)}
+                            className={styles.deleteActionBtn}
+                            title="Delete Opening"
+                          >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -1364,7 +1426,24 @@ export default function AdminDashboardPage() {
       {selectedLead && (
         <div className={styles.modalBackdrop} onClick={() => setSelectedLead(null)}>
           <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
-            <h2 className={styles.modalTitle}>Customer Inquiry Details</h2>
+            <div className={styles.modalHeader}>
+              <div>
+                <h2 className={styles.modalTitle}>Customer Inquiry Details</h2>
+                <p className={styles.modalSubtitle}>Full lead information captured via website inquiry forms</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedLead(null)}
+                className={styles.modalCloseBtn}
+                aria-label="Close modal"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14px' }}>
               <div>
                 <strong>Customer Name:</strong> {selectedLead.fullName}
@@ -1407,7 +1486,7 @@ export default function AdminDashboardPage() {
               {selectedLead.message && (
                 <div>
                   <strong>Message from Customer:</strong>
-                  <p style={{ background: '#f8fafc', padding: '12px', borderRadius: '8px', marginTop: '6px' }}>
+                  <p style={{ background: '#f8fafc', padding: '12px', borderRadius: '8px', marginTop: '6px', border: '1px solid #eef2f6' }}>
                     {selectedLead.message}
                   </p>
                 </div>
@@ -1417,8 +1496,12 @@ export default function AdminDashboardPage() {
               </div>
             </div>
 
-            <div style={{ marginTop: '24px', textAlign: 'right' }}>
-              <button onClick={() => setSelectedLead(null)} className={styles.exportCrimsonBtn}>
+            <div className={styles.modalFooter}>
+              <button
+                type="button"
+                onClick={() => setSelectedLead(null)}
+                className={styles.modalBtnCancel}
+              >
                 Close
               </button>
             </div>
@@ -1426,50 +1509,86 @@ export default function AdminDashboardPage() {
         </div>
       )}
 
-      {/* ================= MODAL: POST JOB ================= */}
+      {/* ================= MODAL: POST / EDIT JOB ================= */}
       {showJobModal && (
         <div className={styles.modalBackdrop} onClick={() => setShowJobModal(false)}>
           <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
-            <h2 className={styles.modalTitle}>Create New Job Opening</h2>
-            <form onSubmit={handleCreateJob} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div className={styles.modalHeader}>
               <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                  Job Title *
+                <h2 className={styles.modalTitle}>
+                  {editingJobId ? 'Edit Job Opening' : 'Create New Job Opening'}
+                </h2>
+                <p className={styles.modalSubtitle}>
+                  {editingJobId
+                    ? 'Update the requirements and details for this career vacancy.'
+                    : 'Publish an open career opportunity displayed live on vastuvihar.com/careers.'}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowJobModal(false)}
+                className={styles.modalCloseBtn}
+                aria-label="Close modal"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveJob} className={styles.modalForm}>
+              {/* Job Title */}
+              <div className={styles.modalFormGroup}>
+                <label className={styles.modalLabel}>
+                  <span>
+                    Job Title <span className={styles.modalLabelRequired}>*</span>
+                  </span>
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Senior Civil Engineer"
+                  placeholder="e.g. Senior Civil Engineer / Site Supervisor"
                   value={jobForm.title}
                   onChange={(e) => setJobForm({ ...jobForm, title: e.target.value })}
-                  className={styles.searchInput}
-                  style={{ width: '100%', paddingLeft: '14px' }}
+                  className={styles.modalInput}
                 />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                    Location
+              {/* 2-Column: Department & Job Type */}
+              <div className={styles.modalGrid2}>
+                <div className={styles.modalFormGroup}>
+                  <label className={styles.modalLabel}>
+                    <span>Department / Category</span>
                   </label>
                   <input
                     type="text"
-                    value={jobForm.location}
-                    onChange={(e) => setJobForm({ ...jobForm, location: e.target.value })}
-                    className={styles.searchInput}
-                    style={{ width: '100%', paddingLeft: '14px' }}
+                    list="job-dept-list"
+                    placeholder="e.g. Civil Engineering"
+                    value={jobForm.department}
+                    onChange={(e) => setJobForm({ ...jobForm, department: e.target.value })}
+                    className={styles.modalInput}
                   />
+                  <datalist id="job-dept-list">
+                    <option value="Civil Engineering" />
+                    <option value="Architecture & Planning" />
+                    <option value="Sales & Business Development" />
+                    <option value="Site Operations & Quality" />
+                    <option value="Accounts & Finance" />
+                    <option value="Legal & Land Acquisition" />
+                    <option value="Human Resources (HR)" />
+                    <option value="Customer Relationship (CRM)" />
+                  </datalist>
                 </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                    Job Type
+                <div className={styles.modalFormGroup}>
+                  <label className={styles.modalLabel}>
+                    <span>Job Type</span>
                   </label>
                   <select
                     value={jobForm.type}
                     onChange={(e) => setJobForm({ ...jobForm, type: e.target.value })}
-                    className={styles.filterSelect}
-                    style={{ width: '100%' }}
+                    className={styles.modalSelect}
                   >
                     <option value="Full - Time">Full - Time</option>
                     <option value="Part - Time">Part - Time</option>
@@ -1479,59 +1598,96 @@ export default function AdminDashboardPage() {
                 </div>
               </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                  Department / Category
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Engineering, Sales, Architecture"
-                  value={jobForm.department}
-                  onChange={(e) => setJobForm({ ...jobForm, department: e.target.value })}
-                  className={styles.searchInput}
-                  style={{ width: '100%', paddingLeft: '14px' }}
-                />
+              {/* 2-Column: Location & Publication Status */}
+              <div className={styles.modalGrid2}>
+                <div className={styles.modalFormGroup}>
+                  <label className={styles.modalLabel}>
+                    <span>Location / City</span>
+                  </label>
+                  <input
+                    type="text"
+                    list="job-location-list"
+                    placeholder="e.g. Ranchi, JH"
+                    value={jobForm.location}
+                    onChange={(e) => setJobForm({ ...jobForm, location: e.target.value })}
+                    className={styles.modalInput}
+                  />
+                  <datalist id="job-location-list">
+                    <option value="Ranchi, JH" />
+                    <option value="Patna, BR" />
+                    <option value="Jamshedpur, JH" />
+                    <option value="Dhanbad, JH" />
+                    <option value="Bokaro, JH" />
+                    <option value="Muzaffarpur, BR" />
+                    <option value="Gaya, BR" />
+                    <option value="Bhagalpur, BR" />
+                    <option value="Kolkata, WB" />
+                    <option value="Bhubaneswar, OD" />
+                  </datalist>
+                </div>
+
+                <div className={styles.modalFormGroup}>
+                  <label className={styles.modalLabel}>
+                    <span>Publication Status</span>
+                  </label>
+                  <select
+                    value={jobForm.isActive ? 'true' : 'false'}
+                    onChange={(e) => setJobForm({ ...jobForm, isActive: e.target.value === 'true' })}
+                    className={styles.modalSelect}
+                  >
+                    <option value="true">Active (Published on Careers)</option>
+                    <option value="false">Draft (Saved as Draft)</option>
+                  </select>
+                </div>
               </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                  Job Description *
+              {/* Job Description */}
+              <div className={styles.modalFormGroup}>
+                <label className={styles.modalLabel}>
+                  <span>
+                    Job Description <span className={styles.modalLabelRequired}>*</span>
+                  </span>
+                  <span className={styles.modalLabelHint}>Overview of role & responsibilities</span>
                 </label>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Detailed responsibilities, role expectations..."
+                  placeholder="Describe the primary responsibilities, daily work expectations, and team scope for this role..."
                   value={jobForm.description}
                   onChange={(e) => setJobForm({ ...jobForm, description: e.target.value })}
-                  className={styles.searchInput}
-                  style={{ width: '100%', resize: 'vertical', paddingLeft: '14px' }}
+                  className={styles.modalTextarea}
                 />
               </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
-                  Key Requirements (Optional)
+              {/* Key Requirements */}
+              <div className={styles.modalFormGroup}>
+                <label className={styles.modalLabel}>
+                  <span>Key Requirements & Eligibility</span>
+                  <span className={styles.modalLabelHint}>One per line or bullet points</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="e.g. 3+ yrs experience, B.Tech Civil"
+                <textarea
+                  rows={4}
+                  placeholder={"• 3+ years experience in residential civil construction\n• B.Tech / Diploma in Civil Engineering\n• Proficiency in AutoCAD and site execution\n• Strong team coordination and on-site vendor management"}
                   value={jobForm.requirements}
                   onChange={(e) => setJobForm({ ...jobForm, requirements: e.target.value })}
-                  className={styles.searchInput}
-                  style={{ width: '100%', paddingLeft: '14px' }}
+                  className={styles.modalTextarea}
                 />
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '12px' }}>
+              {/* Modal Actions */}
+              <div className={styles.modalFooter}>
                 <button
                   type="button"
                   onClick={() => setShowJobModal(false)}
-                  style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', padding: '10px 18px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer' }}
+                  className={styles.modalBtnCancel}
                 >
                   Cancel
                 </button>
-                <button type="submit" className={styles.exportCrimsonBtn}>
-                  Publish Opening
+                <button type="submit" className={styles.modalBtnSubmit}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>{editingJobId ? 'Save Changes' : 'Publish Opening'}</span>
                 </button>
               </div>
             </form>

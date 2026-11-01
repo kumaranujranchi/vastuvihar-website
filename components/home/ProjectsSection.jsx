@@ -5,7 +5,7 @@ import '../projects/ProjectCard.css';
 import '../common/ScrollingTicker.css';
 
 
-const tickerItems = ['selected projects', '·', 'selected projects', '·'];
+const tickerItems = ['housing models', '·', 'housing models', '·'];
 
 const projects = [
   {
@@ -97,15 +97,17 @@ function ProjectCard({ project }) {
             </Link>
           </div>
 
-          <img
-            loading="lazy"
-            decoding="async"
-            width={project.imageWidth}
-            height={project.imageHeight}
-            src={project.image}
-            className="attachment-full size-full wp-post-image"
-            alt={project.alt || project.name}
-          />
+          <Link href={project.href} prefetch={false} style={{ display: 'block', width: '100%', height: '100%' }}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width={project.imageWidth}
+              height={project.imageHeight}
+              src={project.image}
+              className="attachment-full size-full wp-post-image"
+              alt={project.alt || project.name}
+            />
+          </Link>
         </div>
 
         <div className="project-content">
@@ -161,7 +163,7 @@ export default function ProjectsSection() {
           >
             <div className="elementor-widget-container">
               <h2 className="elementor-heading-title elementor-size-default">
-                Explore our recent project
+                Explore our bungalow &amp; duplex models
               </h2>
             </div>
           </div>
@@ -207,9 +209,9 @@ export default function ProjectsSection() {
 
                     <span
                       className="elementor-button-text"
-                      data-name="view all projects"
+                      data-name="view all models"
                     >
-                      <span>view all projects</span>
+                      <span>view all models</span>
                     </span>
                   </span>
                 </Link>

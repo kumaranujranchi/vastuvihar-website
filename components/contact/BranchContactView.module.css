@@ -224,33 +224,61 @@
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid #03cdff;
-  border-top: 2px solid #03cdff;
-  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  background-color: #ffffff;
+  border: 1px solid #e6e4df;
+  border-top: 3px solid #08AAEC;
+  border-radius: 6px;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background-color .35s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #08AAEC;
+  clip-path: circle(0% at 0 0);
+  -webkit-clip-path: circle(0% at 0 0);
+  transition: clip-path 0.65s cubic-bezier(0.25, 1, 0.5, 1), -webkit-clip-path 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  border-color: #03cdff;
-  box-shadow: 0 12px 28px rgba(25, 25, 25, .055);
+  background-color: #08AAEC !important;
+  border-color: #08AAEC !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(8, 170, 236, 0.35);
+}
+
+.card:hover::before {
+  clip-path: circle(150% at 0 0);
+  -webkit-clip-path: circle(150% at 0 0);
 }
 
 .cardTop {
+  position: relative;
+  z-index: 2;
   padding: 23px 23px 14px;
 }
 
 .cardEyebrow {
   display: block;
-  color: #03cdff;
+  color: #08AAEC;
   font-weight: 700;
   font-size: 10px;
   letter-spacing: .11em;
   text-transform: uppercase;
   margin-bottom: 9px;
+  transition: color .3s ease, opacity .3s ease;
 }
 
 .cardTitle {
@@ -261,9 +289,12 @@
   font-size: 21px;
   line-height: 1.3;
   overflow-wrap: anywhere;
+  transition: color .3s ease;
 }
 
 .cardDetails {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -278,6 +309,7 @@
   font-size: 13px;
   line-height: 1.7;
   color: #686868;
+  transition: color .3s ease;
 }
 
 .detail p {
@@ -285,6 +317,7 @@
   color: inherit;
   margin: 0;
   overflow-wrap: anywhere;
+  transition: color .3s ease;
 }
 
 .detail a {
@@ -293,17 +326,24 @@
   line-height: inherit;
   text-decoration: none;
   overflow-wrap: anywhere;
+  transition: color .3s ease;
 }
 
 .detail a:hover {
-  color: #03cdff;
+  color: #08AAEC;
 }
 
 .detailIcon {
   display: inline-flex;
   flex-shrink: 0;
-  color: #03cdff;
+  color: #08AAEC;
   margin-top: 2px;
+  transition: color .3s ease;
+}
+
+.detailIcon svg {
+  stroke: currentColor;
+  transition: stroke .3s ease;
 }
 
 .phoneList {
@@ -316,6 +356,17 @@
 
 .phoneList span {
   color: #555;
+  transition: color .3s ease;
+}
+
+.phoneList a {
+  color: #292929;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.phoneList a:hover {
+  text-decoration: underline;
 }
 
 .people {
@@ -325,6 +376,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: border-color .3s ease;
 }
 
 .person {
@@ -345,11 +397,13 @@
   font-size: 13px;
   font-weight: 600;
   color: #232323;
+  transition: color .3s ease;
 }
 
 .person small {
   font-size: 12px;
   color: #797d80;
+  transition: color .3s ease;
 }
 
 .person a,
@@ -357,10 +411,11 @@
   font-size: 13px;
   color: #4e4e4e;
   text-decoration: none;
+  transition: color .3s ease;
 }
 
 .person a:hover {
-  color: #03cdff;
+  color: #08AAEC;
 }
 
 .mapLink {
@@ -371,17 +426,127 @@
   justify-content: space-between;
   gap: 10px;
   background: #f9f8f6;
-  color: #03cdff;
+  color: #08AAEC;
   border-top: 1px solid #eae7e2;
   font-size: 12px;
   font-weight: 650;
   text-decoration: none;
-  transition: background-color .2s, color .2s;
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
 .mapLink:hover {
   background: #232323;
   color: #fff;
+}
+
+/* =========================================
+   CARD HOVER STATE (SOLID BLUE BG + WHITE TEXT)
+========================================= */
+.card:hover .cardEyebrow {
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+
+.card:hover .cardTitle {
+  color: #ffffff !important;
+}
+
+.card:hover .detail {
+  color: #ffffff !important;
+}
+
+.card:hover .detail p {
+  color: #ffffff !important;
+}
+
+.card:hover .detail a {
+  color: #ffffff !important;
+}
+
+.card:hover .detail a:hover {
+  text-decoration: underline;
+  color: #ffffff !important;
+}
+
+.card:hover .detailIcon {
+  color: #ffffff !important;
+}
+
+.card:hover .detailIcon svg {
+  stroke: #ffffff !important;
+}
+
+.card:hover .phoneList span,
+.card:hover .phoneList a {
+  color: #ffffff !important;
+}
+
+.card:hover .people {
+  border-top-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.card:hover .peopleTitle {
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+
+.card:hover .person strong {
+  color: #ffffff !important;
+}
+
+.card:hover .person small {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.card:hover .person a,
+.card:hover .person span:not(:first-child) {
+  color: #ffffff !important;
+}
+
+.card:hover .mapLink {
+  background: rgba(0, 0, 0, 0.16) !important;
+  color: #ffffff !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.card:hover .mapLink svg {
+  stroke: #ffffff !important;
+}
+
+.card:hover .cardActions {
+  background: rgba(0, 0, 0, 0.16) !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.card:hover .mapButton,
+.card:hover .cardActions .mapLink {
+  color: #ffffff !important;
+  border-right-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.card:hover .mapButton svg,
+.card:hover .cardActions .mapLink svg {
+  stroke: #ffffff !important;
+}
+
+.card:hover .mapButton:hover,
+.card:hover .cardActions .mapLink:hover {
+  background: #ffffff !important;
+  color: #08AAEC !important;
+}
+
+.card:hover .mapButton:hover svg,
+.card:hover .cardActions .mapLink:hover svg {
+  stroke: #08AAEC !important;
+}
+
+.card:hover .mapLink:hover {
+  background: #ffffff !important;
+  color: #08AAEC !important;
+}
+
+.card:hover .mapLink:hover svg {
+  stroke: #08AAEC !important;
 }
 
 .empty {
@@ -434,7 +599,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .directory {
     padding: 28px 16px 65px;
   }
@@ -475,8 +640,41 @@
   }
 
   .cardGrid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     gap: 14px;
+    padding: 6px 16px 20px 16px;
+    margin: 0 -16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(8, 170, 236, 0.4) transparent;
+  }
+
+  .cardGrid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .cardGrid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .cardGrid::-webkit-scrollbar-thumb {
+    background: rgba(8, 170, 236, 0.4);
+    border-radius: 4px;
+  }
+
+  .cardGrid > .card {
+    flex: 0 0 84%;
+    min-width: 270px;
+    max-width: 320px;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    height: auto;
   }
 
   .cardTop {
@@ -538,11 +736,14 @@
 }
 
 .cardActions {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: auto;
   background: #f9f8f6;
   border-top: 1px solid #eae7e2;
+  transition: background-color .3s ease, border-color .3s ease;
 }
 
 .mapButton,
@@ -584,6 +785,8 @@
 }
 
 .mapPanel {
+  position: relative;
+  z-index: 2;
   padding: 12px;
   border-top: 1px solid #eae7e2;
   background: #fff;

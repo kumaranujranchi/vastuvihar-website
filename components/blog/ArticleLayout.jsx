@@ -14,6 +14,7 @@ export default function ArticleLayout({
   updatedDate = 'Apr 16, 2025',
   updatedIso = '2025-04-16T01:33:11+00:00',
   image,
+  imageAlt,
   prevPost,
   nextPost,
   children,
@@ -144,7 +145,7 @@ export default function ArticleLayout({
                         height="600"
                         src={image}
                         className="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                        alt={title}
+                        alt={imageAlt || title}
                         decoding="async"
                       />
                     </div>

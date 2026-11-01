@@ -1,18 +1,30 @@
-/* Apple San Francisco font stack for entire Admin Portal */
+/* Vastu Vihar brand typography matching main website */
 :root {
-  --admin-apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -apple-system-body, -apple-system-subheadline, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --admin-heading-font: "Involve", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --admin-body-font: "Switzer", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.admin-apple-root,
-.admin-apple-root *,
+.admin-apple-root {
+  font-family: var(--admin-body-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.admin-apple-root h1,
+.admin-apple-root h2,
+.admin-apple-root h3,
+.admin-apple-root h4,
+.admin-apple-root h5,
+.admin-apple-root h6 {
+  font-family: var(--admin-heading-font);
+}
+
 .admin-apple-root input,
 .admin-apple-root button,
 .admin-apple-root select,
 .admin-apple-root textarea,
 .admin-apple-root option,
 .admin-apple-root optgroup {
-  font-family: var(--admin-apple-font) !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility;
+  font-family: var(--admin-body-font);
 }
