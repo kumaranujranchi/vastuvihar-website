@@ -131,15 +131,11 @@
 .milestone-card h3 {
   position: relative;
   z-index: 2;
-
-  margin: 0 0 -25px;
-
+  margin: 0 0 -5px;
   font-size: clamp(42px, 4vw, 70px);
   line-height: 1;
   font-weight: 500;
-
   letter-spacing: -0.04em;
-
   color: var(--e-global-color-primary, #ed3237);
 }
 
@@ -360,7 +356,7 @@
 
 .milestone-cta:hover {
   transform: scale(1.06);
-
+  color: white !important;
   box-shadow:
     0 20px 45px
     color-mix(

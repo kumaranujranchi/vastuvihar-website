@@ -1,5 +1,7 @@
 import './FaqsTicker.css';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
+import StaticPill from '../common/StaticPill';
+
 
 export default function FaqsTicker() {
   return (
@@ -14,7 +16,7 @@ export default function FaqsTicker() {
           data-id="5a2202e"
           data-element_type="container"
         >
-          <ScrollingTicker text="Vastu Vihar FAQs" widgetId="792a726" />
+           <StaticPill text="vastu vihar FAQs" />
           <div
             className="elementor-element elementor-element-a4c1de0 elementor-widget__width-initial elementor-widget-mobile_extra__width-inherit elementor-widget-mobile__width-inherit animated-fast elementor-invisible elementor-widget elementor-widget-heading"
             data-id="a4c1de0"

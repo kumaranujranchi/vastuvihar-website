@@ -42,7 +42,7 @@ const cards = [
     buttonHref: '/projects/',
     arrowHref: '/projects/',
     theme: 'primary',
-    image: '/images/h3_img-1.png',
+    image: '/png/rainbow.png',
   },
   {
     number: '03.',

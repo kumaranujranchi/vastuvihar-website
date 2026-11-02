@@ -1,6 +1,7 @@
 import './ValuesHeader.css';
 import Link from 'next/link';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
+import StaticPill from '../common/StaticPill';
 
 export default function ValuesHeader() {
   return (
@@ -105,13 +106,8 @@ export default function ValuesHeader() {
         data-element_type="container"
       >
         <div className="e-con-inner">
-          <div
-            className="elementor-element elementor-element-88d7663 e-con-full e-flex e-con e-child"
-            data-id="88d7663"
-            data-element_type="container"
-          >
-            <ScrollingTicker text="core values" widgetId="e9885a3" />
-          </div>
+            <StaticPill text="vastu vihar" />
+                   
           <div
             className="elementor-element elementor-element-a040cf8 e-con-full e-flex e-con e-child"
             data-id="a040cf8"

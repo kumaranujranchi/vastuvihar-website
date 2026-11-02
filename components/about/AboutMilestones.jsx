@@ -7,27 +7,27 @@ import './AboutMilestones.css';
 const milestones = [
   {
     year: '1994',
-    image: '/images/journey_1983.png',
+    image: '/png/p1.png',
     text: 'Technoculture Building Centre Pvt. Ltd. was founded in Patna, beginning a journey to make quality housing more accessible.',
   },
   {
     year: '2001',
-    image: '/images/journey_1996.png',
+    image: '/png/p2.png',
     text: 'The Vastu Vihar brand introduced planned bungalow communities for families in Bihar and Jharkhand.',
   },
   {
     year: '2008',
-    image: '/images/journey_2005.png',
+    image: '/png/p3.png',
     text: 'Advanced earthquake-resistant construction technology and engineered building methods became key priorities.',
   },
   {
     year: '2020',
-    image: '/images/journey_2013.png',
+    image: '/png/p4.png',
     text: 'Vastu Vihar grew its network of townships with parks, community facilities and thoughtfully planned residential spaces.',
   },
   {
     year: '2026',
-    image: '/images/journey_2024.png',
+    image: '/png/ananta.png',
     text: 'Continuing our journey across Eastern India and Nepal with thoughtfully designed homes and integrated townships.',
   },
 ];

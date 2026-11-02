@@ -1,5 +1,6 @@
 import styles from './AwardsHeader.module.css';
 import Link from 'next/link';
+import StaticPill from '../common/StaticPill';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
 
 export default function AwardsHeader() {
@@ -18,11 +19,7 @@ export default function AwardsHeader() {
         <div className={styles.curve} />
       </div>
 
-      <div className={styles.introContainer}>
-        {/* Spaciaz Tablet Effect Wrapper */}
-        <div className={styles.marqueeTablet}>
-          <ScrollingTicker text="awards" widgetId="f013c79" />
-        </div>
+      <div className={styles.introContainer}>  
         
         <div className={styles.introContent}>
           <h2>Founder Awards &amp; Recognitions</h2>

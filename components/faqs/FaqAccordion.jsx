@@ -30,7 +30,7 @@ export default function FaqAccordion() {
                 aria-controls={faq.id}
               >
                 <span className="e-n-accordion-item-title-header">
-                  <span className="faq-question-badge" aria-hidden="true">?</span>
+                  {/* <span className="faq-question-badge" aria-hidden="true">?</span> */}
                   <h6 className="e-n-accordion-item-title-text">{faq.question}</h6>
                 </span>
                 <span className="e-n-accordion-item-title-icon" aria-hidden="true">

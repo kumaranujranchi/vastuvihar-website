@@ -1,18 +1,22 @@
 /* Container holding all the award cards */
 .elementor-element-60db682 {
-  display: grid;
-  /* Adjust 220px to control how wide each award card should be before wrapping */
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  display: flex !important;
+  flex-direction: row !important; /* Forces elements into a row */
+  flex-wrap: wrap; /* Allows wrapping if screen gets too small */
+  justify-content: center !important; /* Centers the row perfectly */
+  align-items: stretch;
   gap: 40px;
   width: 100%;
-  align-items: stretch;
-  justify-content: start;
 }
 
 /* Individual Award Card */
 .box-img-hover {
+  /* Override Elementor's default 100% width so they can sit side-by-side */
+  width: auto !important; 
+  flex: 0 1 220px !important; /* Sets base width to 220px and allows them to sit in a row */
+  
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Keeps the image above the text inside the card */
   align-items: center;
   justify-content: flex-start;
   text-align: center;
@@ -20,7 +24,6 @@
   padding: 32px 24px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 /* Award Image Wrapper */
 .elementor-widget-image {
@@ -31,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 140px; /* Fixed height to keep the grid perfectly aligned */
+  height: 140px; /* Fixed height to keep the cards perfectly aligned */
   width: 100%;
 }
 
@@ -51,7 +54,7 @@
 .elementor-heading-title {
   margin: 0;
   color: #111 !important;
-  font-size: 1.1rem ;
+  font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -65,11 +68,14 @@
 
 @media (max-width: 767px) {
   .elementor-element-60db682 {
-    grid-template-columns: repeat(2, 1fr); /* Forces 2 items per row on mobile */
+    display: grid !important; /* Switch back to grid on mobile for perfect 2x2 layout */
+    grid-template-columns: repeat(2, 1fr) !important; 
     gap: 16px;
   }
 
   .box-img-hover {
+    width: 100% !important; /* Reset width for the mobile grid */
+    flex: none !important;
     padding: 20px 12px;
     gap: 12px;
   }
