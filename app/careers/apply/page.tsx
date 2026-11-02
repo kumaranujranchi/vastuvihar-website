@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import PageLayout from '@/components/PageLayout';
 import CareersHeader from '@/components/careers/CareersHeader';
+import ConsentFields from '@/components/privacy/ConsentFields';
 import '@/styles/pages/careers.css';
 import './apply.css';
 
@@ -38,7 +39,11 @@ function ApplyForm() {
     setError('');
 
     try {
+      const submitted = new FormData(e.currentTarget as HTMLFormElement);
       const data = new FormData();
+      data.append('consentPrimary', String(submitted.get('consentPrimary') || ''));
+      data.append('noticeLanguage', String(submitted.get('noticeLanguage') || 'en'));
+      data.append('website_url', String(submitted.get('website_url') || ''));
       data.append('fullName', formData.fullName);
       data.append('email', formData.email);
       data.append('phone', formData.phone);
@@ -166,6 +171,12 @@ function ApplyForm() {
                 onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
               />
             </div>
+
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <input type="text" name="website_url" tabIndex={-1} autoComplete="off" />
+            </div>
+
+            <ConsentFields form="application" />
 
             <button
               disabled={isSubmitting}

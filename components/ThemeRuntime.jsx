@@ -4,6 +4,7 @@ import './common/ThemeRuntime.css';
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import SearchDialog from './SearchDialog';
+import ConsentEmbed from './privacy/ConsentEmbed';
 import { createAnimationContext, trapFocus, visibleFocusables } from '@/animations/dom';
 import { initNavigation } from '@/animations/navigation';
 import { initReveals } from '@/animations/reveal';
@@ -103,7 +104,9 @@ export default function ThemeRuntime({ route = '', bodyClass = '', searchIndex =
         ) : dialog.kind === 'file-video' ? (
           <video src={dialog.src} controls autoPlay playsInline className="next-lightbox-video" />
         ) : (
-          <iframe className="next-lightbox-video" src={dialog.src} title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+          <ConsentEmbed provider="the video host">
+            <iframe className="next-lightbox-video" src={dialog.src} title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+          </ConsentEmbed>
         )}
       </section>
     </div>, document.body,

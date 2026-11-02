@@ -1,5 +1,6 @@
 import './ProjectEnquiry.css';
 import ContactForm from '@/components/ContactForm';
+import ConsentFields from '@/components/privacy/ConsentFields';
 
 const PREFERRED_CITIES = [
   'Ara', 'Buxar', 'Patna', 'Biharsharif', 'Jehanabad', 'Chapra', 'Hajipur', 'Siwan', 'Gaya',
@@ -99,12 +100,11 @@ export default function ProjectEnquiry({ project }) {
                       <span className="wpcf7-form-control-wrap" data-name="email">
                         <input
                           size="40"
-                          className="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                          placeholder="Email Address*"
+                          className="wpcf7-form-control wpcf7-email wpcf7-text wpcf7-validates-as-email"
+                          placeholder="Email Address (optional)"
                           type="email"
                           name="email"
-                          required={true}
-                          aria-label="Email*"
+                          aria-label="Email address, optional"
                         />
                       </span>
                     </p>
@@ -125,8 +125,8 @@ export default function ProjectEnquiry({ project }) {
                   <div className="column-50">
                     <p>
                       <span className="wpcf7-form-control-wrap" data-name="budget">
-                        <select name="budget" className="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" required={true} aria-label="Budget Range*" defaultValue="">
-                          <option value="" disabled>Budget Range*</option>
+                        <select name="budget" className="wpcf7-form-control wpcf7-select" aria-label="Budget range, optional" defaultValue="">
+                          <option value="">Budget Range (optional)</option>
                           <option value="₹ 10 - 16 Lac">₹ 10 - 16 Lac (2 BHK Flat)</option>
                           <option value="₹ 16 - 24 Lac">₹ 16 - 24 Lac (2 & 3 BHK Flat)</option>
                           <option value="₹ 20 - 35 Lac">₹ 20 - 35 Lac (Simplex / Row House)</option>
@@ -152,6 +152,10 @@ export default function ProjectEnquiry({ project }) {
                         ></textarea>
                       </span>
                     </p>
+                  </div>
+
+                  <div className="column-100">
+                    <ConsentFields form="enquiry" marketing />
                   </div>
 
                   <div className="column-100 wpcf7-button elementor-button-outline">

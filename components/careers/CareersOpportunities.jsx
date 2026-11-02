@@ -74,12 +74,12 @@ export default function CareersOpportunities() {
           <div className="elementor-widget-container">
             <div className="elementor-button-wrapper">
               <a
-                href="mailto:careers@example.com"
+                href="mailto:hr@vastuvihar.org"
                 className="elementor-button-link elementor-button elementor-size-sm"
                 role="button"
               >
                 <span className="elementor-button-content-wrapper">
-                  <span className="elementor-button-text" data-name="careers@example.com">
+                  <span className="elementor-button-text" data-name="hr@vastuvihar.org">
                     <span>
                       <span>hr@vastuvihar.org</span>
                     </span>

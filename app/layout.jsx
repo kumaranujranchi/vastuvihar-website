@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import { site } from '@/data/site';
 import CookieConsent from '@/components/CookieConsent/CookieConsent';
 import NavigationShell from '@/components/NavigationShell/NavigationShell';
+import TrackingTags from '@/components/privacy/TrackingTags';
 
 
 export const metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         >
           {children}
         </NavigationShell>
+        <TrackingTags />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BRANCH_GROUPS, TOTAL_BRANCHES } from '@/data/branch-contacts';
+import ConsentEmbed from '@/components/privacy/ConsentEmbed';
 import styles from './BranchContactView.module.css';
 
 function Icon({ name, size = 18 }) {
@@ -106,9 +107,11 @@ export function BranchCard({ branch, state }) {
       </div>
       {showMap && (
         <div className={styles.mapPanel}>
-          <iframe title={`${branch.name} Vastu Vihar map`}
-            src={branch.mapUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen />
+          <ConsentEmbed provider="Google Maps">
+            <iframe title={`${branch.name} Vastu Vihar map`}
+              src={branch.mapUrl} loading="lazy" referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen />
+          </ConsentEmbed>
         </div>
       )}
     </article>

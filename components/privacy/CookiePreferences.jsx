@@ -1,119 +1,74 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { COOKIE_INVENTORY, OFFERED_CATEGORIES, categoryText } from '@/lib/privacy/cookieConfig';
+import { saveChoices, useCookieChoice } from '@/lib/privacy/cookieChoices';
 import styles from './CookiePreferences.module.css';
 
-const STORAGE_KEY = 'vastuvihar-cookie-preferences';
-const defaults = { necessary: true, analytics: false, marketing: false };
-
 export default function CookiePreferences() {
-  const [open, setOpen] = useState(false);
-  const [choices, setChoices] = useState(defaults);
+  const choice = useCookieChoice();
   const [saved, setSaved] = useState(false);
+  const necessary = categoryText('necessary');
 
-  useEffect(() => {
-    try {
-      const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      if (existing) {
-        setChoices({
-          ...defaults,
-          analytics: existing.analytics === true,
-          marketing: existing.marketing === true,
-        });
-      }
-    } catch (_) {
-      /* Keep safe defaults. */
-    }
-  }, []);
-
-  function save(next) {
-    const consent = {
-      ...defaults,
-      ...next,
-      necessary: true,
-      updatedAt: new Date().toISOString(),
-    };
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
-    } catch (_) {
-      /* Local preferences may be unavailable. */
-    }
-    window.dispatchEvent(new CustomEvent('vastuvihar:cookie-consent-updated', { detail: consent }));
-    setChoices(consent);
+  function change(category, allowed) {
+    saveChoices({ [category]: allowed }, 'privacy_policy');
     setSaved(true);
-    setOpen(false);
   }
 
   return (
     <div className={styles.cookieArea}>
-      <button
-        type="button"
-        className={styles.cookieButton}
-        onClick={() => {
-          setSaved(false);
-          setOpen((value) => !value);
-        }}
-        aria-expanded={open}
-        aria-controls="vastuvihar-cookie-options"
-      >
-        Manage Cookie Preferences <span aria-hidden="true">↗</span>
-      </button>
-      {saved && (
-        <p className={styles.savedMessage} role="status">
-          Your cookie preferences have been saved in this browser.
-        </p>
-      )}
-      {open && (
-        <div id="vastuvihar-cookie-options" className={styles.cookiePanel}>
-          <h3>Cookie preferences</h3>
-          <p>Choose which optional categories to allow. Necessary cookies stay enabled.</p>
-          <label className={styles.cookieOption}>
-            <span>
-              <strong>Strictly necessary</strong>
-              <small>Required for essential website functionality.</small>
-            </span>
-            <input type="checkbox" checked disabled readOnly />
-          </label>
-          <label className={styles.cookieOption}>
-            <span>
-              <strong>Analytics &amp; performance</strong>
-              <small>Help us understand website usage.</small>
-            </span>
-            <input
-              type="checkbox"
-              checked={choices.analytics}
-              onChange={(event) =>
-                setChoices((prev) => ({ ...prev, analytics: event.target.checked }))
-              }
-            />
-          </label>
-          <label className={styles.cookieOption}>
-            <span>
-              <strong>Marketing &amp; personalization</strong>
-              <small>Allow optional marketing-related features.</small>
-            </span>
-            <input
-              type="checkbox"
-              checked={choices.marketing}
-              onChange={(event) =>
-                setChoices((prev) => ({ ...prev, marketing: event.target.checked }))
-              }
-            />
-          </label>
-          <div className={styles.cookieActions}>
-            <button type="button" onClick={() => save({ analytics: false, marketing: false })}>
-              Reject optional
-            </button>
-            <button type="button" onClick={() => save(choices)}>
-              Save choices
-            </button>
-            <button type="button" onClick={() => save({ analytics: true, marketing: true })}>
-              Accept all
-            </button>
-          </div>
-        </div>
-      )}
+      <div className={styles.cookiePanel}>
+        <h3>Your choices on this browser</h3>
+        <label className={styles.cookieOption}>
+          <span>
+            <strong>{necessary.name}</strong>
+            <small>{necessary.description}</small>
+          </span>
+          <input type="checkbox" checked disabled readOnly />
+        </label>
+        {OFFERED_CATEGORIES.map((category) => {
+          const { name, description } = categoryText(category);
+          return (
+            <label key={category} className={styles.cookieOption}>
+              <span>
+                <strong>{name}</strong>
+                <small>{description}</small>
+              </span>
+              <input
+                type="checkbox"
+                checked={choice?.[category] === true}
+                onChange={(event) => change(category, event.target.checked)}
+              />
+            </label>
+          );
+        })}
+        {saved && <p className={styles.savedMessage} role="status">Saved.</p>}
+        {choice?.browserId && (
+          <p className={styles.consentId}>
+            Your consent ID: <code>{choice.browserId}</code>. Quote this if you ask us about the choices made on this browser.
+          </p>
+        )}
+      </div>
+
+      <div className={styles.tableWrap}>
+        <table className={styles.cookieTable}>
+          <caption>Cookies and browser storage used on this website</caption>
+          <thead>
+            <tr><th scope="col">Name</th><th scope="col">Provider</th><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Lasts</th></tr>
+          </thead>
+          <tbody>
+            {COOKIE_INVENTORY.map((item) => (
+              <tr key={item.name}>
+                <td>{item.name}</td>
+                <td>{item.provider}</td>
+                <td>{categoryText(item.category).name}</td>
+                <td>{item.purpose}</td>
+                <td>{item.duration}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
-

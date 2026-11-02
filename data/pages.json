@@ -440,6 +440,14 @@
     "description": "Privacy policy, personal data collection, cookies, and user rights at Vastu Vihar."
   },
   {
+    "route": "privacy-rights",
+    "path": "/privacy-rights/",
+    "title": "Your Data Rights - Vastu Vihar",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page",
+    "description": "Opt out of marketing, access, correct or erase personal data, nominate someone, or raise a privacy grievance."
+  },
+  {
     "route": "terms-and-conditions",
     "path": "/terms-and-conditions/",
     "title": "Terms and Conditions - Vastu Vihar",

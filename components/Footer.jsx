@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { footerGroups } from '@/data/navigation';
 import { site } from '@/data/site';
 import CookieSettingsButton from '@/components/CookieConsent/CookieSettingsButton';
+import NewsletterSignup from '@/components/privacy/NewsletterSignup';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -53,6 +54,8 @@ export default function Footer() {
           </div>
         </div>
 
+        <NewsletterSignup />
+
         {/* Bottom Section: Copyright & Legal */}
         <div className="footer-bottom-section">
           <div className="footer-copyright">
@@ -60,6 +63,8 @@ export default function Footer() {
           </div>
           <div className="footer-legal-links">
             <Link href="/privacy-policy" prefetch={false}>Privacy Policy</Link>
+            <span className="footer-divider"></span>
+            <Link href="/privacy-rights" prefetch={false}>Your Data Rights</Link>
             <span className="footer-divider"></span>
             <Link href="/terms-and-conditions" prefetch={false}>Terms & Conditions</Link>
             <span className="footer-divider"></span>

@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
 import { notFound } from 'next/navigation';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import CommentForm from '../CommentForm';
@@ -90,7 +91,7 @@ export default async function DynamicSingleBlogPage({ params }: { params: Promis
             {/* Blog Content */}
             <div
                 className="dynamic-blog-content wp-block-post-content"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.content) }}
             />
 
             {/* --- COMMENTS SECTION --- */}

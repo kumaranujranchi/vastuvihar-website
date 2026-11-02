@@ -23,14 +23,22 @@ model Lead {
   message   String?
   source    String   @default("website") // e.g. "contact_page", "interest_section", "price_list"
   status    String   @default("NEW")     // "NEW", "CONTACTED", "FOLLOW_UP", "CONVERTED", "CLOSED"
+  // Legacy technical metadata. New leads no longer populate these three columns.
   ipAddress String?
   country   String?
   userAgent String?
+  noticeVersion        String?
+  noticeLanguage       String?
+  marketingConsent     Boolean   @default(false)
+  marketingConsentAt   DateTime?
+  marketingWithdrawnAt DateTime?
+  legalHoldReason      String? // Set only for a documented legal retention exception
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([createdAt])
   @@index([phone])
+  @@index([email])
 }
 
 // Model for job vacancies/postings created by Admin
@@ -61,11 +69,16 @@ model JobApplication {
   coverLetter String?
   resumePath  String?  // local file path or cloud URL to downloaded resume
   status      String   @default("SUBMITTED") // "SUBMITTED", "REVIEWED", "SHORTLISTED", "REJECTED"
+  noticeVersion   String?
+  noticeLanguage  String?
+  legalHoldReason String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@index([createdAt])
   @@index([jobTitle])
+  @@index([email])
+  @@index([phone])
 }
 
 // Model for future AI Chatbot conversations & session logs
@@ -123,9 +136,226 @@ model Comment {
   authorName  String
   authorEmail String?
   content     String
-  isApproved  Boolean  @default(true) // Set false if you want admin approval first
+  isApproved  Boolean  @default(false) // Comments are published only after moderation
+  noticeVersion  String?
+  noticeLanguage String?
   createdAt   DateTime @default(now())
 
   @@index([postId])
   @@index([createdAt])
+  @@index([authorEmail])
+}
+
+// ---------------------------------------------------------------------------
+// DPDP Act 2023: consent, rights requests, breach, retention and admin controls
+// ---------------------------------------------------------------------------
+
+// Append-only consent ledger. Contact details are stored only as keyed hashes,
+// so proof of consent can outlive erasure of the underlying enquiry.
+model ConsentRecord {
+  id            String   @id @default(cuid())
+  phoneKey      String?
+  emailKey      String?
+  browserKey    String?
+  recordType    String? // "lead" | "application" | "comment" | "newsletter" | "browser"
+  recordId      String?
+  purpose       String // see lib/privacy/notices
+  action        String // "GRANTED" | "WITHDRAWN"
+  noticeVersion String
+  language      String   @default("en")
+  source        String
+  createdAt     DateTime @default(now())
+
+  @@index([phoneKey])
+  @@index([emailKey])
+  @@index([browserKey])
+  @@index([purpose])
+  @@index([createdAt])
+}
+
+// The newsletter list. Proof of each sign-up and opt-out is in ConsentRecord.
+model NewsletterSubscriber {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  status         String    @default("SUBSCRIBED") // "SUBSCRIBED" | "UNSUBSCRIBED"
+  noticeVersion  String
+  noticeLanguage String    @default("en")
+  unsubscribedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status])
+}
+
+// Keeps an opt-out effective across later imports or systems. Keyed hash only.
+model MarketingSuppression {
+  key       String   @id
+  source    String
+  createdAt DateTime @default(now())
+}
+
+model RateLimitHit {
+  id        String   @id @default(cuid())
+  bucket    String
+  keyHash   String
+  createdAt DateTime @default(now())
+
+  @@index([bucket, keyHash, createdAt])
+  @@index([createdAt])
+}
+
+model AdminUser {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  name         String
+  passwordHash String
+  role         String // see lib/adminAuth ROLE_PERMISSIONS
+  isActive     Boolean        @default(true)
+  failedLogins Int            @default(0)
+  lockedUntil  DateTime?
+  lastLoginAt  DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  sessions     AdminSession[]
+}
+
+model AdminSession {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Never put personal data in metadata: identifiers and field names only.
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actorEmail String?
+  action     String
+  entityType String?
+  entityId   String?
+  metadata   String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+  @@index([entityType, entityId])
+}
+
+// Access, correction, erasure, consent withdrawal, nomination and grievances.
+model PrivacyRequest {
+  id              String    @id @default(cuid())
+  ticketNo        String    @unique
+  type            String // "ACCESS" | "CORRECTION" | "ERASURE" | "CONSENT_WITHDRAWAL" | "NOMINATION" | "GRIEVANCE"
+  category        String?
+  requesterName   String
+  email           String?
+  phone           String?
+  details         String
+  requestedChange String? // JSON for correction requests
+  nomineeName     String?
+  nomineeContact  String?
+  nomineeRelation String?
+  actingAs        String    @default("SELF") // "SELF" | "NOMINEE"
+  language        String    @default("en")
+  status          String    @default("RECEIVED") // "RECEIVED" | "VERIFYING" | "IN_PROGRESS" | "ESCALATED" | "RESOLVED" | "REJECTED"
+  verifiedAt      DateTime?
+  verifiedBy      String?
+  verifyMethod    String?
+  verifiedChannels String? // Comma-separated: which of "email" and "phone" were confirmed
+  outcome         String?
+  retentionNote   String?
+  dueAt           DateTime
+  resolvedAt      DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  events          PrivacyRequestEvent[]
+
+  @@index([status])
+  @@index([type])
+  @@index([dueAt])
+  @@index([createdAt])
+}
+
+model PrivacyRequestEvent {
+  id         String         @id @default(cuid())
+  requestId  String
+  actorEmail String?
+  action     String
+  note       String?
+  createdAt  DateTime       @default(now())
+  request    PrivacyRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+}
+
+model BreachIncident {
+  id                      String    @id @default(cuid())
+  reference               String    @unique
+  title                   String
+  status                  String    @default("DETECTED") // "DETECTED" | "ASSESSING" | "CONTAINED" | "NOTIFIED" | "CLOSED"
+  severity                String    @default("UNASSESSED")
+  detectedAt              DateTime
+  occurredAt              DateTime?
+  nature                  String?
+  scope                   String?
+  affectedDataTypes       String?
+  affectedCount           Int?
+  containmentActions      String?
+  remediationActions      String?
+  likelyConsequences      String?
+  ownerEmail              String?
+  boardDueAt              DateTime?
+  boardIntimatedAt        DateTime?
+  boardReportedAt         DateTime?
+  boardReference          String?
+  principalsNotifiedAt    DateTime?
+  principalsNotifiedCount Int?
+  notificationNotes       String?
+  createdBy               String?
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+
+  @@index([status])
+  @@index([detectedAt])
+}
+
+// retentionDays stays null until the organisation approves a period. A null
+// period means the job never deletes that category.
+model RetentionPolicy {
+  category      String    @id
+  description   String
+  retentionDays Int?
+  action        String    @default("DELETE")
+  legalBasis    String?
+  approvedBy    String?
+  approvedAt    DateTime?
+  updatedAt     DateTime  @updatedAt
+}
+
+model RetentionLog {
+  id        String   @id @default(cuid())
+  runId     String
+  category  String
+  action    String
+  affected  Int
+  dryRun    Boolean
+  trigger   String
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@index([runId])
+  @@index([createdAt])
+}
+
+model PrivacySetting {
+  key       String   @id
+  value     String
+  updatedBy String?
+  updatedAt DateTime @updatedAt
 }

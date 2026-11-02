@@ -1,0 +1,79 @@
+.form {
+  color: #fff;
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  color: #268ddc;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.intro {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 40px;
+  color: #fff;
+  flex: 1 1 240px;
+  font: inherit;
+  min-height: 46px;
+  min-width: 0;
+  padding: 10px 20px;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.button {
+  background: #268ddc;
+  border: 0;
+  border-radius: 40px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  min-height: 46px;
+  padding: 10px 26px;
+}
+
+.button:hover:not(:disabled) {
+  background: #1a74ba;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.honeypot {
+  height: 0;
+  left: -9999px;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
+
+.message {
+  font-size: 14px;
+  margin: 0;
+}

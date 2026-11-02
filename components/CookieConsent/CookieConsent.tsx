@@ -4,43 +4,36 @@
 // DPDP Act Compliant Cookie Consent & Preferences Manager
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { needsChoice, readChoice, saveChoices } from '@/lib/privacy/cookieChoices';
+import { OFFERED_CATEGORIES, categoryText } from '@/lib/privacy/cookieConfig';
+import { COOKIE_NOTICE, LANGUAGES } from '@/lib/privacy/notices';
 import styles from './CookieConsent.module.css';
 
-export interface CookiePreferences {
-  necessary: boolean;
-  analytics: boolean;
-  marketing: boolean;
-  timestamp: string;
-  version: string;
-}
+type Choices = Record<string, boolean>;
+type Language = 'en' | 'hi';
 
-const STORAGE_KEY = 'vastu_dpdp_cookie_consent_v1';
-const CURRENT_VERSION = '1.0';
+/** Every offered category set to one value, or to what was saved. Never on by default. */
+const allCategories = (value: (category: string) => boolean): Choices =>
+  Object.fromEntries(OFFERED_CATEGORIES.map((category) => [category, value(category)]));
+
+const savedCategories = (): Choices => {
+  const saved = readChoice() as Choices | null;
+  return allCategories((category) => saved?.[category] === true);
+};
 
 export default function CookieConsent() {
   const [isOpen, setIsOpen] = useState(false);
-  const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
-  const [marketingEnabled, setMarketingEnabled] = useState(true);
+  const [choices, setChoices] = useState<Choices>(() => allCategories(() => false));
+  const [language, setLanguage] = useState<Language>('en');
   const [isMounted, setIsMounted] = useState(false);
 
   // Load saved consent on client mount
   useEffect(() => {
     setIsMounted(true);
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed: CookiePreferences = JSON.parse(saved);
-        if (parsed.version === CURRENT_VERSION) {
-          setAnalyticsEnabled(parsed.analytics);
-          setMarketingEnabled(parsed.marketing);
-          return; // Consent already given
-        }
-      }
-    } catch {
-      // Ignore localStorage errors (e.g. private browsing restrictions)
-    }
+    setChoices(savedCategories());
+    if (!needsChoice()) return; // Every category on offer has been answered
 
-    // If no valid consent is found, display after a short graceful delay
+    // Otherwise display after a short graceful delay
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 900);
@@ -50,16 +43,7 @@ export default function CookieConsent() {
   // Listen to global open event (for Footer "Cookie Settings" button or Privacy Policy links)
   useEffect(() => {
     const handleOpen = () => {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const parsed: CookiePreferences = JSON.parse(saved);
-          setAnalyticsEnabled(parsed.analytics);
-          setMarketingEnabled(parsed.marketing);
-        }
-      } catch {
-        // no-op
-      }
+      setChoices(savedCategories());
       setIsOpen(true);
     };
 
@@ -71,40 +55,13 @@ export default function CookieConsent() {
     };
   }, []);
 
-  const saveConsent = useCallback((analytics: boolean, marketing: boolean) => {
-    const consent: CookiePreferences = {
-      necessary: true,
-      analytics,
-      marketing,
-      timestamp: new Date().toISOString(),
-      version: CURRENT_VERSION,
-    };
-
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
-    } catch {
-      // no-op
-    }
-
-    // Broadcast consent event for any tracking/analytics listeners
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(
-        new CustomEvent('cookieConsentUpdate', { detail: consent })
-      );
-    }
-
+  const saveConsent = useCallback((next: Choices) => {
+    setChoices(next);
+    saveChoices(next, 'cookie_banner', language);
     setIsOpen(false);
-  }, []);
+  }, [language]);
 
-  const handleAcceptAll = () => {
-    setAnalyticsEnabled(true);
-    setMarketingEnabled(true);
-    saveConsent(true, true);
-  };
-
-  const handleSavePreferences = () => {
-    saveConsent(analyticsEnabled, marketingEnabled);
-  };
+  const necessary = categoryText('necessary', language);
 
   if (!isMounted || !isOpen) {
     return null;
@@ -151,12 +108,32 @@ export default function CookieConsent() {
         </div>
 
         {/* Description Body */}
-        <p className={styles.description}>
-          We use cookies to ensure optimal site functionality, analyze traffic, and personalize
-          real estate inquiries in accordance with India&apos;s{' '}
-          <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>. You can
-          accept all cookies or customize your preferences.
+        <p className={styles.description} lang={language}>
+          {COOKIE_NOTICE[language]}
         </p>
+        <div role="group" aria-label="Notice language" style={{ display: 'flex', gap: '12px', fontSize: '13px' }}>
+          {LANGUAGES.map(({ code, label }) => (
+            <button
+              key={code}
+              type="button"
+              lang={code}
+              aria-pressed={code === language}
+              onClick={() => setLanguage(code as Language)}
+              style={{
+                background: 'none',
+                border: 0,
+                color: 'inherit',
+                cursor: 'pointer',
+                font: 'inherit',
+                fontWeight: code === language ? 700 : 400,
+                padding: 0,
+                textDecoration: code === language ? 'none' : 'underline',
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
         {/* Preferences Toggle List */}
         <div className={styles.preferencesList}>
@@ -164,13 +141,10 @@ export default function CookieConsent() {
           <div className={styles.preferenceItem}>
             <div className={styles.prefText}>
               <div className={styles.prefTitleRow}>
-                <span className={styles.prefName}>Strictly Necessary Cookies</span>
+                <span className={styles.prefName} lang={language}>{necessary.name}</span>
                 <span className={styles.requiredBadge}>REQUIRED</span>
               </div>
-              <p className={styles.prefDesc}>
-                Essential for website security, page routing, and user session management.
-                These cannot be turned off under applicable data protection laws.
-              </p>
+              <p className={styles.prefDesc} lang={language}>{necessary.description}</p>
             </div>
             <div className={styles.switchWrapper}>
               <input
@@ -190,59 +164,34 @@ export default function CookieConsent() {
             </div>
           </div>
 
-          {/* Analytics & Performance */}
-          <div className={styles.preferenceItem}>
-            <div className={styles.prefText}>
-              <div className={styles.prefTitleRow}>
-                <span className={styles.prefName}>Analytics &amp; Performance</span>
-                <span className={styles.optionalBadge}>OPTIONAL</span>
+          {/* Only the categories this deployment has switched on */}
+          {OFFERED_CATEGORIES.map((category) => {
+            const { name, description } = categoryText(category, language);
+            return (
+              <div key={category} className={styles.preferenceItem}>
+                <div className={styles.prefText}>
+                  <div className={styles.prefTitleRow}>
+                    <span className={styles.prefName} lang={language}>{name}</span>
+                    <span className={styles.optionalBadge}>OPTIONAL</span>
+                  </div>
+                  <p className={styles.prefDesc} lang={language}>{description}</p>
+                </div>
+                <div className={styles.switchWrapper}>
+                  <input
+                    type="checkbox"
+                    id={`pref-${category}`}
+                    checked={choices[category] === true}
+                    onChange={(e) => setChoices({ ...choices, [category]: e.target.checked })}
+                    className={styles.toggleInput}
+                    aria-label={name}
+                  />
+                  <label htmlFor={`pref-${category}`} className={styles.toggleLabel}>
+                    <span className={styles.toggleThumb} />
+                  </label>
+                </div>
               </div>
-              <p className={styles.prefDesc}>
-                Helps us understand aggregated user visits, page speeds, and township interest
-                to improve our architectural and website services.
-              </p>
-            </div>
-            <div className={styles.switchWrapper}>
-              <input
-                type="checkbox"
-                id="pref-analytics"
-                checked={analyticsEnabled}
-                onChange={(e) => setAnalyticsEnabled(e.target.checked)}
-                className={styles.toggleInput}
-                aria-label="Analytics & Performance Cookies"
-              />
-              <label htmlFor="pref-analytics" className={styles.toggleLabel}>
-                <span className={styles.toggleThumb} />
-              </label>
-            </div>
-          </div>
-
-          {/* Marketing & Personalization */}
-          <div className={styles.preferenceItem}>
-            <div className={styles.prefText}>
-              <div className={styles.prefTitleRow}>
-                <span className={styles.prefName}>Marketing &amp; Personalization</span>
-                <span className={styles.optionalBadge}>OPTIONAL</span>
-              </div>
-              <p className={styles.prefDesc}>
-                Enables tailored property updates, social embeds (YouTube/Instagram), and
-                customized communications based on your expressed interests.
-              </p>
-            </div>
-            <div className={styles.switchWrapper}>
-              <input
-                type="checkbox"
-                id="pref-marketing"
-                checked={marketingEnabled}
-                onChange={(e) => setMarketingEnabled(e.target.checked)}
-                className={styles.toggleInput}
-                aria-label="Marketing & Personalization Cookies"
-              />
-              <label htmlFor="pref-marketing" className={styles.toggleLabel}>
-                <span className={styles.toggleThumb} />
-              </label>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         {/* Footer Actions */}
@@ -255,14 +204,21 @@ export default function CookieConsent() {
             <button
               type="button"
               className={styles.saveBtn}
-              onClick={handleSavePreferences}
+              onClick={() => saveConsent(allCategories(() => false))}
+            >
+              Reject Optional
+            </button>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => saveConsent(choices)}
             >
               Save Preferences
             </button>
             <button
               type="button"
               className={styles.acceptAllBtn}
-              onClick={handleAcceptAll}
+              onClick={() => saveConsent(allCategories(() => true))}
             >
               Accept All
             </button>

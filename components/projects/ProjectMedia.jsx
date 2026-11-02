@@ -2,6 +2,7 @@
 
 import './ProjectMedia.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import ConsentEmbed from '@/components/privacy/ConsentEmbed';
 import carouselStyles from './MediaCarousel.module.css';
 import mediaStyles from './ProjectMedia.module.css';
 
@@ -1205,20 +1206,22 @@ export default function ProjectMedia({
                               }
                             >
 
-                              <iframe
-                                className={
-                                  mediaStyles.mediaScope
-                                }
-                                key={
-                                  project.youtubeId
-                                }
-                                src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
-                                title={`${project.title} video`}
-                                loading="lazy"
-                                allowFullScreen
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                              />
+                              <ConsentEmbed provider="YouTube">
+                                <iframe
+                                  className={
+                                    mediaStyles.mediaScope
+                                  }
+                                  key={
+                                    project.youtubeId
+                                  }
+                                  src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
+                                  title={`${project.title} video`}
+                                  loading="lazy"
+                                  allowFullScreen
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                  referrerPolicy="strict-origin-when-cross-origin"
+                                />
+                              </ConsentEmbed>
 
                             </div>
                           </div>
