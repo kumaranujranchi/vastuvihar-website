@@ -33,6 +33,7 @@ export default function HeroSection() {
           referrerPolicy="strict-origin-when-cross-origin"
           tabIndex={-1}
           allowFullScreen
+          style={{ pointerEvents: 'none' }}
         />
       </div>
       <div

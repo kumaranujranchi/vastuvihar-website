@@ -7497,7 +7497,7 @@ body.rtl .e-con {
     --e-global-color-border: #E0E0E0;
     --e-global-color-background: #FFFFFF;
     --e-global-color-background_light: #F6F3EC;
-    --e-global-typography-bdefc39-font-size: 70px;
+    --e-global-typography-bdefc39-font-size: 60px;
     --e-global-typography-bdefc39-font-weight: 700;
     --e-global-typography-bdefc39-line-height: 1.06em;
     --e-global-typography-bdefc39-letter-spacing: -2px;
@@ -7532,13 +7532,13 @@ h1.entry-title {
 
 @media(max-width:1200px) {
     .elementor-kit-4 {
-        --e-global-typography-bdefc39-font-size: 64px;
+        --e-global-typography-bdefc39-font-size: 58px;
     }
 }
 
 @media(max-width:1024px) {
     .elementor-kit-4 {
-        --e-global-typography-bdefc39-font-size: 56px;
+        --e-global-typography-bdefc39-font-size: 54px;
     }
 
     .elementor-section.elementor-section-boxed>.elementor-container {
@@ -7552,7 +7552,7 @@ h1.entry-title {
 
 @media(max-width:767px) {
     .elementor-kit-4 {
-        --e-global-typography-bdefc39-font-size: 42px;
+        --e-global-typography-bdefc39-font-size: 38px;
         --e-global-typography-bdefc39-letter-spacing: -1px;
     }
 

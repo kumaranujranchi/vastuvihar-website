@@ -16,10 +16,10 @@ export default function ValuesSection() {
       data-id="c640da1"
       data-element_type="container"
     >
-          <StaticPill text="Our values" />
       <div className="e-con-inner">
-                 
 
+
+        <StaticPill text="Our values" />
         <div
           className="elementor-element elementor-element-dccf6a4 e-con-full e-flex e-con e-child"
           data-id="dccf6a4"

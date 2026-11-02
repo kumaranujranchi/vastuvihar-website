@@ -325,6 +325,7 @@ body.rtl .elementor-6353 .elementor-element.elementor-element-88c322d {
   overflow: hidden;
 }
 
+
 /* The background is a DIRECT child of the full-width hero. */
 #tab_video > .vv-hero-background {
   position: absolute !important;
@@ -334,6 +335,8 @@ body.rtl .elementor-6353 .elementor-element.elementor-element-88c322d {
   z-index: 1 !important;
   overflow: hidden;
   pointer-events: none;
+  /* Zoom in slightly to push the YouTube header out of the visible frame */
+  transform: scale(1.2) !important; 
 }
 
 /* YouTube renders 16:9; use CSS cover sizing relative to the hero's own box. */

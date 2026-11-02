@@ -111,6 +111,7 @@
   line-height: var( --e-global-typography-bdefc39-line-height );
   letter-spacing: var( --e-global-typography-bdefc39-letter-spacing );
   color: var( --e-global-color-accent );
+  padding-bottom: 100px;
 }
 
 @media(max-width:1366px) {
