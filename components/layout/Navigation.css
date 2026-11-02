@@ -805,8 +805,8 @@ ul.menu li.current-menu-item > a, ul.menu li.current-menu-ancestor > a, ul.menu 
 
 .site-navigation .site-submenu-button {
   position: absolute;
-  right: 0;
-  top: 50%;
+  right: 2px;
+  top: 45.5%;
   transform: translateY(-50%);
   padding: 0;
   min-height: 28px;
@@ -822,7 +822,7 @@ ul.menu li.current-menu-item > a, ul.menu li.current-menu-ancestor > a, ul.menu 
 .site-navigation .site-submenu-button:hover,
 .site-navigation .site-submenu-button:focus {
   background: transparent;
-  color: #e4ed64;
+  color: #00b3ff;
 }
 
 .site-navigation .site-submenu-open>.sub-menu {

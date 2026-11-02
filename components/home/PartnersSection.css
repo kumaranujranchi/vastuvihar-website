@@ -102,6 +102,15 @@
   fill: #E4ED6400;
 }
 
+
+
+@keyframes marquee {
+    100% {
+        transform: translate(-100%);
+    }
+}
+
+
 @media(max-width:1200px) {
 
   .elementor-6353 .elementor-element.elementor-element-abc7beb {

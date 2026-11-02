@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const YOUTUBE_IDS = [
-  '6mSbVDkUPn4',
+  'z23qYKxkkiU',
   'w_x03DkwmOY',
   'x52x2VKPUcg',
 ];
@@ -111,7 +111,7 @@ export default function HeroSection() {
                         </span>
                       </span>
                       <span className="elementor-button-text" data-name="view all projects">
-                        <span>view all projects</span>
+                        <span>View all Models</span>
                       </span>
                     </span>
                   </Link>

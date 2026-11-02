@@ -26953,11 +26953,6 @@ body.loading:before {
     margin-right: 10px;
 }
 
-@keyframes marquee {
-    100% {
-        transform: translate(-100%);
-    }
-}
 
 .elementor-widget-spaciaz-projects-sticky {
     --offset: 50px;
@@ -28996,7 +28991,7 @@ body.loading:before {
     transform: translateX(-50%);
 }
 
-.spaciaz-scrolling-rtl .elementor-scrolling-inner {
+/* .spaciaz-scrolling-rtl .elementor-scrolling-inner {
     animation-name: marqueeltr;
 }
 
@@ -29010,9 +29005,9 @@ body.loading:before {
     100% {
         transform: translate(100%);
     }
-}
+} */
 
-@keyframes rotate {
+/* @keyframes rotate {
     from {
         -ms-transform: rotate(0deg);
         -o-transform: rotate(0deg);
@@ -29028,7 +29023,7 @@ body.loading:before {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
-}
+} */
 
 .elementor-widget-spaciaz-team-box .team-item {
     overflow: hidden;
@@ -40545,27 +40540,6 @@ body {
     padding-right: 16px;
 }
 
-.site-navigation .site-submenu-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0;
-    min-height: 28px;
-    width: 24px;
-    border: 0;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-}
-
-.site-navigation .site-submenu-button:hover,
-.site-navigation .site-submenu-button:focus {
-    background: transparent;
-    color: #e4ed64;
-}
 
 .site-navigation .site-submenu-open>.sub-menu {
     visibility: visible;

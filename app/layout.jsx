@@ -1,5 +1,8 @@
 import '@/styles/globals.css';
 import { site } from '@/data/site';
+import CookieConsent from '@/components/CookieConsent/CookieConsent';
+import NavigationShell from '@/components/NavigationShell/NavigationShell';
+
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://vastuvihar.org'),
@@ -19,7 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="theme-spaciaz elementor-default elementor-kit-4">{children}</body>
+      <body className="theme-spaciaz elementor-default elementor-kit-4">
+        <NavigationShell
+          cookieConsent={<CookieConsent />}
+        >
+          {children}
+        </NavigationShell>
+      </body>
     </html>
   );
 }

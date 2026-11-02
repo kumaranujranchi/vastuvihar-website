@@ -1,6 +1,8 @@
 import './CompanySection.css';
 import '../common/ScrollingTicker.css';
 import '../common/StatCounter.css';
+import StaticPill from '../common/StaticPill';
+
 export default function CompanySection() {
   return (
     <div
@@ -15,6 +17,16 @@ export default function CompanySection() {
           data-element_type="container"
         >
           <div
+            className="elementor-element elementor-element-64df312 box-width-yes elementor-widget__width-initial animated-fast elementor-invisible elementor-widget"
+            data-id="64df312"
+            data-element_type="widget"
+            data-settings={'{"_animation":"opal-move-up"}'}
+          >
+            <div className="elementor-widget-container">
+              <StaticPill text="vastu vihar" />
+            </div>
+          </div>
+          {/* <div
             className="elementor-element elementor-element-64df312 box-width-yes elementor-widget__width-initial animated-fast spaciaz-scrolling-ltr elementor-invisible elementor-widget elementor-widget-spaciaz-slide-scrolling"
             data-id="64df312"
             data-element_type="widget"
@@ -177,7 +189,7 @@ export default function CompanySection() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
             className="elementor-element elementor-element-381a648 animated-fast elementor-widget__width-initial elementor-invisible elementor-widget elementor-widget-heading"
             data-id="381a648"
@@ -497,4 +509,4 @@ export default function CompanySection() {
 }
 
 
-              // src="/images/h4-vector.png"
+// src="/images/h4-vector.png"
