@@ -44,6 +44,12 @@ export default function ProjectBreadcrumb({ project }) {
                           </svg>
                         </span>
                       </li>
+                      <li className="hfe-breadcrumbs-item hfe-breadcrumbs-first">
+                        <span className="hfe-breadcrumbs-home-icon"></span>
+                        <Link href="/projects" prefetch={false}>
+                          <span className="hfe-breadcrumbs-text">Models</span>
+                        </Link>
+                      </li>
                       <li className="hfe-breadcrumbs-item hfe-breadcrumbs-last">
                         <span className="hfe-breadcrumbs-text" aria-current="page">
                           {project.title}

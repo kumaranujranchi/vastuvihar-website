@@ -32,7 +32,7 @@ export default function ProjectFilters({ filters = {} }) {
           <option value="60-100">₹60 Lac – 1 Cr</option>
           <option value="100-plus">₹1 Cr and Above</option>
         </select>
-        <div className="filter-wrap filter-wrap-button">
+        <div className="filter-wrap filter-wrap-button search-filter-model">
           <button type="submit">Search</button>
         </div>
       </form>
