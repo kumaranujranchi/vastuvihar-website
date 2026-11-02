@@ -1,6 +1,7 @@
 import './AboutLeadership.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
+import StaticPill from '../common/StaticPill';
 
 const tickerItems = ['·', 'explore company', '·', 'explore company'];
 
@@ -20,7 +21,7 @@ const cards = [
       'We offer bungalows, flats and thoughtfully planned townships with a focus on affordable, quality living for families across Eastern India.',
     buttonText: 'Our Projects',
     buttonHref: '/projects/',
-    arrowHref: '/about-us/',
+    arrowHref: '/projects/',
     theme: 'dark',
   },
   {
@@ -58,8 +59,8 @@ const cards = [
     text:
       'We value trust, transparent communication, quality engineering and accessible housing that makes long-term homeownership possible.',
     buttonText: 'Discover more',
-    buttonHref: '/about-us/',
-    arrowHref: '/about-us/',
+    buttonHref: '/core-values/',
+    arrowHref: '/core-values/',
     theme: 'dark',
   },
 ];
@@ -229,33 +230,8 @@ export default function AboutLeadership() {
       data-element_type="container"
     >
       <div className="e-con-inner">
-        <div
-          className="elementor-element elementor-element-b610c64 box-width-yes elementor-widget__width-initial animated-fast spaciaz-scrolling-ltr elementor-invisible elementor-widget elementor-widget-spaciaz-slide-scrolling"
-          data-id="b610c64"
-          data-element_type="widget"
-          data-settings='{"_animation":"opal-helix"}'
-          data-widget_type="spaciaz-slide-scrolling.default"
-        >
-          <div className="elementor-widget-container">
-            <div className="elementor-scrolling">
-              <div className="elementor-scrolling-wrapper">
-                {Array.from({ length: 5 }).map((_, groupIndex) => (
-                  <div className="elementor-scrolling-inner" key={groupIndex}>
-                    {tickerItems.map((item, itemIndex) => (
-                      <div className="elementor-scrolling-item" key={`${groupIndex}-${itemIndex}`}>
-                        <div className="elementor-scrolling-item-inner">
-                          <div className="scrolling-title">
-                            <span>{item}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <StaticPill text="Explore Company" />
+
 
         <div
           className="elementor-element elementor-element-5a7e392 elementor-widget__width-initial elementor-widget-mobile__width-inherit animated-fast elementor-invisible elementor-widget elementor-widget-heading"

@@ -8,12 +8,13 @@ export default function StaticPill({ text }) {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '8px 24px',
-          border: '1px solid rgba(15, 23, 42, 0.1)', /* Subtle border */
+          border: '1px solid rgb(0, 162, 255)', /* Subtle border */
           borderRadius: '9999px', /* Pill shape */
           textTransform: 'uppercase',
           letterSpacing: '1.5px',
           fontSize: '12px',
           fontWeight: '700',
+          color: 'rgb(0, 153, 255)',
           backgroundColor: 'transparent'
         }}
       >

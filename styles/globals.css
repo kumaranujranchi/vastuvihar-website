@@ -30,6 +30,12 @@
     gap: 10px;
 }
 
+@keyframes marquee {
+    100% {
+        transform: translate(-100%);
+    }
+}
+
 /* Default alignments that will be overridden by controls */
 .hfe-counter-wrapper[style*="flex-direction: column"] {
     align-items: center;

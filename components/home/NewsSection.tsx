@@ -2,6 +2,7 @@ import './NewsSection.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
+import StaticPill from '../common/StaticPill';
 
 // Helper to format dates to match your UI ("Mar 18, 2025")
 const formatDate = (date: Date) => {
@@ -35,54 +36,9 @@ export default async function NewsSection() {
           data-id="ec1010d"
           data-element_type="container"
           data-settings={'{"background_background":"classic"}'}
-        >
-          <div
-            className="elementor-element elementor-element-b3ec8d6 box-width-yes elementor-widget__width-initial animated-fast spaciaz-scrolling-ltr elementor-invisible elementor-widget elementor-widget-spaciaz-slide-scrolling"
-            data-id="b3ec8d6"
-            data-element_type="widget"
-            data-settings={'{"_animation":"opal-helix"}'}
-            data-widget_type="spaciaz-slide-scrolling.default"
-          >
-            <div className="elementor-widget-container">
-              <div className="elementor-scrolling">
-                <div className="elementor-scrolling-wrapper">
-                  {/* Repeated scrolling tickers kept exactly as original */}
-                  {[...Array(5)].map((_, idx) => (
-                    <div className="elementor-scrolling-inner" key={idx}>
-                      <div className="elementor-scrolling-item">
-                        <div className="elementor-scrolling-item-inner">
-                          <div className="scrolling-title elementor-repeater-item-3eace46">
-                            <span>Articles &amp; insights</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="elementor-scrolling-item">
-                        <div className="elementor-scrolling-item-inner">
-                          <div className="scrolling-title elementor-repeater-item-9398599">
-                            <span>·</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="elementor-scrolling-item">
-                        <div className="elementor-scrolling-item-inner">
-                          <div className="scrolling-title elementor-repeater-item-18b9ba4">
-                            <span>Articles &amp; insights</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="elementor-scrolling-item">
-                        <div className="elementor-scrolling-item-inner">
-                          <div className="scrolling-title elementor-repeater-item-194a249">
-                            <span>·</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+        > 
+         <StaticPill text="Recent Blogs" />
+                 
           <div
             className="elementor-element elementor-element-8034cbb elementor-widget__width-initial animated-fast elementor-invisible elementor-widget elementor-widget-heading"
             data-id="8034cbb"

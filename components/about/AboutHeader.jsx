@@ -1,5 +1,6 @@
 import './AboutHeader.css';
 import Link from 'next/link';
+import StaticPill from '../common/StaticPill';
 import ScrollingTicker from '@/components/common/ScrollingTicker';
 
 export default function AboutHeader() {
@@ -77,10 +78,10 @@ export default function AboutHeader() {
                           data-widget_type="heading.default"
                         >
                           <div className="elementor-widget-container">
-                            <div className="elementor-heading-title elementor-size-default">
+                            {/* <div className="elementor-heading-title elementor-size-default">
                               For over three decades, Vastu Vihar has helped families find thoughtfully designed,
                               affordable homes and vibrant communities across Eastern India and Nepal.
-                            </div>{' '}
+                            </div>{' '} */}
                           </div>
                         </div>
                       </div>
@@ -110,7 +111,9 @@ export default function AboutHeader() {
                       data-id="d3b3874"
                       data-element_type="container"
                     >
-                      <ScrollingTicker text="about us" widgetId="3137479" />
+                        <StaticPill text="ABOUT US" />
+                               
+                      {/* <ScrollingTicker text="about us" widgetId="3137479" /> */}
                       <div
                         className="elementor-element elementor-element-9a8ab30 elementor-widget__width-initial elementor-widget-mobile__width-inherit animated-fast elementor-invisible elementor-widget elementor-widget-heading"
                         data-id="9a8ab30"

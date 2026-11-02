@@ -104,12 +104,6 @@
 
 
 
-@keyframes marquee {
-    100% {
-        transform: translate(-100%);
-    }
-}
-
 
 @media(max-width:1200px) {
 

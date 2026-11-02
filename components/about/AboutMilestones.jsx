@@ -57,9 +57,7 @@ export default function AboutMilestones() {
         {/* Header */}
         <div className="milestones-header">
           <span className="milestones-label">
-            <span>•</span>
             OUR STORY
-            <span>•</span>
           </span>
 
           <h2>32+ years of a remarkable journey</h2>

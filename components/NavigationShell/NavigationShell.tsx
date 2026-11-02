@@ -15,9 +15,7 @@ interface NavigationShellProps {
 }
 
 export default function NavigationShell({
-  header,
   children,
-  footer,
   cookieConsent,
 }: NavigationShellProps) {
   const pathname = usePathname();

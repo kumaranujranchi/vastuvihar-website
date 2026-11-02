@@ -1,5 +1,6 @@
 import './AboutTestimonials.css';
 import '../common/ScrollingTicker.css';
+import StaticPill from '../common/StaticPill';
 
 const testimonials = [
   {
@@ -81,87 +82,8 @@ export default function AboutTestimonials() {
           data-id="69ea2b3"
           data-element_type="container"
         >
-          <div
-            className="elementor-element elementor-element-2e05536 elementor-absolute elementor-widget elementor-widget-image"
-            data-id="2e05536"
-            data-element_type="widget"
-            data-settings='{"_position":"absolute"}'
-            data-widget_type="image.default"
-          >
-            <div className="elementor-widget-container">
-              <img
-                loading="lazy"
-                decoding="async"
-                width="140"
-                height="140"
-                src="/villa/yamuna.webp"
-                className="attachment-full size-full wp-image-510"
-                alt=""
-              />
-            </div>
-          </div>
+          <StaticPill text="Our Commitment" />
 
-          <div
-            className="elementor-element elementor-element-8aa9af9 elementor-absolute elementor-view-default elementor-widget elementor-widget-icon"
-            data-id="8aa9af9"
-            data-element_type="widget"
-            data-settings='{"_position":"absolute"}'
-            data-widget_type="icon.default"
-          >
-            <div className="elementor-widget-container">
-              <div className="elementor-icon-wrapper">
-                <div className="elementor-icon">
-                  <i aria-hidden="true" className="spaciaz-icon- spaciaz-icon-quote-1" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="elementor-element elementor-element-cc3d78d rotate elementor-widget elementor-widget-text-path"
-            data-id="cc3d78d"
-            data-element_type="widget"
-            data-settings='{"text":"the vastu vihar promise · the vastu vihar promise · ","align":"center","link":{"url":"","is_external":"","nofollow":"","custom_attributes":""},"start_point":{"unit":"%","size":0,"sizes":[]}}'
-            data-widget_type="text-path.default"
-          >
-            <div className="elementor-widget-container">
-              <div
-                className="e-text-path"
-                data-text="the vastu vihar promise · the vastu vihar promise · "
-                data-link-url=""
-              />
-            </div>
-          </div>
-
-          <div
-            className="elementor-element elementor-element-b8a5f5f elementor-absolute elementor-view-default elementor-widget elementor-widget-icon"
-            data-id="b8a5f5f"
-            data-element_type="widget"
-            data-settings='{"_position":"absolute"}'
-            data-widget_type="icon.default"
-          >
-            <div className="elementor-widget-container">
-              <div className="elementor-icon-wrapper">
-                <div className="elementor-icon">
-                  {/* <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="320"
-                    height="104"
-                    viewBox="0 0 320 104"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 0H320C290.545 0 267.772 24.6753 253.628 49.8666C235.516 82.1247 200.378 104 160 104C119.622 104 84.4835 82.1247 66.3718 49.8666C52.228 24.6753 29.4552 0 0 0Z"
-                      fill="white"
-                    />
-                  </svg> */}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div

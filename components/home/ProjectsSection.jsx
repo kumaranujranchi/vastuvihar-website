@@ -3,6 +3,7 @@ import Link from 'next/link';
 import './ProjectsSection.css';
 import '../projects/ProjectCard.css';
 import '../common/ScrollingTicker.css';
+import StaticPill from '../common/StaticPill';
 
 
 const tickerItems = ['housing models', '·', 'housing models', '·'];
@@ -142,17 +143,8 @@ export default function ProjectsSection() {
           data-element_type="container"
           data-settings='{"background_background":"classic"}'
         >
-          <div
-            className="elementor-element elementor-element-3a54ef5 box-width-yes elementor-widget__width-initial animated-fast spaciaz-scrolling-ltr elementor-invisible elementor-widget elementor-widget-spaciaz-slide-scrolling"
-            data-id="3a54ef5"
-            data-element_type="widget"
-            data-settings='{"_animation":"opal-helix"}'
-            data-widget_type="spaciaz-slide-scrolling.default"
-          >
-            <div className="elementor-widget-container">
-              <ScrollingTicker />
-            </div>
-          </div>
+            <StaticPill text="Our Models" />
+                   
 
           <div
             className="elementor-element elementor-element-5791868 elementor-widget__width-initial animated-fast elementor-invisible elementor-widget elementor-widget-heading"
