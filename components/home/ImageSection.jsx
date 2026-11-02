@@ -100,8 +100,9 @@ export default function ImageSection() {
       data-settings={'{"background_background":"classic"}'}
     >
       <div className="e-con-inner">
+        {/* Removed 'elementor-invisible' so the title shows instantly */}
         <div
-          className="elementor-element elementor-element-9f847e0 animated-fast elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list"
+          className="elementor-element elementor-element-9f847e0 animated-fast elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
           data-id="9f847e0"
           data-element_type="widget"
           data-settings={'{"_animation":"opal-scale-up"}'}
@@ -150,19 +151,31 @@ export default function ImageSection() {
           data-widget_type="spaciaz-testimonials.default"
         >
           <div className="elementor-widget-container">
+            {/* Added overflow hidden to prevent slides from bleeding out horizontally */}
             <div
               className="elementor-testimonial-item-wrapper spaciaz-swiper swiper"
               dir="ltr"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
+              style={{ overflow: "hidden", width: "100%" }} 
             >
-              <div className="layout-1 swiper-wrapper">
+              {/* Added flexbox and dynamic translateX to simulate the swiper engine */}
+              <div 
+                className="layout-1 swiper-wrapper"
+                style={{ 
+                  display: "flex", 
+                  transform: `translateX(-${activeIndex * 100}%)`, 
+                  transition: "transform 0.5s ease-in-out" 
+                }}
+              >
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
                     className={`grid-item swiper-slide elementor-testimonial-item ${
                       index === activeIndex ? "swiper-slide-active" : ""
                     }`}
+                    // Added flexShrink and width 100% so each slide takes up exactly one frame
+                    style={{ width: "100%", flexShrink: 0 }}
                   >
                     <div className="testimonial-content">
                       <div className="wrap_content">
