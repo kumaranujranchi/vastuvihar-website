@@ -319,7 +319,7 @@ export default function NewBlogPage() {
                   )}
                 </div>
                 <div className={styles.slugWrapper}>
-                  <span className={styles.slugPrefix}>vastuvihar.org/blog/</span>
+                  <span className={styles.slugPrefix}>vastuvihar.com/blog/</span>
                   <input
                     id="blog-slug"
                     type="text"

@@ -95,6 +95,13 @@
   background-color: #ffffff !important;
 }
 
+.comment-input:focus,
+.comment-textarea:focus {
+  border: 1px solid !important;
+  border-color: #93cff2 !important;
+  background-color: #ffffff !important;
+}
+
 .comment-submit-btn {
   padding: 10px 20px !important;
   background-color: #1084c8 !important;

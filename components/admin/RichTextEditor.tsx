@@ -95,7 +95,7 @@ export default function RichTextEditor({
   const handleInsertLink = () => {
     const selection = window.getSelection();
     const selectedText = selection?.toString() || '';
-    const url = prompt('Enter link URL (e.g., https://vastuvihar.org):', 'https://');
+    const url = prompt('Enter link URL (e.g., https://vastuvihar.com):', 'https://');
     if (!url || url === 'https://') return;
 
     if (selectedText) {
