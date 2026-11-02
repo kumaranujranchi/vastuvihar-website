@@ -233,6 +233,44 @@
     transform: scale(0.95);
 }
 
+
+/* Number inside circle */
+.circleNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Location icon - initially hidden */
+.locationIcon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(10px) scale(0.7);
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Hide number on card hover */
+.cityCard:hover .circleNumber {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.7);
+}
+
+/* Show location icon on card hover */
+.cityCard:hover .locationIcon {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
 .decorBorder {
     position: absolute;
     width: calc(var(--box_icon) + 10px);

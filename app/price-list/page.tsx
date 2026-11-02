@@ -66,16 +66,34 @@ export default function PriceListPage() {
   const renderCard = (group: StateGroup, city: City, cityIndex: number) => {
     // Number resets to 01 for each state group
     const countStr = (cityIndex + 1).toString().padStart(2, '0');
-    
+
     return (
       <article className={styles.cityCard} key={city.name}>
         <div className={styles.decorBorder}></div>
-        <div className={styles.cardCircle}>{countStr}</div>
-        
+        {/* <div className={styles.cardCircle}>{countStr}</div> */}
+        <div className={styles.cardCircle}>
+          <span className={styles.circleNumber}>{countStr}</span>
+
+          <svg
+            className={styles.locationIcon}
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+            <circle cx="12" cy="10" r="2.5" />
+          </svg>
+        </div>
         <div className={styles.cardContent}>
           <span className={styles.cityState}>{group.state}</span>
           <h3 className={styles.cityName}>{city.name}</h3>
-          
+
           {city.phases.length > 0 ? (
             <div className={styles.phaseGrid}>
               {city.phases.map((phase) => (
