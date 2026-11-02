@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Real Estate & Construction Group',
   phone: '+91 95340 95340',
   phoneHref: 'tel:+919534095340',
-  email: 'info@vastvihar.org',
+  email: 'info@vastuvihar.org',
   logo: '/images/vastu-logo.webp',
   logoLight: '/images/logo.svg',
 };
