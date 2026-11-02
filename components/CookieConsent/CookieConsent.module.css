@@ -5,7 +5,7 @@
   inset: 0;
   z-index: 999998;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: flex-end;
   padding: 24px;
   background: rgba(15, 23, 42, 0.45);
@@ -210,7 +210,7 @@
 }
 
 .toggleInput:checked + .toggleLabel {
-  background-color: #dc2626;
+  background-color: #0087e8;
 }
 
 .toggleInput:checked + .toggleLabel .toggleThumb {
@@ -219,7 +219,7 @@
 
 .toggleDisabled {
   cursor: not-allowed;
-  background-color: #fca5a5 !important;
+  background-color: #a5ccfc !important;
 }
 
 .toggleDisabled .toggleThumb {
@@ -272,8 +272,8 @@
 }
 
 .acceptAllBtn {
-  background-color: #dc2626;
-  border: 1px solid #dc2626;
+  background-color: #268ddc;
+  border: 1px solid #268ddc;
   color: #ffffff;
   font-size: 0.88rem;
   font-weight: 600;

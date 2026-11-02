@@ -1,249 +1,264 @@
 .page {
-    background: #fff;
-    color: #262626;
+    background: #ffffff;
+    color: #334155; /* Modern neutral slate */
     padding: 68px 20px 90px;
-    font-family: inherit
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; */
 }
 
 .container {
     max-width: 1120px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .intro {
     max-width: 950px;
-    margin-bottom: 46px
+    margin-bottom: 46px;
 }
 
 .eyebrow {
     text-transform: uppercase;
-    letter-spacing: .16em;
-    font-size: 12px;
+    letter-spacing: 0.12em;
+    font-size: 13px;
     font-weight: 700;
-    color: #b1874b;
-    margin: 0 0 16px
+    color: #268ddc; /* Main theme color */
+    margin: 0 0 16px;
 }
 
 .intro h1 {
     font-size: clamp(34px, 4vw, 52px);
-    line-height: 1.12;
-    font-weight: 600;
-    letter-spacing: -.035em;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     margin: 0 0 17px;
-    color: #181818
+    color: #0f172a; /* Deep, sharp dark blue-gray */
 }
 
 .lead {
     font-size: clamp(17px, 2vw, 21px);
-    line-height: 1.5;
-    color: #555;
-    margin-bottom: 22px
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 22px;
 }
 
 .revised {
-    font-size: 13px;
-    font-weight: 600;
-    color: #745a3a;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
     margin: 0 0 30px;
-    padding: 12px 0;
-    border-block: 1px solid #eee
+    padding: 14px 0;
+    border-block: 1px solid #e2e8f0;
 }
 
 .revised span {
     margin: 0 12px;
-    color: #ccc
+    color: #cbd5e1;
 }
 
-.intro>p:not(.eyebrow):not(.lead):not(.revised) {
-    font-size: 15px;
-    line-height: 1.9;
-    color: #555;
-    margin: 0 0 16px
+.intro > p:not(.eyebrow):not(.lead):not(.revised) {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #475569;
+    margin: 0 0 16px;
 }
 
 .sections {
     display: grid;
-    gap: 26px
+    gap: 32px;
 }
 
 .section {
-    border: 1px solid #eae7e2;
-    background: #fff;
-    padding: clamp(22px, 3vw, 42px);
-    scroll-margin-top: 100px
+    border: 1px solid #e2e8f0; /* Crisp neutral border */
+    background: #ffffff;
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: 12px; /* Soft modern corners */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02); /* Very subtle elevation */
+    scroll-margin-top: 100px;
 }
 
 .section h2 {
-    font-size: clamp(21px, 2.6vw, 28px);
-    font-weight: 600;
-    letter-spacing: -.02em;
-    color: #202020;
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0f172a;
     line-height: 1.35;
-    margin: 0 0 22px;
+    margin: 0 0 24px;
     display: flex;
     gap: 16px;
-    align-items: flex-start
+    align-items: flex-start;
 }
 
 .section h2 span {
-    font-size: 13px;
-    letter-spacing: .06em;
-    color: #ad834e;
-    border-top: 2px solid #ad834e;
-    padding-top: 7px;
-    flex-shrink: 0
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #268ddc; /* Main theme color */
+    border-top: 2px solid #268ddc;
+    padding-top: 8px;
+    flex-shrink: 0;
 }
 
 .section h3 {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
-    margin: 24px 0 12px;
-    color: #242424
+    margin: 28px 0 14px;
+    color: #1e293b;
 }
 
 .section p,
 .section li {
-    font-size: 15px;
-    line-height: 1.85;
-    color: #5b5b5b
+    font-size: 16px;
+    line-height: 1.75;
+    color: #475569;
 }
 
 .section p {
-    margin: 0 0 14px
+    margin: 0 0 16px;
 }
 
 .section ul {
     list-style: disc;
-    padding-left: 22px;
-    margin: 0 0 18px
+    padding-left: 24px;
+    margin: 0 0 20px;
 }
 
 .section li {
-    padding-left: 4px;
-    margin-bottom: 11px
+    padding-left: 6px;
+    margin-bottom: 12px;
 }
 
 .section li p {
-    margin: 5px 0 10px
+    margin: 6px 0 12px;
 }
 
 .section a {
-    color: #936c3a;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    overflow-wrap: anywhere
+    color: #268ddc; /* Main theme color */
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    overflow-wrap: anywhere;
 }
 
 .section a:hover {
-    color: #1b1b1b
+    color: #1a6ab0; /* Darker shade of main theme color for hover */
+    border-bottom: 1px solid #1a6ab0;
 }
 
 .section strong {
-    font-weight: 650;
-    color: #303030
+    font-weight: 600;
+    color: #0f172a;
 }
 
 .definitionGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px
+    gap: 20px;
+    margin: 24px 0;
 }
 
 .infoCard {
-    border: 1px solid #eae6df;
+    border: 1px solid #e2e8f0;
     padding: 24px;
-    background: #fcfbf9
+    background: #f8fafc; /* Cool, clean off-white */
+    border-radius: 8px;
 }
 
 .icon {
     display: inline-flex;
-    color: #aa824b;
-    font-size: 26px;
-    line-height: 1
+    color: #268ddc; /* Main theme color */
+    font-size: 28px;
+    line-height: 1;
 }
 
 .infoCard h3 {
     font-size: 17px;
-    margin: 12px 0 8px
+    font-weight: 600;
+    color: #1e293b;
+    margin: 14px 0 8px;
 }
 
 .infoCard p {
-    font-size: 14px;
-    margin: 0
+    font-size: 15px;
+    color: #475569;
+    margin: 0;
 }
 
 .contactPanel {
-    padding: clamp(20px, 3vw, 30px);
-    background: #f9f7f3;
-    border-left: 3px solid #b18a57;
-    margin: 25px 0
+    padding: clamp(24px, 3vw, 32px);
+    background: #f0f7fd; /* Very light tint of main theme color */
+    border-left: 4px solid #268ddc; /* Main theme color */
+    border-radius: 0 8px 8px 0;
+    margin: 32px 0;
 }
 
 .contactPanel h3 {
-    margin: 0 0 6px
+    margin: 0 0 8px;
+    color: #0f172a;
 }
 
 .panelSub {
-    font-size: 13px !important
+    font-size: 14px !important;
+    color: #475569;
 }
 
 .contactGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px 25px;
-    margin: 20px 0 0
+    gap: 20px 30px;
+    margin: 24px 0 0;
 }
 
-.contactGrid>div {
-    border-top: 1px solid #e7e0d5;
-    padding-top: 12px;
-    min-width: 0
+.contactGrid > div {
+    border-top: 1px solid #dce8f4; /* Soft blue-gray divider */
+    padding-top: 14px;
+    min-width: 0;
 }
 
 .contactGrid dt {
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: .06em;
-    color: #8e795d;
-    margin-bottom: 5px
+    letter-spacing: 0.08em;
+    color: #268ddc; /* Main theme color */
+    margin-bottom: 6px;
 }
 
 .contactGrid dd {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.65;
+    font-size: 15px;
+    color: #1e293b;
+    font-weight: 500;
+    line-height: 1.6;
     margin: 0;
-    overflow-wrap: anywhere
+    overflow-wrap: anywhere;
 }
 
-@media(max-width:700px) {
+@media (max-width: 700px) {
     .page {
-        padding: 36px 16px 60px
+        padding: 40px 16px 60px;
     }
 
     .intro {
-        margin-bottom: 27px
+        margin-bottom: 32px;
     }
 
     .sections {
-        gap: 15px
+        gap: 20px;
     }
 
     .section h2 {
-        gap: 10px
+        gap: 12px;
     }
 
     .definitionGrid,
     .contactGrid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
 
     .infoCard {
-        padding: 20px
+        padding: 20px;
     }
 
     .revised span {
-        margin: 0 5px
+        margin: 0 8px;
     }
 }

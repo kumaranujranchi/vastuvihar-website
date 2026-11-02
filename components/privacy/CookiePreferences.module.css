@@ -5,15 +5,16 @@
 }
 
 .cookieButton {
-    border: 1px solid #9d774a;
-    background: #9d774a;
+    border: 1px solid #0095e5;
+    background: #0095e5;
     color: #fff;
     font: inherit;
     font-size: 14px;
     font-weight: 600;
     padding: 13px 19px;
     cursor: pointer;
-    transition: background .2s, color .2s
+    transition: background .2s, color .2s;
+    border-radius: 40px;
 }
 
 .cookieButton span {
@@ -21,15 +22,16 @@
 }
 
 .cookieButton:hover {
-    background: #1e1e1e;
-    border-color: #1e1e1e
+    background: #031457;
+    border-color: #031457
 }
 
 .cookiePanel {
     border: 1px solid #e7e0d6;
     padding: 24px;
     margin-top: 15px;
-    background: #fff
+    background: #fff;
+    border-radius: 40px;
 }
 
 .cookiePanel h3 {
@@ -62,7 +64,7 @@
 }
 
 .cookieOption input {
-    accent-color: #9d774a;
+    accent-color: #0095e5;
     width: 18px;
     height: 18px;
     flex: none
@@ -77,16 +79,17 @@
 
 .cookieActions button {
     background: #fff;
-    border: 1px solid #9d774a;
+    border: 1px solid #0095e5;
     padding: 10px 14px;
-    color: #60411e;
+    color: #0095e5;
     cursor: pointer;
     font: inherit;
-    font-size: 13px
+    font-size: 13px;
+    border-radius: 40px;
 }
 
 .cookieActions button:hover {
-    background: #9d774a;
+    background: #0095e5;
     color: white
 }
 
