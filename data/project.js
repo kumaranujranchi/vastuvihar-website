@@ -301,6 +301,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/yamuna/Yamuna.jpg",
             "/yamuna/yamuna3.webp",
             "/yamuna/yamuna1.webp",
             "/yamuna/yamuna2.webp",
@@ -455,7 +456,7 @@ export const projectsData = {
 
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            // "/simplex/simplex_exterior.webp",
+            "/simplex/Simplex.jpg",
             "/villa/simplex.webp",
             "/simplex/simplex-row-building.webp",
         ],
@@ -547,6 +548,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement",
         ],
         gallery: [
+            "/business-b/business.jpeg",
             "/business-b/Business_bungalow1.webp",
             "/business-b/Business_bungalow2.webp",
             "/business-b/Business_bungalow3.webp",
@@ -739,11 +741,11 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
+            "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
             "/jayanti/3.webp",
             "/jayanti/4.webp",
-            "/jayanti/5.webp",
             "/jayanti/6.webp",
             "/jayanti/8.webp",
         ],
@@ -830,8 +832,8 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            "/kaveri/kaveri-exterior.webp",
             "/kaveri/1.webp",
+            "/kaveri/kaveri-exterior.webp",
             "/kaveri/kaveri-row.webp",
         ],
         modelTypes: [

@@ -22,6 +22,25 @@ const PRICE_LIST_DATA: StateGroup[] = [
       { name: 'Gaya', phases: [] },
       { name: 'Patna', phases: [] },
       { name: 'Muzaffarpur', phases: [] },
+      { name: 'Banka', phases: [] },
+      { name: 'Begusarai', phases: [] },
+      { name: 'Bettiah', phases: [] },
+      { name: 'Bhagalpur', phases: [] },
+      { name: 'Buxar', phases: [] },
+      { name: 'Chhapra', phases: [] },
+      { name: 'Biharsarif', phases: [] },
+      { name: 'Darbhanga', phases: [] },
+      { name: 'Hajipur', phases: [] },
+      { name: 'Jehanabad', phases: [] },
+      { name: 'Madhubani', phases: [] },
+      { name: 'Motihari', phases: [] },
+      { name: 'Munger', phases: [] },
+      { name: 'Saharsa', phases: [] },
+      { name: 'Samastipur', phases: [] },
+      { name: 'Sasaram', phases: [] },
+      { name: 'Raxaul', phases: [] },
+      { name: 'Siwan', phases: [] },
+      { name: 'Sitamarhi', phases: [] },
     ],
   },
   {
@@ -30,13 +49,35 @@ const PRICE_LIST_DATA: StateGroup[] = [
       { name: 'Bokaro', phases: [] },
       { name: 'Deoghar', phases: [] },
       { name: 'Dhanbad', phases: [] },
+      { name: 'Giridih', phases: [] },
+      { name: 'Hazaribagh', phases: [] },
       { name: 'Ranchi', phases: [] },
+      { name: 'Jamshedpur', phases: [] },
+    ],
+  },
+  {
+    state: 'West Bengal',
+    cities: [
+      { name: 'Alipurduar', phases: [] },
+      { name: 'Asansol', phases: [] },
+      { name: 'Durgapur', phases: [] },
+      { name: 'Kolkata', phases: [] },
+      { name: 'Siliguri', phases: [] },
+    ],
+  },
+  {
+    state: 'Uttar Pradesh',
+    cities: [
+      { name: 'Gorakhpur', phases: [] },
+      { name: 'Mirzapur', phases: [] },
+      { name: 'Varanasi', phases: [] },
     ],
   },
   {
     state: 'Odisha',
     cities: [
       { name: 'Bhubaneshwar', phases: [] },
+      { name: 'Rourkela', phases: [] },
     ],
   },
 ];
@@ -157,7 +198,7 @@ export default function PriceListView() {
                 <div className={styles.stats}>
                   <div><strong>{filteredData.length}</strong><span>State</span></div>
                   <div><strong>{cityCount}</strong><span>Cities</span></div>
-                  <div><strong>{projectCount}</strong><span>Projects</span></div>
+                  {/* <div><strong>{projectCount}</strong><span>Projects</span></div> */}
                 </div>
               </div>
             </div>

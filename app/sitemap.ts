@@ -9,8 +9,8 @@ import { prisma } from '@/lib/prisma';
 // Blog posts are added from the admin panel, so rebuild the sitemap hourly.
 export const revalidate = 3600;
 
-// Left out on purpose: /admin, /careers/apply (a form), and the /our-team, /our-team/<slug> and
-// /ai-in-real-estate-construction pages, which still hold theme placeholder content.
+// Left out on purpose: /admin, /careers/apply (a form), and the /our-team and /our-team/<slug>
+// pages, which still hold theme placeholder content.
 const STATIC_PATHS = [
   '/',
   '/about-us/',

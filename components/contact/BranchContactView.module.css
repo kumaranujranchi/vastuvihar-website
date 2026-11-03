@@ -46,13 +46,13 @@
 }
 
 .inputWrap:focus-within {
-  border-color: #03cdff;
+  border-color: #08AAEC;
   box-shadow: 0 0 0 1px #5492a1;
 }
 
 .inputIcon {
   margin-left: 15px;
-  color: #03cdff;
+  color: #08AAEC;
   display: inline-flex;
   flex-shrink: 0;
 }
@@ -101,7 +101,7 @@
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
-  color: #03cdff;
+  color: #08AAEC;
   pointer-events: none;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .reset:hover {
-  color: #5477a1;
+  color: #08AAEC;
 }
 
 .results {
@@ -582,7 +582,7 @@
 }
 
 .empty button:hover {
-  background: #5a909d;
+  background: #08AAEC;
 }
 
 @media (max-width: 990px) {
@@ -709,7 +709,7 @@
   font-size: 11px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #03cdff;
+  color: #08AAEC;
   font-weight: 700;
   margin: 0 0 3px;
 }
@@ -732,14 +732,14 @@
 }
 
 .personInfo .phoneList a:hover {
-  color: #5485a1;
+  color: #08AAEC;
 }
 
 .cardActions {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 62px;
   margin-top: auto;
   background: #f9f8f6;
   border-top: 1px solid #eae7e2;
@@ -753,7 +753,8 @@
   justify-content: space-between;
   gap: 10px;
   border: 0;
-  padding: 17px 22px;
+  padding: 17px 14px;
+  min-width: 0;
   margin: 0;
   border-radius: 0;
   background: transparent;
@@ -780,7 +781,7 @@
 
 .mapButton:focus-visible,
 .cardActions .mapLink:focus-visible {
-  outline: 2px solid #5487a1;
+  outline: 2px solid #08AAEC;
   outline-offset: -2px;
 }
 
@@ -818,6 +819,107 @@
 
   .mapButton,
   .cardActions .mapLink {
+    transition: none;
+  }
+}
+/* =========================================
+   COPY BRANCH LOCATION - THIRD CARD ACTION
+   Matches existing solid-blue card hover theme.
+========================================= */
+.cardActions .copyButton {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border: 1px solid rgba(8, 170, 236, .26);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #08AAEC;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease,
+    border-color .25s ease, transform .25s ease;
+}
+
+.cardActions .copyButton svg {
+  display: block;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
+.cardActions .copyButton:hover {
+  background: #08AAEC;
+  border-color: #08AAEC;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Keep the icon visible against the card's blue hover fill. */
+.card:hover .cardActions .copyButton {
+  background: rgba(255, 255, 255, .13);
+  border-color: rgba(255, 255, 255, .65);
+  color: #ffffff;
+}
+
+.card:hover .cardActions .copyButton:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #08AAEC;
+}
+
+.card:hover .cardActions .copyButton svg,
+.card:hover .cardActions .copyButton:hover svg {
+  stroke: currentColor;
+}
+
+.cardActions .copyButton:focus-visible {
+  outline: 2px solid #08AAEC;
+  outline-offset: 3px;
+}
+
+.copyFeedback {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 8px 18px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #078fc7;
+  background: #f9f8f6;
+}
+
+.card:hover .copyFeedback {
+  color: #ffffff;
+  background: rgba(0, 0, 0, .16);
+}
+
+@media (max-width: 640px) {
+  .cardActions {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 54px;
+  }
+
+  .mapButton,
+  .cardActions .mapLink {
+    padding: 15px 10px;
+    font-size: 11px;
+  }
+
+  .cardActions .copyButton {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardActions .copyButton {
     transition: none;
   }
 }
