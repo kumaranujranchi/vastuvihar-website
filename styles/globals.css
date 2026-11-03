@@ -14803,7 +14803,7 @@ body.rtl .elementor-widget-n-tabs {
 
 /* Shared Demo 5 header */
 
-.elementor-420 .elementor-element.elementor-element-cc178a3 {
+/* .elementor-420 .elementor-element.elementor-element-cc178a3 {
     --display: flex;
     --flex-direction: column;
     --container-widget-width: 100%;
@@ -14821,7 +14821,7 @@ body.rtl .elementor-widget-n-tabs {
     width: 30px;
     height: 30px;
     clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
-}
+} */
 
 .elementor-420 .elementor-element.elementor-element-2e0de30 {
     --display: flex;
@@ -14895,7 +14895,7 @@ body.rtl .elementor-widget-n-tabs {
     color: white;
 }
 
-.elementor-420 .elementor-element.elementor-element-1888629 {
+/* .elementor-420 .elementor-element.elementor-element-1888629 {
     --display: flex;
     --flex-direction: row;
     --container-widget-width: calc((1 - var(--container-widget-flex-grow)) * 100%);
@@ -14915,7 +14915,7 @@ body.rtl .elementor-widget-n-tabs {
     width: 30px;
     height: 30px;
     clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
-}
+} */
 
 .elementor-widget-site-logo .hfe-site-logo-container .hfe-site-logo-img {
     border-color: var(--e-global-color-primary);
@@ -14994,7 +14994,7 @@ body.rtl .elementor-widget-n-tabs {
 .elementor-420 .elementor-element.elementor-element-5d5b8a9 .main-navigation ul.menu>li.menu-item.current-menu-ancestor>a:not(:hover) {
     color: var(--e-global-color-background);
 }
-
+/* 
 .elementor-420 .elementor-element.elementor-element-5173ec0 {
     --display: flex;
     --flex-direction: row;
@@ -15015,7 +15015,7 @@ body.rtl .elementor-widget-n-tabs {
     width: 30px;
     height: 30px;
     clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
-}
+} */
 
 .elementor-widget-heading .elementor-heading-title {
     color: var(--e-global-color-primary);
@@ -15149,12 +15149,12 @@ body.rtl .elementor-widget-n-tabs {
 
 @media(max-width:767px) {
 
-    .elementor-420 .elementor-element.elementor-element-cc178a3 {
+    /* .elementor-420 .elementor-element.elementor-element-cc178a3 {
         --padding-top: 15px;
         --padding-bottom: 15px;
         --padding-left: 15px;
         --padding-right: 15px;
-    }
+    } */
 
     .elementor-420 .elementor-element.elementor-element-2e0de30 {
         --flex-wrap: wrap;
@@ -15169,15 +15169,14 @@ body.rtl .elementor-widget-n-tabs {
         --width: auto;
     }
 
-    .elementor-420 .elementor-element.elementor-element-1888629 {
+    /* .elementor-420 .elementor-element.elementor-element-1888629 {
         --width: auto;
     }
 
     .elementor-420 .elementor-element.elementor-element-1888629.e-con {
         --order: -99999
-            /* order start hack */
         ;
-    }
+    } */
 
     .elementor-420 .elementor-element.elementor-element-090dbea>.elementor-widget-container {
         margin: 0px 0px 0px 0px;
@@ -15186,21 +15185,21 @@ body.rtl .elementor-widget-n-tabs {
 
 @media(min-width:768px) {
 
-    .elementor-420 .elementor-element.elementor-element-cc178a3 {
+    /* .elementor-420 .elementor-element.elementor-element-cc178a3 {
         --content-width: 1730px;
-    }
+    } */
 
     .elementor-420 .elementor-element.elementor-element-119b2fe {
         --width: auto;
     }
 
-    .elementor-420 .elementor-element.elementor-element-1888629 {
+    /* .elementor-420 .elementor-element.elementor-element-1888629 {
         --width: auto;
-    }
+    } */
 
-    .elementor-420 .elementor-element.elementor-element-5173ec0 {
+    /* .elementor-420 .elementor-element.elementor-element-5173ec0 {
         --width: auto;
-    }
+    } */
 }
 
 @media (max-width:1100px) and (min-width:1025px) {
@@ -40518,10 +40517,10 @@ body {
     z-index: 99;
 }
 
-.site-header-inner .elementor-420 .elementor-element-cc178a3 {
+/* .site-header-inner .elementor-420 .elementor-element-cc178a3 {
     --padding-bottom: 24px;
     --padding-top: 24px;
-}
+} */
 
 .site-skip-link {
     position: fixed;
@@ -40641,10 +40640,10 @@ body {
 }
 
 @media (max-width: 767px) {
-    .site-header-inner .elementor-420 .elementor-element-cc178a3 {
+    /* .site-header-inner .elementor-420 .elementor-element-cc178a3 {
         --padding-top: 15px;
         --padding-bottom: 15px;
-    }
+    } */
 
     .elementor-6350 .elementor-element.elementor-element-9041218 .elementor-button {
         font-size: clamp(22px, 7vw, 30px);
