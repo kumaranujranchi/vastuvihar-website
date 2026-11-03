@@ -14,6 +14,7 @@ const TABS: Tab[] = [
   { id: 'grievances', label: 'Grievances', permission: 'privacy:read' },
   { id: 'consents', label: 'Consent records', permission: 'privacy:read' },
   { id: 'cookies', label: 'Cookie log', permission: 'privacy:read' },
+  { id: 'activity', label: 'Visitor activity', permission: 'privacy:read' },
   { id: 'newsletter', label: 'Newsletter', permission: 'newsletter:manage' },
   { id: 'comments', label: 'Comments', permission: 'comments:moderate' },
   { id: 'breaches', label: 'Breach register', permission: 'breach:manage' },
@@ -412,6 +413,110 @@ function CookieLogTab() {
   );
 }
 
+const AD_CHANNEL_LABELS: Record<string, string> = { google_ads: 'Google Ads', meta: 'Meta', campaign: 'Campaign link' };
+const TAG_LABELS: Record<string, string> = { google_tag: 'Google tag', google_analytics: 'Google Analytics', google_ads: 'Google Ads', meta_pixel: 'Meta Pixel' };
+
+const NO_ACTIVITY_FILTERS = { from: '', to: '', kind: '', category: '', channel: '', consentId: '', visitor: '' };
+
+function VisitorActivityTab() {
+  const [draft, setDraft] = useState(NO_ACTIVITY_FILTERS);
+  const [filters, setFilters] = useState(NO_ACTIVITY_FILTERS);
+  const [page, setPage] = useState(1);
+  const { data, error } = useLoad<any>(`/api/admin/privacy/visitor-activity?${toQuery({ ...filters, page: String(page) })}`);
+
+  const count = (kind: string, category: string) =>
+    data?.summary?.find((row: any) => row.kind === kind && row.category === category)?.count || 0;
+  const field = (key: keyof typeof NO_ACTIVITY_FILTERS) => ({
+    value: draft[key],
+    onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setDraft({ ...draft, [key]: event.target.value }),
+  });
+  const followVisitor = (visitor: string) => {
+    const next = { ...NO_ACTIVITY_FILTERS, visitor };
+    setDraft(next);
+    setFilters(next);
+    setPage(1);
+  };
+
+  return (
+    <>
+      <p className={styles.intro}>What happened in the browsers of visitors who allowed analytics or advertising: the pages they viewed, which tag cookies were present (names only), the advert or campaign that brought them, and what each tag was asked to do. It holds a coded visitor reference and no contact details, IP addresses or cookie values. A visitor who withdraws a category has that category&apos;s rows deleted.</p>
+      <p className={styles.sub}>Tag events show what this website asked a tag to do. They do not confirm that Google or Meta received it, so check their own dashboards for that. Cookies on Google&apos;s or Meta&apos;s own domains, such as IDE and fr, cannot be seen from this website.</p>
+      {error && <p role="alert" className={styles.error}>{error}</p>}
+
+      <div className={styles.stats}>
+        <span className={styles.stat}>Page views: <b>{count('page_view', 'analytics')}</b> analytics, <b>{count('page_view', 'advertising')}</b> advertising</span>
+        <span className={styles.stat}>Tag events: <b>{count('tag_event', 'analytics')}</b> analytics, <b>{count('tag_event', 'advertising')}</b> advertising</span>
+        {data?.channels?.map((row: any) => (
+          <span key={row.channel} className={styles.stat}>{AD_CHANNEL_LABELS[row.channel] || row.channel}: <b>{row.count}</b> page views</span>
+        ))}
+      </div>
+      <p className={styles.sub}>A visitor who allowed both categories is counted once under each. These count events, not people.</p>
+
+      <form
+        className={styles.row}
+        onSubmit={(event) => {
+          event.preventDefault();
+          setFilters(draft);
+          setPage(1);
+        }}
+      >
+        <label className={styles.field}>From<input className={styles.input} type="date" {...field('from')} /></label>
+        <label className={styles.field}>To<input className={styles.input} type="date" {...field('to')} /></label>
+        <label className={styles.field}>Type
+          <select className={styles.input} {...field('kind')}>
+            <option value="">All</option>
+            <option value="page_view">Page views</option>
+            <option value="tag_event">Tag events</option>
+          </select>
+        </label>
+        <label className={styles.field}>Category
+          <select className={styles.input} {...field('category')}>
+            <option value="">All</option>
+            <option value="analytics">Analytics</option>
+            <option value="advertising">Advertising &amp; remarketing</option>
+          </select>
+        </label>
+        <label className={styles.field}>Ad source
+          <select className={styles.input} {...field('channel')}>
+            <option value="">All</option>
+            {(data?.channelOptions || []).map((channel: string) => <option key={channel} value={channel}>{AD_CHANNEL_LABELS[channel] || channel}</option>)}
+          </select>
+        </label>
+        <label className={styles.field}>Visitor code<input className={styles.input} {...field('visitor')} /></label>
+        <label className={styles.field}>Consent ID<input className={styles.input} {...field('consentId')} /></label>
+        <button type="submit" className={styles.primary}>Apply</button>
+        <a className={styles.secondary} href={`/api/admin/privacy/visitor-activity?${toQuery({ ...filters, format: 'csv' })}`}>Download CSV</a>
+      </form>
+
+      <table className={styles.table}>
+        <thead><tr><th>Time</th><th>Visitor code</th><th>Category</th><th>Page</th><th>Event or cookies</th><th>Ad source</th></tr></thead>
+        <tbody>
+          {data?.rows?.length === 0 && <tr><td colSpan={6}>No visitor activity matches.</td></tr>}
+          {data?.rows?.map((row: any) => (
+            <tr key={row.id}>
+              <td>{when(row.createdAt)}</td>
+              <td><button type="button" className={styles.secondary} onClick={() => followVisitor(row.visitor)}>{row.visitor}</button></td>
+              <td>{row.category}</td>
+              <td className={styles.wrap}>{row.path}</td>
+              <td className={styles.wrap}>
+                {row.kind === 'tag_event'
+                  ? `${TAG_LABELS[row.provider] || row.provider}: ${row.eventName.replace(/_/g, ' ')}`
+                  : row.cookies ? row.cookies.replace(/,/g, ', ') : 'Page view, no tag cookies yet'}
+              </td>
+              <td className={styles.wrap}>
+                {row.adChannel
+                  ? [AD_CHANNEL_LABELS[row.adChannel] || row.adChannel, row.adUtmSource, row.adUtmMedium, row.adUtmCampaign].filter(Boolean).join(' / ')
+                  : '—'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {data && <Pager page={data.page} pageSize={data.pageSize} total={data.total} onChange={setPage} />}
+    </>
+  );
+}
+
 function NewsletterTab() {
   const [status, setStatus] = useState('');
   const [page, setPage] = useState(1);
@@ -419,7 +524,7 @@ function NewsletterTab() {
 
   return (
     <>
-      <p className={styles.intro}>The website collects sign-ups but sends no email. Download a fresh list immediately before each send, because an older copy will still contain people who have since unsubscribed. The download only holds people currently subscribed.</p>
+      <p className={styles.intro}>The website no longer takes sign-ups, so this only lists earlier ones, and it sends no email. Download a fresh list immediately before each send, because an older copy will still contain people who have since unsubscribed. The download only holds people currently subscribed.</p>
       {error && <p role="alert" className={styles.error}>{error}</p>}
       <div className={styles.stats}>
         {['SUBSCRIBED', 'UNSUBSCRIBED'].map((key) => (
@@ -959,6 +1064,7 @@ export default function PrivacyAdminPage() {
         {tab === 'grievances' && <RequestsTab key="grievances" view="grievances" canManage={canManage} />}
         {tab === 'consents' && <ConsentsTab />}
         {tab === 'cookies' && <CookieLogTab />}
+        {tab === 'activity' && <VisitorActivityTab />}
         {tab === 'newsletter' && <NewsletterTab />}
         {tab === 'comments' && <CommentsTab />}
         {tab === 'breaches' && <BreachesTab />}

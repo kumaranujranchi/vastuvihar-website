@@ -2,6 +2,7 @@
 
 import './common/ContactForm.css'; // Adjust path if needed
 import { useId, useState } from 'react';
+import { adSourceFields } from '@/lib/privacy/adSource';
 import { trackLead } from '@/lib/privacy/tags';
 
 /** Keeps the theme's original field markup while replacing Contact Form 7. */
@@ -39,6 +40,7 @@ export default function ContactForm({ children, className = '', ...props }) {
         consentPrimary: values.consentPrimary === 'true',
         consentMarketing: values.consentMarketing === 'true',
         noticeLanguage: values.noticeLanguage || 'en',
+        ...adSourceFields(),
       };
 
       const response = await fetch(endpoint, {

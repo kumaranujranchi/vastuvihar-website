@@ -14,6 +14,8 @@ Everything the website collects, where it goes, and why. Update this file and `d
 | Rights request or grievance | `/privacy-rights` | `components/privacy/RightsCentre.jsx` | Name, phone or email, details, corrections, nominee | Name, details, one contact | Handle the request | Legal obligation | `PrivacyRequest` |
 | Marketing opt-out | `/privacy-rights` | `components/privacy/RightsCentre.jsx` | Phone or email | Yes | Stop marketing | Withdrawal of consent | Hash only |
 | Cookie banner | All pages | `components/CookieConsent/CookieConsent.tsx` | Random browser ID, choice | No | Remember and evidence the choice | Consent | Browser, hash in `ConsentRecord` |
+| Visitor activity log | All pages except admin, only after analytics or advertising is allowed | `components/privacy/TrackingTags.jsx`, `lib/privacy/activityLog.js` | Pages viewed, tag cookie names, ad source, tag events | No | Check the tags and see which adverts bring enquiries | Consent | Hash of browser ID in `VisitorEvent` |
+| Enquiry ad source | Both enquiry forms, only after advertising is allowed | `lib/privacy/adSource.js`, `components/ContactForm.jsx` | Ad channel, UTM source, medium and campaign | No | See which adverts bring enquiries | Consent | `Lead` |
 | Staff sign-in | `/admin/login` | `app/admin/login/page.tsx` | Staff email, password hash | Yes | Access control | Employment | `AdminUser`, `AdminSession` |
 
 **Not on this website:** newsletter, callback, site visit or account registration forms, and any chat widget. Booking KYC (PAN, Aadhaar, bank details) is collected offline and sits outside this codebase, so it needs its own review.
@@ -31,6 +33,8 @@ Everything the website collects, where it goes, and why. Update this file and `d
 | Comment | Name and comment (public once approved), email (never public) | Publishing comments | CONTENT, PRIVACY_OFFICER, SUPER_ADMIN |
 | Rights request | Name, contact, details, nominee | Handling the request | PRIVACY_OFFICER, SUPER_ADMIN |
 | Consent ledger | Keyed hash of contact, purpose, version, language, time | Evidence of consent | PRIVACY_OFFICER, SUPER_ADMIN (hashes are not displayed) |
+| Visitor activity | Keyed hash of browser ID, pages, tag cookie names (never values), ad channel, UTM values (never click IDs), tag events | Check the tags and measure adverts | PRIVACY_OFFICER, SUPER_ADMIN (only the first 10 characters of the hash are displayed) |
+| Enquiry ad source | Ad channel, UTM values | Measure adverts | SALES, SUPER_ADMIN, PRIVACY_OFFICER |
 | Rate limiting | Keyed hash of IP, purged after 24 hours | Abuse prevention | Nobody through the UI |
 | Staff | Name, email, role, last sign-in | Access control | SUPER_ADMIN |
 | Legacy technical data | IP, country, browser on older leads | None now | Hidden from staff, included in access summaries |

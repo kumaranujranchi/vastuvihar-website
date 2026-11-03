@@ -17,7 +17,7 @@
 - **Analytics, advertising and remarketing:** a category is offered only if its tag ID is set (see `.env.example`). Until then no tag loads, the policy does not mention it and the Content Security Policy does not allow its hosts. Tags load only from `lib/privacy/tags.js`, only after consent. Turning a category off stops the tag and clears its cookies on this site's domain. Enquiry conversions report only that an enquiry happened, never what was typed.
 - **Cookie log:** each save adds one `ConsentRecord` per answered category, keyed by a hash of the browser's random consent ID. It holds no contact details or IP address. Staff read and export it under Privacy & Compliance, Cookie log. Exports are audited.
 
-**Newsletter:** the footer form shows the notice and an unticked box. Staff with `newsletter:manage` see the list under Privacy & Compliance, Newsletter. The website sends no email, so staff download a fresh list immediately before each send. The download leaves out anyone unsubscribed or suppressed.
+**Newsletter:** the website no longer takes sign-ups. Any earlier entries stay covered by opt-out, access, correction, erasure and retention. Staff with `newsletter:manage` see the list under Privacy & Compliance, Newsletter. The website sends no email, so staff download a fresh list immediately before each send. The download leaves out anyone unsubscribed or suppressed.
 
 **Children:** the site is for adults, and each form asks the person to confirm they are 18 or older. That is not verifiable parental consent, so there is deliberately no route for a child to submit. See `outstanding-items.md`.
 

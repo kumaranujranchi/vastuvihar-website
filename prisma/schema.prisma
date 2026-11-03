@@ -32,6 +32,11 @@ model Lead {
   marketingConsent     Boolean   @default(false)
   marketingConsentAt   DateTime?
   marketingWithdrawnAt DateTime?
+  // The advert or campaign behind the visit. Saved only if the visitor allowed advertising.
+  adChannel     String?
+  adUtmSource   String?
+  adUtmMedium   String?
+  adUtmCampaign String?
   legalHoldReason      String? // Set only for a documented legal retention exception
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -170,6 +175,31 @@ model ConsentRecord {
   @@index([emailKey])
   @@index([browserKey])
   @@index([purpose])
+  @@index([createdAt])
+}
+
+// What happened in a browser after its visitor allowed analytics or advertising.
+// Holds a keyed hash of the browser ID, never contact details, IP addresses or cookie
+// values. A category's rows are deleted when the visitor withdraws that category.
+model VisitorEvent {
+  id            String   @id @default(cuid())
+  browserKey    String
+  kind          String // "page_view" | "tag_event"
+  category      String // "analytics" | "advertising"
+  path          String?
+  cookies       String? // Comma-separated cookie names, on page views
+  adChannel     String? // "google_ads" | "meta" | "campaign", on advertising page views
+  adUtmSource   String?
+  adUtmMedium   String?
+  adUtmCampaign String?
+  provider      String? // "google_tag" | "google_analytics" | "google_ads" | "meta_pixel", on tag events
+  eventName     String? // On tag events
+  noticeVersion String
+  createdAt     DateTime @default(now())
+
+  @@index([browserKey])
+  @@index([kind])
+  @@index([adChannel])
   @@index([createdAt])
 }
 

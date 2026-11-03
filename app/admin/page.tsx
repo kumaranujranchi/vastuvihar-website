@@ -19,9 +19,18 @@ interface Lead {
   status: string;
   marketingConsent?: boolean;
   marketingWithdrawnAt?: string | null;
+  adChannel?: string | null;
+  adUtmSource?: string | null;
+  adUtmMedium?: string | null;
+  adUtmCampaign?: string | null;
   legalHoldReason?: string | null;
   createdAt: string;
 }
+
+const AD_CHANNEL_LABELS: Record<string, string> = { google_ads: 'Google Ads', meta: 'Meta', campaign: 'Campaign link' };
+
+const adSourceLabel = (lead: Lead) =>
+  [AD_CHANNEL_LABELS[lead.adChannel || ''] || lead.adChannel, lead.adUtmSource, lead.adUtmMedium, lead.adUtmCampaign].filter(Boolean).join(' / ');
 
 interface JobVacancy {
   id: string;
@@ -910,6 +919,9 @@ export default function AdminDashboardPage() {
                                     <span className={styles.inquirySourceDot} />
                                     <span>via {(lead.source || 'website').replace(/_/g, ' ')}</span>
                                   </div>
+                                  {lead.adChannel && (
+                                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '3px' }}>Ad: {adSourceLabel(lead)}</div>
+                                  )}
                                 </div>
                               </div>
                             </td>
@@ -1463,6 +1475,9 @@ export default function AdminDashboardPage() {
                 {selectedLead.marketingConsent
                   ? 'Opted in. Promotional messages are allowed.'
                   : 'Not opted in. Contact only about this enquiry.'}
+              </div>
+              <div>
+                <strong>Ad source:</strong> {adSourceLabel(selectedLead) || 'Not recorded'}
               </div>
               {selectedLead.legalHoldReason && (
                 <div>

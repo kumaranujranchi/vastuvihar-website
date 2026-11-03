@@ -11,7 +11,7 @@ export async function GET(request: Request) {
 
   try {
     const leads = await prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 5000 });
-    const header = ['Date', 'Name', 'Phone', 'Email', 'City', 'Budget', 'Project', 'Status', 'Marketing consent', 'Message'];
+    const header = ['Date', 'Name', 'Phone', 'Email', 'City', 'Budget', 'Project', 'Status', 'Marketing consent', 'Ad channel', 'UTM source', 'UTM medium', 'UTM campaign', 'Message'];
     const rows = leads.map((lead) =>
       [
         lead.createdAt.toISOString().slice(0, 10),
@@ -23,6 +23,10 @@ export async function GET(request: Request) {
         lead.project,
         lead.status,
         lead.marketingConsent ? 'Yes' : 'No',
+        lead.adChannel,
+        lead.adUtmSource,
+        lead.adUtmMedium,
+        lead.adUtmCampaign,
         lead.message,
       ]
         .map(csvCell)

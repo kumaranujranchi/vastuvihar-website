@@ -3,6 +3,7 @@ import { guardPublicPost, jsonError, logError } from '@/lib/security/request';
 import { cleanText, oneOf } from '@/lib/validation';
 import { noticeLanguage, recordConsent } from '@/lib/privacy/consent';
 import { CATEGORY_PURPOSES } from '@/lib/privacy/cookieConfig';
+import { deleteVisitorEvents } from '@/lib/privacy/visitorLog';
 import { keyedHash } from '@/lib/security/crypto';
 
 const SOURCES = ['cookie_banner', 'embed', 'privacy_policy'] as const;
@@ -35,6 +36,10 @@ export async function POST(request: Request) {
         source,
       });
     }
+    await deleteVisitorEvents(
+      browserKey,
+      (['analytics', 'advertising'] as const).filter((category) => body.choices?.[category] === false),
+    );
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     logError('privacy.cookie_consent', error);

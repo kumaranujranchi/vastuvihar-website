@@ -4,6 +4,7 @@ import { guardPublicPost, jsonError, logError } from '@/lib/security/request';
 import { cleanText, isTrue, normalizeEmail, normalizePhone, oneOf, phoneMatchKey } from '@/lib/validation';
 import { isSuppressed, noticeLanguage, recordConsent } from '@/lib/privacy/consent';
 import { NOTICE_VERSION, PURPOSES } from '@/lib/privacy/notices';
+import { adSourceForLead } from '@/lib/privacy/visitorLog';
 
 const SOURCES = ['contact_section', 'project_enquiry_section'] as const;
 
@@ -65,6 +66,8 @@ export async function POST(request: Request) {
         noticeLanguage: language,
         marketingConsent: marketing,
         marketingConsentAt: marketing ? now : null,
+        // The browser ID only proves the advertising choice. It is not kept with the enquiry.
+        ...(await adSourceForLead(body.browserId, body.adSource)),
       },
     });
 

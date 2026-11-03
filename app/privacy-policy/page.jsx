@@ -69,7 +69,6 @@ export default function PrivacyPage() {
                 <li><strong>Marketing preference (optional, separate tick-box):</strong> Whether you want offers and new project updates, and the time you chose.<p><em>Purpose:</em> To send promotional calls, SMS, WhatsApp messages or emails, only if you opt in. An enquiry on its own is not treated as permission for marketing.</p></li>
                 <li><strong>Job applications:</strong> Name, email, phone, the position, your resume (required), and any experience details or cover note.<p><em>Purpose:</em> To assess your application and contact you about it. Resumes are kept in private storage and only authorised HR staff can open them.</p></li>
                 <li><strong>Blog comments:</strong> Name and comment (required), and email address (optional).<p><em>Purpose:</em> To review and publish your comment. Your name and comment become publicly visible if approved. Your email is never published.</p></li>
-                <li><strong>Newsletter (optional):</strong> Your email address.<p><em>Purpose:</em> To send you our newsletter, with project news and updates. You can unsubscribe at any time using Stop Marketing on our <Link href="/privacy-rights/" prefetch={false}>Your Data Rights</Link> page.</p></li>
                 <li><strong>Privacy requests and grievances:</strong> Name, phone or email, the details you give us, and any nominee's details.<p><em>Purpose:</em> To confirm your identity, act on your request and keep a record of how it was handled.</p></li>
               </ul>
               <h3>B. Data Collected Automatically</h3>
@@ -77,6 +76,7 @@ export default function PrivacyPage() {
                 <li><strong>Security data:</strong> Your IP address is converted to a keyed, one-way code and held briefly to limit repeated form submissions. We do not store your IP address or browser details with your enquiry.</li>
                 <li><strong>Server logs:</strong> Our hosting provider may keep standard web server logs, including IP addresses, to run and secure the website.</li>
                 <li><strong>Your privacy choice:</strong> Your browser stores your cookie choices with a random identifier. We keep a record of that identifier in coded form with each choice, the notice version and the time, so we can show what was chosen. This record holds no contact details or IP address.</li>
+                {hasTags && <li><strong>Visitor activity (only if you allow analytics or advertising):</strong> Under that same coded identifier, we keep our own record of the pages you view, the names of the tag cookies present (not their contents) and when each tag ran. If you allow advertising, we also record the advert or campaign that brought you here, and save it with any enquiry you send. We use this to check our tags and see which adverts bring enquiries. Withdrawing a category deletes its visitor activity record.</li>}
               </ul>
               {hasTags
                 ? <p>The only analytics or advertising tags on this website are those listed in section 07, and they run only if you allow them. This website does not use session recording or a chat widget.</p>
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
                 <li><strong>General Inquiry Data:</strong> Retained for a maximum of 24 months from the last date of interaction unless renewed by consent.</li>
                 <li><strong>Property Booking, Agreement &amp; Financial Records:</strong> Retained for statutory periods mandated under Real Estate Regulatory Authority (RERA) regulations, the Companies Act 2013, and Indian Income Tax regulations (ordinarily 8 years following the completion of transaction).</li>
                 <li><strong>Job Applications, Blog Comments and Privacy Requests:</strong> Kept for the period set in our approved retention schedule, then deleted.</li>
-                <li><strong>Newsletter:</strong> Your email address is kept while you are subscribed. After you unsubscribe, it is kept for the period set in our approved retention schedule, then deleted.</li>
+                {hasTags && <li><strong>Visitor Activity:</strong> Kept for the period set in our approved retention schedule, or until you withdraw the category it was collected under, then deleted. An advert or campaign saved with an enquiry is deleted with that enquiry.</li>}
                 <li><strong>Marketing Opt-Outs and Consent Records:</strong> Kept in coded form, so we can honour your opt-out and show how consent was handled.</li>
                 <li><strong>Secure Deletion:</strong> Upon expiry of the retention period or upon your valid erasure request, records in our website database and private storage are deleted, unless the law requires us to keep them. Copies in backups and server logs are removed as those backups and logs expire.</li>
               </ul>

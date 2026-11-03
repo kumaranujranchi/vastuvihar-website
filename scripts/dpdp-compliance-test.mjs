@@ -268,6 +268,105 @@ await check('Cookies', 'The log rejects anyone who is not signed in', async () =
   equal((await http('/api/admin/newsletter')).status, 401, 'newsletter');
 });
 
+const activityId = `${run}`.padEnd(32, 'b');
+const activityEvents = [
+  { kind: 'page_view', category: 'advertising', path: '/projects/', cookies: ['_fbp', '_gcl_au', 'vv_admin_session', '_ga'], adSource: { channel: 'google_ads', utmSource: 'google', utmMedium: 'cpc', utmCampaign: 'patna-homes' } },
+  { kind: 'page_view', category: 'analytics', path: '/contact/', cookies: ['_ga'] },
+  { kind: 'tag_event', category: 'advertising', provider: 'meta_pixel', eventName: 'PageView', path: '/projects/' },
+];
+const postActivity = (body) => http('/api/privacy/visitor-activity', { method: 'POST', body });
+const chooseCookies = (browserId, choices) => http('/api/privacy/cookie-consent', { method: 'POST', body: { browserId, choices, source: 'cookie_banner' } });
+
+await check('Visitor activity', 'Nothing is logged for a browser that made no choice or refused the category', async () => {
+  const none = await postActivity({ browserId: activityId, events: activityEvents });
+  equal(none.json.stored, 0, 'stored with no choice');
+  await chooseCookies(activityId, { analytics: true, advertising: false });
+  const refused = await postActivity({ browserId: activityId, events: activityEvents });
+  equal(refused.json.stored, 1, 'only the allowed category is stored');
+  const { json: log } = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}`, { cookie });
+  equal(log.total, 1, 'rows');
+  equal(log.rows[0].category, 'analytics', 'category');
+});
+
+await check('Visitor activity', 'Only cookie names of the right category are kept, with the browser ID hashed', async () => {
+  await chooseCookies(activityId, { analytics: true, advertising: true });
+  const { json } = await postActivity({ browserId: activityId, events: activityEvents });
+  equal(json.stored, 3, 'stored');
+  const { json: log } = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}&kind=page_view&category=advertising`, { cookie });
+  equal(log.total, 1, 'rows');
+  equal(log.rows[0].cookies, '_fbp,_gcl_au', 'cookie names');
+  equal(log.rows[0].adChannel, 'google_ads', 'channel');
+  equal(log.rows[0].adUtmCampaign, 'patna-homes', 'campaign');
+  expect(!JSON.stringify(log).includes(activityId), 'raw ID returned');
+  expect(!('browserKey' in log.rows[0]), 'full hash returned');
+});
+
+await check('Visitor activity', 'Malformed events, admin pages and contact details in a campaign are refused', async () => {
+  equal((await postActivity({ browserId: 'not-hex', events: activityEvents })).status, 400, 'ID');
+  equal((await postActivity({ browserId: activityId, events: [] })).status, 400, 'empty');
+  equal((await postActivity({ browserId: activityId, events: Array(26).fill(activityEvents[0]) })).status, 400, 'too many');
+  const bad = [
+    { kind: 'page_view', category: 'analytics', path: '/admin/privacy/' },
+    { kind: 'page_view', category: 'analytics', path: 'https://evil.example/' },
+    { kind: 'page_view', category: 'analytics', path: '/contact/?phone=9999999999' },
+    { kind: 'tag_event', category: 'analytics', provider: 'meta_pixel', eventName: 'PageView', path: '/' },
+    { kind: 'tag_event', category: 'advertising', provider: 'meta_pixel', eventName: 'Anything', path: '/' },
+  ];
+  equal((await postActivity({ browserId: activityId, events: bad })).json.stored, 0, 'bad events stored');
+  await postActivity({ browserId: activityId, events: [{ kind: 'page_view', category: 'advertising', path: '/faqs/', adSource: { channel: 'campaign', utmCampaign: 'me@example.test' } }] });
+  const row = await prisma.visitorEvent.findFirst({ where: { path: '/faqs/' }, orderBy: { createdAt: 'desc' } });
+  equal(row.adUtmCampaign, null, 'email in campaign');
+  equal(row.adChannel, 'campaign', 'channel');
+});
+
+await check('Visitor activity', 'The log can be followed by visitor code and filtered by ad source, and its download is audited', async () => {
+  const { json: all } = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}`, { cookie });
+  const visitor = all.rows[0].visitor;
+  const { json: followed } = await http(`/api/admin/privacy/visitor-activity?visitor=${visitor}`, { cookie });
+  equal(followed.total, all.total, 'visitor code');
+  const { json: google } = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}&channel=google_ads`, { cookie });
+  expect(google.total >= 1 && google.rows.every((row) => row.adChannel === 'google_ads'), 'channel filter');
+  const csv = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}&format=csv`, { cookie });
+  equal(csv.status, 200, 'csv status');
+  expect(csv.text.includes('patna-homes'), 'csv content');
+  expect(await prisma.auditLog.findFirst({ where: { action: 'visitor_activity.exported' } }), 'export not audited');
+  equal((await http('/api/admin/privacy/visitor-activity')).status, 401, 'signed out');
+});
+
+await check('Visitor activity', 'An enquiry keeps its ad source only with advertising consent, and never the browser ID', async () => {
+  const adSource = { channel: 'meta', utmSource: 'facebook', utmMedium: 'paid', utmCampaign: 'site-visit' };
+  const withConsent = `97${run}40`;
+  equal((await http('/api/leads', { method: 'POST', body: leadBody(withConsent, { browserId: activityId, adSource }) })).status, 201, 'status');
+  const lead = await findLead(withConsent);
+  equal(lead.adChannel, 'meta', 'channel');
+  equal(lead.adUtmCampaign, 'site-visit', 'campaign');
+  const stored = await prisma.lead.findUnique({ where: { id: lead.id } });
+  expect(!JSON.stringify(stored).includes(activityId), 'browser ID stored on the enquiry');
+
+  const refusedId = `${run}`.padEnd(32, 'c');
+  await chooseCookies(refusedId, { advertising: false });
+  const refused = `97${run}41`;
+  equal((await http('/api/leads', { method: 'POST', body: leadBody(refused, { browserId: refusedId, adSource }) })).status, 201, 'refused status');
+  equal((await findLead(refused)).adChannel, null, 'saved after refusal');
+
+  const invalid = `97${run}42`;
+  equal((await http('/api/leads', { method: 'POST', body: leadBody(invalid, { browserId: 'not-hex', adSource }) })).status, 201, 'a bad ID must not block an enquiry');
+  equal((await findLead(invalid)).adChannel, null, 'saved with a bad ID');
+
+  const csv = await http('/api/admin/leads/export', { cookie });
+  expect(csv.text.includes('site-visit'), 'export');
+});
+
+await check('Visitor activity', 'Withdrawing a category deletes its rows, keeps the other and keeps proof of consent', async () => {
+  const before = await prisma.consentRecord.count({ where: { recordType: 'browser', purpose: 'remarketing_cookies' } });
+  equal((await chooseCookies(activityId, { analytics: true, advertising: false })).status, 201, 'status');
+  const { json } = await http(`/api/admin/privacy/visitor-activity?consentId=${activityId}`, { cookie });
+  expect(json.total > 0, 'analytics rows removed');
+  expect(json.rows.every((row) => row.category === 'analytics'), 'advertising rows kept');
+  equal((await postActivity({ browserId: activityId, events: activityEvents })).json.stored, 1, 'advertising still logged');
+  expect((await prisma.consentRecord.count({ where: { recordType: 'browser', purpose: 'remarketing_cookies' } })) > before, 'proof of withdrawal missing');
+});
+
 await check('Tracking', 'With no tag IDs set, the security policy allows no tracker hosts', async () => {
   const csp = (await http('/')).headers.get('content-security-policy') || '';
   expect(csp.includes("default-src 'self'"), 'policy missing');
@@ -275,28 +374,21 @@ await check('Tracking', 'With no tag IDs set, the security policy allows no trac
 });
 
 // ---------------------------------------------------------------- newsletter
-const subscribe = (email, extra = {}) =>
-  http('/api/newsletter', { method: 'POST', body: { email, consentPrimary: 'true', noticeLanguage: 'en', ...extra } });
+// The website no longer takes sign-ups, so earlier entries are seeded directly.
+const seedSubscriber = (email) =>
+  prisma.newsletterSubscriber.create({ data: { email, noticeVersion: 'test', noticeLanguage: 'en' } });
 const subscriberEmail = `news.${run}@example.test`;
 
-await check('Newsletter', 'Signing up needs the consent box, and is recorded with hashed proof', async () => {
-  equal((await subscribe(subscriberEmail, { consentPrimary: '' })).status, 400, 'no consent');
-  equal(await prisma.newsletterSubscriber.count({ where: { email: subscriberEmail } }), 0, 'stored without consent');
-  equal((await subscribe(subscriberEmail)).status, 200, 'status');
-  const stored = await prisma.newsletterSubscriber.findUnique({ where: { email: subscriberEmail } });
-  equal(stored.status, 'SUBSCRIBED', 'subscriber status');
-  const proof = await prisma.consentRecord.findFirst({ where: { recordId: stored.id, purpose: 'newsletter' } });
-  equal(proof.action, 'GRANTED', 'ledger');
-  expect(proof.emailKey && !JSON.stringify(proof).includes(subscriberEmail), 'email in the ledger');
+await check('Newsletter', 'The public sign-up route is gone', async () => {
+  const before = await prisma.newsletterSubscriber.count();
+  const response = await http('/api/newsletter', { method: 'POST', body: { email: subscriberEmail, consentPrimary: 'true', noticeLanguage: 'en' } });
+  equal(response.status, 404, 'status');
+  equal(await prisma.newsletterSubscriber.count(), before, 'entry stored');
 });
 
-await check('Newsletter', 'A second sign-up neither duplicates the entry nor adds to the ledger', async () => {
-  const stored = await prisma.newsletterSubscriber.findUnique({ where: { email: subscriberEmail } });
-  equal((await subscribe(subscriberEmail)).status, 200, 'status');
-  equal(await prisma.consentRecord.count({ where: { recordId: stored.id } }), 1, 'ledger rows');
-});
+await seedSubscriber(subscriberEmail);
 
-await check('Newsletter', 'The admin list and download show subscribers', async () => {
+await check('Newsletter', 'The admin list and download show earlier subscribers', async () => {
   const list = await http('/api/admin/newsletter?status=SUBSCRIBED', { cookie });
   equal(list.status, 200, 'status');
   expect(list.json.subscribers.some((row) => row.email === subscriberEmail), 'not listed');
@@ -304,7 +396,7 @@ await check('Newsletter', 'The admin list and download show subscribers', async 
   expect(csv.text.includes(subscriberEmail), 'not in download');
 });
 
-await check('Newsletter', 'Stop Marketing unsubscribes, drops them from the download, and a new tick cannot undo it', async () => {
+await check('Newsletter', 'Stop Marketing unsubscribes an earlier subscriber and drops them from the download', async () => {
   equal((await http('/api/privacy/marketing-opt-out', { method: 'POST', body: { contact: subscriberEmail } })).status, 200, 'opt-out');
   const stored = await prisma.newsletterSubscriber.findUnique({ where: { email: subscriberEmail } });
   equal(stored.status, 'UNSUBSCRIBED', 'status');
@@ -313,8 +405,6 @@ await check('Newsletter', 'Stop Marketing unsubscribes, drops them from the down
   expect(proof, 'withdrawal not logged');
   const csv = await http('/api/admin/newsletter?format=csv', { cookie });
   expect(!csv.text.includes(subscriberEmail), 'still in download');
-  equal((await subscribe(subscriberEmail)).status, 200, 'resubscribe answers normally');
-  equal((await prisma.newsletterSubscriber.findUnique({ where: { email: subscriberEmail } })).status, 'UNSUBSCRIBED', 'resubscribed');
 });
 
 // ---------------------------------------------------------------- applications & resumes
@@ -691,7 +781,7 @@ await check('Erasure', 'Erasure removes enquiries, applications, resumes, commen
   const phone = phoneC;
   const email = `${phone}@example.test`;
   await http('/api/leads', { method: 'POST', body: leadBody(phone) });
-  equal((await subscribe(email)).status, 200, 'subscribe');
+  await seedSubscriber(email);
   await http('/api/comments', { method: 'POST', body: { postId, authorName: 'Erase Me', authorEmail: email, content: 'Remove', consentPrimary: true } });
   const created = await raise({ type: 'ERASURE', requesterName: 'Test', email, phone, details: 'Erase me' });
   const id = await requestId(created.ticketNo);

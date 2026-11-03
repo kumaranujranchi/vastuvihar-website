@@ -14,6 +14,7 @@
 | `CHAT` | Last update | Delete | **To approve.** Legacy data only |
 | `PRIVACY_REQUEST` | Resolution | Delete, with its history | **To approve.** Keep long enough to evidence compliance |
 | `CONSENT_RECORD` | Creation | Delete | **To approve.** Keep long enough to evidence consent |
+| `VISITOR_EVENT` | Creation | Delete | **To approve.** Suggest a short period. Withdrawing a category also deletes its rows straight away |
 | `AUDIT_LOG` | Creation | Delete | **To approve.** Check against the rules on log retention |
 
 Two technical stores are purged on each live run, without needing approval, because they hold no usable personal data: rate-limit hashes after 24 hours, and expired staff sessions.

@@ -52,6 +52,8 @@ Setting a tag ID in the environment makes the tag live for anyone who allows it.
 | B | **Accept and review each provider's terms**, then update `role` and `contract` in `data/privacy/processors.js` | Marked as pending | Legal, Business |
 | C | **Decide how remarketing fits the children rule** | The banner has no age confirmation. The policy says no tracking or targeted advertising is directed at children, relying on the site being directed at adults. Exclude under-18s in the ad platform settings too | Legal |
 | D | **Open the live site with real IDs and check the browser console and cookie list** | The Content Security Policy hosts follow the providers' published needs, and were not tested against real accounts. Check that `COOKIE_INVENTORY` in `lib/privacy/cookieConfig.js` matches what is set | Developer |
+| E | **Approve the visitor activity wording and Hindi text**, and whether linking an ad source to an enquiry is acceptable | The ad source sits beside a name and phone number on the enquiry, so it is personal data there. Drafted by the developer, not legally reviewed | Legal |
+| F | **Approve a `VISITOR_EVENT` retention period** in Admin > Privacy & Compliance > Retention | Until one is approved, visitor activity is kept indefinitely unless the visitor withdraws | Legal, Business |
 
 ## Legal questions
 

@@ -52,6 +52,9 @@ export async function buildAccessSummary(contact: Contact) {
         message: lead.message,
         status: lead.status,
         marketingConsent: lead.marketingConsent,
+        adSource: lead.adChannel
+          ? { channel: lead.adChannel, utmSource: lead.adUtmSource, utmMedium: lead.adUtmMedium, utmCampaign: lead.adUtmCampaign }
+          : null,
         technicalData: { ipAddress: lead.ipAddress, country: lead.country, userAgent: lead.userAgent },
       })),
       jobApplications: data.applications.map((app) => ({
@@ -93,7 +96,7 @@ export async function buildAccessSummary(contact: Contact) {
       'Assessing job applications',
       'Moderating and publishing blog comments',
       'Sending marketing communications, only where separately consented',
-      'Sending the newsletter, only where consented',
+      ...(data.newsletter ? ['Sending the newsletter, only where consented'] : []),
     ],
     sharedWith: PROCESSORS.filter((processor) => processor.receivesPersonalData).map((processor) => ({
       name: processor.name,
