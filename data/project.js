@@ -741,11 +741,11 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
+            "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
             "/jayanti/3.webp",
             "/jayanti/4.webp",
-            "/jayanti/5.webp",
             "/jayanti/6.webp",
             "/jayanti/8.webp",
         ],
@@ -832,8 +832,8 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            "/kaveri/kaveri-exterior.webp",
             "/kaveri/1.webp",
+            "/kaveri/kaveri-exterior.webp",
             "/kaveri/kaveri-row.webp",
         ],
         modelTypes: [
