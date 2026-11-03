@@ -301,6 +301,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/yamuna/Yamuna.jpg",
             "/yamuna/yamuna3.webp",
             "/yamuna/yamuna1.webp",
             "/yamuna/yamuna2.webp",
@@ -455,7 +456,7 @@ export const projectsData = {
 
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            // "/simplex/simplex_exterior.webp",
+            "/simplex/Simplex.jpg",
             "/villa/simplex.webp",
             "/simplex/simplex-row-building.webp",
         ],
@@ -547,6 +548,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement",
         ],
         gallery: [
+            "/business-b/business.jpeg",
             "/business-b/Business_bungalow1.webp",
             "/business-b/Business_bungalow2.webp",
             "/business-b/Business_bungalow3.webp",
