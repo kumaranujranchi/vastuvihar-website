@@ -1,66 +1,400 @@
+
+import Link from 'next/link';
+import { connection } from 'next/server';
+
 import PageLayout from '@/components/PageLayout';
-import GalleryPreview from '@/components/gallery/GalleryPreview';
 import { createPageMetadata } from '@/lib/metadata';
+import { getGalleryAlbums } from '@/lib/gallery';
+import Cta from './Cta';
+
+import heroStyles from './hero.module.css';
+import './GalleryPage.css';
 
 export const metadata = createPageMetadata({
   title: 'Gallery | Vastu Vihar',
-  description: 'Explore the latest events, townships, and projects by Vastu Vihar.',
+  description:
+    'Explore Vastu Vihar events, projects, expos and memorable moments.',
   path: '/gallery/',
 });
 
-// Mock data fetcher - replace this with your folder reading logic
-async function getGalleryCategories() {
-  return [
-    {
-      id: 'events',
-      title: 'Company Events',
-      slug: 'events',
-      images: Array.from({ length: 12 }).map((_, i) => ({
-        id: `evt-${i}`,
-        src: `/images/gallery/events/image-${i + 1}.jpg`, // Update path
-        alt: `Event Image ${i + 1}`,
-      })),
-    },
-    {
-      id: 'townships',
-      title: 'Our Townships',
-      slug: 'townships',
-      images: Array.from({ length: 9 }).map((_, i) => ({
-        id: `twn-${i}`,
-        src: `/images/gallery/townships/image-${i + 1}.jpg`, // Update path
-        alt: `Township Image ${i + 1}`,
-      })),
-    },
-  ];
+/* =========================================
+   TYPES
+========================================= */
+
+type GalleryImage = {
+  id: string;
+  src: string;
+  alt: string;
+};
+
+type GalleryAlbum = {
+  slug: string;
+  title: string;
+  count: number;
+  images: GalleryImage[];
+};
+
+type BentoTile = GalleryAlbum & {
+  cols: number;
+  rows: number;
+  order: number;
+};
+
+/* =========================================
+   DYNAMIC BENTO LAYOUTS
+========================================= */
+
+const BENTO_LAYOUTS: Record<number, [number, number][]> = {
+  1: [
+    [12, 2],
+  ],
+
+  2: [
+    [8, 2],
+    [4, 2],
+  ],
+
+  3: [
+    [6, 2],
+    [3, 2],
+    [3, 2],
+  ],
+
+  4: [
+    [6, 2],
+    [3, 1],
+    [3, 2],
+    [3, 1],
+  ],
+
+  5: [
+    [6, 2],
+    [3, 1],
+    [3, 1],
+    [3, 1],
+    [3, 1],
+  ],
+};
+
+/*
+ * Creates balanced groups automatically.
+ * Supports any number of gallery folders.
+ */
+function createBentoGroups(
+  albums: GalleryAlbum[]
+): BentoTile[][] {
+  if (albums.length === 0) return [];
+
+  const groupCount = Math.ceil(albums.length / 5);
+
+  const baseSize = Math.floor(
+    albums.length / groupCount
+  );
+
+  const remainder = albums.length % groupCount;
+
+  let offset = 0;
+
+  return Array.from(
+    { length: groupCount },
+    (_, groupIndex) => {
+      const size =
+        baseSize + (groupIndex < remainder ? 1 : 0);
+
+      const layout = BENTO_LAYOUTS[size];
+
+      const group = albums
+        .slice(offset, offset + size)
+        .map((album, index) => ({
+          ...album,
+          cols: layout[index][0],
+          rows: layout[index][1],
+          order: offset + index,
+        }));
+
+      offset += size;
+
+      return group;
+    }
+  );
 }
 
+/* =========================================
+   RANDOM IMAGES
+========================================= */
+
+function shuffle<T>(items: T[]): T[] {
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [
+      result[j],
+      result[i],
+    ];
+  }
+
+  return result;
+}
+
+/* =========================================
+   SVG ICONS
+========================================= */
+
+function ArrowUpRightIcon() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  );
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
 export default async function GalleryMainPage() {
-  const categories = await getGalleryCategories();
+  await connection();
+
+  const albums =
+    (await getGalleryAlbums()) as GalleryAlbum[];
+
+  const categories = albums.filter(
+    (album) => album.count > 0
+  );
+
+  const bentoGroups = createBentoGroups(categories);
+
+  // Random images from every folder.
+  const framesOfTrust = shuffle(
+    categories.flatMap((album) =>
+      shuffle(album.images)
+        .slice(0, 3)
+        .map((image) => ({
+          ...image,
+          folderName: album.title,
+          folderSlug: album.slug,
+        }))
+    )
+  );
 
   return (
     <PageLayout route="gallery">
-      {/* HEADER PLACEHOLDER */}
-      <div className="gallery-page-header">
-        <h1>Photo Gallery</h1>
-        <p>Glimpses of our events, projects, and milestones.</p>
-      </div>
 
-      <div id="content" className="site-content-page clear" tabIndex={-1}>
-        <div className="col-fluid">
-          <div id="primary" className="content-area">
-            <main id="main" className="site-main">
-              {categories.map((category) => (
-                <GalleryPreview
-                  key={category.id}
-                  title={category.title}
-                  slug={category.slug}
-                  images={category.images}
-                />
-              ))}
-            </main>
+      {/* =================================
+          EXISTING HERO
+      ================================= */}
+
+      <section className={heroStyles.hero}>
+        <div className={heroStyles.heroInner}>
+          {/* <h1>Gallery</h1> */}
+
+          <div className={heroStyles.heroBottom}>
+            <nav
+              className={heroStyles.breadcrumbs}
+              aria-label="Breadcrumb"
+            >
+              <Link href="/">Home</Link>
+
+              <span aria-hidden="true" />
+
+              <strong>Gallery</strong>
+            </nav>
           </div>
         </div>
-      </div>
+
+        <div className={heroStyles.heroCurve} />
+      </section>
+
+      {/* =================================
+          FULL WIDTH GALLERY
+      ================================= */}
+
+      <main
+        id="main"
+        className="vv-gallery-fullwidth"
+      >
+
+        <section
+          className="vv-gallery-bento-section"
+          aria-labelledby="vv-gallery-heading"
+        >
+
+          {/* SECTION INTRO */}
+          <div className="vv-gallery-bento-intro">
+
+            <div className="vv-gallery-intro-left">
+              <h2
+                id="vv-gallery-heading"
+                className="vv-gallery-intro-title"
+              >
+                Our Gallery
+              </h2>
+            </div>
+
+            <div className="vv-gallery-intro-right">
+              <p className="vv-gallery-intro-description">
+                Every frame tells a story of trust,
+                togetherness, and the joy of coming home.
+              </p>
+            </div>
+
+          </div>
+
+          {/* DYNAMIC BENTO GRID */}
+          {bentoGroups.length > 0 ? (
+            <div className="vv-gallery-bento-groups">
+
+              {bentoGroups.map((group, groupIndex) => (
+                <div
+                  className="vv-gallery-bento-grid"
+                  key={`group-${groupIndex}`}
+                >
+
+                  {group.map((category) => (
+                    <Link
+                      key={category.slug}
+                      href={`/gallery/${category.slug}`}
+                      className="vv-gallery-bento-card"
+                      data-cols={category.cols}
+                      data-rows={category.rows}
+                      style={{
+                        animationDelay: `${Math.min(category.order, 12) * 75
+                          }ms`,
+                      }}
+                    >
+
+                      {/* COVER IMAGE */}
+                      <img
+                        src={category.images[0].src}
+                        alt={category.title}
+                        loading={
+                          category.order === 0
+                            ? 'eager'
+                            : 'lazy'
+                        }
+                      />
+
+                      {/* DARK FADE OVERLAY */}
+                      <div className="vv-gallery-bento-overlay">
+
+                        <div className="vv-gallery-bento-content">
+
+                          <h3>{category.title}</h3>
+
+                          <div className="vv-gallery-bento-bottom">
+
+                            <span className="vv-gallery-photo-count">
+                              {category.count}{' '}
+                              {category.count === 1
+                                ? 'Photo'
+                                : 'Photos'}
+                            </span>
+
+                            <span
+                              className="vv-gallery-card-icon"
+                              aria-hidden="true"
+                            >
+                              <ArrowUpRightIcon />
+                            </span>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </Link>
+                  ))}
+
+                </div>
+              ))}
+
+            </div>
+          ) : (
+            <div className="vv-gallery-empty">
+              <p>
+                No gallery images available.
+              </p>
+            </div>
+          )}
+
+        </section>
+
+        {/* =================================
+            FRAMES OF TRUST
+        ================================= */}
+
+        {framesOfTrust.length > 0 && (
+          <section
+            className="vv-gallery-best-section"
+            aria-labelledby="vv-frames-heading"
+          >
+
+            <div className="vv-gallery-best-header">
+              <h2 id="vv-frames-heading">
+                Frames of Trust
+              </h2>
+            </div>
+
+            <div className="vv-gallery-best-grid">
+
+              {framesOfTrust.map((shot, index) => (
+                <Link
+                  key={shot.id}
+                  href={`/gallery/${shot.folderSlug}`}
+                  className="vv-gallery-best-card"
+                  style={{
+                    animationDelay: `${Math.min(index, 12) * 65
+                      }ms`,
+                  }}
+                >
+
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                  />
+
+                  <div className="vv-gallery-best-overlay">
+
+                    <span className="vv-gallery-best-folder">
+                      {shot.folderName}
+                    </span>
+
+                    <span
+                      className="vv-gallery-best-arrow"
+                      aria-hidden="true"
+                    >
+                      <ArrowUpRightIcon />
+                    </span>
+
+                  </div>
+
+                </Link>
+              ))}
+
+            </div>
+
+          </section>
+        )}
+
+        <Cta />
+
+      </main>
+
     </PageLayout>
   );
 }

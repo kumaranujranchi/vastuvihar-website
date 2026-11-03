@@ -1,0 +1,671 @@
+/* =========================================
+   VASTU VIHAR GALLERY SLUG PAGE
+========================================= */
+
+.vv-gallery-album-page,
+.vv-gallery-album-page * {
+  box-sizing: border-box;
+}
+
+.vv-gallery-album-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px 20px 40px;
+  margin: 0;
+  background: #ffffff;
+}
+
+/* =========================================
+   FULL WIDTH GLASS HEADER
+========================================= */
+
+.vv-gallery-glass-header {
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+
+  gap: 24px;
+
+  width: 100%;
+  min-height: 92px;
+
+  padding: 16px 25px;
+
+  margin-bottom: 22px;
+
+  /* GLASSMORPHISM */
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 14px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  animation: vvHeaderReveal 0.6s ease both;
+}
+
+/* =========================================
+   LEFT BACK BUTTON
+========================================= */
+
+.vv-gallery-back-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  padding: 0;
+  background: rgb(0, 170, 255);
+  border-radius: 20px;
+  color: #111111;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.vv-gallery-back-button svg {
+  width: 23px;
+  height: 23px;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+/* .vv-gallery-back-button:hover {
+  background: #08aaec;
+  border-color: #08aaec;
+} */
+
+.vv-gallery-back-button:hover svg {
+  transform: translateX(-3px);
+}
+
+/* =========================================
+   RIGHT FOLDER HEADING
+========================================= */
+
+.vv-gallery-header-info {
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+
+  flex: 1;
+  min-width: 0;
+
+  text-align: right;
+}
+
+.vv-gallery-folder-title {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: clamp(25px, 3vw, 42px);
+  font-weight: 800;
+
+  line-height: 1.15;
+  letter-spacing: -1px;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   PHOTO GRID CONTENT
+========================================= */
+
+.vv-gallery-album-content {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* GROUP CONTAINER */
+.vv-gallery-image-groups {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  gap: 12px;
+
+  padding: 0;
+  margin: 0;
+}
+
+/* BENTO GRID */
+.vv-gallery-image-grid {
+  display: grid;
+  width: 100%;
+
+  grid-template-columns:
+    repeat(12, minmax(0, 1fr));
+
+  grid-auto-rows:
+    clamp(170px, 15vw, 280px);
+
+  grid-auto-flow: dense;
+
+  gap: 12px;
+}
+
+/* DYNAMIC COLUMN SPANS */
+.vv-gallery-image-card[data-cols="3"] {
+  grid-column: span 3;
+}
+
+.vv-gallery-image-card[data-cols="4"] {
+  grid-column: span 4;
+}
+
+.vv-gallery-image-card[data-cols="6"] {
+  grid-column: span 6;
+}
+
+.vv-gallery-image-card[data-cols="8"] {
+  grid-column: span 8;
+}
+
+.vv-gallery-image-card[data-cols="12"] {
+  grid-column: span 12;
+}
+
+/* DYNAMIC ROW SPANS */
+.vv-gallery-image-card[data-rows="1"] {
+  grid-row: span 1;
+}
+
+.vv-gallery-image-card[data-rows="2"] {
+  grid-row: span 2;
+}
+
+/* =========================================
+   IMAGE CARDS - NO BORDER RADIUS
+========================================= */
+
+.vv-gallery-image-card {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  border-radius: 0;
+
+  overflow: hidden;
+
+  background: #edf6fb;
+
+  cursor: zoom-in;
+  isolation: isolate;
+
+  animation: vvGalleryImageReveal 0.7s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.vv-gallery-image-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 0;
+
+  transition:
+    transform 0.65s ease,
+    filter 0.35s ease;
+}
+
+.vv-gallery-image-card:hover img {
+  transform: scale(1.055);
+  filter: brightness(0.85);
+}
+
+/* IMAGE HOVER OVERLAY */
+.vv-gallery-image-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.vv-gallery-image-card:hover::after {
+  opacity: 1;
+}
+
+/* ROUND SVG EXPAND ICON */
+.vv-gallery-image-expand {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  border-radius: 50%;
+
+  background: #08aaec;
+  color: #ffffff;
+
+  opacity: 0;
+  transform: translateY(8px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.vv-gallery-image-card:hover .vv-gallery-image-expand,
+.vv-gallery-image-card:focus-visible .vv-gallery-image-expand {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   FULLSCREEN LIGHTBOX
+========================================= */
+
+.vv-gallery-lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 2147483647;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding: 65px 90px;
+
+  background: rgba(0, 0, 0, 0.97);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  box-sizing: border-box;
+
+  animation: vvLightboxAppear 0.2s ease both;
+}
+
+/* LIGHTBOX IMAGE */
+.vv-gallery-lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1400px;
+  min-width: 0;
+  max-height: 100%;
+}
+
+.vv-gallery-lightbox-content img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: 79dvh;
+
+  object-fit: contain;
+  border-radius: 0;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* IMAGE COUNTER */
+.vv-gallery-lightbox-counter {
+  margin-top: 19px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.vv-gallery-lightbox-counter span {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+}
+
+/* =========================================
+   LIGHTBOX ROUND BUTTONS
+========================================= */
+
+.vv-gallery-lightbox-button {
+  position: absolute;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.vv-gallery-lightbox-button:hover {
+  background: #08aaec;
+  border-color: #08aaec;
+}
+
+.vv-gallery-lightbox-button svg {
+  width: 23px;
+  height: 23px;
+}
+
+/* PREVIOUS */
+.vv-gallery-lightbox-prev {
+  top: 50%;
+  left: 25px;
+
+  transform: translateY(-50%);
+}
+
+.vv-gallery-lightbox-prev:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* NEXT */
+.vv-gallery-lightbox-next {
+  top: 50%;
+  right: 25px;
+
+  transform: translateY(-50%);
+}
+
+.vv-gallery-lightbox-next:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* CLOSE */
+.vv-gallery-lightbox-close {
+  top: 22px;
+  right: 25px;
+}
+
+.vv-gallery-lightbox-close:hover {
+  transform: rotate(90deg);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes vvHeaderReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vvGalleryImageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes vvLightboxAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+  .vv-gallery-album-page {
+    padding: 14px 15px 35px;
+  }
+
+  .vv-gallery-glass-header {
+    top: 14px;
+    padding: 14px 20px;
+    min-height: 82px;
+  }
+
+  .vv-gallery-folder-title {
+    font-size: clamp(24px, 3.5vw, 35px);
+  }
+
+  .vv-gallery-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 210px;
+    gap: 10px;
+  }
+
+  .vv-gallery-image-grid>.vv-gallery-image-card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .vv-gallery-image-grid>.vv-gallery-image-card:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .vv-gallery-image-grid>.vv-gallery-image-card:last-child:nth-child(even) {
+    grid-column: span 2;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .vv-gallery-album-page {
+    padding: 10px 10px 25px;
+  }
+
+  /* GLASS HEADER */
+  .vv-gallery-glass-header {
+    top: 10px;
+
+    min-height: 70px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 14px;
+
+    gap: 12px;
+
+    border-radius: 11px;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* BACK BUTTON */
+  .vv-gallery-back-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .vv-gallery-back-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* TITLE RIGHT */
+  .vv-gallery-folder-title {
+    font-size: clamp(19px, 5.5vw, 28px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  /* GRID */
+  .vv-gallery-image-groups {
+    gap: 7px;
+  }
+
+  .vv-gallery-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 155px;
+    gap: 7px;
+  }
+
+  /* EXPAND BUTTON */
+  .vv-gallery-image-expand {
+    width: 32px;
+    height: 32px;
+
+    right: 10px;
+    bottom: 10px;
+
+    opacity: 1;
+    transform: none;
+  }
+
+  .vv-gallery-image-expand svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* LIGHTBOX */
+  .vv-gallery-lightbox {
+    padding: 60px 12px 75px;
+  }
+
+  .vv-gallery-lightbox-content img {
+    max-height: 72dvh;
+  }
+
+  .vv-gallery-lightbox-button {
+    width: 42px;
+    height: 42px;
+
+    background: rgba(0, 0, 0, 0.58);
+  }
+
+  .vv-gallery-lightbox-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .vv-gallery-lightbox-prev {
+    left: 8px;
+  }
+
+  .vv-gallery-lightbox-next {
+    right: 8px;
+  }
+
+  .vv-gallery-lightbox-close {
+    top: 15px;
+    right: 15px;
+  }
+
+  .vv-gallery-lightbox-counter {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.vv-gallery-album-empty {
+  padding: 100px 20px;
+  color: #555;
+  text-align: center;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.vv-gallery-image-card:focus-visible,
+.vv-gallery-back-button:focus-visible,
+.vv-gallery-lightbox-button:focus-visible {
+  outline: 3px solid #08aaec;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .vv-gallery-glass-header,
+  .vv-gallery-image-card,
+  .vv-gallery-lightbox {
+    animation: none;
+  }
+
+  .vv-gallery-image-card img,
+  .vv-gallery-image-expand,
+  .vv-gallery-back-button,
+  .vv-gallery-lightbox-button {
+    transition: none;
+  }
+}
