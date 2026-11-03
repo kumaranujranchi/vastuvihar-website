@@ -38,6 +38,8 @@ for (const page of pages) {
     ? path.join(root, 'app/blog/[slug]/page.tsx')
     : page.path.startsWith('/category/')
     ? path.join(root, 'app/category/[slug]/page.tsx')
+    : page.path.startsWith('/gallery/') && page.path !== '/gallery/'
+    ? path.join(root, 'app/gallery/[slug]/page.tsx')
     : null;
   if (!routeExists && !(dynamicFile && fs.existsSync(dynamicFile))) errors.add(`No page component for ${page.path}`);
 }
