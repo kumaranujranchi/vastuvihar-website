@@ -3,7 +3,7 @@ export const companyLinks = [
   { label: 'About Us', href: '/about-us/' },
   { label: 'Core Values', href: '/core-values/' },
   { label: 'Our Awards', href: '/our-awards/' },
-  // { label: 'Our Team', href: '/our-team/' },
+  { label: 'Gallery', href: '/gallery/' },
   { label: 'FAQs', href: '/faqs/' },
 ];
 
@@ -13,7 +13,7 @@ export const navigation = [
   { label: 'Models', href: '/projects/' },
   { label: 'Price List', href: '/price-list/' },
   { label: 'Careers', href: '/careers/' },
-  // { label: 'Blog', href: '/blog/' },
+  { label: 'Gallery', href: '/gallery/' },
   { label: 'Contact', href: '/contact/' },
 ];
 

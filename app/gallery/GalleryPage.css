@@ -271,7 +271,7 @@
 
   color: #ffffff;
 
-  font-size: clamp(21px, 2.4vw, 42px);
+  font-size: clamp(17px, 2vw, 32px);
 
   font-weight: 700;
   margin: 0 0 -15px 0 !important;
