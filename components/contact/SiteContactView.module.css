@@ -46,8 +46,8 @@
 }
 
 .inputWrap:focus-within {
-  border-color: #03cdff;
-  box-shadow: 0 0 0 1px #03cdff;
+  border-color: #08AAEC;
+  box-shadow: 0 0 0 1px #08AAEC;
 }
 
 .inputIcon {
@@ -153,7 +153,7 @@
 }
 
 .reset:hover {
-  color: #03cdff;
+  color: #08AAEC;
 }
 
 .results {
@@ -552,7 +552,7 @@
 }
 
 .empty button:hover {
-  background: #03cdff;
+  background: #08AAEC;
 }
 
 @media (max-width: 990px) {
@@ -670,6 +670,185 @@
   .card,
   .inputWrap,
   .mapLink {
+    transition: none;
+  }
+}
+
+
+/* =========================================
+   LOCATION ACTIONS - VIEW / COPY / SHARE
+   Matches the original blue-card hover theme
+========================================= */
+.locationActions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding: 14px 18px;
+  background: #f9f8f6;
+  border-top: 1px solid #eae7e2;
+  transition: background-color .3s ease, border-color .3s ease;
+}
+
+.locationActions .mapLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 46px;
+  margin: 0;
+  padding: 10px 15px;
+  background: #fff;
+  color: #2b2b2b;
+  border: 1px solid #e6e4df;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.locationActions .mapLink:hover {
+  background: #08AAEC;
+  border-color: #08AAEC;
+  color: #fff;
+}
+
+.locationButton {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #08AAEC;
+  border: 1px solid #d8edf6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease,
+    border-color .25s ease, transform .25s ease;
+}
+
+.locationButton svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+}
+
+.locationButton:hover {
+  background: #08AAEC;
+  border-color: #08AAEC;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.locationStatus {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 0 18px;
+  color: #078fc7;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.locationStatus:empty {
+  display: none;
+}
+
+.locationStatus:not(:empty) {
+  padding-top: 8px;
+  padding-bottom: 12px;
+}
+
+/* Keep the original solid blue hover and white foreground */
+.card:hover .locationActions {
+  background: rgba(0, 0, 0, .16);
+  border-top-color: rgba(255, 255, 255, .28);
+}
+
+.card:hover .locationActions .mapLink {
+  background: rgba(255, 255, 255, .12) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, .5) !important;
+}
+
+.card:hover .locationActions .mapLink svg {
+  stroke: currentColor !important;
+}
+
+.card:hover .locationActions .mapLink:hover {
+  background: #fff !important;
+  color: #08AAEC !important;
+  border-color: #fff !important;
+}
+
+.card:hover .locationActions .mapLink:hover svg {
+  stroke: #08AAEC !important;
+}
+
+.card:hover .locationButton {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.card:hover .locationButton:hover {
+  background: #fff;
+  color: #08AAEC;
+  border-color: #fff;
+}
+
+.card:hover .locationStatus {
+  color: #fff;
+}
+
+.locationButton:focus-visible,
+.locationActions .mapLink:focus-visible {
+  outline: 3px solid #08AAEC;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .locationActions {
+    gap: 7px;
+    padding: 12px;
+  }
+
+  .locationActions .mapLink {
+    min-height: 42px;
+    padding: 9px 10px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .locationButton {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .locationButton svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .locationActions,
+  .locationActions .mapLink,
+  .locationButton {
     transition: none;
   }
 }
