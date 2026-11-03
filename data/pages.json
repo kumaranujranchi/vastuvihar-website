@@ -454,5 +454,13 @@
     "type": "Page",
     "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page",
     "description": "Terms and conditions governing the use of Vastu Vihar website and services."
+  },
+  {
+    "route": "gallery",
+    "path": "/gallery/",
+    "title": "Gallery - Vastu Vihar",
+    "type": "Page",
+    "bodyClass": "page-template-default page page-id-gallery",
+    "description": "Explore photos and albums from Vastu Vihar company events, property expos, sports tournaments, and press coverage."
   }
 ]

@@ -1,0 +1,547 @@
+
+/* =========================================
+   GALLERY GRID
+========================================= */
+
+.groupList,
+.groupList *,
+.overlay,
+.overlay * {
+  box-sizing: border-box;
+}
+
+.groupList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(170px, 15vw, 280px);
+  grid-auto-flow: dense;
+  gap: 12px;
+}
+
+/* DYNAMIC CARD SIZES */
+.tile[data-cols="3"] {
+  grid-column: span 3;
+}
+
+.tile[data-cols="4"] {
+  grid-column: span 4;
+}
+
+.tile[data-cols="6"] {
+  grid-column: span 6;
+}
+
+.tile[data-cols="8"] {
+  grid-column: span 8;
+}
+
+.tile[data-cols="12"] {
+  grid-column: span 12;
+}
+
+.tile[data-rows="1"] {
+  grid-row: span 1;
+}
+
+.tile[data-rows="2"] {
+  grid-row: span 2;
+}
+
+/* SQUARE IMAGE CARDS */
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #edf6fb;
+  cursor: zoom-in;
+  isolation: isolate;
+
+  animation: tileReveal .7s ease both;
+}
+
+.tile > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+
+  transition:
+    transform .6s ease,
+    filter .35s ease;
+}
+
+.tile:hover > img {
+  transform: scale(1.055);
+  filter: brightness(.85);
+}
+
+.expand {
+  position: absolute;
+  z-index: 2;
+  right: 17px;
+  bottom: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #08aaec;
+  color: white;
+  opacity: 0;
+  transform: translateY(8px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.tile:hover .expand,
+.tile:focus-visible .expand {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   FULLSCREEN LIGHTBOX
+========================================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  isolation: isolate;
+
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+
+  background: rgba(5, 8, 12, .97);
+  color: #fff;
+
+  animation: fadeIn .2s ease both;
+}
+
+/* =========================================
+   MAIN IMAGE STAGE
+========================================= */
+
+.stage {
+  position: absolute;
+  z-index: 1;
+  top: 65px;
+  bottom: 165px;
+  left: 88px;
+  right: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.fullImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: 0 10px 45px rgba(0,0,0,.25);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* =========================================
+   ROUND SVG CONTROL BUTTONS
+========================================= */
+
+.control {
+  position: absolute;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+  padding: 0;
+
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 50%;
+
+  background: rgba(25, 29, 35, .92);
+  color: #fff;
+
+  box-shadow: 0 5px 25px rgba(0,0,0,.35);
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.control:hover {
+  background: #08aaec;
+  border-color: #08aaec;
+}
+
+.control svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* PREVIOUS */
+.previous {
+  top: 46%;
+  left: 19px;
+  transform: translateY(-50%);
+}
+
+.previous:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* NEXT */
+.next {
+  top: 46%;
+  right: 19px;
+  transform: translateY(-50%);
+}
+
+.next:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* CLOSE */
+.close {
+  top: 18px;
+  right: 22px;
+}
+
+.close:hover {
+  transform: rotate(90deg);
+}
+
+/* =========================================
+   BOTTOM IMAGE PREVIEW
+========================================= */
+
+.previewPanel {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding:
+    15px 24px
+    calc(15px + env(safe-area-inset-bottom, 0px));
+
+  background: linear-gradient(
+    to top,
+    rgba(5,8,12,1) 0%,
+    rgba(5,8,12,.97) 65%,
+    rgba(5,8,12,.65) 100%
+  );
+}
+
+.previewInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.albumName {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.counter {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.counterTotal {
+  color: rgba(255,255,255,.55);
+  font-weight: 400;
+}
+
+/* THUMBNAIL STRIP */
+.thumbnailStrip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  width: 100%;
+  min-height: 70px;
+  padding: 2px 0 6px;
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.3) transparent;
+}
+
+.thumbnailStrip::-webkit-scrollbar {
+  height: 4px;
+}
+
+.thumbnailStrip::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.35);
+  border-radius: 5px;
+}
+
+.thumbnail {
+  position: relative;
+  flex: 0 0 90px;
+
+  width: 90px;
+  height: 60px;
+  padding: 0;
+
+  border: 2px solid transparent;
+  border-radius: 5px;
+
+  background: #20252a;
+  overflow: hidden;
+
+  opacity: .55;
+  cursor: pointer;
+
+  transition:
+    opacity .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+}
+
+.thumbnailActive {
+  border-color: #08aaec;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.control:focus-visible,
+.thumbnail:focus-visible,
+.tile:focus-visible {
+  outline: 3px solid #08aaec;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes tileReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 210px;
+    gap: 10px;
+  }
+
+  .grid > .tile {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .grid > .tile:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .grid > .tile:last-child:nth-child(even) {
+    grid-column: span 2;
+  }
+
+  .stage {
+    left: 72px;
+    right: 72px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .groupList {
+    gap: 7px;
+  }
+
+  .grid {
+    grid-auto-rows: 155px;
+    gap: 7px;
+  }
+
+  .expand {
+    right: 10px;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .expand svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* IMAGE AREA */
+  .stage {
+    top: 68px;
+    bottom: 160px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .fullImage {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* ROUND CONTROLS */
+  .control {
+    width: 43px;
+    height: 43px;
+    background: rgba(12,16,20,.9);
+  }
+
+  .control svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .previous {
+    top: 45%;
+    left: 9px;
+  }
+
+  .next {
+    top: 45%;
+    right: 9px;
+  }
+
+  .close {
+    top: 14px;
+    right: 14px;
+  }
+
+  /* BOTTOM PREVIEW */
+  .previewPanel {
+    gap: 10px;
+    padding:
+      12px 12px
+      calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .albumName,
+  .counter {
+    font-size: 12px;
+  }
+
+  .thumbnailStrip {
+    min-height: 59px;
+    gap: 7px;
+  }
+
+  .thumbnail {
+    flex-basis: 70px;
+    width: 70px;
+    height: 48px;
+    border-radius: 4px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .overlay {
+    animation: none;
+  }
+
+  .tile img,
+  .control,
+  .thumbnail,
+  .expand {
+    transition: none;
+  }
+
+  .thumbnailStrip {
+    scroll-behavior: auto;
+  }
+}

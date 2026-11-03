@@ -1,0 +1,143 @@
+
+.ctaSection {
+  width: 100%;
+  padding: 90px 24px;
+  background: #eaf8fe;
+  text-align: center;
+  border-radius: 70px 70px 0 0;
+}
+
+.ctaInner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  color: #08aaec;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.heading {
+  margin: 0;
+  color: #111;
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.description {
+  max-width: 670px;
+  margin: 24px auto 0;
+  color: #46545d;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 15px 28px;
+  border: 1.5px solid #08aaec;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.button svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  transition: transform .3s ease;
+}
+
+.primary {
+  background: #08aaec;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #0798d4;
+  border-color: #0798d4;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(8,170,236,.2);
+}
+
+.secondary {
+  background: transparent;
+  color: #111;
+}
+
+.secondary:hover {
+  background: #08aaec;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.button:focus-visible {
+  outline: 3px solid #08aaec;
+  outline-offset: 4px;
+}
+
+@media (max-width: 650px) {
+  .ctaSection {
+    padding: 65px 18px;
+  }
+
+  .heading {
+    font-size: clamp(30px, 8vw, 42px);
+    letter-spacing: -1px;
+  }
+
+  .description {
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button svg {
+    transition: none;
+  }
+}

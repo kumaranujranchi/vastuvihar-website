@@ -1,0 +1,777 @@
+/* =========================================
+   VASTU VIHAR GALLERY
+   WHITE + BRAND BLUE THEME
+========================================= */
+
+.vv-gallery-fullwidth,
+.vv-gallery-fullwidth * {
+  box-sizing: border-box;
+}
+
+.vv-gallery-fullwidth {
+  position: relative;
+
+  width: 100vw;
+  max-width: none;
+
+  margin-left: calc(50% - 50vw);
+
+  background: #ffffff;
+
+  overflow-x: clip;
+}
+
+/* =========================================
+   BENTO SECTION
+========================================= */
+
+.vv-gallery-bento-section {
+  width: 100%;
+  max-width: none;
+
+  padding: 50px 20px 75px;
+
+  background: #ffffff;
+}
+
+/* =========================================
+   OUR GALLERY INTRO
+========================================= */
+
+.vv-gallery-bento-intro {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 45px;
+
+  padding: 0 0 45px;
+
+  margin: 0;
+
+  /* NO BOTTOM BORDER */
+  border: none;
+
+  animation: vvGalleryIntroReveal 0.75s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* LEFT SIDE */
+.vv-gallery-intro-left {
+  flex: 1 1 45%;
+  min-width: 0;
+}
+
+/* OUR GALLERY - LARGE AND BOLD */
+.vv-gallery-intro-title {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: clamp(42px, 5vw, 82px);
+
+  font-weight: 800;
+
+  line-height: 1.05;
+
+  letter-spacing: -2.5px;
+}
+
+/* RIGHT SIDE */
+.vv-gallery-intro-right {
+  flex: 1 1 48%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  min-width: 0;
+}
+
+/* BOLD DESCRIPTION */
+.vv-gallery-intro-description {
+  max-width: 680px;
+
+  margin: 0;
+
+  color: #111111;
+
+  font-size: clamp(18px, 1.8vw, 27px);
+
+  font-weight: 700;
+
+  line-height: 1.45;
+
+  letter-spacing: -0.35px;
+
+  text-align: right;
+}
+
+/* =========================================
+   DYNAMIC BENTO GRID
+========================================= */
+
+.vv-gallery-bento-groups {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 16px;
+}
+
+.vv-gallery-bento-grid {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns:
+    repeat(12, minmax(0, 1fr));
+
+  grid-auto-rows:
+    clamp(170px, 14vw, 260px);
+
+  grid-auto-flow: dense;
+
+  gap: 16px;
+}
+
+/* =========================================
+   DYNAMIC COLUMN SPANS
+========================================= */
+
+.vv-gallery-bento-card[data-cols="3"] {
+  grid-column: span 3;
+}
+
+.vv-gallery-bento-card[data-cols="4"] {
+  grid-column: span 4;
+}
+
+.vv-gallery-bento-card[data-cols="6"] {
+  grid-column: span 6;
+}
+
+.vv-gallery-bento-card[data-cols="8"] {
+  grid-column: span 8;
+}
+
+.vv-gallery-bento-card[data-cols="12"] {
+  grid-column: span 12;
+}
+
+/* ROW SPANS */
+.vv-gallery-bento-card[data-rows="1"] {
+  grid-row: span 1;
+}
+
+.vv-gallery-bento-card[data-rows="2"] {
+  grid-row: span 2;
+}
+
+/* =========================================
+   BENTO CARD
+========================================= */
+
+.vv-gallery-bento-card {
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #edf6fb;
+
+  text-decoration: none;
+
+  isolation: isolate;
+
+  animation: vvGalleryCardReveal 0.8s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* IMAGE */
+.vv-gallery-bento-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform .7s cubic-bezier(.2, .8, .2, 1),
+    filter .4s ease;
+}
+
+/* IMAGE HOVER */
+.vv-gallery-bento-card:hover img {
+  transform: scale(1.07);
+
+  filter: brightness(.95);
+}
+
+/* =========================================
+   DARK GRADIENT OVERLAY
+========================================= */
+
+.vv-gallery-bento-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: clamp(10px, 2vw, 20px);
+
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .25) 0%,
+      rgba(0, 0, 0, .32) 30%,
+      rgba(0, 0, 0, .52) 60%,
+      rgba(0, 0, 0, .90) 100%);
+
+  pointer-events: none;
+
+  transition: background .35s ease;
+}
+
+/* HOVER OVERLAY */
+.vv-gallery-bento-card:hover .vv-gallery-bento-overlay {
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .35) 0%,
+      rgba(0, 0, 0, .45) 35%,
+      rgba(0, 0, 0, .70) 70%,
+      rgba(0, 0, 0, .95) 100%);
+}
+
+/* =========================================
+   BENTO CONTENT
+========================================= */
+
+.vv-gallery-bento-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* FOLDER NAME */
+.vv-gallery-bento-content h3 {
+
+  color: #ffffff;
+
+  font-size: clamp(17px, 2vw, 32px);
+
+  font-weight: 700;
+  margin: 0 0 -15px 0 !important;
+  /* line-height: 1.13; */
+}
+
+/* IMAGE COUNT + ARROW */
+.vv-gallery-bento-bottom {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.vv-gallery-photo-count {
+  color: rgba(255, 255, 255, .90);
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+/* SVG ICON */
+.vv-gallery-card-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(255, 255, 255, .6);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    border-color .3s ease;
+}
+
+.vv-gallery-card-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.vv-gallery-bento-card:hover .vv-gallery-card-icon {
+  background: #08aaec;
+  border-color: #08aaec;
+
+  transform: translate(3px, -3px);
+}
+
+/* =========================================
+   FRAMES OF TRUST SECTION
+========================================= */
+
+.vv-gallery-best-section {
+  width: 100%;
+
+  padding: 65px 20px 90px;
+
+  background: #ffffff;
+}
+
+.vv-gallery-best-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 32px;
+}
+
+.vv-gallery-best-header h2 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: clamp(32px, 3.5vw, 52px);
+
+  font-weight: 800;
+
+  line-height: 1.12;
+
+  letter-spacing: -1px;
+}
+
+/* =========================================
+   FRAMES GRID
+========================================= */
+
+.vv-gallery-best-grid {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+/* CARD */
+.vv-gallery-best-card {
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #edf6fb;
+
+  text-decoration: none;
+
+  animation: vvGalleryCardReveal .8s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* IMAGE */
+.vv-gallery-best-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform .65s ease;
+}
+
+.vv-gallery-best-card:hover img {
+  transform: scale(1.07);
+}
+
+/* DARK OVERLAY */
+.vv-gallery-best-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 10px;
+
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .05) 30%,
+      rgba(0, 0, 0, .30) 60%,
+      rgba(0, 0, 0, .80) 100%);
+}
+
+/* FOLDER NAME */
+.vv-gallery-best-folder {
+  color: #ffffff;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+/* SVG ARROW */
+.vv-gallery-best-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  flex-shrink: 0;
+
+  transition: transform .3s ease;
+}
+
+.vv-gallery-best-card:hover .vv-gallery-best-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.vv-gallery-empty {
+  padding: 50px 20px;
+
+  background: #f6f8f9;
+
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.vv-gallery-empty p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 15px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+/* INTRO */
+@keyframes vvGalleryIntroReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* CARD LOAD */
+@keyframes vvGalleryCardReveal {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(40px) scale(.97);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.vv-gallery-bento-card:focus-visible,
+.vv-gallery-best-card:focus-visible {
+  outline: 3px solid #08aaec;
+
+  outline-offset: 3px;
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1600px) {
+  .vv-gallery-bento-section {
+    padding: 60px 25px 90px;
+  }
+
+  .vv-gallery-best-section {
+    padding: 80px 25px 110px;
+  }
+
+  .vv-gallery-bento-grid {
+    grid-auto-rows:
+      clamp(210px, 13vw, 300px);
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+  /* INTRO */
+  .vv-gallery-intro-title {
+    font-size: clamp(40px, 5vw, 60px);
+  }
+
+  .vv-gallery-intro-description {
+    font-size: 19px;
+  }
+
+  /* BENTO GRID */
+  .vv-gallery-bento-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    grid-auto-rows: 210px;
+
+    gap: 12px;
+  }
+
+  .vv-gallery-bento-grid>.vv-gallery-bento-card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* FEATURED CARD */
+  .vv-gallery-bento-grid>.vv-gallery-bento-card:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  /* EVEN-SIZED GROUPS */
+  .vv-gallery-bento-grid>.vv-gallery-bento-card:last-child:nth-child(even) {
+    grid-column: span 2;
+  }
+
+  /* FRAMES */
+  .vv-gallery-best-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  /* SECTIONS */
+  .vv-gallery-bento-section {
+    padding: 32px 12px 50px;
+  }
+
+  .vv-gallery-best-section {
+    padding: 45px 12px 65px;
+  }
+
+  /* INTRO */
+  .vv-gallery-bento-intro {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding-bottom: 28px;
+  }
+
+  .vv-gallery-intro-left,
+  .vv-gallery-intro-right {
+    width: 100%;
+
+    flex: none;
+
+    justify-content: flex-start;
+  }
+
+  .vv-gallery-intro-title {
+    font-size: clamp(38px, 10vw, 52px);
+
+    letter-spacing: -1.5px;
+  }
+
+  .vv-gallery-intro-description {
+    max-width: 100%;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    text-align: left;
+
+    letter-spacing: -.2px;
+  }
+
+  /* BENTO GRID */
+  .vv-gallery-bento-groups {
+    gap: 10px;
+  }
+
+  .vv-gallery-bento-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    grid-auto-rows: 150px;
+
+    gap: 10px;
+  }
+
+  /* CARDS */
+  .vv-gallery-bento-card {
+    border-radius: 8px;
+  }
+
+  .vv-gallery-bento-overlay {
+    padding: 10px;
+  }
+
+  .vv-gallery-bento-content h3 {
+    font-size: clamp(17px, 4.5vw, 25px);
+  }
+
+  .vv-gallery-photo-count {
+    font-size: 12px;
+  }
+
+  .vv-gallery-card-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .vv-gallery-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* FRAMES OF TRUST */
+  .vv-gallery-best-header {
+    margin-bottom: 22px;
+  }
+
+  .vv-gallery-best-header h2 {
+    font-size: 32px;
+  }
+
+  .vv-gallery-best-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .vv-gallery-best-card {
+    aspect-ratio: 1;
+
+    border-radius: 8px;
+  }
+
+  .vv-gallery-best-overlay {
+    padding: 12px;
+  }
+
+  .vv-gallery-best-folder {
+    font-size: 12px;
+  }
+
+  .vv-gallery-best-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .vv-gallery-bento-grid {
+    grid-auto-rows: 135px;
+  }
+
+  .vv-gallery-bento-content h3 {
+    font-size: 17px;
+  }
+
+  .vv-gallery-intro-title {
+    font-size: 37px;
+  }
+
+  .vv-gallery-intro-description {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .vv-gallery-bento-intro,
+  .vv-gallery-bento-card,
+  .vv-gallery-best-card {
+    animation: none;
+  }
+
+  .vv-gallery-bento-card img,
+  .vv-gallery-best-card img {
+    transition: none;
+  }
+}

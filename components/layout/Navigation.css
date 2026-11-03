@@ -805,7 +805,7 @@ ul.menu li.current-menu-item > a, ul.menu li.current-menu-ancestor > a, ul.menu 
 
 .site-navigation .site-submenu-button {
   position: absolute;
-  right: 2px;
+  right: 12px;
   top: 45.5%;
   transform: translateY(-50%);
   padding: 0;
