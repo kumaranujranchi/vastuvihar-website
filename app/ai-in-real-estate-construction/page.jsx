@@ -2,13 +2,17 @@ import ArticleLayout from '@/components/blog/ArticleLayout';
 
 import { createPageMetadata } from '@/lib/metadata';
 
-export const metadata = createPageMetadata({
-  title: 'AI in Real Estate & Construction',
-  description: 'Insights on artificial intelligence applications in modern real estate planning, architecture, and construction workflows.',
-  path: '/ai-in-real-estate-construction/',
-  image: '/images/blog_1-1290x600.jpg',
-  type: 'article',
-});
+export const metadata = {
+  ...createPageMetadata({
+    title: 'AI in Real Estate & Construction',
+    description: 'Insights on artificial intelligence applications in modern real estate planning, architecture, and construction workflows.',
+    path: '/ai-in-real-estate-construction/',
+    image: '/images/blog_1-1290x600.jpg',
+    type: 'article',
+  }),
+  // Placeholder article content: remove this, and add the page to app/sitemap.ts, once it is real.
+  robots: { index: false },
+};
 
 export default function AiInRealEstateConstructionPage() {
   return (

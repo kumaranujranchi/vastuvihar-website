@@ -1,5 +1,6 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import FaqsHeader from '@/components/faqs/FaqsHeader';
 import FaqsTicker from '@/components/faqs/FaqsTicker';
 import FaqAccordion from '@/components/faqs/FaqAccordion';
@@ -31,6 +32,7 @@ export default function FaqsPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'FAQs' }]} />
     </PageLayout>
   );
 }

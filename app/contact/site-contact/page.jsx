@@ -1,12 +1,18 @@
-'use client';
-
 import '../../../styles/pages/contact.css';
 import '../../../components/contact/ContactHeader.css';
 import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import SiteContactView from '@/components/contact/SiteContactView';
+import { createPageMetadata } from '@/lib/metadata';
 import styles from './site-contact.module.css';
+
+export const metadata = createPageMetadata({
+  title: 'Vastu Vihar Project Sites: Addresses & Phone Numbers',
+  description: 'Find the address and phone number of Vastu Vihar project sites to plan a site visit, listed by state and city.',
+  path: '/contact/site-contact/',
+});
 
 export default function SiteContactPage() {
   return (
@@ -45,6 +51,7 @@ export default function SiteContactPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Contact', path: '/contact/' }, { name: 'Site Contact' }]} />
     </PageLayout>
   );
 }

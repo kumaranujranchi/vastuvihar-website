@@ -16,6 +16,8 @@ export async function generateMetadata({ params }) {
   return {
     title: member.name,
     description: `${member.name} — ${member.role}. Meet the Spaciaz team.`,
+    // Placeholder team content: remove this once the profiles are real.
+    robots: { index: false },
   };
 }
 

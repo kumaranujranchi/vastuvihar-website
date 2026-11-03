@@ -1,7 +1,7 @@
 export const priceLists = [
     {
         "slug": "ara-phase-02-ext",
-        "projectName": "Ara_Phase-2_Extension",
+        "projectName": "Ara Phase-2 Extension",
         "effectiveDate": "16 Oct. 2026 to 31 Mar. 2027",
         "officeAddress": "1st Floor, Mahuli Tower, K.G. Road, Ara",
         "siteAddress": "Patna Road, Kayam Nagar Bridge, 100 Mtr. in Birampur Road, Ara",

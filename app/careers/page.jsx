@@ -1,6 +1,7 @@
 import '../../styles/pages/careers.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import CareersHeader from '@/components/careers/CareersHeader';
 import CareersOpportunities from '@/components/careers/CareersOpportunities';
 import CareersShowcase from '@/components/careers/CareersShowcase';
@@ -26,6 +27,8 @@ export default async function CareersPage() {
         <div className="col-fluid">
           <div id="primary" className="content-area">
             <main id="main" className="site-main">
+              {/* The careers banner has no visible title, so the page heading is for assistive tech and crawlers. */}
+              <h1 className="screen-reader-text">Careers at Vastu Vihar</h1>
               <div data-elementor-type="wp-page" data-elementor-id="57" className="elementor elementor-57">
                 <CareersHeader />
                 <div
@@ -44,6 +47,7 @@ export default async function CareersPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Careers' }]} />
     </PageLayout>
   );
 }

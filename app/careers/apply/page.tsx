@@ -77,9 +77,9 @@ function ApplyForm() {
   return (
     <div className="apply-form-wrapper">
       <div className="apply-form-container">
-        <h2 className="apply-form-title">
+        <h1 className="apply-form-title">
           Apply for {formData.jobTitle || 'a Position'}
-        </h2>
+        </h1>
         <p className="apply-form-subtitle">
           Submit your details and resume below. Our HR team will review your application.
         </p>

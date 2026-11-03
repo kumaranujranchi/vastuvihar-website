@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 
 /** Reusable banner for new pages. Existing page-specific banners may be retained. */
-export default function Breadcrumb({ title, items = [] }) {
+export default function Breadcrumb({ title, items = [], titleAs: Title = 'h1' }) {
   const crumbs = [{ label: 'Home', href: '/' }, ...items, { label: title }];
   return (
     <div className="breadcrumb-wrap">
@@ -14,7 +14,7 @@ export default function Breadcrumb({ title, items = [] }) {
             <div className="e-con-inner">
               <div className="elementor-element elementor-element-f731f09 elementor-widget elementor-widget-page-title">
                 <div className="elementor-widget-container"><div className="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-                  <h1 className="elementor-heading-title elementor-size-default">{title}</h1>
+                  <Title className="elementor-heading-title elementor-size-default">{title}</Title>
                 </div></div>
               </div>
               <div className="elementor-element elementor-element-4f1e524 elementor-widget elementor-widget-hfe-breadcrumbs-widget">

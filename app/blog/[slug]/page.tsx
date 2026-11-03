@@ -1,7 +1,9 @@
 import { prisma } from '@/lib/prisma';
 import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
+import { createPageMetadata } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
 import ArticleLayout from '@/components/blog/ArticleLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import CommentForm from '../CommentForm';
 
 // 1. Await params in Metadata
@@ -12,32 +14,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         where: { slug },
     });
 
-    if (!post) return { title: 'Post Not Found | Vastu Vihar' };
+    if (!post) return { title: 'Post Not Found' };
 
-    const pageTitle = post.metaTitle ? `${post.metaTitle} | Vastu Vihar` : `${post.title} | Vastu Vihar`;
-    const pageDesc = post.metaDesc || post.excerpt || post.title;
-    const ogImages = post.imagePath ? [{ url: post.imagePath, alt: post.imageAlt || post.title }] : [];
+    const base = createPageMetadata({
+        title: post.metaTitle || post.title,
+        description: post.metaDesc || post.excerpt || post.title,
+        path: `/blog/${encodeURIComponent(post.slug)}/`,
+        ...(post.imagePath ? { image: post.imagePath } : {}),
+        type: 'article',
+    });
 
     return {
-        title: pageTitle,
-        description: pageDesc,
+        ...base,
         keywords: post.keywords ? post.keywords.split(',').map((k: string) => k.trim()) : undefined,
         authors: [{ name: post.author || 'Vastu Vihar' }],
         openGraph: {
-            title: pageTitle,
-            description: pageDesc,
-            url: `https://vastuvihar.org/blog/${post.slug}`,
-            siteName: 'Vastu Vihar',
-            images: ogImages,
-            type: 'article',
+            ...base.openGraph,
             publishedTime: post.createdAt.toISOString(),
             modifiedTime: post.updatedAt.toISOString(),
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: pageTitle,
-            description: pageDesc,
-            images: ogImages.map(img => img.url),
         },
     };
 }
@@ -88,6 +82,7 @@ export default async function DynamicSingleBlogPage({ params }: { params: Promis
             prevPost={previousPost ? { title: previousPost.title, href: `/blog/${previousPost.slug}/` } : undefined}
             nextPost={nextPost ? { title: nextPost.title, href: `/blog/${nextPost.slug}/` } : undefined}
         >
+            <BreadcrumbJsonLd items={[{ name: 'Blog', path: '/blog/' }, { name: post.title }]} />
             {/* Blog Content */}
             <div
                 className="dynamic-blog-content wp-block-post-content"

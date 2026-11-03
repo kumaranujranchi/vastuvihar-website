@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { requirePermission } from '@/lib/adminAuth';
@@ -5,6 +6,11 @@ import { audit } from '@/lib/audit';
 import { saveBlogImage } from '@/lib/privateStorage';
 import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
 import { jsonError, logError } from '@/lib/security/request';
+
+// These pages are prerendered from the post list, so a change must refresh them.
+function revalidateBlogPages() {
+  for (const path of ['/', '/blog', '/sitemap.xml']) revalidatePath(path);
+}
 
 function generateSlug(text: string): string {
   return text
@@ -98,6 +104,7 @@ export async function POST(request: Request) {
     });
 
     await audit(admin, 'blog.created', 'blog', blog.id);
+    revalidateBlogPages();
     return NextResponse.json({ success: true, blog });
   } catch (error) {
     logError('admin.blogs.create', error);
@@ -139,6 +146,7 @@ export async function DELETE(request: Request) {
 
     await prisma.blogPost.delete({ where: { id } });
     await audit(admin, 'blog.deleted', 'blog', id);
+    revalidateBlogPages();
     return NextResponse.json({ success: true, message: 'Blog post deleted' });
   } catch (error) {
     console.error('Error deleting blog:', error);

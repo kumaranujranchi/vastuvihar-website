@@ -18,7 +18,7 @@ export default function CareersSection() {
           data-widget_type="heading.default"
         >
           <div className="elementor-widget-container">
-            <h1 className="elementor-heading-title elementor-size-default">Make your next</h1>{' '}
+            <h2 className="elementor-heading-title elementor-size-default">Make your next</h2>{' '}
           </div>
         </div>
         <div
@@ -34,7 +34,7 @@ export default function CareersSection() {
             data-widget_type="heading.default"
           >
             <div className="elementor-widget-container">
-              <h1 className="elementor-heading-title elementor-size-default">career </h1>{' '}
+              <h2 className="elementor-heading-title elementor-size-default">career </h2>{' '}
             </div>
           </div>
           <div
@@ -118,7 +118,7 @@ export default function CareersSection() {
             data-widget_type="heading.default"
           >
             <div className="elementor-widget-container">
-              <h1 className="elementor-heading-title elementor-size-default">move</h1>{' '}
+              <h2 className="elementor-heading-title elementor-size-default">move</h2>{' '}
             </div>
           </div>
         </div>

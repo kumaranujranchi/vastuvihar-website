@@ -1,15 +1,19 @@
 import '../../styles/pages/projects.css';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
 import { projects } from '@/data/projects';
 import { filterProjects } from '@/data/project-filters';
 import ProjectCard from '@/components/projects/ProjectCard';
 import ProjectFilters from '@/components/projects/ProjectFilters';
+import { createPageMetadata } from '@/lib/metadata';
 
-export const metadata = {
+// The one canonical also covers filtered URLs such as /projects/?type=Bungalow.
+export const metadata = createPageMetadata({
   title: 'Homes & Bungalow Models | Vastu Vihar',
   description: 'Explore Vastu Vihar bungalow, row house and apartment designs, floor plans and indicative prices.',
-};
+  path: '/projects/',
+});
 
 export default async function ProjectsPage({ searchParams }) {
   const params = (await searchParams) || {};
@@ -149,6 +153,7 @@ export default async function ProjectsPage({ searchParams }) {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Home Models' }]} />
     </PageLayout>
   );
 }

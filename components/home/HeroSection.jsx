@@ -45,6 +45,10 @@ export default function HeroSection() {
           <img
             src={HERO_POSTERS[activeVideo]}
             alt=""
+            width="1920"
+            height="1000"
+            fetchPriority="high"
+            decoding="async"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }}
           />
         )}
@@ -156,6 +160,7 @@ export default function HeroSection() {
                     <div className={`video-tab-nav-item ${activeVideo === 1 ? "active" : ""}`} data-tab="video-tab-1" role="button" tabIndex={0} aria-label="Play video 2" aria-pressed={activeVideo === 1} onClick={() => setActiveVideo(1)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveVideo(1); } }}>
                       <div className="elementor-video-tabs-image">
                         <img
+                          loading="lazy"
                           decoding="async"
                           width="190"
                           height="80"
@@ -168,6 +173,7 @@ export default function HeroSection() {
                     <div className={`video-tab-nav-item ${activeVideo === 2 ? "active" : ""}`} data-tab="video-tab-2" role="button" tabIndex={0} aria-label="Play video 3" aria-pressed={activeVideo === 2} onClick={() => setActiveVideo(2)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveVideo(2); } }}>
                       <div className="elementor-video-tabs-image">
                         <img
+                          loading="lazy"
                           decoding="async"
                           width="190"
                           height="80"

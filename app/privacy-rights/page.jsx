@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Breadcrumb from '@/components/Breadcrumb';
 import RightsCentre from '@/components/privacy/RightsCentre';
 import { createPageMetadata } from '@/lib/metadata';
@@ -15,7 +16,7 @@ export const metadata = createPageMetadata({
 export default function PrivacyRightsPage() {
   return (
     <PageLayout route="privacy-rights">
-      <Breadcrumb title="Your Data Rights" />
+      <Breadcrumb title="Your Data Rights" titleAs="div" />
       <main className={styles.page} id="content">
         <div className={styles.container}>
           <header className={styles.intro}>
@@ -47,6 +48,7 @@ export default function PrivacyRightsPage() {
           </div>
         </div>
       </main>
+      <BreadcrumbJsonLd items={[{ name: 'Your Data Rights' }]} />
     </PageLayout>
   );
 }

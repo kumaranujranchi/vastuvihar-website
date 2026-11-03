@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './terms.module.css';
 
@@ -14,7 +15,7 @@ export const metadata = createPageMetadata({
 export default function TermsAndConditionsPage() {
   return (
     <PageLayout route="privacy-policy">
-      <Breadcrumb title="Terms & Conditions" />
+      <Breadcrumb title="Terms & Conditions" titleAs="div" />
       <main id="main" className={styles.page}>
         <div className={styles.container}>
           <header className={styles.header}>
@@ -63,6 +64,7 @@ export default function TermsAndConditionsPage() {
           </div>
         </div>
       </main>
+      <BreadcrumbJsonLd items={[{ name: 'Terms and Conditions' }]} />
     </PageLayout>
   );
 }

@@ -1,6 +1,7 @@
 import '../../styles/pages/contact.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import ContactHeader from '@/components/contact/ContactHeader';
 import ContactInfoCards from '@/components/contact/ContactInfoCards';
 import ContactSection from '@/components/contact/ContactSection';
@@ -39,6 +40,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Contact' }]} />
     </PageLayout>
   );
 }

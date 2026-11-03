@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './privacy.module.css';
 import CookiePreferences from '@/components/privacy/CookiePreferences';
@@ -25,7 +26,7 @@ const hasTags = hasAnalytics || hasAdvertising;
 export default function PrivacyPage() {
   return (
     <PageLayout route="privacy-policy">
-      <Breadcrumb title="Privacy Policy" />
+      <Breadcrumb title="Privacy Policy" titleAs="div" />
       <main className={styles.page} id="content">
         <div className={styles.container}>
           <header className={styles.intro}>
@@ -180,6 +181,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </main>
+      <BreadcrumbJsonLd items={[{ name: 'Privacy Policy' }]} />
     </PageLayout>
   );
 }

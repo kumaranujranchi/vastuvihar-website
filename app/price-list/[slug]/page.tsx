@@ -1,12 +1,42 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageLayout from '@/components/PageLayout'; 
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import styles from './price-list-detail.module.css';
 import { priceLists } from '@/data/priceLists';
+import { createPageMetadata } from '@/lib/metadata';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+/** The lowest home price in rupees, ignoring shops, parking and per-sq.ft. rates. */
+function lowestHomePrice(project: (typeof priceLists)[number]) {
+  const prices = [...(project.bungalows || []), ...(project.flats || [])]
+    .flatMap((unit) => [unit.deluxePrice, unit.luxuryPrice])
+    .filter((price): price is string => Boolean(price) && !String(price).includes('/Sq.'))
+    .map((price) => Number(price.replace(/,/g, '')))
+    .filter((price) => Number.isFinite(price) && price > 0);
+
+  return prices.length ? Math.min(...prices) : null;
+}
+
+export function generateMetadata({ params }: PageProps) {
+  return params.then(({ slug }) => {
+    const project = priceLists.find((item) => item.slug === slug);
+    if (!project) return { title: 'Price list not found' };
+
+    const lowest = lowestHomePrice(project);
+    // 100000 rupees = 1 lakh. Rounded to 2 places, so 9,50,000 reads as 9.5.
+    const from = lowest ? `₹${Number((lowest / 100000).toFixed(2))} Lakh` : null;
+
+    return createPageMetadata({
+      title: from ? `${project.projectName} Price List: From ${from}` : `${project.projectName} Price List`,
+      description: `${project.projectName} prices valid ${project.effectiveDate}${from ? `, from ${from}` : ''}. See unit areas, deluxe and luxury prices, the payment schedule and specifications.`,
+      path: `/price-list/${slug}/`,
+    });
+  });
+}
 
 function formatPrice(value?: string) {
   if (!value) return '—';
@@ -272,6 +302,7 @@ export default async function PriceListDetailPage({ params }: PageProps) {
           </section>
         </div>
       </main>
+      <BreadcrumbJsonLd items={[{ name: 'Price List', path: '/price-list/' }, { name: project.projectName }]} />
     </PageLayout>
   );
 }
