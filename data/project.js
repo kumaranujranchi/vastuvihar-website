@@ -1270,12 +1270,12 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "3D",
-                        url: "/ganga/ff_3d.webp",
+                        url: "/ganga/3d.png",
                         label: "2 BHK Floor Plan",
                     },
                     {
                         type: "2D",
-                        url: "/ganga/2d.png",
+                        url: "/ganga/3d-2.png",
                         label: "2 BHK Floor Plan",
                     },
                 ],

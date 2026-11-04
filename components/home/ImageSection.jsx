@@ -71,21 +71,20 @@ const testimonials = [
 
 export default function ImageSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
+  // Start autoplay as soon as the component mounts. Keep the timer independent
+  // of pointer hover, which otherwise makes the carousel appear permanently paused
+  // when the mouse happens to rest over the section.
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    return () => window.clearInterval(interval);
+  }, []);
 
   const prevSlide = () => {
-    setActiveIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
+    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const nextSlide = () => {
@@ -100,12 +99,10 @@ export default function ImageSection() {
       data-settings={'{"background_background":"classic"}'}
     >
       <div className="e-con-inner">
-        {/* Removed 'elementor-invisible' so the title shows instantly */}
         <div
-          className="elementor-element elementor-element-9f847e0 animated-fast elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+          className="elementor-element elementor-element-9f847e0 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
           data-id="9f847e0"
           data-element_type="widget"
-          data-settings={'{"_animation":"opal-scale-up"}'}
           data-widget_type="icon-list.default"
         >
           <div className="elementor-widget-container">
@@ -142,40 +139,27 @@ export default function ImageSection() {
         </div>
 
         <div
-          className="elementor-element elementor-element-7445366 alignment-center elementor-swiper-button-next-horizontal-right elementor-swiper-button-prev-horizontal-left elementor-swiper-button-next-vertical-top elementor-swiper-button-prev-vertical-top animated-fast testimonial-layout-1 overflow-to-none elementor-widget elementor-widget-spaciaz-testimonials"
+          className="elementor-element elementor-element-7445366 alignment-center elementor-swiper-button-next-horizontal-right elementor-swiper-button-prev-horizontal-left elementor-swiper-button-next-vertical-top elementor-swiper-button-prev-vertical-top testimonial-layout-1 overflow-to-none elementor-widget elementor-widget-spaciaz-testimonials"
           data-id="7445366"
           data-element_type="widget"
-          data-settings={
-            '{"slides_to_show":"1","navigation":"arrows","_animation":"opal-move-up","testimonial_layout":"1","spaceBetween":{"unit":"px","size":30,"sizes":[]},"autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","loopAdditionalSlides":0,"effect":"slide","speed":500}'
-          }
           data-widget_type="spaciaz-testimonials.default"
         >
           <div className="elementor-widget-container">
-            {/* Added overflow hidden to prevent slides from bleeding out horizontally */}
             <div
-              className="elementor-testimonial-item-wrapper spaciaz-swiper swiper"
+              className="elementor-testimonial-item-wrapper vv-testimonial-viewport"
               dir="ltr"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              style={{ overflow: "hidden", width: "100%" }} 
+              style={{ overflow: "hidden", width: "100%" }}
             >
-              {/* Added flexbox and dynamic translateX to simulate the swiper engine */}
-              <div 
-                className="layout-1 swiper-wrapper"
-                style={{ 
-                  display: "flex", 
-                  transform: `translateX(-${activeIndex * 100}%)`, 
-                  transition: "transform 0.5s ease-in-out" 
-                }}
-              >
+              {/* Render all reviews on the server. The first is visible immediately;
+                  React only changes the active class during autoplay. */}
+              <div className="layout-1 vv-testimonial-track">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className={`grid-item swiper-slide elementor-testimonial-item ${
-                      index === activeIndex ? "swiper-slide-active" : ""
+                    className={`grid-item elementor-testimonial-item ${
+                      index === activeIndex ? "vv-testimonial-active" : ""
                     }`}
-                    // Added flexShrink and width 100% so each slide takes up exactly one frame
-                    style={{ width: "100%", flexShrink: 0 }}
+                    aria-hidden={index !== activeIndex}
                   >
                     <div className="testimonial-content">
                       <div className="wrap_content">
@@ -224,6 +208,7 @@ export default function ImageSection() {
               </div>
             </div>
 
+            {/* Restore the theme's original Previous/Next controls. */}
             <div
               className="elementor-swiper-button elementor-swiper-button-prev"
               onClick={prevSlide}
@@ -236,10 +221,7 @@ export default function ImageSection() {
                 }
               }}
             >
-              <i
-                className="spaciaz-icon-chevron-left"
-                aria-hidden="true"
-              ></i>
+              <i className="spaciaz-icon-chevron-left" aria-hidden="true"></i>
               <span className="elementor-screen-only">Previous</span>
             </div>
 
@@ -255,10 +237,7 @@ export default function ImageSection() {
                 }
               }}
             >
-              <i
-                className="spaciaz-icon-chevron-right"
-                aria-hidden="true"
-              ></i>
+              <i className="spaciaz-icon-chevron-right" aria-hidden="true"></i>
               <span className="elementor-screen-only">Next</span>
             </div>
           </div>
