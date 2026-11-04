@@ -7,7 +7,7 @@ import CareersHeader from '@/components/careers/CareersHeader';
 import CareersOpportunities from '@/components/careers/CareersOpportunities';
 import CareersShowcase from '@/components/careers/CareersShowcase';
 import { createPageMetadata } from '@/lib/metadata';
-import { prisma } from '@/lib/prisma'; // <-- Import Prisma
+import { orEmpty, prisma } from '@/lib/prisma'; // <-- Import Prisma
 
 export const metadata = createPageMetadata({
   title: 'Careers | Vastu Vihar',
@@ -23,7 +23,7 @@ export default async function CareersPage() {
   const activeJobs = await prisma.jobVacancy.findMany({
     where: { isActive: true },
     orderBy: { createdAt: 'desc' },
-  });
+  }).catch(orEmpty('Careers'));
 
   return (
     <PageLayout route="careers">

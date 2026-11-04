@@ -2,7 +2,7 @@ import './NewsSection.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
 import { connection } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { orEmpty, prisma } from '@/lib/prisma';
 import StaticPill from '../common/StaticPill';
 
 // Helper to format dates to match your UI ("Mar 18, 2025")
@@ -22,7 +22,9 @@ export default async function NewsSection() {
     where: { isPublished: true },
     orderBy: { createdAt: 'desc' },
     take: 4,
-  });
+  }).catch(orEmpty('Home news'));
+
+  if (posts.length === 0) return null;
 
   // Separate the first post (featured left) and the remaining posts (list right)
   const featuredPost = posts[0];

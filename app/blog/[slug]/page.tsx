@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+import { orNull, prisma } from '@/lib/prisma';
 import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
 import { createPageMetadata } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const post = await prisma.blogPost.findUnique({
         where: { slug },
-    });
+    }).catch(orNull('Blog post metadata'));
 
     if (!post) return { title: 'Post Not Found' };
 
@@ -48,7 +48,7 @@ export default async function DynamicSingleBlogPage({ params }: { params: Promis
                 orderBy: { createdAt: 'desc' },
             },
         },
-    });
+    }).catch(orNull('Blog post'));
 
     if (!post || !post.isPublished) {
         notFound();
