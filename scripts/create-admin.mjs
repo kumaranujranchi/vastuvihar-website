@@ -1,9 +1,14 @@
 // Creates the first administrator, or resets an existing account's password.
-//   ADMIN_BOOTSTRAP_PASSWORD='...' node --env-file=.env scripts/create-admin.mjs <email> "<name>" [role]
+//   ADMIN_BOOTSTRAP_PASSWORD='...' node scripts/create-admin.mjs <email> "<name>" [role]
 // The password comes from the environment so it never lands in shell history as an argument.
 import { randomBytes, scrypt as scryptCallback } from 'node:crypto';
 import { promisify } from 'node:util';
 import { PrismaClient } from '@prisma/client';
+
+// Hosts set variables in the environment, so .env is optional. Existing variables win.
+try {
+  process.loadEnvFile('.env');
+} catch {}
 
 const scrypt = promisify(scryptCallback);
 const ROLES = ['SUPER_ADMIN', 'PRIVACY_OFFICER', 'SALES', 'HR', 'CONTENT'];

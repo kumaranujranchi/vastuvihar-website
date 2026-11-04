@@ -11,7 +11,7 @@
     "verify": "node scripts/verify.mjs",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
-    "admin:create": "node --env-file=.env scripts/create-admin.mjs",
+    "admin:create": "node scripts/create-admin.mjs",
     "test:dpdp": "node scripts/dpdp-compliance-test.mjs"
   },
   "engines": {
