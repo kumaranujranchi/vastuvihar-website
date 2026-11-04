@@ -12,3 +12,4 @@ storage/
 public/uploads/resumes/
 prisma/*.db-journal
 prisma/local*.db
+prisma/dev.db
