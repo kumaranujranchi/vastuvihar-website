@@ -40653,7 +40653,7 @@ body {
 
 /* Local still image keeps Demo 5's hero visible while remote video loads. */
 #tab_video {
-    background: #1b1f12 url('/images/h5_bg-1.jpg') center / cover no-repeat;
+    background: #1b1f12;
 }
 
 /* Keep decorative art inside its section; nested galleries keep their own scroll. */

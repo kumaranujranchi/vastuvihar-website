@@ -8,14 +8,6 @@
     "description": "We developed landmark real estate projects that deliver lasting value to investors and communities. Defining the standards of real estate development view all projects we’re proud to partner with best-in-class clients who we are · who we ar"
   },
   {
-    "route": "ai-in-real-estate-construction",
-    "path": "/ai-in-real-estate-construction/",
-    "title": "AI in Real Estate & Construction",
-    "type": "Article",
-    "bodyClass": "wp-singular post-template-default single single-post postid-12 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb spaciaz-full-width-content has-post-thumbnail elementor-default elementor-kit-4",
-    "description": "CategoriesCompany Mar 18, 2025Apr 16, 2025 AI in Real Estate & Construction It’s no secret that access to quality education is unevenly distributed. Many children in underserved communities lack proper school infrastructure, qualified teach"
-  },
-  {
     "route": "eco-friendly-construction-trends",
     "path": "/blog/eco-friendly-construction-trends/",
     "title": "Eco-Friendly Construction Trends",
@@ -144,14 +136,6 @@
     "description": "Our awards HomeOur awards We are a top-performing construction firm and consistently ranks among the top contractors. · awards · awards · awards · awards · awards · awards · awards · awards · awards · awards Recognitions we got We are a dev"
   },
   {
-    "route": "our-team",
-    "path": "/our-team/",
-    "title": "Our team",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-55 page-parent wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-55",
-    "description": "Our team HomeOur team Our team brings together licensed contractors and real estate experts who work to help you achieve your goals. meet the team · meet the team · meet the team · meet the team · meet the team · meet the team · meet the te"
-  },
-  {
     "route": "careers",
     "path": "/careers/",
     "title": "Careers",
@@ -184,60 +168,12 @@
     "description": "CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesCompany Mar 18, 202"
   },
   {
-    "route": "our-team/dennis-daniels",
-    "path": "/our-team/dennis-daniels/",
-    "title": "Dennis Daniels",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-1919 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-1919",
-    "description": "founder & ceo Dennis Daniels Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: dennis@example.com (084) 123 – 456 88 About "
-  },
-  {
     "route": "careers-apply",
     "path": "/careers/apply/",
     "title": "Apply for Career",
     "type": "Careers",
     "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-3356 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-3356",
     "description": "Apply for open positions at Vastu Vihar."
-  },
-  {
-    "route": "our-team/johan-sanford",
-    "path": "/our-team/johan-sanford/",
-    "title": "Johan Sanford",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5117 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5117",
-    "description": "excutive assistant Johan Sanford Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: johansanford@example.com (084) 123 – 456"
-  },
-  {
-    "route": "our-team/floyd-miles",
-    "path": "/our-team/floyd-miles/",
-    "title": "Floyd Miles",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5131 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5131",
-    "description": "director of architecture Floyd Miles Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: floydmiles@example.com (084) 123 – 4"
-  },
-  {
-    "route": "our-team/leslie-alexander",
-    "path": "/our-team/leslie-alexander/",
-    "title": "Leslie Alexander",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5139 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5139",
-    "description": "Development manager Leslie Alexander Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: alexander@example.com (084) 123 – 45"
-  },
-  {
-    "route": "our-team/bernardo-gordon",
-    "path": "/our-team/bernardo-gordon/",
-    "title": "Bernardo Gordon",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5145 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5145",
-    "description": "OPERATIONS Manager Bernardo Gordon Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: bernardo@example.com (084) 123 – 456 8"
-  },
-  {
-    "route": "our-team/ralph-edwards",
-    "path": "/our-team/ralph-edwards/",
-    "title": "Ralph Edwards",
-    "type": "Page",
-    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-5169 page-child parent-pageid-55 wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page elementor-page-5169",
-    "description": "Construction Manager Ralph Edwards Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: edwards@example.com (084) 123 – 456 88"
   },
   {
     "route": "projects",
