@@ -301,7 +301,33 @@
     column-gap: 32px;
     row-gap: 32px;
   }
+}
 
+/* Tablet: contact details on the left, social icons on the right, so the stacked layout uses the full width */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .footer-contact-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 32px;
+    width: 100%;
+  }
+
+  .footer-contact-label,
+  .footer-contact-link {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .footer-social-row {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    align-self: center;
+    margin-top: 0;
+  }
+}
+
+/* Copyright and legal links (about 790px together) no longer fit on one row */
+@media (max-width: 900px) {
   .footer-bottom-section {
     gap: 20px;
   }
@@ -522,5 +548,36 @@
 
   .footer-social-btn:hover svg {
     transform: none;
+  }
+}
+
+/* Phone: legal links no longer fit on one line, so use a tidy 2x2 grid without the dot separators */
+@media (max-width: 599px) {
+  .premium-footer {
+    padding: 60px 0 0 0;
+  }
+
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-legal-links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-items: center;
+    gap: 12px 16px;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+}
+
+/* Most phones have room for three link columns; "Branch Offices" (about 100px) sets the 375px minimum */
+@media (min-width: 375px) and (max-width: 599px) {
+  .footer-nav-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 16px;
   }
 }

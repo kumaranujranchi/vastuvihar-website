@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { connection } from 'next/server';
 
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/metadata';
 import { getGalleryAlbums } from '@/lib/gallery';
 import Cta from './Cta';
@@ -236,12 +237,12 @@ export default async function GalleryMainPage() {
           <div className="vv-gallery-bento-intro">
 
             <div className="vv-gallery-intro-left">
-              <h2
+              <h1
                 id="vv-gallery-heading"
                 className="vv-gallery-intro-title"
               >
                 Our Gallery
-              </h2>
+              </h1>
             </div>
 
             <div className="vv-gallery-intro-right">
@@ -395,6 +396,7 @@ export default async function GalleryMainPage() {
 
       </main>
 
+      <BreadcrumbJsonLd items={[{ name: 'Gallery' }]} />
     </PageLayout>
   );
 }

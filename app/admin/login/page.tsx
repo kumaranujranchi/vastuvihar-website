@@ -8,6 +8,7 @@ import styles from './login.module.css';
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -15,8 +16,8 @@ export default function AdminLoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!password.trim()) {
-      setError('Please enter your admin password');
+    if (!email.trim() || !password.trim()) {
+      setError('Please enter your email and password');
       return;
     }
     setLoading(true);
@@ -26,18 +27,18 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/admin/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Invalid admin password. Please try again.');
+        throw new Error(data.error || 'Invalid email or password. Please try again.');
       }
 
       router.push('/admin');
       router.refresh();
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Login failed. Please check your password.');
+      setError(err instanceof Error ? err.message : 'Login failed. Please check your details.');
     } finally {
       setLoading(false);
     }
@@ -68,7 +69,7 @@ export default function AdminLoginPage() {
 
           <h1 className={styles.title}>Admin Control Center</h1>
           <p className={styles.subtitle}>
-            Enter your administrative password to access leads, applications &amp; settings
+            Sign in with your own staff account. Access depends on your role.
           </p>
         </div>
 
@@ -97,10 +98,35 @@ export default function AdminLoginPage() {
         <form onSubmit={handleLogin} className={styles.form} noValidate>
           <div className={styles.fieldGroup}>
             <div className={styles.labelRow}>
-              <label htmlFor="admin-password" className={styles.label}>
-                Admin Password
+              <label htmlFor="admin-email" className={styles.label}>
+                Work Email
               </label>
               <span className={styles.labelHint}>Authorized only</span>
+            </div>
+            <div className={styles.inputWrapper}>
+              <input
+                id="admin-email"
+                type="email"
+                required
+                autoFocus
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                }}
+                placeholder="you@vastuvihar.org"
+                className={styles.input}
+                style={{ paddingLeft: '14px' }}
+                autoComplete="username"
+              />
+            </div>
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <div className={styles.labelRow}>
+              <label htmlFor="admin-password" className={styles.label}>
+                Password
+              </label>
             </div>
 
             <div className={styles.inputWrapper}>
@@ -118,13 +144,12 @@ export default function AdminLoginPage() {
                 id="admin-password"
                 type={showPassword ? 'text' : 'password'}
                 required
-                autoFocus
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                   if (error) setError('');
                 }}
-                placeholder="Enter admin password..."
+                placeholder="Enter your password"
                 className={styles.input}
                 autoComplete="current-password"
               />
@@ -225,7 +250,7 @@ export default function AdminLoginPage() {
                 clipRule="evenodd"
               />
             </svg>
-            <span>256-bit encrypted administrative session</span>
+            <span>Activity in this portal is logged</span>
           </div>
         </div>
       </div>

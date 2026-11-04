@@ -2,10 +2,51 @@ import '@/styles/globals.css';
 import { site } from '@/data/site';
 import CookieConsent from '@/components/CookieConsent/CookieConsent';
 import NavigationShell from '@/components/NavigationShell/NavigationShell';
+import TrackingTags from '@/components/privacy/TrackingTags';
+import JsonLd from '@/components/JsonLd';
+import { SITE_URL } from '@/lib/metadata';
 
+
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: site.name,
+      legalName: 'Technoculture Building Centre Pvt. Ltd.',
+      url: `${SITE_URL}/`,
+      logo: `${SITE_URL}${site.logo}`,
+      foundingDate: '1994',
+      email: site.email,
+      telephone: site.phone,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '417, 419, 4th Floor, Aashiana Tower, Exhibition Road, Old Jakkanpur, Lodipur',
+        addressLocality: 'Patna',
+        addressRegion: 'Bihar',
+        postalCode: '800001',
+        addressCountry: 'IN',
+      },
+      sameAs: [
+        'https://www.facebook.com/vastu-vihar',
+        'https://www.instagram.com/vastuvihar_official',
+        'https://www.youtube.com/@vastu_vihar',
+        'https://in.linkedin.com/company/vastu-vihar-technoculture-building-centre-pvt-ltd',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: site.name,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+  ],
+};
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://vastuvihar.org'),
+  metadataBase: new URL(SITE_URL),
   title: { default: `${site.name} – ${site.tagline}`, template: `%s | ${site.name}` },
   description: 'Discover our projects, people, values, and opportunities.',
   icons: {
@@ -23,11 +64,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="theme-spaciaz elementor-default elementor-kit-4">
+        <JsonLd data={siteJsonLd} />
         <NavigationShell
           cookieConsent={<CookieConsent />}
         >
           {children}
         </NavigationShell>
+        <TrackingTags />
       </body>
     </html>
   );

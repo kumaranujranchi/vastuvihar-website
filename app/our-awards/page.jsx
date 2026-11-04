@@ -1,5 +1,6 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import AwardsHeader from '@/components/awards/AwardsHeader';
 import AwardsList from '@/components/awards/AwardsList';
 
@@ -28,6 +29,7 @@ export default function OurAwardsPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Awards & Recognition' }]} />
     </PageLayout>
   );
 }

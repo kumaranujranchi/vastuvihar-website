@@ -1,7 +1,16 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import fs from 'fs/promises';
-import path from 'path';
+import { requirePermission } from '@/lib/adminAuth';
+import { audit } from '@/lib/audit';
+import { saveBlogImage } from '@/lib/privateStorage';
+import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
+import { jsonError, logError } from '@/lib/security/request';
+
+// These pages are prerendered from the post list, so a change must refresh them.
+function revalidateBlogPages() {
+  for (const path of ['/', '/blog', '/sitemap.xml']) revalidatePath(path);
+}
 
 function generateSlug(text: string): string {
   return text
@@ -32,13 +41,16 @@ async function getUniqueSlug(baseSlug: string, excludeId?: string): Promise<stri
 }
 
 export async function POST(request: Request) {
+  const { admin, response } = await requirePermission(request, 'blogs:manage');
+  if (!admin) return response;
+
   try {
     const formData = await request.formData();
     const title = (formData.get('title') as string || '').trim();
     const customSlug = (formData.get('slug') as string || '').trim();
     const category = (formData.get('category') as string || 'Company').trim();
     const excerpt = (formData.get('excerpt') as string || '').trim();
-    const content = (formData.get('content') as string || '').trim();
+    const content = sanitizeBlogHtml((formData.get('content') as string || '').trim());
     const imageFile = formData.get('image') as File | null;
     const imageAlt = (formData.get('imageAlt') as string || '').trim();
     const metaTitle = (formData.get('metaTitle') as string || '').trim();
@@ -68,16 +80,9 @@ export async function POST(request: Request) {
 
     let imagePath: string | null = null;
     if (imageFile && imageFile.size > 0) {
-      const ext = path.extname(imageFile.name).toLowerCase() || '.jpg';
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'blogs');
-      await fs.mkdir(uploadDir, { recursive: true });
-
-      const uniqueFileName = `${Date.now()}_${finalSlug}${ext}`;
-      const filePath = path.join(uploadDir, uniqueFileName);
-
-      const buffer = Buffer.from(await imageFile.arrayBuffer());
-      await fs.writeFile(filePath, buffer);
-      imagePath = `/uploads/blogs/${uniqueFileName}`;
+      const saved = await saveBlogImage(imageFile, finalSlug);
+      if (saved.error) return jsonError(saved.error, 400);
+      imagePath = saved.url;
     }
 
     const blog = await prisma.blogPost.create({
@@ -98,15 +103,20 @@ export async function POST(request: Request) {
       },
     });
 
+    await audit(admin, 'blog.created', 'blog', blog.id);
+    revalidateBlogPages();
     return NextResponse.json({ success: true, blog });
   } catch (error) {
-    console.error('Blog creation error:', error);
+    logError('admin.blogs.create', error);
     return NextResponse.json({ success: false, error: 'Failed to create blog post' }, { status: 500 });
   }
 }
 
 // GET endpoint to fetch all blogs for the admin table
-export async function GET() {
+export async function GET(request: Request) {
+  const { admin, response } = await requirePermission(request, 'blogs:manage');
+  if (!admin) return response;
+
   try {
     const blogs = await prisma.blogPost.findMany({
       orderBy: { createdAt: 'desc' },
@@ -125,6 +135,9 @@ export async function GET() {
 
 // DELETE endpoint to remove a blog
 export async function DELETE(request: Request) {
+  const { admin, response } = await requirePermission(request, 'blogs:manage');
+  if (!admin) return response;
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
@@ -132,6 +145,8 @@ export async function DELETE(request: Request) {
     if (!id) return NextResponse.json({ success: false, error: 'Missing blog ID' }, { status: 400 });
 
     await prisma.blogPost.delete({ where: { id } });
+    await audit(admin, 'blog.deleted', 'blog', id);
+    revalidateBlogPages();
     return NextResponse.json({ success: true, message: 'Blog post deleted' });
   } catch (error) {
     console.error('Error deleting blog:', error);

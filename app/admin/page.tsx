@@ -17,11 +17,20 @@ interface Lead {
   message: string | null;
   source: string;
   status: string;
-  ipAddress?: string | null;
-  country?: string | null;
-  userAgent?: string | null;
+  marketingConsent?: boolean;
+  marketingWithdrawnAt?: string | null;
+  adChannel?: string | null;
+  adUtmSource?: string | null;
+  adUtmMedium?: string | null;
+  adUtmCampaign?: string | null;
+  legalHoldReason?: string | null;
   createdAt: string;
 }
+
+const AD_CHANNEL_LABELS: Record<string, string> = { google_ads: 'Google Ads', meta: 'Meta', campaign: 'Campaign link' };
+
+const adSourceLabel = (lead: Lead) =>
+  [AD_CHANNEL_LABELS[lead.adChannel || ''] || lead.adChannel, lead.adUtmSource, lead.adUtmMedium, lead.adUtmCampaign].filter(Boolean).join(' / ');
 
 interface JobVacancy {
   id: string;
@@ -69,6 +78,8 @@ export default function AdminDashboardPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'leads' | 'vacancies' | 'applications' | 'blogs'>('leads');
   const [loading, setLoading] = useState(true);
+  const [permissions, setPermissions] = useState<string[]>([]);
+  const can = (permission: string) => permissions.includes(permission);
 
   // Leads State
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -108,6 +119,16 @@ export default function AdminDashboardPage() {
         if (!data.authenticated) {
           router.push('/admin/login');
         } else {
+          const granted: string[] = data.user?.permissions || [];
+          setPermissions(granted);
+          // Open the first tab this role may use.
+          if (granted.includes('leads:read')) setActiveTab('leads');
+          else if (granted.includes('applications:read')) setActiveTab('applications');
+          else if (granted.includes('blogs:manage')) setActiveTab('blogs');
+          else if (granted.includes('privacy:read') || granted.includes('comments:moderate')) {
+            router.replace('/admin/privacy/');
+            return;
+          }
           setLoading(false);
         }
       } catch {
@@ -203,14 +224,6 @@ export default function AdminDashboardPage() {
   };
 
 
-  useEffect(() => {
-    if (!loading) {
-      if (activeTab === 'leads') fetchLeads();
-      if (activeTab === 'vacancies') fetchVacancies();
-      if (activeTab === 'applications') fetchApplications();
-    }
-  }, [activeTab, loading, fetchLeads, fetchVacancies, fetchApplications]);
-
   // Handle Logout
   const handleLogout = async () => {
     await fetch('/api/admin/auth', { method: 'DELETE' });
@@ -256,31 +269,9 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Export Leads to CSV
+  // The server builds the file, so each export is permission-checked and audited.
   const exportLeadsCSV = () => {
-    if (leads.length === 0) return alert('No leads to export.');
-    const headers = ['Date', 'Name', 'Phone', 'Email', 'City', 'Budget', 'Project', 'Status', 'Country', 'IP Address', 'Message'];
-    const rows = leads.map((l) => [
-      new Date(l.createdAt).toLocaleDateString(),
-      `"${l.fullName.replace(/"/g, '""')}"`,
-      `"${l.phone}"`,
-      `"${l.email || ''}"`,
-      `"${l.city || ''}"`,
-      `"${l.budget || ''}"`,
-      `"${l.project || ''}"`,
-      l.status,
-      `"${l.country || ''}"`,
-      `"${l.ipAddress || ''}"`,
-      `"${(l.message || '').replace(/"/g, '""')}"`,
-    ]);
-    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `vastu_vihar_leads_${new Date().toISOString().slice(0, 10)}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.location.href = '/api/admin/leads/export';
   };
 
   // Open Create Job Modal
@@ -475,7 +466,7 @@ export default function AdminDashboardPage() {
           <div className={styles.navSectionTitle}>MAIN MANAGEMENT</div>
 
           {/* Nav Item: Property Leads */}
-          <button
+          {can('leads:read') && <button
             onClick={() => setActiveTab('leads')}
             className={`${styles.navItem} ${activeTab === 'leads' ? styles.navItemActive : ''}`}
           >
@@ -488,10 +479,10 @@ export default function AdminDashboardPage() {
               <span>Property Leads</span>
             </div>
             <span className={styles.navBadge}>{leadStats.totalCount}</span>
-          </button>
+          </button>}
 
           {/* Nav Item: Job Openings */}
-          <button
+          {can('vacancies:manage') && <button
             onClick={() => setActiveTab('vacancies')}
             className={`${styles.navItem} ${activeTab === 'vacancies' ? styles.navItemActive : ''}`}
           >
@@ -505,10 +496,10 @@ export default function AdminDashboardPage() {
               <span>Job Openings</span>
             </div>
             <span className={styles.navBadge}>{vacancies.length}</span>
-          </button>
+          </button>}
 
           {/* Nav Item: Job Applications */}
-          <button
+          {can('applications:read') && <button
             onClick={() => setActiveTab('applications')}
             className={`${styles.navItem} ${activeTab === 'applications' ? styles.navItemActive : ''}`}
           >
@@ -525,9 +516,9 @@ export default function AdminDashboardPage() {
               <span>Job Applications</span>
             </div>
             <span className={styles.navBadge}>{appStats.totalCount}</span>
-          </button>
+          </button>}
           {/* Nav Item: Blog Posts */}
-          <button
+          {can('blogs:manage') && <button
             onClick={() => setActiveTab('blogs')}
             className={`${styles.navItem} ${activeTab === 'blogs' ? styles.navItemActive : ''}`}
           >
@@ -540,13 +531,27 @@ export default function AdminDashboardPage() {
               </span>
               <span>Blog Posts</span>
             </div>
-          </button>
+          </button>}
+
+          {/* Nav Item: Privacy & Compliance */}
+          {(can('privacy:read') || can('comments:moderate') || can('users:manage')) && (
+            <button onClick={() => router.push('/admin/privacy/')} className={styles.navItem}>
+              <div className={styles.navItemLeft}>
+                <span className={styles.navIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </span>
+                <span>Privacy &amp; Compliance</span>
+              </div>
+            </button>
+          )}
 
           <div className={styles.navSectionTitle}>QUICK ACTIONS</div>
 
           {/* //blog button */}
 
-          <button onClick={() => router.push('/admin/blogs/new')} className={styles.navItem}>
+          {can('blogs:manage') && <button onClick={() => router.push('/admin/blogs/new')} className={styles.navItem}>
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -556,11 +561,11 @@ export default function AdminDashboardPage() {
               </span>
               <span>Post New Blog</span>
             </div>
-          </button>
+          </button>}
 
 
 
-          <button onClick={() => setShowJobModal(true)} className={styles.navItem}>
+          {can('vacancies:manage') && <button onClick={() => setShowJobModal(true)} className={styles.navItem}>
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -570,9 +575,9 @@ export default function AdminDashboardPage() {
               </span>
               <span>Post New Job</span>
             </div>
-          </button>
+          </button>}
 
-          <button onClick={exportLeadsCSV} className={styles.navItem}>
+          {can('leads:export') && <button onClick={exportLeadsCSV} className={styles.navItem}>
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -583,7 +588,7 @@ export default function AdminDashboardPage() {
               </span>
               <span>Export CSV</span>
             </div>
-          </button>
+          </button>}
         </nav>
 
         <div className={styles.sidebarFooter}>
@@ -836,14 +841,14 @@ export default function AdminDashboardPage() {
                   </select>
                 </div>
 
-                <button onClick={exportLeadsCSV} className={styles.exportCrimsonBtn}>
+                {can('leads:export') && <button onClick={exportLeadsCSV} className={styles.exportCrimsonBtn}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
                   <span>Export CSV</span>
-                </button>
+                </button>}
               </div>
 
               {/* Main Card (Table OR Empty State) */}
@@ -914,6 +919,9 @@ export default function AdminDashboardPage() {
                                     <span className={styles.inquirySourceDot} />
                                     <span>via {(lead.source || 'website').replace(/_/g, ' ')}</span>
                                   </div>
+                                  {lead.adChannel && (
+                                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '3px' }}>Ad: {adSourceLabel(lead)}</div>
+                                  )}
                                 </div>
                               </div>
                             </td>
@@ -953,11 +961,9 @@ export default function AdminDashboardPage() {
                                 {lead.email && (
                                   <div style={{ fontSize: '11.5px', color: '#64748b', marginTop: '4px' }}>{lead.email}</div>
                                 )}
-                                {lead.country && (
-                                  <div style={{ fontSize: '11px', color: '#0284c7', marginTop: '3px', fontWeight: 500 }}>
-                                    🌐 {lead.country}
-                                  </div>
-                                )}
+                                <div style={{ fontSize: '11px', color: lead.marketingConsent ? '#15803d' : '#64748b', marginTop: '3px', fontWeight: 500 }}>
+                                  {lead.marketingConsent ? 'Marketing OK' : 'No marketing'}
+                                </div>
                               </div>
                             </td>
 
@@ -1390,17 +1396,14 @@ export default function AdminDashboardPage() {
                         {app.resumePath ? (
                           <a
                             href={app.resumePath}
-                            target="_blank"
-                            rel="noreferrer"
                             className={styles.resumeDownloadBtn}
-                            download
                           >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                               <polyline points="7 10 12 15 17 10" />
                               <line x1="12" y1="15" x2="12" y2="3" />
                             </svg>
-                            <span>Download Resume PDF</span>
+                            <span>Download Resume</span>
                           </a>
                         ) : (
                           <span style={{ fontSize: '12px', color: '#94a3b8' }}>No Resume Attached</span>
@@ -1468,14 +1471,17 @@ export default function AdminDashboardPage() {
                 <strong>Budget Range:</strong> {selectedLead.budget || 'Not specified'}
               </div>
               <div>
-                <strong>Origin Country & IP:</strong>{' '}
-                {selectedLead.country || 'Not logged'}{' '}
-                {selectedLead.ipAddress ? `(IP: ${selectedLead.ipAddress})` : ''}
+                <strong>Marketing:</strong>{' '}
+                {selectedLead.marketingConsent
+                  ? 'Opted in. Promotional messages are allowed.'
+                  : 'Not opted in. Contact only about this enquiry.'}
               </div>
-              {selectedLead.userAgent && (
+              <div>
+                <strong>Ad source:</strong> {adSourceLabel(selectedLead) || 'Not recorded'}
+              </div>
+              {selectedLead.legalHoldReason && (
                 <div>
-                  <strong>Device User-Agent:</strong>{' '}
-                  <span style={{ fontSize: '12px', color: '#64748b', wordBreak: 'break-all' }}>{selectedLead.userAgent}</span>
+                  <strong>Legal hold:</strong> {selectedLead.legalHoldReason}
                 </div>
               )}
               {selectedLead.address && (

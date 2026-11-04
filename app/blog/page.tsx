@@ -1,12 +1,18 @@
 import '@/styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
+import { createPageMetadata } from '@/lib/metadata';
 
-export const metadata = {
+// The post list is prerendered. The admin blog API refreshes it on publish; this is the fallback.
+export const revalidate = 3600;
+
+export const metadata = createPageMetadata({
   title: 'Latest Blogs | Vastu Vihar',
   description: 'Vastu Vihar Latest News and Updates',
-};
+  path: '/blog/',
+});
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -40,7 +46,7 @@ export default async function BlogGridPage() {
                       <div className="elementor-element elementor-element-8df3906 elementor-widget elementor-widget-page-title" data-id="8df3906" data-element_type="widget" data-widget_type="page-title.default">
                         <div className="elementor-widget-container">
                           <div className="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-                            <h2 className="elementor-heading-title elementor-size-default">Latest Blogs</h2>
+                            <h1 className="elementor-heading-title elementor-size-default">Latest Blogs</h1>
                           </div>
                         </div>
                       </div>
@@ -150,6 +156,7 @@ export default async function BlogGridPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Blog' }]} />
     </PageLayout>
   );
 }

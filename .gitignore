@@ -5,3 +5,7 @@ out/
 !.env.example
 *.log
 .DS_Store
+storage/
+public/uploads/resumes/
+prisma/*.db-journal
+prisma/local*.db

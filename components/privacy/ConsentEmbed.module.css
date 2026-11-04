@@ -1,0 +1,36 @@
+.placeholder {
+  align-items: center;
+  background-color: #2a2622;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  justify-content: center;
+  min-height: 280px;
+  padding: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.placeholder p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 460px;
+}
+
+.placeholder button {
+  background: #268ddc;
+  border: 1px solid #268ddc;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 18px;
+  width: auto;
+}

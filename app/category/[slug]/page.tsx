@@ -1,15 +1,11 @@
 import '@/styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
-
-const CATEGORY_MAP: Record<string, string> = {
-  'company': 'Company',
-  'social-media': 'Social Media',
-  'tips-tricks': 'Tips & Tricks',
-  'uncategorized': 'Uncategorized'
-};
+import { BLOG_CATEGORIES as CATEGORY_MAP } from '@/lib/blogCategories';
+import { createPageMetadata } from '@/lib/metadata';
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -21,10 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const categoryName = CATEGORY_MAP[slug] || slug.replace('-', ' ');
 
-  return {
+  return createPageMetadata({
     title: `${categoryName} Archives | Vastu Vihar`,
     description: `Browse all latest updates, news, and articles in the ${categoryName} category.`,
-  };
+    path: `/category/${slug}/`,
+  });
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -63,9 +60,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                       <div className="elementor-element elementor-element-8df3906 elementor-widget elementor-widget-page-title" data-id="8df3906" data-element_type="widget" data-widget_type="page-title.default">
                         <div className="elementor-widget-container">
                           <div className="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-                            <h2 className="elementor-heading-title elementor-size-default">
+                            <h1 className="elementor-heading-title elementor-size-default">
                               {dbCategoryName}
-                            </h2>
+                            </h1>
                           </div>
                         </div>
                       </div>
@@ -182,6 +179,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Blog', path: '/blog/' }, { name: dbCategoryName }]} />
     </PageLayout>
   );
 }

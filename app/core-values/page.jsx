@@ -1,5 +1,6 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import ValuesHeader from '@/components/values/ValuesHeader';
 import ValuesGrid from '@/components/values/ValuesGrid';
 
@@ -28,6 +29,7 @@ export default function CoreValuesPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'Core Values' }]} />
     </PageLayout>
   );
 }

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/metadata';
 import { getGalleryAlbumBySlug } from '@/lib/gallery';
 import GalleryLightbox from '../GalleryLightbox';
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!album) {
     return {
-      title: 'Gallery | Vastu Vihar',
+      title: 'Gallery',
     };
   }
 
@@ -62,6 +63,7 @@ export default async function GallerySlugPage({
 
   return (
     <main className="vv-gallery-album-page">
+      <BreadcrumbJsonLd items={[{ name: 'Gallery', path: '/gallery/' }, { name: album.title }]} />
 
       {/* GLASSMORPHISM HEADER */}
       <header className="vv-gallery-glass-header">

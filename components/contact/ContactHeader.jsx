@@ -23,7 +23,7 @@ export default function ContactHeader() {
           >
             <div className="elementor-widget-container">
               <div className="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-                <h2 className="elementor-heading-title elementor-size-default">Get in touch</h2>
+                <h1 className="elementor-heading-title elementor-size-default">Get in touch</h1>
               </div>
             </div>
           </div>

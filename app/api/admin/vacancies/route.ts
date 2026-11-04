@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { verifyAdminAuth } from '@/lib/adminAuth';
+import { requirePermission } from '@/lib/adminAuth';
+import { audit } from '@/lib/audit';
 
-export async function GET() {
-  const isAuth = await verifyAdminAuth();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-  }
+export async function GET(request: Request) {
+  const { admin, response } = await requirePermission(request, 'vacancies:manage');
+  if (!admin) return response;
 
   try {
     const vacancies = await prisma.jobVacancy.findMany({
@@ -20,10 +19,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const isAuth = await verifyAdminAuth();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-  }
+  const { admin, response } = await requirePermission(request, 'vacancies:manage');
+  if (!admin) return response;
 
   try {
     const body = await request.json();
@@ -45,6 +42,7 @@ export async function POST(request: Request) {
       },
     });
 
+    await audit(admin, 'vacancy.created', 'vacancy', vacancy.id);
     return NextResponse.json({ success: true, vacancy }, { status: 201 });
   } catch (error) {
     console.error('Error creating vacancy:', error);
@@ -53,10 +51,8 @@ export async function POST(request: Request) {
 }
 
 export async function PATCH(request: Request) {
-  const isAuth = await verifyAdminAuth();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-  }
+  const { admin, response } = await requirePermission(request, 'vacancies:manage');
+  if (!admin) return response;
 
   try {
     const body = await request.json();
@@ -80,6 +76,7 @@ export async function PATCH(request: Request) {
       data,
     });
 
+    await audit(admin, 'vacancy.updated', 'vacancy', id);
     return NextResponse.json({ success: true, vacancy: updated });
   } catch (error) {
     console.error('Error updating vacancy:', error);
@@ -88,10 +85,8 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const isAuth = await verifyAdminAuth();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-  }
+  const { admin, response } = await requirePermission(request, 'vacancies:manage');
+  if (!admin) return response;
 
   try {
     const { searchParams } = new URL(request.url);
@@ -101,6 +96,7 @@ export async function DELETE(request: Request) {
     }
 
     await prisma.jobVacancy.delete({ where: { id } });
+    await audit(admin, 'vacancy.deleted', 'vacancy', id);
     return NextResponse.json({ success: true, message: 'Job vacancy deleted successfully' });
   } catch (error) {
     console.error('Error deleting vacancy:', error);

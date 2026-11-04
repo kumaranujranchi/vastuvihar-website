@@ -1,36 +1,26 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
+import { requirePermission } from '@/lib/adminAuth';
+import { audit } from '@/lib/audit';
+import { saveBlogImage } from '@/lib/privateStorage';
+import { jsonError, logError } from '@/lib/security/request';
 
 export async function POST(request: Request) {
+  const { admin, response } = await requirePermission(request, 'blogs:manage');
+  if (!admin) return response;
+
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as File | null;
+    const file = formData.get('file');
+    if (!(file instanceof File) || file.size === 0) return jsonError('No image file provided', 400);
 
-    if (!file || file.size === 0) {
-      return NextResponse.json({ success: false, error: 'No image file provided' }, { status: 400 });
-    }
+    const saved = await saveBlogImage(file, path.basename(file.name, path.extname(file.name)));
+    if (saved.error) return jsonError(saved.error, 400);
 
-    const ext = path.extname(file.name).toLowerCase() || '.jpg';
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'blogs');
-    await fs.mkdir(uploadDir, { recursive: true });
-
-    const safeBaseName = path
-      .basename(file.name, ext)
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .slice(0, 40);
-    const uniqueFileName = `${Date.now()}_${safeBaseName}${ext}`;
-    const filePath = path.join(uploadDir, uniqueFileName);
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await fs.writeFile(filePath, buffer);
-
-    const fileUrl = `/uploads/blogs/${uniqueFileName}`;
-    return NextResponse.json({ success: true, url: fileUrl });
+    await audit(admin, 'blog.image_uploaded', 'blog_image', saved.url);
+    return NextResponse.json({ success: true, url: saved.url });
   } catch (error) {
-    console.error('Editor image upload error:', error);
-    return NextResponse.json({ success: false, error: 'Failed to upload image' }, { status: 500 });
+    logError('admin.blogs.upload', error);
+    return jsonError('Failed to upload image', 500);
   }
 }
-

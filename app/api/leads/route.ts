@@ -1,179 +1,85 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { guardPublicPost, jsonError, logError } from '@/lib/security/request';
+import { cleanText, isTrue, normalizeEmail, normalizePhone, oneOf, phoneMatchKey } from '@/lib/validation';
+import { isSuppressed, noticeLanguage, recordConsent } from '@/lib/privacy/consent';
+import { NOTICE_VERSION, PURPOSES } from '@/lib/privacy/notices';
+import { adSourceForLead } from '@/lib/privacy/visitorLog';
 
-function isPrivateIp(ip: string): boolean {
-  return (
-    ip === '127.0.0.1' ||
-    ip === '::1' ||
-    ip === 'localhost' ||
-    ip.startsWith('10.') ||
-    ip.startsWith('192.168.') ||
-    ip.startsWith('172.16.') ||
-    ip.startsWith('172.17.') ||
-    ip.startsWith('172.18.') ||
-    ip.startsWith('172.19.') ||
-    ip.startsWith('172.2') ||
-    ip.startsWith('172.30.') ||
-    ip.startsWith('172.31.')
-  );
-}
+const SOURCES = ['contact_section', 'project_enquiry_section'] as const;
 
 export async function POST(request: Request) {
   try {
+    const blocked = await guardPublicPost(request, 'leads', 5, 5 * 60 * 1000);
+    if (blocked) return blocked;
+
     const body = await request.json();
-    
-    // FOOLPROOF EXTRACTION: Accepts standard field names from any contact form
-    const fullName = body.fullName || body.name || '';
-    const phone = body.phone || body.mobile || body.contact || '';
-    const email = body.email || '';
-    const city = body.city || '';
-    const budget = body.budget || '';
-    const project = body.project || '';
-    const address = body.address || '';
-    const message = body.message || '';
-    const source = body.source || 'website_inquiry';
-    const website_url = body.website_url; // Honeypot
 
-    // 1. HONEYPOT BOT TRAP
-    if (website_url && String(website_url).trim().length > 0) {
-      console.warn('[SPAM_BLOCKED] Honeypot triggered by automated bot:', { fullName, email, phone });
-      return NextResponse.json({ success: true, message: 'Inquiry received successfully!' }, { status: 200 });
+    // Honeypot: report success to the bot, keep nothing and log nothing personal.
+    if (cleanText(body.website_url, 200)) {
+      return NextResponse.json({ success: true, message: 'Inquiry received successfully!' });
     }
 
-    // 2. EXTRACT CLIENT IP & COUNTRY
-    const forwarded = request.headers.get('x-forwarded-for');
-    const realIp = request.headers.get('x-real-ip');
-    const cfIp = request.headers.get('cf-connecting-ip');
-    const rawIp = (cfIp || forwarded?.split(',')[0] || realIp || '127.0.0.1').trim();
-    const clientIp = rawIp.replace(/^::ffff:/, '');
+    const fullName = cleanText(body.fullName, 120);
+    const phone = normalizePhone(body.phone);
+    if (!fullName || !phone) return jsonError('Full name and a valid phone number are required.', 400);
 
-    let country = (
-      request.headers.get('cf-ipcountry') ||
-      request.headers.get('x-vercel-ip-country') ||
-      request.headers.get('x-country-code') ||
-      null
-    )?.toUpperCase() || null;
+    const rawEmail = cleanText(body.email, 254);
+    const email = rawEmail ? normalizeEmail(rawEmail) : null;
+    if (rawEmail && !email) return jsonError('Please enter a valid email address.', 400);
 
-    if (!country && clientIp && !isPrivateIp(clientIp)) {
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 1200);
-        const geoRes = await fetch(`http://ip-api.com/json/${clientIp}?fields=country,countryCode`, {
-          signal: controller.signal,
-        });
-        clearTimeout(timeout);
-        if (geoRes.ok) {
-          const geoData = await geoRes.json();
-          if (geoData.countryCode) {
-            // FIXED SYNTAX ERROR HERE
-            country = `${geoData.countryCode} - ${geoData.country}`;
-          }
-        }
-      } catch {
-        // Continue gracefully
-      }
+    if (!isTrue(body.consentPrimary)) {
+      return jsonError('Please confirm your consent so we can respond to your enquiry.', 400);
     }
 
-    const userAgent = request.headers.get('user-agent')?.slice(0, 255) || null;
-
-    // 3. BASIC VALIDATION
-    if (!fullName || !phone) {
-      return NextResponse.json(
-        { success: false, error: 'Full name and phone number are required.' },
-        { status: 400 }
+    const language = noticeLanguage(body.noticeLanguage);
+    const source = oneOf(body.source, SOURCES) || 'contact_section';
+    // An earlier opt-out wins over a form tick, which cannot prove who is typing.
+    const marketing = isTrue(body.consentMarketing) && !(await isSuppressed(phone, email));
+    const accepted = () =>
+      NextResponse.json(
+        { success: true, message: 'Inquiry received successfully! Our team will contact you shortly.' },
+        { status: 201 },
       );
-    }
 
-    const cleanPhone = String(phone).replace(/[^\d+]/g, '');
-    if (cleanPhone.length < 10) {
-      return NextResponse.json(
-        { success: false, error: 'Please provide a valid 10-digit phone number.' },
-        { status: 400 }
-      );
-    }
-
-    // 4. RATE LIMITING
-    if (clientIp && !isPrivateIp(clientIp)) {
-      const recentCount = await prisma.lead.count({
-        where: {
-          ipAddress: clientIp,
-          createdAt: { gte: new Date(Date.now() - 5 * 60 * 1000) },
-        },
-      });
-
-      if (recentCount >= 5) {
-        return NextResponse.json(
-          { success: false, error: 'Too many submissions. Please wait a few minutes.' },
-          { status: 429 }
-        );
-      }
-    }
-
-    // 5. RAPID DUPLICATE GUARD
-    const recentDuplicate = await prisma.lead.findFirst({
-      where: {
-        phone: cleanPhone,
-        createdAt: { gte: new Date(Date.now() - 90 * 1000) },
-      },
+    // Rapid duplicate guard for double submits. The answer matches a normal success,
+    // so it does not reveal that this number enquired moments ago.
+    const recent = await prisma.lead.findMany({
+      where: { createdAt: { gte: new Date(Date.now() - 90 * 1000) } },
+      select: { phone: true },
     });
+    if (recent.some((row) => phoneMatchKey(row.phone) === phoneMatchKey(phone))) return accepted();
 
-    if (recentDuplicate) {
-      return NextResponse.json(
-        { success: true, message: 'Inquiry received successfully!', leadId: recentDuplicate.id },
-        { status: 200 }
-      );
-    }
-
-    // 6. SAVE TO DB
+    const now = new Date();
     const lead = await prisma.lead.create({
       data: {
-        fullName: String(fullName).trim(),
-        phone: cleanPhone,
-        email: email ? String(email).trim().toLowerCase() : null,
-        city: city ? String(city).trim() : null,
-        budget: budget ? String(budget).trim() : null,
-        project: project ? String(project).trim() : null,
-        address: address ? String(address).trim() : null,
-        message: message ? String(message).trim() : null,
-        source: String(source).trim(),
+        fullName,
+        phone,
+        email,
+        city: cleanText(body.city, 80) || null,
+        budget: cleanText(body.budget, 80) || null,
+        project: cleanText(body.project, 160) || null,
+        message: cleanText(body.message, 4000) || null,
+        source,
         status: 'NEW',
-        ipAddress: clientIp,
-        country: country || (isPrivateIp(clientIp) ? 'Local Development' : 'Unknown'),
-        userAgent: userAgent,
+        noticeVersion: NOTICE_VERSION,
+        noticeLanguage: language,
+        marketingConsent: marketing,
+        marketingConsentAt: marketing ? now : null,
+        // The browser ID only proves the advertising choice. It is not kept with the enquiry.
+        ...(await adSourceForLead(body.browserId, body.adSource)),
       },
     });
 
-    return NextResponse.json(
-      { success: true, message: 'Inquiry received successfully! Our team will contact you shortly.', leadId: lead.id },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error('Error creating lead:', error);
-    return NextResponse.json(
-      { success: false, error: 'Failed to process inquiry. Please try again later.' },
-      { status: 500 }
-    );
-  }
-}
-
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const key = searchParams.get('key');
-    const adminKey = process.env.ADMIN_API_KEY;
-
-    if (adminKey && key !== adminKey) {
-      return NextResponse.json({ success: false, error: 'Unauthorized access.' }, { status: 401 });
+    const base = { phone, email, recordType: 'lead', recordId: lead.id, language, source };
+    await recordConsent({ ...base, purpose: PURPOSES.ENQUIRY, action: 'GRANTED' });
+    if (marketing) {
+      await recordConsent({ ...base, purpose: PURPOSES.MARKETING, action: 'GRANTED' });
     }
 
-    const leads = await prisma.lead.findMany({
-      orderBy: { createdAt: 'desc' },
-      take: 100,
-    });
-
-    return NextResponse.json({ success: true, count: leads.length, leads });
+    return accepted();
   } catch (error) {
-    console.error('Error fetching leads:', error);
-    return NextResponse.json({ success: false, error: 'Failed to fetch leads.' }, { status: 500 });
+    logError('leads.create', error);
+    return jsonError('Failed to process inquiry. Please try again later.', 500);
   }
 }

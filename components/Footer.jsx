@@ -193,6 +193,18 @@ export default function Footer() {
             />
 
             <Link
+              href="/privacy-rights"
+              prefetch={false}
+            >
+              Your Data Rights
+            </Link>
+
+            <span
+              className="footer-divider"
+              aria-hidden="true"
+            />
+
+            <Link
               href="/terms-and-conditions"
               prefetch={false}
             >

@@ -1,5 +1,6 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import AboutHeader from '@/components/about/AboutHeader';
 import AboutStats from '@/components/about/AboutStats';
 import AboutMilestones from '@/components/about/AboutMilestones';
@@ -33,6 +34,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </div>
+      <BreadcrumbJsonLd items={[{ name: 'About Us' }]} />
     </PageLayout>
   );
 }

@@ -9,11 +9,18 @@ import CompanySection from '@/components/home/CompanySection';
 import PartnersSection from '@/components/home/PartnersSection';
 import HeroSection from '@/components/home/HeroSection';
 import PageLayout from '@/components/PageLayout';
-export const metadata = {
-  title: 'Home',
+import { createPageMetadata } from '@/lib/metadata';
+
+// NewsSection lists recent posts. The admin blog API refreshes this on publish; this is the fallback.
+export const revalidate = 3600;
+
+export const metadata = createPageMetadata({
+  title: 'Vastu Vihar: Bungalows & Flats in Bihar & Eastern India',
   description:
-    'We developed landmark real estate projects that deliver lasting value to investors and communities. Defining the standards of real estate development view all projects we’re proud to partner with best-in-class clients who we are · who we ar',
-};
+    'Vastu Vihar has built homes since 1994. Explore bungalows, row houses and flats across Bihar and Eastern India, with floor plans, price lists and branch offices.',
+  path: '/',
+});
+
 export default function HomePage() {
   return (
     <PageLayout route="home">

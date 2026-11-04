@@ -487,6 +487,22 @@
   margin-top: 0;
 }
 
+/* Each quote fills the slide, so sliding shows words cut off at both edges.
+   Tie opacity to scroll position: fully visible when a slide is at rest, faded once it moves 10%.
+   Browsers without scroll-driven animations keep the plain slide. */
+@supports (animation-timeline: view()) {
+  .elementor-49 .elementor-element.elementor-element-8ee7234 .wrap_content {
+    animation: about-quote-fade linear both;
+    animation-timeline: view(inline);
+  }
+
+  @keyframes about-quote-fade {
+    0%, 45% { opacity: 0; }
+    50% { opacity: 1; }
+    55%, 100% { opacity: 0; }
+  }
+}
+
 /* Keep the testimonial text from visually climbing into the image layout. */
 .elementor-49 .elementor-element.elementor-element-8ee7234 {
   position: relative;

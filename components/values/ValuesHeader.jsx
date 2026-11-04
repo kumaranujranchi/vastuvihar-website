@@ -26,7 +26,7 @@ export default function ValuesHeader() {
             >
               <div className="elementor-widget-container">
                 <div className="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-                  <h2 className="elementor-heading-title elementor-size-default">Core values</h2>
+                  <h1 className="elementor-heading-title elementor-size-default">Core values</h1>
                 </div>
               </div>
             </div>
