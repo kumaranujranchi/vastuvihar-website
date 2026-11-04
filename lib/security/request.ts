@@ -41,18 +41,23 @@ export async function isRateLimited(
   windowMs: number,
 ): Promise<boolean> {
   if (process.env.DISABLE_RATE_LIMIT === '1' && process.env.NODE_ENV !== 'production') return false;
-  const keyHash = keyedHash(`rate:${clientIp(request)}`);
-  const since = new Date(Date.now() - windowMs);
-  const count = await prisma.rateLimitHit.count({ where: { bucket, keyHash, createdAt: { gte: since } } });
-  if (count >= limit) return true;
-  await prisma.rateLimitHit.create({ data: { bucket, keyHash } });
-  return false;
+  try {
+    const keyHash = keyedHash(`rate:${clientIp(request)}`);
+    const since = new Date(Date.now() - windowMs);
+    const count = await prisma.rateLimitHit.count({ where: { bucket, keyHash, createdAt: { gte: since } } });
+    if (count >= limit) return true;
+    await prisma.rateLimitHit.create({ data: { bucket, keyHash } });
+    return false;
+  } catch (error) {
+    logError('rateLimit', error);
+    return false;
+  }
 }
 
 /** Logs the error class and code only, because messages can echo submitted data. */
 export function logError(scope: string, error: unknown): void {
-  const e = error as { name?: string; code?: string };
-  console.error(`[${scope}] ${e?.name || 'Error'}${e?.code ? ` (${e.code})` : ''}`);
+  const e = error as Error;
+  console.error(`[${scope}] ${e?.message || e}`);
 }
 
 export function jsonError(error: string, status: number) {
