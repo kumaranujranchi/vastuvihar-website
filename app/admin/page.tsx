@@ -1140,7 +1140,7 @@ export default function AdminDashboardPage() {
             <div>
               <div className={styles.filterBar}>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 800 }}>Manage Job Openings</h3>
+                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600 }}>Manage Job Openings</h3>
                   <span style={{ fontSize: '12px', color: '#64748b' }}>
                     Active vacancies show automatically on https://vastuvihar.com/careers
                   </span>
