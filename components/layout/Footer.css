@@ -1,28 +1,39 @@
-/* ==========================================================================
-   Premium Dark Footer Styles
-   ========================================================================== */
+/* =========================================================
+   VASTU VIHAR - PREMIUM FOOTER
+   Responsive Desktop / Tablet / Mobile
+   ========================================================= */
 
 .premium-footer {
   position: relative;
-  background-color: #0b0f19; /* Deep, rich premium dark background */
+  background-color: #0b0f19;
   background-image: url('/images/footer-bg.jpg');
   background-position: center 30%;
   background-size: cover;
   background-repeat: no-repeat;
   color: #f8fafc;
-  padding: 80px 0 0 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 80px 0 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
   overflow: hidden;
+  isolation: isolate;
   z-index: 1;
 }
 
-/* Gradient overlay to ensure text is always readable over the background image */
+/* Background Overlay */
+
 .premium-footer-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.7) 0%, rgba(11, 15, 25, 0.95) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 25, 0.7) 0%,
+    rgba(11, 15, 25, 0.95) 100%
+  );
   z-index: -1;
+  pointer-events: none;
 }
+
+/* Main Container */
 
 .premium-footer-container {
   width: min(100% - 40px, 1200px);
@@ -31,9 +42,10 @@
   z-index: 2;
 }
 
-/* =========================================
-   Top Section: Contact & Navigation Grid
-   ========================================= */
+/* =========================================================
+   TOP SECTION
+   ========================================================= */
+
 .footer-top-section {
   display: flex;
   justify-content: space-between;
@@ -43,11 +55,16 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Contact Block */
+/* =========================================================
+   CONTACT BLOCK
+   ========================================================= */
+
 .footer-contact-block {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   max-width: 400px;
+  min-width: 0;
 }
 
 .footer-contact-label {
@@ -55,8 +72,8 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
-  color: #268ddc; /* Main theme color */
-  margin: 0 0 16px 0;
+  color: #268ddc;
+  margin: 0 0 16px;
 }
 
 .footer-contact-link {
@@ -68,16 +85,21 @@
   margin-bottom: 8px;
   transition: color 0.3s ease;
   letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
 }
 
 .footer-contact-link:hover {
   color: #268ddc;
 }
 
-/* Social Icons */
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
 .footer-social-row {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 32px;
 }
@@ -86,18 +108,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-decoration: none;
 }
 
 .footer-social-btn:hover {
-  background-color: #268ddc; /* Main theme color */
+  background-color: #268ddc;
   border-color: #268ddc;
   color: #ffffff;
   transform: translateY(-4px);
@@ -112,20 +140,40 @@
   transform: scale(1.1);
 }
 
-/* Navigation Grid */
+.footer-social-btn:focus-visible {
+  outline: 2px solid #268ddc;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   NAVIGATION GRID - DESKTOP
+   ========================================================= */
+
 .footer-nav-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
+  align-items: start;
+}
+
+/* Individual Navigation Column */
+
+.footer-nav-column {
+  min-width: 0;
+  width: 100%;
 }
 
 .footer-nav-title {
   font-size: 16px;
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
+  line-height: 1.4;
 }
+
+/* Navigation Links */
 
 .footer-nav-list {
   list-style: none;
@@ -136,13 +184,23 @@
   gap: 12px;
 }
 
+.footer-nav-list li {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 .footer-nav-list a {
+  display: inline-block;
   color: #cbd5e1;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-  display: inline-block;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
 }
 
 .footer-nav-list a:hover {
@@ -150,16 +208,28 @@
   padding-left: 4px;
 }
 
-/* =========================================
-   Bottom Section: Copyright & Legal
-   ========================================= */
+.footer-nav-list a:focus-visible {
+  outline: 2px solid #268ddc;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* =========================================================
+   BOTTOM SECTION
+   ========================================================= */
+
 .footer-bottom-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
   padding: 24px 0;
   font-size: 14px;
   color: #94a3b8;
+}
+
+.footer-copyright {
+  line-height: 1.6;
 }
 
 .footer-copyright a {
@@ -172,6 +242,8 @@
 .footer-copyright a:hover {
   color: #268ddc;
 }
+
+/* Legal Links */
 
 .footer-legal-links {
   display: flex;
@@ -191,6 +263,7 @@
   font-size: 14px;
   cursor: pointer;
   font-family: inherit;
+  line-height: 1.5;
 }
 
 .footer-legal-links a:hover,
@@ -203,44 +276,251 @@
   height: 4px;
   border-radius: 50%;
   background-color: #475569;
+  flex-shrink: 0;
 }
 
-/* =========================================
-   Responsive Design
-   ========================================= */
+/* =========================================================
+   TABLET - UP TO 1024px
+   ========================================================= */
+
 @media (max-width: 1024px) {
+
   .footer-top-section {
     flex-direction: column;
-    gap: 50px;
+    gap: 45px;
   }
-  
+
   .footer-contact-block {
     max-width: 100%;
+    width: 100%;
   }
 
   .footer-nav-grid {
     width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .premium-footer {
-    padding: 60px 0 0 0;
-  }
-
-  .footer-nav-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 32px;
   }
 
   .footer-bottom-section {
+    gap: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE - UP TO 768px
+   TWO COLUMN FOOTER NAVIGATION
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .premium-footer {
+    padding: 48px 0 0;
+  }
+
+  .premium-footer-container {
+    width: calc(100% - 36px);
+  }
+
+  /* Top Section */
+
+  .footer-top-section {
     flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+    padding-bottom: 36px;
+  }
+
+  /* Contact Details */
+
+  .footer-contact-block {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-contact-label {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .footer-contact-link {
+    font-size: clamp(20px, 5.5vw, 28px);
+    line-height: 1.35;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+  }
+
+  /* Social Icons */
+
+  .footer-social-row {
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .footer-social-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* =====================================
+     MOBILE NAVIGATION: TWO COLUMNS
+     ===================================== */
+
+  .footer-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    column-gap: 20px;
+    row-gap: 32px;
+    align-items: start;
+  }
+
+  .footer-nav-column {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .footer-nav-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.35;
+  }
+
+  .footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav-list li {
+    min-width: 0;
+  }
+
+  .footer-nav-list a {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+    overflow-wrap: break-word;
+    padding: 0;
+  }
+
+  .footer-nav-list a:hover {
+    padding-left: 0;
+    color: #268ddc;
+  }
+
+  /* =====================================
+     COPYRIGHT AND LEGAL
+     ===================================== */
+
+  .footer-bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 16px;
     text-align: center;
-    padding: 24px 0 32px 0;
+    padding: 24px 0 32px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+    line-height: 1.6;
   }
 
   .footer-legal-links {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+  }
+
+  .footer-legal-links a,
+  .footer-legal-links button {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE - UP TO 360px
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .premium-footer {
+    padding-top: 40px;
+  }
+
+  .premium-footer-container {
+    width: calc(100% - 28px);
+  }
+
+  .footer-top-section {
+    gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer-contact-link {
+    font-size: 19px;
+  }
+
+  .footer-social-row {
+    gap: 8px;
+  }
+
+  .footer-social-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-nav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 26px;
+  }
+
+  .footer-nav-title {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .footer-nav-list {
+    gap: 10px;
+  }
+
+  .footer-nav-list a {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .footer-bottom-section {
+    padding-bottom: 26px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .premium-footer a,
+  .premium-footer button,
+  .footer-social-btn svg {
+    transition: none;
+  }
+
+  .footer-social-btn:hover {
+    transform: none;
+  }
+
+  .footer-social-btn:hover svg {
+    transform: none;
   }
 }

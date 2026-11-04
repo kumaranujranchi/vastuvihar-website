@@ -1,3 +1,4 @@
+
 .page {
     background: #fff;
     color: #111;
@@ -22,6 +23,10 @@
     color: #0ea5e9;
 }
 
+/* =========================================
+   INTRO SECTION
+========================================= */
+
 .intro {
     padding: 60px 0 90px;
 }
@@ -45,13 +50,17 @@
     align-self: end;
 }
 
-.introCopy>p {
+.introCopy > p {
     max-width: 650px;
     margin: 0 0 32px;
     color: #565656;
     font-size: 1rem;
     line-height: 1.6;
 }
+
+/* =========================================
+   SEARCH
+========================================= */
 
 .searchBox {
     position: relative;
@@ -89,6 +98,10 @@
     pointer-events: none;
 }
 
+/* =========================================
+   EMPTY STATE
+========================================= */
+
 .emptyState {
     text-align: center;
     padding: 80px 20px 120px;
@@ -106,12 +119,16 @@
     font-size: 1rem;
 }
 
+/* =========================================
+   STATISTICS
+========================================= */
+
 .stats {
     display: flex;
     border-top: 1px solid #dedede;
 }
 
-.stats>div {
+.stats > div {
     min-width: 110px;
     padding: 16px 24px 0 0;
 }
@@ -132,8 +149,9 @@
 }
 
 /* =========================================
-   STATIC LAYOUT (NO GSAP)
+   PROJECT SECTIONS
 ========================================= */
+
 .projectsWrapper {
     width: 100%;
     padding-bottom: 80px;
@@ -165,7 +183,105 @@
     letter-spacing: .08em;
 }
 
-/* 4-COLUMN MULTI-ROW GRID (Desktop - Straight & Uniform) */
+/* =========================================
+   STATE-WISE ACCORDION
+========================================= */
+
+.accordionTrigger {
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.accordionTrigger:hover,
+.accordionTrigger:active {
+    background: transparent;
+    color: inherit;
+}
+
+.accordionTrigger:focus {
+    background: transparent;
+}
+
+.accordionTrigger:focus-visible {
+    outline: 2px solid #0ea5e9;
+    outline-offset: 4px;
+}
+
+.accordionTitle {
+    display: block;
+    min-width: 0;
+}
+
+.accordionRight {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+}
+
+.accordionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    color: #111;
+    background: transparent;
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.accordionIcon svg {
+    transition: transform 0.3s ease;
+}
+
+.accordionIconOpen svg {
+    transform: rotate(180deg);
+}
+
+.accordionTrigger:hover .accordionIcon {
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+}
+
+.accordionContent {
+    width: 100%;
+}
+
+.accordionContent[hidden] {
+    display: none !important;
+}
+
+/* Closed state section spacing */
+
+.projectsClosed {
+    padding-bottom: 30px;
+}
+
+.projectsClosed .sectionHead {
+    margin-bottom: 0;
+}
+
+.projectsOpen .sectionHead {
+    margin-bottom: 40px;
+}
+
+/* =========================================
+   CITY GRID
+========================================= */
+
 .cityGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -176,6 +292,7 @@
 /* =========================================
    UNIVERSAL CARD DESIGN
 ========================================= */
+
 .cityCard {
     --box_icon: 50px;
     position: relative;
@@ -207,6 +324,10 @@
     transform: scale3d(45, 45, 1);
 }
 
+/* =========================================
+   CARD CIRCLE
+========================================= */
+
 .cardCircle {
     display: flex;
     justify-content: center;
@@ -218,9 +339,7 @@
     height: var(--box_icon);
     border-radius: 50%;
     background-color: #0ea5e9;
-    /* Restored the blue paint */
     color: #ffffff;
-    /* White number */
     font-size: 15px;
     font-weight: 700;
     z-index: 4;
@@ -229,22 +348,20 @@
 }
 
 .cityCard:hover .cardCircle {
-    /* opacity: 0; */
     transform: scale(0.95);
 }
 
-
-/* Number inside circle */
 .circleNumber {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s ease, transform 0.4s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s ease;
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
-/* Location icon - initially hidden */
 .locationIcon {
     position: absolute;
     width: 22px;
@@ -258,18 +375,19 @@
     pointer-events: none;
 }
 
-/* Hide number on card hover */
 .cityCard:hover .circleNumber {
     opacity: 0;
     transform: translateY(-10px) scale(0.7);
 }
 
-/* Show location icon on card hover */
 .cityCard:hover .locationIcon {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
+/* =========================================
+   CARD DECORATIVE BORDER
+========================================= */
 
 .decorBorder {
     position: absolute;
@@ -304,6 +422,10 @@
     transform: rotate(90deg);
 }
 
+/* =========================================
+   CARD CONTENT
+========================================= */
+
 .cardContent {
     position: relative;
     z-index: 3;
@@ -337,6 +459,10 @@
     margin: 0 0 20px 0;
     transition: color 0.4s ease;
 }
+
+/* =========================================
+   PHASE GRID
+========================================= */
 
 .phaseGrid {
     display: grid;
@@ -373,6 +499,10 @@
     transform: translate(3px, -3px);
 }
 
+/* =========================================
+   UPCOMING PROJECTS
+========================================= */
+
 .phaseEmpty {
     margin-top: auto;
     padding-top: 20px;
@@ -382,7 +512,9 @@
     color: #888;
     display: flex;
     align-items: center;
-    transition: color 0.4s ease, border-top-color 0.4s ease;
+    transition:
+        color 0.4s ease,
+        border-top-color 0.4s ease;
 }
 
 .cityCard:hover .phaseEmpty {
@@ -390,9 +522,10 @@
 }
 
 /* =========================================
-   MEDIA QUERIES
+   TABLET
 ========================================= */
-@media(max-width:1024px) {
+
+@media (max-width: 1024px) {
     .introGrid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -405,7 +538,11 @@
     }
 }
 
-@media(max-width:767px) {
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
     .container {
         width: min(100% - 30px, 1730px);
     }
@@ -427,13 +564,40 @@
         justify-content: space-between;
     }
 
-    .stats>div {
+    .stats > div {
         min-width: 0;
         padding-right: 18px;
     }
 
     .projects {
         padding: 40px 0 60px;
+    }
+
+    .projectsClosed {
+        padding-bottom: 24px;
+    }
+
+    .sectionHead {
+        gap: 12px;
+    }
+
+    .accordionRight {
+        gap: 12px;
+    }
+
+    .accordionIcon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .accordionIcon svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    .count {
+        font-size: 0.75rem;
+        white-space: nowrap;
     }
 
     .cityGrid {
@@ -469,7 +633,11 @@
     }
 }
 
-@media(max-width:480px) {
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
     .cityGrid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -477,5 +645,14 @@
 
     .cityCard {
         min-height: 240px;
+    }
+
+    .accordionRight {
+        gap: 8px;
+    }
+
+    .accordionIcon {
+        width: 34px;
+        height: 34px;
     }
 }
