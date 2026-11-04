@@ -11,9 +11,6 @@ import HeroSection from '@/components/home/HeroSection';
 import PageLayout from '@/components/PageLayout';
 import { createPageMetadata } from '@/lib/metadata';
 
-// NewsSection lists recent posts. The admin blog API refreshes this on publish; this is the fallback.
-export const revalidate = 3600;
-
 export const metadata = createPageMetadata({
   title: 'Vastu Vihar: Bungalows & Flats in Bihar & Eastern India',
   description:

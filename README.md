@@ -114,7 +114,7 @@ The original `elementor-*` class names and `data-settings` hooks are kept where 
 
 ## Contact and enquiry forms
 
-The website runs without any environment variables. Contact and project-enquiry forms initially display **“Preview form — messages are not sent.”** This avoids showing a false success message when no receiving service is connected.
+Contact and project-enquiry forms initially display **“Preview form — messages are not sent.”** This avoids showing a false success message when no receiving service is connected.
 
 To enable submissions:
 
@@ -137,6 +137,17 @@ npm run start
 ```
 
 `verify` checks the required pages, imports, local assets, removed routes, navigation links, and search entries. `build` creates the optimized website; `start` serves it at http://localhost:3000.
+
+## Deploying
+
+The build works without a `.env` file or a database, and `.env` is never committed. Set the variables in your host's environment settings instead. See `.env.example` for the full list.
+
+The running site needs these two:
+
+- `DATABASE_URL`: the SQLite file, on a persistent disk outside the repository. Pages that read the database (home, blog, careers, sitemap) and the admin panel depend on it.
+- `PRIVACY_HASH_SECRET`: at least 32 random characters. Enquiry and consent features fail in production without it.
+
+Run `npx prisma db push` once on the server to create the tables. See `docs/dpdp/security.md` for the full checklist.
 
 ## Optional static export
 

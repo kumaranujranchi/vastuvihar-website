@@ -2,11 +2,9 @@ import '@/styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
+import { connection } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { createPageMetadata } from '@/lib/metadata';
-
-// The post list is prerendered. The admin blog API refreshes it on publish; this is the fallback.
-export const revalidate = 3600;
 
 export const metadata = createPageMetadata({
   title: 'Latest Blogs | Vastu Vihar',
@@ -21,6 +19,9 @@ const formatDate = (date: Date) => {
 const formatCategorySlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export default async function BlogGridPage() {
+  // Read posts per request, so the build does not need the database.
+  await connection();
+
   const posts = await prisma.blogPost.findMany({
     where: { isPublished: true },
     orderBy: { createdAt: 'desc' },

@@ -1,6 +1,7 @@
 import './NewsSection.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
+import { connection } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import StaticPill from '../common/StaticPill';
 
@@ -13,6 +14,9 @@ const formatDate = (date: Date) => {
 const formatCategorySlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export default async function NewsSection() {
+  // Read posts per request, so the build does not need the database.
+  await connection();
+
   // Fetch the 4 latest published blog posts
   const posts = await prisma.blogPost.findMany({
     where: { isPublished: true },

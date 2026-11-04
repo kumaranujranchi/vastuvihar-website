@@ -1,13 +1,11 @@
 import type { MetadataRoute } from 'next';
+import { connection } from 'next/server';
 import { priceLists } from '@/data/priceLists';
 import { projects } from '@/data/projects';
 import { BLOG_CATEGORIES } from '@/lib/blogCategories';
 import { getGalleryAlbums } from '@/lib/gallery';
 import { SITE_URL } from '@/lib/metadata';
 import { prisma } from '@/lib/prisma';
-
-// Blog posts are added from the admin panel, so rebuild the sitemap hourly.
-export const revalidate = 3600;
 
 // Left out on purpose: /admin, /careers/apply (a form), and the /our-team and /our-team/<slug>
 // pages, which still hold theme placeholder content.
@@ -62,6 +60,10 @@ async function getBlogEntries(): Promise<MetadataRoute.Sitemap> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Blog posts come from the database, which the build does not need. Stays outside
+  // getBlogEntries' try/catch, because connection() signals by throwing while prerendering.
+  await connection();
+
   const [albums, blogEntries] = await Promise.all([getGalleryAlbums(), getBlogEntries()]);
 
   return [
