@@ -40681,3 +40681,46 @@ body {
         padding-inline: 15px;
     }
 }
+
+
+
+/* Stabilize the existing Elementor header */
+.elementor-420 .elementor-element.elementor-element-cc178a3 {
+  --display: flex;
+  --flex-direction: column;
+}
+
+@media (min-width: 1101px) {
+  .elementor-420 .elementor-element.elementor-element-2e0de30 {
+    --display: flex;
+    --flex-direction: row;
+    --flex-wrap: nowrap;
+    --align-items: center;
+  }
+
+  .elementor-420 .elementor-element.elementor-element-1888629,
+  .elementor-420 .elementor-element.elementor-element-5173ec0 {
+    --display: flex;
+    --flex-direction: row;
+    --width: auto;
+    --flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-items: center;
+  }
+}
+
+/* Prevent contact number and CTA from breaking */
+.elementor-420 .elementor-element.elementor-element-6094767
+.elementor-button-text,
+.elementor-420 .elementor-element.elementor-element-edf6e12
+.elementor-button-text {
+  white-space: nowrap;
+}
+
+/* Switch to compact desktop header before overcrowding */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .elementor-420 .elementor-element.elementor-element-e370c20,
+  .elementor-420 .elementor-element.elementor-element-6094767 {
+    display: none;
+  }
+}
