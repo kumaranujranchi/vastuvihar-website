@@ -8,5 +8,23 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  // Create these once; see "Deploying to Cloudflare" in the README.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vastuvihar-db",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    // Resumes. Keep public access off: files are only served through the admin API.
+    { "binding": "PRIVATE_FILES", "bucket_name": "vastuvihar-private" },
+    // Blog images, served by app/uploads/blogs/[name]/route.ts.
+    { "binding": "MEDIA", "bucket_name": "vastuvihar-media" }
+  ],
+  "vars": {
+    // Set by Cloudflare on every request, and a client cannot forge it.
+    "CLIENT_IP_HEADER": "cf-connecting-ip"
+  },
   "observability": { "enabled": true }
 }

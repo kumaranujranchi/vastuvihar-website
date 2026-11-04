@@ -44,16 +44,12 @@ Test results are in `test-report.md`.
 
 These are not enforced by code and must be done on the server:
 
-1. Terminate TLS at a reverse proxy (for example nginx) and redirect HTTP to HTTPS.
-2. Have the proxy set `X-Real-IP` and `X-Forwarded-Proto`, and strip them from client requests.
-3. Set the variables in `.env.example`, including `FORCE_HTTPS=1`, `CLIENT_IP_HEADER`, and fresh random secrets.
-4. Keep `DATABASE_URL` and `PRIVATE_STORAGE_DIR` **outside** the repository, readable only by the app's user, on an encrypted disk.
-5. Run `npx prisma db push`, then create the first admin:
-   ```
-   ADMIN_BOOTSTRAP_PASSWORD='...' npm run admin:create -- you@vastuvihar.org "Your Name" SUPER_ADMIN
-   ```
-   Then remove `ADMIN_BOOTSTRAP_PASSWORD` from the environment.
+1. Turn on "Always Use HTTPS" for the domain. Cloudflare terminates TLS.
+2. Keep `CLIENT_IP_HEADER` set to `cf-connecting-ip` in `wrangler.jsonc`. Cloudflare overwrites this header on every request.
+3. Set the secrets with `npx wrangler secret put`, using fresh random values.
+4. Keep public access off on the `vastuvihar-private` R2 bucket, and limit who can reach the D1 database and R2 buckets in the Cloudflare account. Anyone with that access can read personal data.
+5. Follow "Deploying to Cloudflare" in the README to create the tables and first admin, then remove `ADMIN_BOOTSTRAP_PASSWORD` from your shell.
 6. Schedule the retention job. See `retention-plan.md`.
-7. Set up encrypted backups of the database and private folder, test a restore, and restrict access to them.
+7. Set up backups of D1 and the private bucket. D1 Time Travel covers recent changes only, and R2 has no built-in backup, so test a restore and restrict access to the copies.
 8. Decide log retention on the server and proxy. The DPDP Rules, 2025 may set a minimum period for logs. I could not confirm this from the sources checked, so ask your legal adviser.
 9. Monitor failed sign-ins (`admin.login_failed`, `admin.account_locked` in the audit log) and server errors.
