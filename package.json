@@ -5,8 +5,9 @@
   "description": "Spaciaz Demo 5 website with a shared layout and a simplified Next.js project structure.",
   "scripts": {
     "dev": "next dev --webpack",
-    "prebuild": "node scripts/gallery-manifest.mjs",
-    "build": "next build --webpack",
+    "prebuild:next": "node scripts/gallery-manifest.mjs",
+    "build:next": "next build --webpack",
+    "build": "opennextjs-cloudflare build",
     "start": "next start",
     "cf:build": "opennextjs-cloudflare build",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

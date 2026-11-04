@@ -132,11 +132,13 @@ The endpoint must accept a JSON `POST` from your website, allow its origin throu
 
 ```bash
 npm run verify
-npm run build
+npm run build:next
 npm run start
 ```
 
-`verify` checks the required pages, imports, local assets, removed routes, navigation links, and search entries. `build` creates the optimized website; `start` serves it at http://localhost:3000.
+`verify` checks the required pages, imports, local assets, removed routes, navigation links, and search entries. `build:next` creates the optimized website; `start` serves it at http://localhost:3000.
+
+`npm run build` creates the Cloudflare Workers build in `.open-next/`, which `npx wrangler deploy` then uploads.
 
 ## Deploying
 
@@ -155,7 +157,7 @@ Run `npx prisma db push` once on the server to create the tables. See `docs/dpdp
 npm run export
 ```
 
-The deployable files are written to `out/`. Upload the **contents** of `out/` to a static web host that serves directory index files. URLs use trailing slashes. For a normal Next.js server after exporting, run `npm run build` again before `npm run start`.
+The deployable files are written to `out/`. Upload the **contents** of `out/` to a static web host that serves directory index files. URLs use trailing slashes. For a normal Next.js server after exporting, run `npm run build:next` again before `npm run start`.
 
 Use an HTTP server to preview an export; opening `index.html` directly through `file://` does not reproduce normal routing. The supplied paths assume hosting at the domain root.
 
