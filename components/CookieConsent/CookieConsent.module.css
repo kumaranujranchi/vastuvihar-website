@@ -34,11 +34,20 @@
     0 0 0 1px rgba(0, 0, 0, 0.05);
   color: #0f172a;
   font-family: inherit;
+  display: flex;
+  flex-direction: column;
   max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px); /* dvh excludes the phone browser's address bar */
+  overflow: hidden;
+  animation: slideInFromSide 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scrollBody {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  animation: slideInFromSide 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideInFromSide {
@@ -52,11 +61,11 @@
   }
 }
 
-.bannerCard::-webkit-scrollbar {
+.scrollBody::-webkit-scrollbar {
   width: 5px;
 }
 
-.bannerCard::-webkit-scrollbar-thumb {
+.scrollBody::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 10px;
 }
@@ -115,8 +124,6 @@
   flex-direction: column;
   gap: 0;
   border-top: 1px solid #f1f5f9;
-  border-bottom: 1px solid #f1f5f9;
-  margin-bottom: 22px;
 }
 
 .preferenceItem {
@@ -197,6 +204,11 @@
   transition: background-color 0.25s ease;
 }
 
+/* Cancels the left margin the site's global styles give a label that follows a checkbox */
+.switchWrapper .toggleLabel {
+  margin: 0;
+}
+
 .toggleThumb {
   position: absolute;
   top: 3px;
@@ -228,11 +240,14 @@
 
 /* Action Footer */
 .actionRow {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 22px;
 }
 
 .policyLink {
@@ -300,7 +315,8 @@
   .bannerCard {
     padding: 24px 20px 20px;
     border-radius: 18px;
-    max-height: 85vh;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
   }
 
   .title {
@@ -316,6 +332,7 @@
     flex-direction: column-reverse;
     align-items: stretch;
     gap: 14px;
+    padding-top: 14px;
   }
 
   .buttonsGroup {
@@ -333,5 +350,21 @@
 
   .policyLink {
     text-align: center;
+  }
+}
+
+/* Small phone held sideways: put the three buttons on one row to leave room for the text above */
+@media (max-width: 640px) and (max-height: 480px) and (orientation: landscape) {
+  .bannerCard {
+    padding: 16px 20px 14px;
+  }
+
+  .actionRow {
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .buttonsGroup {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

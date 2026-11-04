@@ -107,6 +107,8 @@ export default function CookieConsent() {
           </button>
         </div>
 
+        {/* Only this part scrolls, so the buttons below are always on screen */}
+        <div className={styles.scrollBody}>
         {/* Description Body */}
         <p className={styles.description} lang={language}>
           {COOKIE_NOTICE[language]}
@@ -192,6 +194,7 @@ export default function CookieConsent() {
               </div>
             );
           })}
+        </div>
         </div>
 
         {/* Footer Actions */}

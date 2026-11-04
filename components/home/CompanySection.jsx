@@ -230,13 +230,13 @@ export default function CompanySection() {
                     <span
                       className="elementor-counter-number"
                       data-duration="2000"
-                      data-to-value="1700"
+                      data-to-value="750"
                       data-from-value="0"
                       data-delimiter=","
                     >
-                      1700
+                      750
                     </span>
-                    <span className="elementor-counter-number-suffix"></span>
+                    <span className="elementor-counter-number-suffix">+</span>
                   </div>
                 </div>
               </div>
@@ -253,7 +253,7 @@ export default function CompanySection() {
                     <div className="elementor-icon-box-title">
                       <span>total employees </span>
                     </div>
-                    <p className="elementor-icon-box-description">1,700+ team members building communities </p>
+                    <p className="elementor-icon-box-description">750+ team members building communities </p>
                   </div>
                 </div>
               </div>

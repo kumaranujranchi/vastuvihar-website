@@ -503,6 +503,20 @@
   }
 }
 
+/* Card width jumps around at the layout breakpoints, so size the numbers from the card, not the viewport.
+   "20,000+" is about 3.2em wide, so 30cqi always fits inside the card's padding. */
+.elementor-49 .elementor-element.elementor-element-0c8756b,
+.elementor-49 .elementor-element.elementor-element-a6fe46b,
+.elementor-49 .elementor-element.elementor-element-07a48e2 {
+  container-type: inline-size;
+}
+
+.elementor-49 .elementor-element.elementor-element-81fd05e .elementor-counter-number-wrapper,
+.elementor-49 .elementor-element.elementor-element-ffd0d76 .elementor-counter-number-wrapper,
+.elementor-49 .elementor-element.elementor-element-bacaac6 .elementor-counter-number-wrapper {
+  font-size: min(70px, 30cqi);
+}
+
 .elementor-49 .elementor-element.elementor-element-81fd05e sup {
   color: var(--primary);
 }

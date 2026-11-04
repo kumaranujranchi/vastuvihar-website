@@ -105,7 +105,7 @@ export default function ContactSection() {
         <div className="elementor-element elementor-element-01f1958 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="01f1958" data-element_type="widget" data-settings='{"_animation":"opal-move-right"}' data-widget_type="image.default">
           <div className="elementor-widget-container">
             <Link href="/contact/site-contact" prefetch={false} className="vv-contact-image-link" aria-label="Go to Site Contact">
-              <img decoding="async" width="150" height="70" src="/branch-contact.png" className="attachment-full bimg size-full wp-image-852" alt="Site Contact" />
+              <img loading="lazy" decoding="async" width="1672" height="941" src="/branch-contact.png" className="attachment-full bimg size-full wp-image-852" alt="" />
               <span className="vv-contact-image-link-label">
                 Site Contact
                 <svg className="vv-contact-external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
@@ -116,7 +116,7 @@ export default function ContactSection() {
         <div className="elementor-element elementor-element-f3e0a68 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="f3e0a68" data-element_type="widget" data-settings='{"_animation":"opal-move-left"}' data-widget_type="image.default">
           <div className="elementor-widget-container">
             <Link href="/contact/branch-contact" prefetch={false} className="vv-contact-image-link" aria-label="Go to Branch Contact">
-              <img decoding="async" width="150" height="70" src="/site-contact.png" className="attachment-full bimg size-full wp-image-850" alt="Branch Contact" />
+              <img loading="lazy" decoding="async" width="1672" height="941" src="/site-contact.png" className="attachment-full bimg size-full wp-image-850" alt="" />
               <span className="vv-contact-image-link-label">
                 Branch Contact
                 <svg className="vv-contact-external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>

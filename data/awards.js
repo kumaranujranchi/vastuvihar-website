@@ -1,4 +1,3 @@
-// Awards and recognitions data for Vastu Vihar and its founder
 export const awards = [
   {
     id: 'vishwesariya-award',
@@ -16,5 +15,12 @@ export const awards = [
     height: 82,
     alt: 'Bharat Nirman Ratna Award graphic',
   },
+  {
+    id: 'Orange-business-award',
+    title: 'Orange Business Excellence Award',
+    image: '/awards/orange.svg',
+    width: 100,
+    height: 82,
+    alt: 'Orange Business Excellence Award graphic',
+  },
 ];
-

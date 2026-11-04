@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
-    background: linear-gradient(rgb(0 0 0/45%), rgb(0 0 0/45%)), url('/images/about-bc.jpeg') center/cover no-repeat;
+    background: linear-gradient(rgb(0 0 0/45%), rgb(0 0 0/45%)), url('/gallery/event/image-6.jpg') center/cover no-repeat;
 }
 
 .heroInner {

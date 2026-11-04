@@ -219,9 +219,6 @@
   clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
 }
 
-.elementor-61 .elementor-element.elementor-element-01f1958 img {
-  border-radius: 40px 40px 40px 40px;
-}
 
 .elementor-61 .elementor-element.elementor-element-f3e0a68 .spaciaz-border-shape {
   width: 30px;
@@ -229,9 +226,6 @@
   clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
 }
 
-.elementor-61 .elementor-element.elementor-element-f3e0a68 img {
-  border-radius: 40px 40px 40px 40px;
-}
 
 .elementor-61 .elementor-element.elementor-element-e070db1 {
   --display: flex;
@@ -300,64 +294,98 @@
   }
 }
 
-/* Contact page image links and mobile layout */
-.vv-contact-image-link {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  vertical-align: top;
+/* Site Contact / Branch Contact: two large photo cards sharing the column width */
+.elementor-61 .elementor-element.elementor-element-01f1958,
+.elementor-61 .elementor-element.elementor-element-f3e0a68 {
+  flex: 1 1 0;
   width: auto;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  gap: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
+  min-width: 0;
+}
+
+.vv-contact-image-link {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--e-global-color-accent);
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.vv-contact-image-link-label {
+.elementor-61 .vv-contact-image-link .bimg {
   display: block;
-  position: relative;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 400ms ease;
+}
+
+/* The family stands at the left edge of this photo, so keep them in the crop. */
+.elementor-61 .elementor-element-01f1958 .vv-contact-image-link .bimg {
+  object-position: left center;
+}
+
+/* Darkens the bottom of the photo so the label stays readable on any image. */
+.vv-contact-image-link::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(to bottom, rgba(1, 28, 91, 0), rgba(1, 28, 91, 0.88));
+  pointer-events: none;
+}
+
+.vv-contact-image-link-label {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 18px 22px;
+  color: #fff;
   font: inherit;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 1.25;
-  text-align: center;
+  line-height: 1.2;
 }
 
 .vv-contact-external-icon {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  opacity: 0;
-  transform: translate(-4px, calc(-50% + 4px));
-  transition: opacity 200ms ease, transform 200ms ease;
-  pointer-events: none;
+  flex: none;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border-radius: 50%;
+  background: var(--e-global-color-primary);
+  color: var(--e-global-color-accent);
+  transition: transform 200ms ease;
+}
+
+.vv-contact-image-link:hover .bimg,
+.vv-contact-image-link:focus-visible .bimg {
+  transform: scale(1.05);
 }
 
 .vv-contact-image-link:hover .vv-contact-external-icon,
 .vv-contact-image-link:focus-visible .vv-contact-external-icon {
-  opacity: 1;
-  transform: translate(0, -50%);
+  transform: rotate(45deg);
 }
 
 .vv-contact-image-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  outline: 3px solid var(--e-global-color-primary);
+  outline-offset: 3px;
 }
 
 @media (max-width: 767px) {
   .elementor-61 .elementor-element.elementor-element-67b88a0 {
     margin-top: 50px !important;
-  }
-  .bimg {
-    height: 80px;
-    width: 150px;
   }
   .elementor-element-67b88a0 {
     display: flex !important;
@@ -369,14 +397,24 @@
   }
 }
 
-@media (hover: none) {
-  .vv-contact-external-icon {
-    opacity: 1;
-    transform: translate(0, -50%);
+/* Stack the cards when two would be too narrow for their labels: on phones, and on
+   tablets and small laptops, where the form and map share the row (from 768px). */
+@media (max-width: 520px), (min-width: 768px) and (max-width: 1199px) {
+  .elementor-61 .elementor-element.elementor-element-67b88a0 {
+    flex-direction: column !important;
+  }
+  .elementor-61 .elementor-element.elementor-element-01f1958,
+  .elementor-61 .elementor-element.elementor-element-f3e0a68 {
+    flex: none;
+    width: 100%;
+  }
+  .vv-contact-image-link {
+    aspect-ratio: 16 / 10;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .elementor-61 .vv-contact-image-link .bimg,
   .vv-contact-external-icon {
     transition: none;
   }
