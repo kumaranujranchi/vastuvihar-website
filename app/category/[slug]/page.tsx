@@ -2,7 +2,7 @@ import '@/styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
-import { prisma } from '@/lib/prisma';
+import { orEmpty, prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import { BLOG_CATEGORIES as CATEGORY_MAP } from '@/lib/blogCategories';
 import { createPageMetadata } from '@/lib/metadata';
@@ -38,7 +38,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       category: dbCategoryName 
     },
     orderBy: { createdAt: 'desc' },
-  });
+  }).catch(orEmpty('Blog category'));
 
   return (
     <PageLayout route={`category-${slug}`}>

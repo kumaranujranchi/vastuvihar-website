@@ -3,7 +3,7 @@ import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
 import { connection } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { orEmpty, prisma } from '@/lib/prisma';
 import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata = createPageMetadata({
@@ -25,7 +25,7 @@ export default async function BlogGridPage() {
   const posts = await prisma.blogPost.findMany({
     where: { isPublished: true },
     orderBy: { createdAt: 'desc' },
-  });
+  }).catch(orEmpty('Blog'));
 
   return (
     <PageLayout route="blog-grid">

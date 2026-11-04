@@ -13,3 +13,14 @@ export const prisma =
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
 export default prisma;
+
+// Public pages render without their database content when the database is unavailable,
+// which is the case on Cloudflare until it moves to D1. Use as .catch(orEmpty('page')).
+export const orEmpty = (where: string) => (error: unknown) => {
+  console.error(`${where}: database unavailable.`, error);
+  return [] as never[];
+};
+export const orNull = (where: string) => (error: unknown) => {
+  console.error(`${where}: database unavailable.`, error);
+  return null;
+};
