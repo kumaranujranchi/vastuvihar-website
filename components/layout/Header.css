@@ -1059,3 +1059,104 @@ html {
     --padding-bottom: 15px;
   }
 }
+
+/* ======================================================================
+   HEADER FLEX LAYOUT FIX - VASTU VIHAR
+   Uses the space available INSIDE the rounded header, instead of forcing
+   both child groups to retain their full natural widths.
+   Keep this block at the end of the header stylesheet; REMOVE any older
+   experimental block that sets flex-shrink: 0 on both .1888629 and .5173ec0.
+   ====================================================================== */
+
+/* Header: constrain its box, not its dropdowns. */
+.site-header-inner .elementor-420 .elementor-element.elementor-element-2e0de30 {
+  --display: flex;
+  --flex-direction: row;
+  --flex-wrap: nowrap;
+  --justify-content: space-between;
+  --align-items: center;
+  --width: 100%;
+  --column-gap: clamp(8px, 1vw, 20px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Logo and navigation: may consume the remaining width, but not the CTA's. */
+.site-header-inner .elementor-420 .elementor-element.elementor-element-1888629 {
+  --display: flex;
+  --flex-direction: row;
+  --flex-wrap: nowrap;
+  --align-items: center;
+  --width: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Logo must keep its natural width; desktop menu must not reflow a menu item. */
+.site-header-inner .elementor-420 .elementor-element.elementor-element-090dbea {
+  flex: 0 0 auto;
+}
+.site-header-inner .elementor-420 .elementor-element.elementor-element-5d5b8a9 {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.site-header-inner .elementor-420 .elementor-element.elementor-element-5d5b8a9 .main-navigation > ul.menu {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Contact / CTA group: take only its content width, never 50% of the bar. */
+.site-header-inner .elementor-420 .elementor-element.elementor-element-5173ec0 {
+  --display: flex;
+  --flex-direction: row;
+  --flex-wrap: nowrap;
+  --align-items: center;
+  --width: auto;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+.site-header-inner .elementor-420 .elementor-element.elementor-element-edf6e12 {
+  flex: 0 0 auto;
+}
+.site-header-inner .elementor-420 .elementor-element.elementor-element-edf6e12 .elementor-button {
+  white-space: nowrap;
+}
+
+/* The phone takes up unnecessary width at mid-size desktop viewports.
+   Hide the PHONE PAIR at the same breakpoint; keep the CTA inside. */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-e370c20,
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-6094767 {
+    display: none;
+  }
+}
+
+/* Tablet: original theme swaps the full navigation for a hamburger at 1100. */
+@media (max-width: 1100px) {
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-e370c20,
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-6094767 {
+    display: none;
+  }
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-1888629 {
+    flex: 1 1 auto;
+  }
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-5173ec0 {
+    flex: 0 0 auto;
+  }
+}
+
+/* Small mobile: allow the original theme's wrapping instead of overflow. */
+@media (max-width: 767px) {
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-2e0de30 {
+    --flex-wrap: wrap;
+  }
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-1888629,
+  .site-header-inner .elementor-420 .elementor-element.elementor-element-5173ec0 {
+    --width: auto;
+    max-width: 100%;
+  }
+}

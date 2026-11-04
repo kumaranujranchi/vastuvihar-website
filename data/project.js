@@ -548,7 +548,6 @@ export const projectsData = {
             "Helps reduce differential soil settlement",
         ],
         gallery: [
-            "/business-b/business.jpeg",
             "/business-b/Business_bungalow1.webp",
             "/business-b/Business_bungalow2.webp",
             "/business-b/Business_bungalow3.webp",
@@ -658,8 +657,8 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/godawari/godawari1.webp",
             "/godawari/godawari2.webp",
+            "/godawari/godawari1.webp",
         ],
         modelTypes: [
             {

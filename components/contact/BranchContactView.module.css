@@ -923,3 +923,88 @@
     transition: none;
   }
 }
+/* =========================================
+   STATE ACCORDION (single open state)
+   Existing contact card styling is unchanged.
+========================================= */
+.accordionTrigger {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e8e6e2;
+  border-radius: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.accordionTrigger:hover,
+.accordionTrigger:active,
+.accordionTrigger:focus {
+  background: transparent;
+  color: inherit;
+}
+
+.accordionTrigger:focus-visible {
+  outline: 2px solid #08AAEC;
+  outline-offset: 4px;
+}
+
+.accordionTrigger .accordionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #e8e6e2;
+  border-radius: 50%;
+  color: #171717;
+  transition: color .25s ease, border-color .25s ease;
+}
+
+.accordionIcon svg {
+  transition: transform .25s ease;
+}
+
+.accordionIconOpen svg {
+  transform: rotate(180deg);
+}
+
+.accordionTrigger:hover .accordionIcon {
+  color: #08AAEC;
+  border-color: #08AAEC;
+}
+
+.accordionContent[hidden] {
+  display: none !important;
+}
+
+.stateSection:has(.accordionContent[hidden]) {
+  margin-bottom: 22px;
+}
+
+.stateSection:has(.accordionContent[hidden]) .stateHeading {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .accordionTrigger .accordionIcon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordionIcon svg,
+  .accordionTrigger .accordionIcon {
+    transition: none;
+  }
+}

@@ -102,12 +102,6 @@
     "excerpt": "Our awards HomeOur awards We are a top-performing construction firm and consistently ranks among the top contractors. · awards · awards · awards · awards · awards · awards · awards · awards · awards · awards Recognitions we got We are a dev"
   },
   {
-    "title": "Our team",
-    "path": "/our-team/",
-    "type": "Page",
-    "excerpt": "Our team HomeOur team Our team brings together licensed contractors and real estate experts who work to help you achieve your goals. meet the team · meet the team · meet the team · meet the team · meet the team · meet the team · meet the te"
-  },
-  {
     "title": "Careers",
     "path": "/careers/",
     "type": "Page",
@@ -132,46 +126,10 @@
     "excerpt": "CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home We bring deep, functional expertise, but are known for our holistic perspective: we capture value across boundaries… CategoriesCompany Mar 18, 202"
   },
   {
-    "title": "Dennis Daniels",
-    "path": "/our-team/dennis-daniels/",
-    "type": "Page",
-    "excerpt": "founder & ceo Dennis Daniels Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: dennis@example.com (084) 123 – 456 88 About "
-  },
-  {
     "title": "Apply for Career",
     "path": "/careers/apply/",
     "type": "Page",
     "excerpt": "Blog Grid HomeBlog Grid Latest All Posts Company Social Media Tips & Tricks Uncategorized CategoriesTips & Tricks Mar 18, 2025Apr 17, 2025 How to Get Started in Buying Your First Home CategoriesCompany Mar 18, 2025Apr 16, 2025 Exploring Min"
-  },
-  {
-    "title": "Johan Sanford",
-    "path": "/our-team/johan-sanford/",
-    "type": "Page",
-    "excerpt": "excutive assistant Johan Sanford Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: johansanford@example.com (084) 123 – 456"
-  },
-  {
-    "title": "Floyd Miles",
-    "path": "/our-team/floyd-miles/",
-    "type": "Page",
-    "excerpt": "director of architecture Floyd Miles Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: floydmiles@example.com (084) 123 – 4"
-  },
-  {
-    "title": "Leslie Alexander",
-    "path": "/our-team/leslie-alexander/",
-    "type": "Page",
-    "excerpt": "Development manager Leslie Alexander Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: alexander@example.com (084) 123 – 45"
-  },
-  {
-    "title": "Bernardo Gordon",
-    "path": "/our-team/bernardo-gordon/",
-    "type": "Page",
-    "excerpt": "OPERATIONS Manager Bernardo Gordon Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: bernardo@example.com (084) 123 – 456 8"
-  },
-  {
-    "title": "Ralph Edwards",
-    "path": "/our-team/ralph-edwards/",
-    "type": "Page",
-    "excerpt": "Construction Manager Ralph Edwards Lorem ipsum lobortis amet sit tristique quisque id nunc eu consectetur velit diam mi donec eu nunc laoreet cras vel tempor in felis lorem ipsum id non. Email address: edwards@example.com (084) 123 – 456 88"
   },
   {
     "title": "Projects",

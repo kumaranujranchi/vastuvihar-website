@@ -317,7 +317,7 @@ body.rtl .elementor-6353 .elementor-element.elementor-element-88c322d {
 
 /* Local still image keeps Demo 5's hero visible while remote video loads. */
 #tab_video {
-  background: #1b1f12 url('/images/h5_bg-1.jpg') center / cover no-repeat;
+  background: #1b1f12;
 }/* Function/position fix only: original Elementor visual styles are retained. */
 #tab_video {
   position: relative !important;

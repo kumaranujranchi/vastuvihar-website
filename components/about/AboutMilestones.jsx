@@ -166,12 +166,6 @@ export default function AboutMilestones() {
         </div>
       </div>
 
-      <img
-        src="/images/h4-vector-c6befc.png"
-        alt=""
-        className="milestones-decoration"
-        aria-hidden="true"
-      />
     </section>
   );
 }

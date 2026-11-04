@@ -1,7 +1,6 @@
 import '../../../styles/pages/contact.css';
 import '../../../components/contact/ContactHeader.css';
 import Link from 'next/link';
-import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import SiteContactView from '@/components/contact/SiteContactView';

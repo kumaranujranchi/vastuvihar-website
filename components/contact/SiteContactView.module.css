@@ -852,3 +852,81 @@
     transition: none;
   }
 }
+
+/* =========================================
+   SINGLE-OPEN STATE ACCORDION
+   Additive styles; existing cards remain unchanged
+========================================= */
+.accordionTrigger {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e8e6e2;
+  border-radius: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  justify-content: space-between;
+}
+.accordionTrigger:hover,
+.accordionTrigger:active {
+  background: transparent;
+  color: inherit;
+}
+.accordionTrigger:focus-visible {
+  outline: 2px solid #08AAEC;
+  outline-offset: 3px;
+}
+.stateHeadingRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+.stateHeadingRight .stateCount {
+  display: inline-flex;
+  padding: 6px 10px;
+  background: #f3f1ee;
+  color: #6a6257;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.accordionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border: 1px solid #e8e6e2;
+  border-radius: 50%;
+  color: #171717;
+}
+.accordionIcon svg {
+  transition: transform .25s ease;
+}
+.accordionIconOpen svg {
+  transform: rotate(180deg);
+}
+.accordionTrigger:hover .accordionIcon {
+  color: #08AAEC;
+  border-color: #08AAEC;
+}
+.accordionContent[hidden] {
+  display: none !important;
+}
+.stateSection:has(.accordionContent[hidden]) {
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .stateHeadingRight { gap: 10px; }
+  .accordionIcon { width: 34px; height: 34px; flex-basis: 34px; }
+  .stateSection:has(.accordionContent[hidden]) { margin-bottom: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordionIcon svg { transition: none; }
+}

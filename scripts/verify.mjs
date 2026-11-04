@@ -19,7 +19,7 @@ const routes = new Set(pages.map((page) => key(page.path)));
 const removed = /^(?:home-\d+(?:\/|$)|services(?:\/|-|$)|projects-list(?:\/|$)|all-pages(?:\/|$))/;
 const problem = (file, text) => errors.add(`${relative(file)}: ${text}`);
 
-for (const required of ['', 'about-us', 'projects', 'contact', 'careers', 'core-values', 'our-awards', 'our-team', 'faqs']) {
+for (const required of ['', 'about-us', 'projects', 'contact', 'careers', 'core-values', 'our-awards', 'faqs']) {
   if (!routes.has(required)) errors.add(`Missing required route: /${required}`);
 }
 if (routes.size !== pages.length) errors.add('Duplicate route in data/pages.json.');
@@ -30,8 +30,6 @@ for (const page of pages) {
   );
   const dynamicFile = page.path.startsWith('/projects/') && !page.path.startsWith('/projects/page/')
     ? path.join(root, 'app/projects/[slug]/page.jsx')
-    : page.path.startsWith('/our-team/')
-    ? path.join(root, 'app/our-team/[slug]/page.jsx')
     : page.path.startsWith('/price-list/')
     ? path.join(root, 'app/price-list/[slug]/page.tsx')
     : page.path.startsWith('/blog/') && page.path !== '/blog/'
