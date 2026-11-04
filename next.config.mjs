@@ -64,6 +64,7 @@ const securityHeaders = [
 const nextConfig = {
   ...(isStaticExport ? { output: 'export' } : {}),
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   images: { unoptimized: true },
   poweredByHeader: false,
   ...(isStaticExport

@@ -24,7 +24,12 @@ export async function POST(request: Request) {
     const blocked = await guardPublicPost(request, 'admin-login', 10, 15 * 60 * 1000);
     if (blocked) return blocked;
 
-    const body = await request.json();
+    let body: any = {};
+    try {
+      body = await request.json();
+    } catch {
+      return jsonError('Invalid request format', 400);
+    }
     const email = normalizeEmail(body.email);
     const password = typeof body.password === 'string' ? body.password.slice(0, 256) : '';
     if (!email || !password) return jsonError(INVALID, 401);

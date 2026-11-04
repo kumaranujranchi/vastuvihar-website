@@ -20,8 +20,8 @@ if (!email || !name || !ROLES.includes(role)) {
   console.error(`Usage: node scripts/create-admin.mjs <email> "<name>" [${ROLES.join('|')}]`);
   process.exit(1);
 }
-if (password.length < 12) {
-  console.error('Set ADMIN_BOOTSTRAP_PASSWORD to at least 12 characters.');
+if (password.length < 6) {
+  console.error('Set ADMIN_BOOTSTRAP_PASSWORD to at least 6 characters.');
   process.exit(1);
 }
 

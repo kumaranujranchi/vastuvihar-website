@@ -1174,13 +1174,25 @@
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalPopIn {
-  from { opacity: 0; transform: scale(0.96) translateY(6px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modalBox {
@@ -1444,6 +1456,7 @@
   .modalGrid2 {
     grid-template-columns: 1fr;
   }
+
   .modalBox {
     padding: 22px 18px;
     border-radius: 12px;
@@ -1462,15 +1475,19 @@
   .sidebar {
     transform: translateX(-100%);
   }
+
   .mainContent {
     margin-left: 0;
   }
+
   .mobileMenuBtn {
     display: block;
   }
+
   .topBar {
     padding: 16px 20px;
   }
+
   .contentArea {
     padding: 20px;
   }
@@ -1480,24 +1497,33 @@
   .statsRow {
     grid-template-columns: 1fr;
   }
+
   .filterBar {
     flex-direction: column;
     align-items: stretch;
   }
+
   .filterControls {
     flex-direction: column;
     align-items: stretch;
   }
-  .exportPrimaryBtn, .clearFilterBtn {
+
+  .exportPrimaryBtn,
+  .clearFilterBtn {
     width: 100%;
     justify-content: center;
   }
+
   .topBarRight {
     gap: 8px;
   }
-  .datePill, .profileName {
-    display: none; /* Hide non-essentials on mobile topbar */
+
+  .datePill,
+  .profileName {
+    display: none;
+    /* Hide non-essentials on mobile topbar */
   }
+
   .emptyStateContainer {
     padding: 40px 16px;
   }
@@ -1588,22 +1614,27 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 992px) {
-  .filterBar, .filterControls {
+
+  .filterBar,
+  .filterControls {
     flex-wrap: wrap !important;
   }
-  
-  .searchWrapper, .filterSelect {
+
+  .searchWrapper,
+  .filterSelect {
     flex: 1 1 100% !important;
     min-width: 100% !important;
   }
-  
+
   .exportPrimaryBtn {
     width: 100% !important;
     justify-content: center !important;
   }
 }
-.exportPrimaryBtn, 
-.exportCrimsonBtn { /* Included just in case you haven't changed the HTML class yet */
+
+.exportPrimaryBtn,
+.exportCrimsonBtn {
+  /* Included just in case you haven't changed the HTML class yet */
   background: #08aaec !important;
   color: #ffffff !important;
   border: none !important;

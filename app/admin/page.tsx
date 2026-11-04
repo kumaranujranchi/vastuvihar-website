@@ -114,7 +114,7 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch('/api/admin/auth');
+        const res = await fetch('/api/admin/auth/');
         const data = await res.json();
         if (!data.authenticated) {
           router.push('/admin/login');
@@ -226,8 +226,8 @@ export default function AdminDashboardPage() {
 
   // Handle Logout
   const handleLogout = async () => {
-    await fetch('/api/admin/auth', { method: 'DELETE' });
-    router.push('/admin/login');
+    await fetch('/api/admin/auth/', { method: 'DELETE' });
+    router.push('/admin/login/');
     router.refresh();
   };
 

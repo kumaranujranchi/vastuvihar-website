@@ -188,7 +188,7 @@ export default function NewBlogPage() {
         data.append('image', imageFile);
       }
 
-      const res = await fetch('/api/admin/blogs', {
+      const res = await fetch('/api/admin/blogs/', {
         method: 'POST',
         body: data,
       });
