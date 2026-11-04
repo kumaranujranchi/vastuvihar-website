@@ -334,6 +334,3 @@ export default function CompanySection() {
     </div>
   );
 }
-
-
-// src="/images/h4-vector.png"
