@@ -67,7 +67,7 @@ Sign in at `/admin/login` with that email and password. The old shared password 
 ## Testing
 
 ```
-npm run build && npx next start -p 3100
+npm run build:next && npx next start -p 3100
 ```
 
 In a second terminal, using a **throwaway database**:
