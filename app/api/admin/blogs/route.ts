@@ -9,7 +9,13 @@ import { jsonError, logError } from '@/lib/security/request';
 
 // These pages are prerendered from the post list, so a change must refresh them.
 function revalidateBlogPages(...slugs: string[]) {
-  for (const path of ['/', '/blog', '/sitemap.xml', ...slugs.map((slug) => `/blog/${slug}`)]) revalidatePath(path);
+  try {
+    for (const path of ['/', '/blog', '/sitemap.xml', ...slugs.map((slug) => `/blog/${slug}`)]) {
+      revalidatePath(path);
+    }
+  } catch (err) {
+    console.warn('revalidateBlogPages error:', err);
+  }
 }
 
 function estimateReadingTime(content: string): string {
@@ -107,9 +113,9 @@ export async function POST(request: Request) {
     await audit(admin, 'blog.created', 'blog', blog.id);
     revalidateBlogPages();
     return NextResponse.json({ success: true, blog });
-  } catch (error) {
+  } catch (error: any) {
     logError('admin.blogs.create', error);
-    return NextResponse.json({ success: false, error: 'Failed to create blog post' }, { status: 500 });
+    return NextResponse.json({ success: false, error: error?.message || 'Failed to create blog post' }, { status: 500 });
   }
 }
 

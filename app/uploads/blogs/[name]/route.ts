@@ -5,7 +5,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ nam
   const { name } = await params;
   const image = await readBlogImage(name);
   if (!image) return new Response('Not found', { status: 404 });
-  return new Response(image.body, {
+  return new Response(image.body as unknown as BodyInit, {
     headers: {
       'Content-Type': image.contentType,
       // Each upload gets a new name, so a stored image never changes.

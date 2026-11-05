@@ -6,18 +6,45 @@ import { PrismaClient } from '@prisma/client';
 // Keyed on the request's execution context, which also covers route handlers, where
 // React's cache() does not apply.
 const clients = new WeakMap<object, PrismaClient>();
+let fallbackClient: PrismaClient | null = null;
 
 function requestClient(): PrismaClient {
-  const { env, ctx } = getCloudflareContext();
-  let client = clients.get(ctx);
-  if (!client) {
-    client = new PrismaClient({
-      adapter: new PrismaD1(env.DB),
+  try {
+    const cf = getCloudflareContext();
+    const env = cf?.env;
+    const ctx = cf?.ctx as object | undefined;
+
+    if (env?.DB) {
+      if (ctx && typeof ctx === 'object') {
+        let client = clients.get(ctx);
+        if (!client) {
+          client = new PrismaClient({
+            adapter: new PrismaD1(env.DB),
+            log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+          });
+          clients.set(ctx, client);
+        }
+        return client;
+      }
+
+      if (!fallbackClient) {
+        fallbackClient = new PrismaClient({
+          adapter: new PrismaD1(env.DB),
+          log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+        });
+      }
+      return fallbackClient;
+    }
+  } catch {
+    // If outside Cloudflare context (e.g. standalone scripts or build)
+  }
+
+  if (!fallbackClient) {
+    fallbackClient = new PrismaClient({
       log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
     });
-    clients.set(ctx, client);
   }
-  return client;
+  return fallbackClient;
 }
 
 /** Resolves to the current request's client on each use, so callers can import it normally. */

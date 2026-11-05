@@ -37,8 +37,8 @@ export default function ContactForm({ children, className = '', ...props }) {
         message: values.message || '',
         website_url: values.website_url || '', // Honeypot
         source: values.source || 'contact_section',
-        consentPrimary: values.consentPrimary === 'true',
-        consentMarketing: values.consentMarketing === 'true',
+        consentPrimary: values.consentPrimary === 'true' || values.consentPrimary === 'on' || values.consentPrimary === true || values.consentPrimary === '1',
+        consentMarketing: values.consentMarketing === 'true' || values.consentMarketing === 'on' || values.consentMarketing === true || values.consentMarketing === '1',
         noticeLanguage: values.noticeLanguage || 'en',
         ...adSourceFields(),
       };

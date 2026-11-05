@@ -8,17 +8,12 @@ export default function ContactForm({ children, className = '', ...props }) {
   const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
   const statusId = useId();
-  const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT?.trim();
+  const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT?.trim() || '/api/leads';
 
   async function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity() || status === 'sending') return;
-    if (!endpoint) {
-      setStatus('preview');
-      setMessage('This form is a preview and cannot send messages yet. Please use the contact details on this page.');
-      return;
-    }
     setStatus('sending');
     setMessage('Sending your message…');
     try {

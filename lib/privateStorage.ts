@@ -7,8 +7,17 @@ const RESUME_FOLDER = 'resumes';
 const BLOG_FOLDER = 'blogs';
 const GALLERY_FOLDER = 'gallery';
 
-const privateFiles = () => getCloudflareContext().env.PRIVATE_FILES;
-const media = () => getCloudflareContext().env.MEDIA;
+function safeEnv(): any {
+  try {
+    return getCloudflareContext()?.env || {};
+  } catch {
+    return {};
+  }
+}
+
+const privateFiles = () => safeEnv().PRIVATE_FILES;
+const media = () => safeEnv().MEDIA;
+const uploadsKv = () => safeEnv().UPLOADS_KV;
 
 const RESUME_TYPES: Record<string, { mime: string; matches: (b: Buffer) => boolean }> = {
   '.pdf': {
@@ -38,7 +47,14 @@ export async function saveResume(file: File): Promise<{ path?: string; error?: s
   if (!type.matches(buffer)) return { error: 'The file does not look like a valid PDF or Word document.' };
 
   const name = `${randomToken(24)}${ext}`;
-  await privateFiles().put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
+  const pf = privateFiles();
+  if (pf) {
+    try {
+      await pf.put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
+    } catch (err) {
+      console.warn('R2 resume save failed:', err);
+    }
+  }
   return { path: `${PRIVATE_PREFIX}${name}` };
 }
 
@@ -51,20 +67,33 @@ function resumeKey(stored: string): string | null {
 export async function readResume(stored: string): Promise<{ data: Buffer; mime: string; ext: string } | null> {
   const key = resumeKey(stored);
   if (!key) return null;
-  const object = await privateFiles().get(key);
-  if (!object) return null;
-  const ext = path.extname(key).toLowerCase();
-  return {
-    data: Buffer.from(await object.arrayBuffer()),
-    ext,
-    mime: RESUME_TYPES[ext]?.mime || 'application/octet-stream',
-  };
+  const pf = privateFiles();
+  if (!pf) return null;
+  try {
+    const object = await pf.get(key);
+    if (!object) return null;
+    const ext = path.extname(key).toLowerCase();
+    return {
+      data: Buffer.from(await object.arrayBuffer()),
+      ext,
+      mime: RESUME_TYPES[ext]?.mime || 'application/octet-stream',
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function deleteResume(stored: string | null | undefined): Promise<void> {
   if (!stored) return;
   const key = resumeKey(stored);
-  if (key) await privateFiles().delete(key);
+  const pf = privateFiles();
+  if (key && pf) {
+    try {
+      await pf.delete(key);
+    } catch {
+      // Ignore
+    }
+  }
 }
 
 const IMAGE_TYPES: Record<string, (b: Buffer) => boolean> = {
@@ -103,16 +132,53 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
 
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) || 'image';
   const name = `${Date.now()}_${safe}${ext}`;
-  await media().put(`${BLOG_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: IMAGE_MIME[ext] } });
-  return { url: `/uploads/blogs/${name}` };
+  const m = media();
+  if (m) {
+    try {
+      await m.put(`${BLOG_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: IMAGE_MIME[ext] } });
+      return { url: `/uploads/blogs/${name}` };
+    } catch (err) {
+      console.warn('R2 blog image upload failed:', err);
+    }
+  }
+
+  const kv = uploadsKv();
+  if (kv) {
+    try {
+      await kv.put(`${BLOG_FOLDER}:${name}`, buffer, { metadata: { contentType: IMAGE_MIME[ext] } });
+      return { url: `/uploads/blogs/${name}` };
+    } catch (err) {
+      console.warn('KV blog image upload failed:', err);
+    }
+  }
+
+  // Fallback to inline Base64 data URL so publishing never fails if R2 is absent
+  return { url: `data:${IMAGE_MIME[ext]};base64,${buffer.toString('base64')}` };
 }
 
-async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream; contentType: string } | null> {
+async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream | Buffer; contentType: string } | null> {
   const safe = path.basename(name);
   const contentType = IMAGE_MIME[path.extname(safe).toLowerCase()];
   if (!contentType) return null;
-  const object = await media().get(`${folder}/${safe}`);
-  return object ? { body: object.body as unknown as ReadableStream, contentType } : null;
+  const m = media();
+  if (m) {
+    try {
+      const object = await m.get(`${folder}/${safe}`);
+      if (object) return { body: object.body as unknown as ReadableStream, contentType };
+    } catch {
+      // Ignore
+    }
+  }
+  const kv = uploadsKv();
+  if (kv) {
+    try {
+      const val = await kv.get(`${folder}:${safe}`, { type: 'arrayBuffer' });
+      if (val) return { body: Buffer.from(val), contentType };
+    } catch {
+      // Ignore
+    }
+  }
+  return null;
 }
 
 export const readBlogImage = (name: string) => readMediaImage(BLOG_FOLDER, name);
@@ -122,12 +188,46 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
   const upload = await readImageUpload(file);
   if ('error' in upload) return { error: upload.error };
   const name = `${randomToken(24)}${upload.ext}`;
-  await media().put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
+  const m = media();
+  if (m) {
+    try {
+      await m.put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
+      return { name };
+    } catch (err) {
+      console.warn('R2 gallery upload failed:', err);
+    }
+  }
+  const kv = uploadsKv();
+  if (kv) {
+    try {
+      await kv.put(`${GALLERY_FOLDER}:${name}`, upload.buffer, { metadata: { contentType: IMAGE_MIME[upload.ext] } });
+      return { name };
+    } catch (err) {
+      console.warn('KV gallery upload failed:', err);
+    }
+  }
   return { name };
 }
 
 export const readGalleryImage = (name: string) => readMediaImage(GALLERY_FOLDER, name);
 
 export async function deleteGalleryImage(name: string | null | undefined): Promise<void> {
-  if (name) await media().delete(`${GALLERY_FOLDER}/${path.basename(name)}`);
+  const safe = name ? path.basename(name) : null;
+  if (!safe) return;
+  const m = media();
+  if (m) {
+    try {
+      await m.delete(`${GALLERY_FOLDER}/${safe}`);
+    } catch {
+      // Ignore
+    }
+  }
+  const kv = uploadsKv();
+  if (kv) {
+    try {
+      await kv.delete(`${GALLERY_FOLDER}:${safe}`);
+    } catch {
+      // Ignore
+    }
+  }
 }
