@@ -34,8 +34,13 @@ export async function POST(request: Request) {
 
     const language = noticeLanguage(body.noticeLanguage);
     const source = oneOf(body.source, SOURCES) || 'contact_section';
-    // An earlier opt-out wins over a form tick, which cannot prove who is typing.
-    const marketing = isTrue(body.consentMarketing) && !(await isSuppressed(phone, email));
+    let marketing = false;
+    try {
+      marketing = isTrue(body.consentMarketing) && !(await isSuppressed(phone, email));
+    } catch {
+      marketing = isTrue(body.consentMarketing);
+    }
+
     const accepted = () =>
       NextResponse.json(
         { success: true, message: 'Inquiry received successfully! Our team will contact you shortly.' },
@@ -44,11 +49,15 @@ export async function POST(request: Request) {
 
     // Rapid duplicate guard for double submits. The answer matches a normal success,
     // so it does not reveal that this number enquired moments ago.
-    const recent = await prisma.lead.findMany({
-      where: { createdAt: { gte: new Date(Date.now() - 90 * 1000) } },
-      select: { phone: true },
-    });
-    if (recent.some((row) => phoneMatchKey(row.phone) === phoneMatchKey(phone))) return accepted();
+    try {
+      const recent = await prisma.lead.findMany({
+        where: { createdAt: { gte: new Date(Date.now() - 90 * 1000) } },
+        select: { phone: true },
+      });
+      if (recent.some((row) => phoneMatchKey(row.phone) === phoneMatchKey(phone))) return accepted();
+    } catch (recentErr) {
+      logError('leads.recent', recentErr);
+    }
 
     const now = new Date();
     const lead = await prisma.lead.create({
@@ -71,15 +80,19 @@ export async function POST(request: Request) {
       },
     });
 
-    const base = { phone, email, recordType: 'lead', recordId: lead.id, language, source };
-    await recordConsent({ ...base, purpose: PURPOSES.ENQUIRY, action: 'GRANTED' });
-    if (marketing) {
-      await recordConsent({ ...base, purpose: PURPOSES.MARKETING, action: 'GRANTED' });
+    try {
+      const base = { phone, email, recordType: 'lead', recordId: lead.id, language, source };
+      await recordConsent({ ...base, purpose: PURPOSES.ENQUIRY, action: 'GRANTED' });
+      if (marketing) {
+        await recordConsent({ ...base, purpose: PURPOSES.MARKETING, action: 'GRANTED' });
+      }
+    } catch (consentErr) {
+      logError('leads.consent', consentErr);
     }
 
     return accepted();
-  } catch (error) {
+  } catch (error: any) {
     logError('leads.create', error);
-    return jsonError('Failed to process inquiry. Please try again later.', 500);
+    return jsonError(error?.message || 'Failed to process inquiry. Please try again later.', 500);
   }
 }
