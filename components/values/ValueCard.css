@@ -1,140 +1,29 @@
-/* ValueCard.css */
+/* Card look and hover come from the homepage iconbox in home/StatsSection.css.
+   These rules only fit it to the narrower four-column grid on this page. */
 
 .elementor-51 .value-card {
-  --display: flex;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  --padding-left: 0;
-  --padding-right: 0;
-
   min-width: 0;
 }
 
-/* ICON */
-.elementor-51 .value-card__icon .elementor-widget-container {
-  width: 100%;
+/* Keep every card in a row the same height. */
+.elementor-51 .value-card .iconbox-wrapper {
+  height: 100%;
 }
 
-.elementor-51 .value-card__icon .elementor-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.elementor-51 .value-card .iconbox-content {
+  flex: 1;
+  min-height: 370px;
+  padding: 80px 30px 40px;
   text-align: left;
 }
 
-.elementor-51 .value-card__icon .elementor-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  color: #000;
+.elementor-51 .value-card .iconbox-icon svg {
+  height: 24px;
 }
 
-/* Remove any theme-added brackets / decorative marks */
-.elementor-51 .value-card__icon .elementor-icon::before,
-.elementor-51 .value-card__icon .elementor-icon::after,
-.elementor-51 .value-card__icon .elementor-icon-wrapper::before,
-.elementor-51 .value-card__icon .elementor-icon-wrapper::after {
-  content: none !important;
-  display: none !important;
-}
-
-.elementor-51 .value-card__icon .elementor-icon svg {
-  display: block;
-  width: 42px;
-  height: 42px;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
-  color: #000 !important;
-  fill: currentColor;
-  stroke: currentColor;
-}
-
-.elementor-51 .value-card__icon .elementor-icon svg *,
-.elementor-51 .value-card__icon .elementor-icon svg path,
-.elementor-51 .value-card__icon .elementor-icon svg g {
-  color: #000 !important;
-}
-
-/*
-  Force black only where the SVG uses currentColor or inherited color.
-  This avoids breaking SVGs that intentionally use fill="none".
-*/
-.elementor-51 .value-card__icon .elementor-icon svg [fill]:not([fill="none"]) {
-  fill: #000 !important;
-}
-
-.elementor-51 .value-card__icon .elementor-icon svg [stroke]:not([stroke="none"]) {
-  stroke: #000 !important;
-}
-
-/* DIVIDER */
-.elementor-51 .value-card__divider {
-  --divider-border-style: solid;
-  --divider-color: var(--e-global-color-border);
-  --divider-border-width: 1px;
-}
-
-.elementor-51 .value-card__divider .elementor-divider {
-  padding-block: 25px;
-}
-
-.elementor-51 .value-card__divider .elementor-divider-separator {
-  width: 100%;
-}
-
-/* TITLE */
-.elementor-51 .value-card__title > .elementor-widget-container {
-  margin: 0 0 15px;
-}
-
-.elementor-51 .value-card__title .elementor-heading-title {
-  margin: 0;
-  color: #000;
-}
-
-/* DESCRIPTION */
-.elementor-51 .value-card__description .elementor-heading-title {
-  margin: 0;
-  line-height: 1.5;
-  color: #000;
-}
-
-/* Keep Elementor decorative shape behavior consistent */
-.elementor-51 .value-card .spaciaz-border-shape {
-  width: 30px;
-  height: 30px;
-  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
-}
-
-@media (max-width: 767px) {
-  .elementor-51 .value-card__icon .elementor-icon {
-    width: 42px;
-    height: 42px;
-  }
-
-  .elementor-51 .value-card__icon .elementor-icon svg {
-    width: 36px;
-    height: 36px;
-  }
-
-  .elementor-51 .value-card__divider .elementor-divider {
-    padding-block: 20px;
-  }
-
-  .elementor-51 .value-card__title > .elementor-widget-container {
-    margin-bottom: 10px;
+@media (max-width: 1200px) {
+  .elementor-51 .value-card .iconbox-content {
+    min-height: 300px;
+    padding: 80px 40px 40px;
   }
 }

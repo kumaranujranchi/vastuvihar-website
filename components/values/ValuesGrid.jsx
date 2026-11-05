@@ -37,7 +37,7 @@ export default function ValuesGrid() {
           </div>
         </div>
         <div
-          className="elementor-element elementor-element-c2224dc e-grid e-con-full e-con e-child"
+          className="elementor-element elementor-element-c2224dc elementor-widget-spaciaz-iconbox e-grid e-con-full e-con e-child"
           data-id="c2224dc"
           data-element_type="container"
         >
