@@ -8,6 +8,7 @@ export const companyLinks = [
 
 export const contactLinks = [
   { label: 'Contact Us', href: '/contact/' },
+  { label: 'Our Blogs', href: '/blog/' },
   { label: 'Branch Offices', href: '/contact/branch-contact/' },
   { label: 'Site Offices', href: '/contact/site-contact/' },
 ];
@@ -17,6 +18,7 @@ export const navigation = [
   { label: 'About', href: '/about-us/', children: companyLinks },
   { label: 'Models', href: '/projects/' },
   { label: 'Price List', href: '/price-list/' },
+  { label: 'Our Blogs', href: '/blog/' },
   { label: 'Careers', href: '/careers/' },
   { label: 'Gallery', href: '/gallery/' },
   { label: 'Contact', href: '/contact/', children: contactLinks },
