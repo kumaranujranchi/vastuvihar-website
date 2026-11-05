@@ -371,11 +371,28 @@ export async function ensureDatabaseReady(): Promise<void> {
 
       const check = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='Lead'").first();
       if (!check) {
-        console.log('[dbBootstrap] Lead table missing, auto-initializing database schema...');
-        await db.exec(INIT_SCHEMA_SQL);
+        console.log('[dbBootstrap] Lead table missing, auto-initializing database schema statement by statement...');
+        try {
+          await db.prepare("PRAGMA foreign_keys = OFF;").run();
+        } catch {}
+
+        const statements = INIT_SCHEMA_SQL.split(';')
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0);
+
+        for (const stmt of statements) {
+          try {
+            await db.prepare(stmt).run();
+          } catch (stmtErr: any) {
+            console.error('[dbBootstrap] statement error:', stmt.slice(0, 40), stmtErr?.message);
+          }
+        }
         console.log('[dbBootstrap] Database schema auto-initialized successfully.');
       }
-      schemaEnsured = true;
+      const verify = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='Lead'").first();
+      if (verify) {
+        schemaEnsured = true;
+      }
     } catch (err) {
       console.error('[dbBootstrap] Failed to ensure database schema:', err);
     } finally {
