@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('/images/about-bc.jpeg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('/awards/hero.png') bottom/cover no-repeat;
 }
 
 .heroInner {
@@ -68,12 +68,12 @@
 /* Tablet Effect applied to Marquee */
 .marqueeTablet {
     padding: 5px;
-    border: 1px solid #07b3d6; /* Primary brand color */
+    border: 1px solid #07b3d6;
     border-radius: 20px;
     display: inline-block;
     overflow: hidden;
     margin: 0 auto 30px;
-    max-width:100px;
+    max-width: 100px;
 }
 
 .introContent h2 {
@@ -93,10 +93,31 @@
 }
 
 @media (max-width: 767px) {
-    .hero { min-height: 360px; }
-    .heroInner { width: min(100% - 30px, 1730px); padding-bottom: 20px; }
-    .hero h1 { font-size: 2.25rem; }
-    .curve { height: 24px; border-radius: 16px 16px 0 0; }
-    .introContainer { width: min(100% - 30px, 1730px); padding: 40px 0 70px; }
-    .introContent h2 { font-size: 1.75rem; margin-top: 20px; }
+    .hero {
+        min-height: 360px;
+    }
+
+    .heroInner {
+        width: min(100% - 30px, 1730px);
+        padding-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .curve {
+        height: 24px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .introContainer {
+        width: min(100% - 30px, 1730px);
+        padding: 40px 0 70px;
+    }
+
+    .introContent h2 {
+        font-size: 1.75rem;
+        margin-top: 20px;
+    }
 }
