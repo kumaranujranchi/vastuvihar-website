@@ -12,7 +12,7 @@ const YOUTUBE_IDS = [
   'x52x2VKPUcg',
 ];
 
-const HERO_POSTERS = ['/villa/yamuna.webp', '/villa/simplex.webp', '/villa/ceo.webp'];
+const HERO_POSTERS = ['/ananta/ananta.webp', '/villa/simplex.webp', '/villa/ceo.webp'];
 
 export default function HeroSection() {
   const [activeVideo, setActiveVideo] = useState(0);
@@ -151,7 +151,7 @@ export default function HeroSection() {
                           decoding="async"
                           width="190"
                           height="80"
-                          src="/villa/yamuna.webp"
+                          src="/ananta/ananta.webp"
                           className="attachment-full size-full wp-image-7480"
                           alt=""
                         />{' '}
@@ -215,7 +215,7 @@ export default function HeroSection() {
             decoding="async"
             width="1920"
             height="1000"
-            src="/villa/yamuna.webp"
+            src="/ananta/ananta.webp"
             className="attachment-full size-full wp-image-6383"
             alt=""
           />{' '}
