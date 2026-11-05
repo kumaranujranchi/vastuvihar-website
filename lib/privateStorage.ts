@@ -5,6 +5,7 @@ import { randomToken } from '@/lib/security/crypto';
 const PRIVATE_PREFIX = 'private:';
 const RESUME_FOLDER = 'resumes';
 const BLOG_FOLDER = 'blogs';
+const GALLERY_FOLDER = 'gallery';
 
 const privateFiles = () => getCloudflareContext().env.PRIVATE_FILES;
 const media = () => getCloudflareContext().env.MEDIA;
@@ -84,14 +85,21 @@ const IMAGE_MIME: Record<string, string> = {
 
 export const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 
-/** Public blog images: raster formats only, so an upload cannot carry script (SVG/HTML). */
-export async function saveBlogImage(file: File, baseName: string): Promise<{ url?: string; error?: string }> {
+/** Public images: raster formats only, so an upload cannot carry script (SVG/HTML). */
+async function readImageUpload(file: File): Promise<{ buffer: Buffer; ext: string } | { error: string }> {
   if (file.size > MAX_IMAGE_BYTES) return { error: 'Image exceeds the 8MB limit.' };
   const ext = path.extname(file.name).toLowerCase();
   const matches = IMAGE_TYPES[ext];
   if (!matches) return { error: 'Only JPG, PNG, GIF or WebP images are supported.' };
   const buffer = Buffer.from(await file.arrayBuffer());
   if (!matches(buffer)) return { error: 'The file is not a valid image.' };
+  return { buffer, ext };
+}
+
+export async function saveBlogImage(file: File, baseName: string): Promise<{ url?: string; error?: string }> {
+  const upload = await readImageUpload(file);
+  if ('error' in upload) return { error: upload.error };
+  const { buffer, ext } = upload;
 
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) || 'image';
   const name = `${Date.now()}_${safe}${ext}`;
@@ -99,10 +107,27 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
   return { url: `/uploads/blogs/${name}` };
 }
 
-export async function readBlogImage(name: string): Promise<{ body: ReadableStream; contentType: string } | null> {
+async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream; contentType: string } | null> {
   const safe = path.basename(name);
   const contentType = IMAGE_MIME[path.extname(safe).toLowerCase()];
   if (!contentType) return null;
-  const object = await media().get(`${BLOG_FOLDER}/${safe}`);
-  return object ? { body: object.body, contentType } : null;
+  const object = await media().get(`${folder}/${safe}`);
+  return object ? { body: object.body as unknown as ReadableStream, contentType } : null;
+}
+
+export const readBlogImage = (name: string) => readMediaImage(BLOG_FOLDER, name);
+
+/** Each upload gets a new random name, so its URL can be cached forever. */
+export async function saveGalleryImage(file: File): Promise<{ name?: string; error?: string }> {
+  const upload = await readImageUpload(file);
+  if ('error' in upload) return { error: upload.error };
+  const name = `${randomToken(24)}${upload.ext}`;
+  await media().put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
+  return { name };
+}
+
+export const readGalleryImage = (name: string) => readMediaImage(GALLERY_FOLDER, name);
+
+export async function deleteGalleryImage(name: string | null | undefined): Promise<void> {
+  if (name) await media().delete(`${GALLERY_FOLDER}/${path.basename(name)}`);
 }

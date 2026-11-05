@@ -1,0 +1,123 @@
+.manager {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.album {
+  padding: 8px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.albumActive {
+  border-color: #0f172a;
+  background: #0f172a;
+  color: #fff;
+}
+
+.primary {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary:disabled,
+.action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.message {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.empty {
+  margin: 24px 0 8px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.actions {
+  display: flex;
+  border-top: 1px solid #e2e8f0;
+}
+
+.action {
+  flex: 1;
+  padding: 9px 6px;
+  border: 0;
+  background: #fff;
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.action + .action {
+  border-left: 1px solid #e2e8f0;
+}
+
+.danger {
+  color: #b91c1c;
+}

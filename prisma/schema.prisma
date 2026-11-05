@@ -384,6 +384,22 @@ model RetentionLog {
   @@index([createdAt])
 }
 
+// One row per admin change to the gallery. Photos in public/gallery need no row.
+//   builtInName set, storageKey set:   a built-in photo replaced by an upload
+//   builtInName set, storageKey null:  a built-in photo removed
+//   builtInName null, storageKey set:  an added photo
+model GalleryImage {
+  id          String   @id @default(cuid())
+  album       String
+  builtInName String?
+  storageKey  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([album, builtInName])
+  @@index([album, createdAt])
+}
+
 model PrivacySetting {
   key       String   @id
   value     String

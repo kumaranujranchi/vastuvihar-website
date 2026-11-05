@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/metadata';
+import { connection } from 'next/server';
 import { getGalleryAlbumBySlug } from '@/lib/gallery';
 import GalleryLightbox from '../GalleryLightbox';
 
@@ -53,6 +54,9 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function GallerySlugPage({
   params,
 }: PageProps) {
+  // Admins can change the photos at any time, so this always renders fresh.
+  await connection();
+
   const { slug } = await params;
 
   const album = await getGalleryAlbumBySlug(slug);
