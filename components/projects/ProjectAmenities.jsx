@@ -17,7 +17,7 @@ export default function ProjectAmenities() {
           data-widget_type="heading.default"
         >
           <div className="elementor-widget-container">
-            <h3 className="elementor-heading-title elementor-size-default">
+            <h3 style={{ color: '#000', fontSize: '2rem'}} className="elementor-heading-title elementor-size-default">
               Township Amenities
             </h3>
           </div>

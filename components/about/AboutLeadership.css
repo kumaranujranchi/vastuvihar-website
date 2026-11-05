@@ -946,3 +946,75 @@ body.rtl .elementor-49 .elementor-element.elementor-element-45827df {
 .elementor-49 .elementor-element.elementor-element-8a5070f:hover .btn-icon-hover {
   color: #fff;
 }
+
+/* ==========================================================
+   ABOUT LEADERSHIP: UNIQUE PNG ON EACH CARD, FULLY VISIBLE
+   Works with the about-card-decoration wrapper in Card().
+   Use /png/godawari.png, /png/rainbow.png, /png/ganga.png.
+   ========================================================== */
+.elementor-49 .elementor-element.about-leadership-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.elementor-49 .elementor-element.about-leadership-card > .about-card-decoration {
+  position: absolute !important;
+  inset: auto auto 0 0 !important;
+  width: min(85%, 310px);
+  height: 220px;
+  max-width: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.elementor-49 .elementor-element.about-leadership-card > .about-card-decoration img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+}
+
+/* Titles, descriptions and links stay clickable above the illustration. */
+.elementor-49 .elementor-element.about-leadership-card > .elementor-widget-heading,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-e6bcb83,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-595e4d0,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-ae1db45 {
+  position: relative;
+  z-index: 2;
+}
+
+/* Preserve the absolute bottom-right corner shape and arrow. */
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-4403892,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-d1072fe,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-ad73de3 {
+  position: absolute;
+  z-index: 4;
+}
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-285fb28,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-2047598,
+.elementor-49 .elementor-element.about-leadership-card > .elementor-element-45827df {
+  position: absolute;
+  z-index: 5;
+}
+
+@media (max-width: 1024px) {
+  .elementor-49 .elementor-element.about-leadership-card > .about-card-decoration {
+    width: min(82%, 250px);
+    height: 190px;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-49 .elementor-element.about-leadership-card > .about-card-decoration {
+    width: min(65%, 220px);
+    height: 170px;
+  }
+}

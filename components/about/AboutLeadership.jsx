@@ -1,9 +1,8 @@
+
 import './AboutLeadership.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
 import StaticPill from '../common/StaticPill';
-
-const tickerItems = ['·', 'explore company', '·', 'explore company'];
 
 const cards = [
   {
@@ -16,6 +15,7 @@ const cards = [
     spacerId: '4403892',
     arrowId: '285fb28',
     contentContainerId: 'e6bcb83',
+    numberId: 'd2c9c89',
     title: 'What we do',
     text:
       'We offer bungalows, flats and thoughtfully planned townships with a focus on affordable, quality living for families across Eastern India.',
@@ -23,6 +23,7 @@ const cards = [
     buttonHref: '/projects/',
     arrowHref: '/projects/',
     theme: 'dark',
+    image: '/png/nano.png',
   },
   {
     number: '02.',
@@ -62,6 +63,7 @@ const cards = [
     buttonHref: '/core-values/',
     arrowHref: '/core-values/',
     theme: 'dark',
+    image: '/png/ganga.png',
   },
 ];
 
@@ -79,7 +81,6 @@ function ArrowButton({ id, href }) {
           <Link
             href={href}
             className="elementor-button-link elementor-button elementor-size-sm"
-            role="button"
             prefetch={false}
             aria-label="Open section"
           >
@@ -92,6 +93,7 @@ function ArrowButton({ id, href }) {
                       className="spaciaz-icon- spaciaz-icon-arrow-long-right"
                     />
                   </span>
+
                   <span className="btn-icon-hover">
                     <i
                       aria-hidden="true"
@@ -108,16 +110,20 @@ function ArrowButton({ id, href }) {
   );
 }
 
-function Card({ card, index }) {
+function Card({ card }) {
   const numberId = card.numberId || 'd2c9c89';
 
   return (
     <div
-      className={`elementor-element elementor-element-${card.cardClass} e-con-full animated-fast e-flex elementor-invisible e-con e-child`}
+      className={`elementor-element elementor-element-${card.cardClass} about-leadership-card e-con-full animated-fast e-flex elementor-invisible e-con e-child`}
       data-id={card.cardClass}
       data-element_type="container"
-      data-settings={`{"background_background":"classic","animation":"${card.animation}"}`}
+      data-settings={JSON.stringify({
+        background_background: 'classic',
+        animation: card.animation,
+      })}
     >
+      {/* CARD NUMBER */}
       <div
         className={`elementor-element elementor-element-${numberId} elementor-widget elementor-widget-heading`}
         data-id={numberId}
@@ -125,15 +131,19 @@ function Card({ card, index }) {
         data-widget_type="heading.default"
       >
         <div className="elementor-widget-container">
-          <h6 className="elementor-heading-title elementor-size-default">{card.number}</h6>
+          <h6 className="elementor-heading-title elementor-size-default">
+            {card.number}
+          </h6>
         </div>
       </div>
 
+      {/* CARD CONTENT */}
       <div
         className={`elementor-element elementor-element-${card.contentContainerId} e-con-full e-flex e-con e-child`}
         data-id={card.contentContainerId}
         data-element_type="container"
       >
+        {/* HEADING */}
         <div
           className={`elementor-element elementor-element-${card.headingId} elementor-widget elementor-widget-heading`}
           data-id={card.headingId}
@@ -141,10 +151,13 @@ function Card({ card, index }) {
           data-widget_type="heading.default"
         >
           <div className="elementor-widget-container">
-            <h4 className="elementor-heading-title elementor-size-default">{card.title}</h4>
+            <h4 className="elementor-heading-title elementor-size-default">
+              {card.title}
+            </h4>
           </div>
         </div>
 
+        {/* DESCRIPTION */}
         <div
           className={`elementor-element elementor-element-${card.textId} elementor-widget elementor-widget-text-editor`}
           data-id={card.textId}
@@ -156,10 +169,11 @@ function Card({ card, index }) {
           </div>
         </div>
 
+        {/* TEXT BUTTON */}
         <div
           className={`elementor-element elementor-element-${card.buttonId} elementor-button-link line-effect-yes elementor-widget elementor-widget-spaciaz-button`}
           data-id={card.buttonId}
-          data-element_type="widget"
+          data_element_type="widget"
           data-widget_type="spaciaz-button.default"
         >
           <div className="elementor-widget-container">
@@ -167,11 +181,13 @@ function Card({ card, index }) {
               <Link
                 href={card.buttonHref}
                 className="elementor-button-link elementor-button elementor-size-sm"
-                role="button"
                 prefetch={false}
               >
                 <span className="elementor-button-content-wrapper">
-                  <span className="elementor-button-text" data-name={card.buttonText}>
+                  <span
+                    className="elementor-button-text"
+                    data-name={card.buttonText}
+                  >
                     <span>{card.buttonText}</span>
                   </span>
                 </span>
@@ -181,28 +197,24 @@ function Card({ card, index }) {
         </div>
       </div>
 
+      {/* INDIVIDUAL BOTTOM PNG IMAGE */}
       {card.image && (
         <div
-          className="elementor-element elementor-element-355df88 elementor-absolute elementor-widget elementor-widget-image"
-          data-id="355df88"
-          data-element_type="widget"
-          data-settings='{"_position":"absolute"}'
-          data-widget_type="image.default"
+          className="about-card-decoration"
+          aria-hidden="true"
         >
-          <div className="elementor-widget-container">
-            <img
-              loading="lazy"
-              decoding="async"
-              width="351"
-              height="272"
-              src={card.image}
-              className="attachment-full size-full wp-image-841"
-              alt=""
-            />
-          </div>
+          <img
+            src={card.image}
+            alt=""
+            width="351"
+            height="272"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       )}
 
+      {/* BOTTOM CORNER SPACER */}
       <div
         className={`elementor-element elementor-element-${card.spacerId} elementor-widget__width-initial elementor-absolute elementor-widget elementor-widget-spacer`}
         data-id={card.spacerId}
@@ -217,7 +229,11 @@ function Card({ card, index }) {
         </div>
       </div>
 
-      <ArrowButton id={card.arrowId} href={card.arrowHref} />
+      {/* BOTTOM RIGHT ARROW */}
+      <ArrowButton
+        id={card.arrowId}
+        href={card.arrowHref}
+      />
     </div>
   );
 }
@@ -230,9 +246,10 @@ export default function AboutLeadership() {
       data-element_type="container"
     >
       <div className="e-con-inner">
+
         <StaticPill text="Explore Company" />
 
-
+        {/* SECTION HEADING */}
         <div
           className="elementor-element elementor-element-5a7e392 elementor-widget__width-initial elementor-widget-mobile__width-inherit animated-fast elementor-invisible elementor-widget elementor-widget-heading"
           data-id="5a7e392"
@@ -247,15 +264,20 @@ export default function AboutLeadership() {
           </div>
         </div>
 
+        {/* THREE CARDS */}
         <div
           className="elementor-element elementor-element-b70fc5d e-grid e-con-full e-con e-child"
           data-id="b70fc5d"
           data-element_type="container"
         >
-          {cards.map((card, index) => (
-            <Card key={card.number} card={card} index={index} />
+          {cards.map((card) => (
+            <Card
+              key={card.number}
+              card={card}
+            />
           ))}
         </div>
+
       </div>
     </div>
   );

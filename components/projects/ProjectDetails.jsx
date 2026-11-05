@@ -9,6 +9,7 @@ import ProjectMedia from './ProjectMedia';
 import ProjectLocation from './ProjectLocation';
 import ProjectEnquiry from './ProjectEnquiry';
 import ProjectNavigation from './ProjectNavigation';
+import FinancePartners from '@/components/FinancePartners/FinancePartners';
 
 /** One reusable project layout for all Vastu Vihar home models. */
 export default function ProjectDetails({ project }) {
@@ -53,6 +54,7 @@ export default function ProjectDetails({ project }) {
                   <ProjectHero project={modelProject} />
                   <ProjectDescription project={modelProject} />
                   <ProjectLocation project={modelProject} />
+                  <FinancePartners />
                   <ProjectAmenities />
                   <ProjectMedia project={modelProject} />
                   <ProjectEnquiry project={modelProject} />
