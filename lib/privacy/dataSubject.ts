@@ -166,21 +166,21 @@ export async function eraseContact(contact: Contact) {
   const eraseLeads = leads.filter((lead) => !lead.legalHoldReason);
   const eraseApps = applications.filter((app) => !app.legalHoldReason);
 
-  // All rows go together or not at all. The hold is rechecked at delete time, so a
-  // hold placed moments ago still wins, and only rows actually deleted lose their files.
+  // D1 has no transactions, so a failure here can leave this partly done. Repeating the
+  // erasure finishes it, because it only finds what remains. Applications go last: their
+  // rows locate the resume files, so they must survive any earlier failure. The hold is
+  // rechecked at delete time, so a hold placed moments ago still wins.
   const leadIds = eraseLeads.map((lead) => lead.id);
   const appIds = eraseApps.map((app) => app.id);
-  const stillHeldApps = await prisma.$transaction(async (tx) => {
-    const held = await tx.jobApplication.findMany({
-      where: { id: { in: appIds }, NOT: { legalHoldReason: null } },
-      select: { id: true },
-    });
-    await tx.lead.deleteMany({ where: { id: { in: leadIds }, legalHoldReason: null } });
-    await tx.jobApplication.deleteMany({ where: { id: { in: appIds }, legalHoldReason: null } });
-    await tx.comment.deleteMany({ where: { id: { in: comments.map((comment) => comment.id) } } });
-    if (newsletter) await tx.newsletterSubscriber.deleteMany({ where: { id: newsletter.id } });
-    return new Set(held.map((row) => row.id));
+  await prisma.lead.deleteMany({ where: { id: { in: leadIds }, legalHoldReason: null } });
+  await prisma.comment.deleteMany({ where: { id: { in: comments.map((comment) => comment.id) } } });
+  if (newsletter) await prisma.newsletterSubscriber.deleteMany({ where: { id: newsletter.id } });
+  const held = await prisma.jobApplication.findMany({
+    where: { id: { in: appIds }, NOT: { legalHoldReason: null } },
+    select: { id: true },
   });
+  await prisma.jobApplication.deleteMany({ where: { id: { in: appIds }, legalHoldReason: null } });
+  const stillHeldApps = new Set(held.map((row) => row.id));
 
   // A file that cannot be removed must be reported, because no row now points to it.
   const filesNotRemoved: string[] = [];

@@ -1,8 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { api, useLoad, when } from '@/components/admin/adminApi';
+import UsersPanel from '@/components/admin/UsersPanel';
 import styles from './privacy-admin.module.css';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -23,37 +25,6 @@ const TABS: Tab[] = [
   { id: 'users', label: 'Staff access', permission: 'users:manage' },
   { id: 'audit', label: 'Audit log', permission: 'audit:read' },
 ];
-
-const when = (value?: string | null) =>
-  value ? new Date(value).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : '—';
-
-async function api(url: string, method = 'GET', body?: unknown) {
-  const response = await fetch(url, {
-    method,
-    headers: body ? { 'Content-Type': 'application/json' } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(data.error || 'The request failed.');
-  return data;
-}
-
-function useLoad<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState('');
-  const reload = useCallback(async () => {
-    try {
-      setError('');
-      setData(await api(url));
-    } catch (err) {
-      setError((err as Error).message);
-    }
-  }, [url]);
-  useEffect(() => {
-    reload();
-  }, [reload]);
-  return { data, error, reload };
-}
 
 function Status({ value }: { value: string }) {
   return <span className={styles.status} data-status={value}>{value.replace(/_/g, ' ')}</span>;
@@ -914,84 +885,6 @@ function ProcessorsTab() {
   );
 }
 
-function UsersTab({ currentId }: { currentId: string }) {
-  const { data, error, reload } = useLoad<any>('/api/admin/users');
-  const [form, setForm] = useState({ name: '', email: '', role: 'SALES', password: '' });
-  const [message, setMessage] = useState('');
-
-  async function run(fn: () => Promise<unknown>, done = 'Saved.') {
-    try {
-      setMessage('');
-      await fn();
-      setMessage(done);
-      reload();
-    } catch (err) {
-      setMessage((err as Error).message);
-    }
-  }
-
-  return (
-    <>
-      <p className={styles.intro}>Give each person their own account and the smallest role they need. Changing someone's access signs them out.</p>
-      <form
-        className={styles.row}
-        onSubmit={(event) => {
-          event.preventDefault();
-          run(async () => {
-            await api('/api/admin/users', 'POST', form);
-            setForm({ name: '', email: '', role: 'SALES', password: '' });
-          }, 'Account created.');
-        }}
-      >
-        <input className={styles.input} placeholder="Name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-        <input className={styles.input} type="email" placeholder="Work email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-        <select className={styles.input} value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
-          {(data?.roles || []).map((role: string) => <option key={role}>{role}</option>)}
-        </select>
-        <input className={styles.input} type="password" placeholder="Temporary password (12+ characters)" required minLength={12} autoComplete="new-password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-        <button type="submit" className={styles.primary}>Add staff</button>
-      </form>
-      {(error || message) && <p role="status" className={styles.message}>{error || message}</p>}
-      <table className={styles.table}>
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Last sign-in</th><th>Actions</th></tr></thead>
-        <tbody>
-          {data?.users?.map((user: any) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>
-                <select className={styles.input} value={user.role} disabled={user.id === currentId} onChange={(e) => run(() => api('/api/admin/users', 'PATCH', { id: user.id, role: e.target.value }))}>
-                  {(data?.roles || []).map((role: string) => <option key={role}>{role}</option>)}
-                </select>
-              </td>
-              <td>{user.isActive ? 'Active' : 'Disabled'}</td>
-              <td>{when(user.lastLoginAt)}</td>
-              <td className={styles.nowrap}>
-                {user.id !== currentId && (
-                  <button type="button" className={styles.linkButton} onClick={() => run(() => api('/api/admin/users', 'PATCH', { id: user.id, isActive: !user.isActive }))}>
-                    {user.isActive ? 'Disable' : 'Enable'}
-                  </button>
-                )}
-                {user.id !== currentId && ' · '}
-                <button
-                  type="button"
-                  className={styles.linkButton}
-                  onClick={() => {
-                    const password = prompt('New password (at least 12 characters). This signs the user out.');
-                    if (password) run(() => api('/api/admin/users', 'PATCH', { id: user.id, password }), 'Password changed.');
-                  }}
-                >
-                  Set password
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
-  );
-}
-
 function AuditTab() {
   const { data, error } = useLoad<any>('/api/admin/privacy/records?view=audit');
   return (
@@ -1070,7 +963,7 @@ export default function PrivacyAdminPage() {
         {tab === 'breaches' && <BreachesTab />}
         {tab === 'retention' && <RetentionTab />}
         {tab === 'processors' && <ProcessorsTab />}
-        {tab === 'users' && <UsersTab currentId={me.id} />}
+        {tab === 'users' && <UsersPanel currentId={me.id} />}
         {tab === 'audit' && <AuditTab />}
       </main>
     </div>

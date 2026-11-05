@@ -1,6 +1,12 @@
 const isStaticExport = process.env.STATIC_EXPORT === '1';
 const isDev = process.env.NODE_ENV !== 'production';
 
+// Gives `next dev` local versions of the D1 and R2 bindings in wrangler.jsonc.
+if (process.env.NODE_ENV === 'development') {
+  const { initOpenNextCloudflareForDev } = await import('@opennextjs/cloudflare');
+  await initOpenNextCloudflareForDev();
+}
+
 // A tag's hosts are only allowed when its ID is set, so a site with no tags allows none.
 const isSet = (name) => Boolean((process.env[name] || '').trim());
 const tagHosts = [
@@ -67,6 +73,8 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   images: { unoptimized: true },
   poweredByHeader: false,
+  // OpenNext patches the generated Prisma client so it runs on Workers.
+  serverExternalPackages: ['@prisma/client', '.prisma/client'],
   ...(isStaticExport
     ? {}
     : {

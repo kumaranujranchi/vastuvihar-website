@@ -132,24 +132,62 @@ The endpoint must accept a JSON `POST` from your website, allow its origin throu
 
 ```bash
 npm run verify
-npm run build:next
+npm run build
 npm run start
 ```
 
 `verify` checks the required pages, imports, local assets, removed routes, navigation links, and search entries. `build:next` creates the optimized website; `start` serves it at http://localhost:3000.
 
-`npm run build` creates the Cloudflare Workers build in `.open-next/`, which `npx wrangler deploy` then uploads.
+`npm run build` creates the Cloudflare Workers build in `.open-next/`, which `npm run start` runs locally in the Workers runtime and `npx wrangler deploy` uploads.
 
-## Deploying
+## Local setup
 
-The build works without a `.env` file or a database, and `.env` is never committed. Set the variables in your host's environment settings instead. See `.env.example` for the full list.
+The site reads its database and files through Cloudflare bindings, and local runs use local copies of them, stored in `.wrangler/`.
 
-The running site needs these two:
+```bash
+npm install
+npm run cf:migrate:local
+ADMIN_BOOTSTRAP_PASSWORD='choose-12-or-more-characters' npm run admin:create -- --local you@vastuvihar.org "Your Name" SUPER_ADMIN
+npm run dev
+```
 
-- `DATABASE_URL`: the SQLite file, on a persistent disk outside the repository. Pages that read the database (home, blog, careers, sitemap) and the admin panel depend on it.
-- `PRIVACY_HASH_SECRET`: at least 32 random characters. Enquiry and consent features fail in production without it.
+`npm run start` runs in production mode, so it also needs `PRIVACY_HASH_SECRET` in a `.dev.vars` file, which git ignores.
 
-Run `npx prisma db push` once on the server to create the tables. See `docs/dpdp/security.md` for the full checklist.
+## Deploying to Cloudflare
+
+The site runs on Cloudflare Workers, with D1 for the database and R2 for files. Worker settings are in `wrangler.jsonc`. Do this once, while logged in with `npx wrangler login`:
+
+1. **Create the database,** then add the `database_id` it prints to the `d1_databases` entry in `wrangler.jsonc` and commit it:
+   ```bash
+   npx wrangler d1 create vastuvihar-db
+   ```
+2. **Create the file storage.** Leave public access off on both buckets:
+   ```bash
+   npx wrangler r2 bucket create vastuvihar-private
+   npx wrangler r2 bucket create vastuvihar-media
+   ```
+3. **Create the tables:**
+   ```bash
+   npm run cf:migrate
+   ```
+4. **Connect the repository** in Workers & Pages, under Settings > Builds, with:
+   - Build command: `npm run build`
+   - Deploy command: `npm run cf:migrate && npx wrangler deploy`
+   - Build variable: `NEXT_PUBLIC_SITE_URL`, and any tag IDs from `.env.example`. These are read at build time.
+5. **Set the secrets,** using at least 32 random characters for each:
+   ```bash
+   npx wrangler secret put PRIVACY_HASH_SECRET
+   npx wrangler secret put RETENTION_CRON_SECRET
+   ```
+6. **Create the first admin:**
+   ```bash
+   ADMIN_BOOTSTRAP_PASSWORD='...' npm run admin:create -- --remote you@vastuvihar.org "Your Name" SUPER_ADMIN
+   ```
+7. **Schedule the retention job.** See `docs/dpdp/retention-plan.md`.
+
+The site needs the **Workers Paid plan**. Admin sign-in deliberately takes about 170 ms of CPU to hash the password, and the free plan stops a request at 10 ms.
+
+D1 has no transactions. Each statement is applied on its own, so a multi-step operation that fails can stop partway. See `docs/dpdp/security.md` for the full checklist.
 
 ## Optional static export
 

@@ -15,6 +15,7 @@ export const PERMISSIONS = [
   'applications:write',
   'vacancies:manage',
   'blogs:manage',
+  'gallery:manage',
   'comments:moderate',
   'newsletter:manage',
   'privacy:read',
@@ -42,7 +43,7 @@ export const ROLE_PERMISSIONS: Record<string, readonly Permission[]> = {
   ],
   SALES: ['leads:read', 'leads:write', 'leads:export'],
   HR: ['applications:read', 'applications:write', 'vacancies:manage'],
-  CONTENT: ['blogs:manage', 'comments:moderate', 'newsletter:manage'],
+  CONTENT: ['blogs:manage', 'gallery:manage', 'comments:moderate', 'newsletter:manage'],
 };
 
 export const ROLES = Object.keys(ROLE_PERMISSIONS);

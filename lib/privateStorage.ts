@@ -1,13 +1,14 @@
-import fs from 'node:fs/promises';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import path from 'node:path';
 import { randomToken } from '@/lib/security/crypto';
 
 const PRIVATE_PREFIX = 'private:';
+const RESUME_FOLDER = 'resumes';
+const BLOG_FOLDER = 'blogs';
+const GALLERY_FOLDER = 'gallery';
 
-function resumeDir(): string {
-  const base = process.env.PRIVATE_STORAGE_DIR || path.join(process.cwd(), 'storage', 'private');
-  return path.join(base, 'resumes');
-}
+const privateFiles = () => getCloudflareContext().env.PRIVATE_FILES;
+const media = () => getCloudflareContext().env.MEDIA;
 
 const RESUME_TYPES: Record<string, { mime: string; matches: (b: Buffer) => boolean }> = {
   '.pdf': {
@@ -36,41 +37,34 @@ export async function saveResume(file: File): Promise<{ path?: string; error?: s
   const buffer = Buffer.from(await file.arrayBuffer());
   if (!type.matches(buffer)) return { error: 'The file does not look like a valid PDF or Word document.' };
 
-  const dir = resumeDir();
-  await fs.mkdir(dir, { recursive: true });
   const name = `${randomToken(24)}${ext}`;
-  await fs.writeFile(path.join(dir, name), buffer, { mode: 0o600 });
+  await privateFiles().put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
   return { path: `${PRIVATE_PREFIX}${name}` };
 }
 
-/** Resolves stored paths, including legacy public ones, without allowing traversal. */
-function resolveResume(stored: string): string | null {
-  if (stored.startsWith(PRIVATE_PREFIX)) {
-    return path.join(resumeDir(), path.basename(stored.slice(PRIVATE_PREFIX.length)));
-  }
-  if (stored.startsWith('/uploads/resumes/')) {
-    return path.join(process.cwd(), 'public', 'uploads', 'resumes', path.basename(stored));
-  }
-  return null;
+/** Maps a stored path to its object key, without allowing traversal. */
+function resumeKey(stored: string): string | null {
+  if (!stored.startsWith(PRIVATE_PREFIX)) return null;
+  return `${RESUME_FOLDER}/${path.basename(stored.slice(PRIVATE_PREFIX.length))}`;
 }
 
 export async function readResume(stored: string): Promise<{ data: Buffer; mime: string; ext: string } | null> {
-  const file = resolveResume(stored);
-  if (!file) return null;
-  try {
-    const data = await fs.readFile(file);
-    const ext = path.extname(file).toLowerCase();
-    return { data, ext, mime: RESUME_TYPES[ext]?.mime || 'application/octet-stream' };
-  } catch {
-    return null;
-  }
+  const key = resumeKey(stored);
+  if (!key) return null;
+  const object = await privateFiles().get(key);
+  if (!object) return null;
+  const ext = path.extname(key).toLowerCase();
+  return {
+    data: Buffer.from(await object.arrayBuffer()),
+    ext,
+    mime: RESUME_TYPES[ext]?.mime || 'application/octet-stream',
+  };
 }
 
 export async function deleteResume(stored: string | null | undefined): Promise<void> {
   if (!stored) return;
-  const file = resolveResume(stored);
-  if (!file) return;
-  await fs.rm(file, { force: true });
+  const key = resumeKey(stored);
+  if (key) await privateFiles().delete(key);
 }
 
 const IMAGE_TYPES: Record<string, (b: Buffer) => boolean> = {
@@ -81,21 +75,59 @@ const IMAGE_TYPES: Record<string, (b: Buffer) => boolean> = {
   '.webp': (b) => b.subarray(0, 4).toString('latin1') === 'RIFF' && b.subarray(8, 12).toString('latin1') === 'WEBP',
 };
 
+const IMAGE_MIME: Record<string, string> = {
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.gif': 'image/gif',
+  '.webp': 'image/webp',
+};
+
 export const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 
-/** Public blog images: raster formats only, so an upload cannot carry script (SVG/HTML). */
-export async function saveBlogImage(file: File, baseName: string): Promise<{ url?: string; error?: string }> {
+/** Public images: raster formats only, so an upload cannot carry script (SVG/HTML). */
+async function readImageUpload(file: File): Promise<{ buffer: Buffer; ext: string } | { error: string }> {
   if (file.size > MAX_IMAGE_BYTES) return { error: 'Image exceeds the 8MB limit.' };
   const ext = path.extname(file.name).toLowerCase();
   const matches = IMAGE_TYPES[ext];
   if (!matches) return { error: 'Only JPG, PNG, GIF or WebP images are supported.' };
   const buffer = Buffer.from(await file.arrayBuffer());
   if (!matches(buffer)) return { error: 'The file is not a valid image.' };
+  return { buffer, ext };
+}
 
-  const dir = path.join(process.cwd(), 'public', 'uploads', 'blogs');
-  await fs.mkdir(dir, { recursive: true });
+export async function saveBlogImage(file: File, baseName: string): Promise<{ url?: string; error?: string }> {
+  const upload = await readImageUpload(file);
+  if ('error' in upload) return { error: upload.error };
+  const { buffer, ext } = upload;
+
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) || 'image';
   const name = `${Date.now()}_${safe}${ext}`;
-  await fs.writeFile(path.join(dir, name), buffer);
+  await media().put(`${BLOG_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: IMAGE_MIME[ext] } });
   return { url: `/uploads/blogs/${name}` };
+}
+
+async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream; contentType: string } | null> {
+  const safe = path.basename(name);
+  const contentType = IMAGE_MIME[path.extname(safe).toLowerCase()];
+  if (!contentType) return null;
+  const object = await media().get(`${folder}/${safe}`);
+  return object ? { body: object.body as unknown as ReadableStream, contentType } : null;
+}
+
+export const readBlogImage = (name: string) => readMediaImage(BLOG_FOLDER, name);
+
+/** Each upload gets a new random name, so its URL can be cached forever. */
+export async function saveGalleryImage(file: File): Promise<{ name?: string; error?: string }> {
+  const upload = await readImageUpload(file);
+  if ('error' in upload) return { error: upload.error };
+  const name = `${randomToken(24)}${upload.ext}`;
+  await media().put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
+  return { name };
+}
+
+export const readGalleryImage = (name: string) => readMediaImage(GALLERY_FOLDER, name);
+
+export async function deleteGalleryImage(name: string | null | undefined): Promise<void> {
+  if (name) await media().delete(`${GALLERY_FOLDER}/${path.basename(name)}`);
 }

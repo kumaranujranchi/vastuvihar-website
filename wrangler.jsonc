@@ -1,12 +1,32 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "vastuvihar-website",
+  "account_id": "7c744d89a9c22ae3cdd2ae56f60024f4",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-04",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  // Create these once; see "Deploying to Cloudflare" in the README.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vastuvihar-db",
+      "database_id": "be4de6b9-143d-4d75-87a8-1f3b96a17b48",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    // Resumes. Keep public access off: files are only served through the admin API.
+    { "binding": "PRIVATE_FILES", "bucket_name": "vastuvihar-private" },
+    // Blog images, served by app/uploads/blogs/[name]/route.ts.
+    { "binding": "MEDIA", "bucket_name": "vastuvihar-media" }
+  ],
+  "vars": {
+    // Set by Cloudflare on every request, and a client cannot forge it.
+    "CLIENT_IP_HEADER": "cf-connecting-ip"
   },
   "observability": { "enabled": true }
 }

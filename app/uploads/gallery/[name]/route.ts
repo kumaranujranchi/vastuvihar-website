@@ -1,0 +1,16 @@
+import { readGalleryImage } from '@/lib/privateStorage';
+
+/** Serves gallery photos uploaded from the admin panel. */
+export async function GET(_request: Request, { params }: { params: Promise<{ name: string }> }) {
+  const { name } = await params;
+  const image = await readGalleryImage(name);
+  if (!image) return new Response('Not found', { status: 404 });
+  return new Response(image.body, {
+    headers: {
+      'Content-Type': image.contentType,
+      // Each upload gets a new name, so a stored image never changes.
+      'Cache-Control': 'public, max-age=31536000, immutable',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
+}

@@ -54,11 +54,9 @@ Stop any running dev server first, because Windows locks the Prisma engine file.
 npm install
 ```
 
-Point `DATABASE_URL` in `.env` at a new file such as `file:./local.db`, and add `PRIVACY_HASH_SECRET`. See `.env.example`.
-
 ```
-npx prisma db push
-ADMIN_BOOTSTRAP_PASSWORD='choose-12-or-more-characters' npm run admin:create -- you@vastuvihar.org "Your Name" SUPER_ADMIN
+npm run cf:migrate:local
+ADMIN_BOOTSTRAP_PASSWORD='choose-12-or-more-characters' npm run admin:create -- --local you@vastuvihar.org "Your Name" SUPER_ADMIN
 npm run dev
 ```
 
@@ -66,15 +64,7 @@ Sign in at `/admin/login` with that email and password. The old shared password 
 
 ## Testing
 
-```
-npm run build:next && npx next start -p 3100
-```
-
-In a second terminal, using a **throwaway database**:
-
-```
-BASE_URL=http://localhost:3100 TEST_ADMIN_EMAIL=... TEST_ADMIN_PASSWORD=... DATABASE_URL=file:... npm run test:dpdp -- report.md
-```
+**`npm run test:dpdp` needs porting to D1.** It reads and checks a SQLite file and a resume folder directly, and the site now uses D1 and R2 instead, so it cannot run as written. Until it is ported, test these flows by hand on a local build (`npm run build && npm run start`).
 
 The suite creates and erases records and accounts, so it refuses to run against anything but localhost.
 
