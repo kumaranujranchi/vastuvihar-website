@@ -27,7 +27,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/thumb/Ananta.jpg",
+            "/thumb/Ananta.webp",
             "/ananta/ananta.webp",
             "/ananta/gallery-1.webp",
             "/ananta/gallery-2.webp",
@@ -117,7 +117,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/thumb/CEO.jpg",
+            "/thumb/CEO.webp",
             "/ceo/ceo.webp",
             "/ceo/modern-home-1.webp",
             "/ceo/modern-home-2.webp",
@@ -216,7 +216,7 @@ export const projectsData = {
             "Helps minimize differential soil settlement",
         ],
         gallery: [
-            "/thumb/classic-ceo.jpg",
+            "/thumb/classic-ceo.webp",
             "/classic-ceo/Classic_CEO1.webp",
             "/classic-ceo/Classic_CEO2.webp",
             "/classic-ceo/Classic_CEO3.webp",
@@ -304,7 +304,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/yamuna/Yamuna.jpg",
+            "/yamuna/Yamuna.webp",
             "/yamuna/yamuna3.webp",
             "/yamuna/yamuna1.webp",
             "/yamuna/yamuna2.webp",
@@ -323,8 +323,8 @@ export const projectsData = {
                     { label: "Hall", value: 2 }
                 ],
                 layouts: [
-                    { type: "2D", url: "/yamuna/gf72d.png", label: "Ground Floor" },
-                    { type: "2D", url: "/yamuna/ff72d.png", label: "First Floor" },
+                    { type: "2D", url: "/yamuna/gf72d.webp", label: "Ground Floor" },
+                    { type: "2D", url: "/yamuna/ff72d.webp", label: "First Floor" },
                     { type: "3D", url: "/yamuna/yamuna_7_gf_3d.webp", label: "Ground Floor" },
                     { type: "3D", url: "/yamuna/yamuna_7_ff_3d.webp", label: "First Floor" },
                 ],
@@ -382,7 +382,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/thumb/Yamuna.jpg",
+            "/thumb/Yamuna.webp",
             "/yamuna/yamuna1.webp",
             "/yamuna/yamuna2.webp",
             "/yamuna/yamuna3.webp"
@@ -460,8 +460,8 @@ export const projectsData = {
 
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/thumb/Simplex.jpg",
-            "/simplex/Simplex.jpg",
+            "/thumb/Simplex.webp",
+            "/simplex/Simplex.webp",
             "/villa/simplex.webp",
             "/simplex/simplex-row-building.webp",
         ],
@@ -553,7 +553,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement",
         ],
         gallery: [
-            "/thumb/business-bungalow.jpg",
+            "/thumb/business-bungalow.webp",
             "/business-b/Business_bungalow1.webp",
             "/business-b/Business_bungalow2.webp",
             "/business-b/Business_bungalow3.webp",
@@ -663,7 +663,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
-            "/thumb/Godavari.jpg",
+            "/thumb/Godavari.webp",
             "/godawari/godawari2.webp",
             "/godawari/godawari1.webp",
         ],
@@ -747,7 +747,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            // "/thumb/Jayanti.jpg",
+            // "/thumb/Jayanti.webp",
             "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
@@ -839,7 +839,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            "/thumb/Kaveri.jpg",
+            "/thumb/Kaveri.webp",
             "/kaveri/1.webp",
             "/kaveri/kaveri-exterior.webp",
             "/kaveri/kaveri-row.webp",
@@ -860,22 +860,22 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "2D",
-                        url: "/kaveri/Kaveri_row_Ground_Floor.png",
+                        url: "/kaveri/Kaveri_row_Ground_Floor.webp",
                         label: "Ground Floor",
                     },
                     {
                         type: "2D",
-                        url: "/kaveri/Kaveri_row_First_Floor.png",
+                        url: "/kaveri/Kaveri_row_First_Floor.webp",
                         label: "First Floor",
                     },
                     {
                         type: "3D",
-                        url: "/kaveri/gd3d.png",
+                        url: "/kaveri/gd3d.webp",
                         label: "Ground Floor",
                     },
                     {
                         type: "3D",
-                        url: "/kaveri/ff3d.png",
+                        url: "/kaveri/ff3d.webp",
                         label: "First Floor",
                     },
                 ],
@@ -929,7 +929,7 @@ export const projectsData = {
         ],
         benefits: ["please contact to know more"],
         gallery: [
-            "/thumb/Gayatri.jpg",
+            "/thumb/Gayatri.webp",
             "/gayatri/thumb.webp",
         ],
         modelTypes: [
@@ -948,22 +948,22 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "2D",
-                        url: "/gayatri/gf2d.png",
+                        url: "/gayatri/gf2d.webp",
                         label: "Ground Floor",
                     },
                     {
                         type: "2D",
-                        url: "/gayatri/ff2d.png",
+                        url: "/gayatri/ff2d.webp",
                         label: "First Floor",
                     },
                     {
                         type: "3D",
-                        url: "/gayatri/gf_3d.jpeg",
+                        url: "/gayatri/gf_3d.webp",
                         label: "Ground Floor",
                     },
                     {
                         type: "3D",
-                        url: "/gayatri/ff_3d.jpeg",
+                        url: "/gayatri/ff_3d.webp",
                         label: "First Floor",
                     },
                 ],
@@ -1047,7 +1047,7 @@ export const projectsData = {
             "Quality plumbing, drainage, sewerage, and electrical fixtures.",
         ],
         gallery: [
-            "/thumb/Rainbow.jpg",
+            "/thumb/Rainbow.webp",
             "/rainbow/gallery-rainbow-1.webp",
             "/rainbow/gallery-rainbow-2.webp",
             "/rainbow/gallery-rainbow-4.webp",
@@ -1071,7 +1071,7 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "2D",
-                        url: "/rainbow/layout.png",
+                        url: "/rainbow/layout.webp",
                     },
                 ],
 
@@ -1149,7 +1149,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement.",
         ],
         gallery: [
-            "/thumb/Ambika.jpg",
+            "/thumb/Ambika.webp",
             "/ambika/thumb.webp",
         ],
 
@@ -1266,7 +1266,7 @@ export const projectsData = {
         ],
         benefits: ["please contact for benifits"],
         gallery: [
-            "/thumb/Ganga.jpg",
+            "/thumb/Ganga.webp",
             "/ganga/thumb.webp",
         ],
         modelTypes: [
@@ -1284,12 +1284,12 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "3D",
-                        url: "/ganga/3d.png",
+                        url: "/ganga/3d.webp",
                         label: "2 BHK Floor Plan",
                     },
                     {
                         type: "2D",
-                        url: "/ganga/3d-2.png",
+                        url: "/ganga/3d-2.webp",
                         label: "2 BHK Floor Plan",
                     },
                 ],
@@ -1340,7 +1340,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            "/thumb/Aditi.jpg",
+            "/thumb/Aditi.webp",
             "/aditi/thumb.webp"
         ],
         modelTypes: [
@@ -1361,10 +1361,10 @@ export const projectsData = {
                 layouts: [
                     {
                         type: "2D",
-                        url: "/aditi/fl2d.png",
+                        url: "/aditi/fl2d.webp",
                     }, {
                         type: "2D",
-                        url: "/aditi/tp2d.png",
+                        url: "/aditi/tp2d.webp",
                     }, {
                         type: "3D",
                         url: "/aditi/typical_pf_3d.webp",
@@ -1402,7 +1402,7 @@ export const projectsData = {
             "Ideal for individuals or small families",
         ],
         gallery: [
-            "/thumb/Nano.jpg",
+            "/thumb/Nano.webp",
             "/nano/thumb.webp",
         ],
         modelTypes: [

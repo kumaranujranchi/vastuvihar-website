@@ -23,7 +23,7 @@ const cards = [
     buttonHref: '/projects/',
     arrowHref: '/projects/',
     theme: 'dark',
-    image: '/png/nano.png',
+    image: '/png/nano.webp',
   },
   {
     number: '02.',
@@ -43,7 +43,7 @@ const cards = [
     buttonHref: '/projects/',
     arrowHref: '/projects/',
     theme: 'primary',
-    image: '/png/rainbow.png',
+    image: '/png/rainbow.webp',
   },
   {
     number: '03.',
@@ -63,7 +63,7 @@ const cards = [
     buttonHref: '/core-values/',
     arrowHref: '/core-values/',
     theme: 'dark',
-    image: '/png/ganga.png',
+    image: '/png/ganga.webp',
   },
 ];
 

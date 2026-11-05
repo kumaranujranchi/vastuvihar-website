@@ -54,7 +54,7 @@ export default function CareersSection() {
                   decoding="async"
                   width="120"
                   height="120"
-                  src="/employee/neeraj.jpeg"
+                  src="/employee/neeraj.webp"
                   className="attachment-full size-full wp-image-441"
                   alt=""
                 />{' '}
@@ -72,7 +72,7 @@ export default function CareersSection() {
                   decoding="async"
                   width="120"
                   height="120"
-                  src="/employee/brijmohan.jpeg"
+                  src="/employee/brijmohan.webp"
                   className="attachment-full size-full wp-image-439"
                   alt=""
                 />{' '}
@@ -90,7 +90,7 @@ export default function CareersSection() {
                   decoding="async"
                   width="120"
                   height="120"
-                  src="/employee/anuj.jpeg"
+                  src="/employee/anuj.webp"
                   className="attachment-full size-full wp-image-440"
                   alt=""
                 />{' '}

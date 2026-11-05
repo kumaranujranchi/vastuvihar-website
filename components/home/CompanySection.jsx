@@ -324,7 +324,7 @@ export default function CompanySection() {
               width="690"
               height="383"
 
-              src="/black-white.png"
+              src="/black-white.webp"
               className="attachment-full size-full wp-image-814"
               alt=""
             />{' '}

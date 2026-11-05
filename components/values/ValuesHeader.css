@@ -9,7 +9,7 @@
   --container-widget-align-self: initial;
   --flex-wrap-mobile: wrap;
   --justify-content: space-between;
-  /* Matches About.jpeg (2000x1125) so nothing is cropped until the height cap. */
+  /* Matches About.webp (2000x1125) so nothing is cropped until the height cap. */
   aspect-ratio: 2000 / 1125;
   max-height: 620px;
   --overlay-opacity: 0.4;
@@ -20,7 +20,7 @@
 }
 
 .elementor-51 .elementor-element.elementor-element-844e8d9:not(.elementor-motion-effects-element-type-background), .elementor-51 .elementor-element.elementor-element-844e8d9 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-  background-image: url("/About.jpeg");
+  background-image: url("/About.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

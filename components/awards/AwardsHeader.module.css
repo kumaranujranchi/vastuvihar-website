@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('/awards/hero.png') bottom/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('/awards/hero.webp') bottom/cover no-repeat;
 }
 
 .heroInner {
