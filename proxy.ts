@@ -45,5 +45,9 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|fonts/|images/).*)'],
+  matcher: [
+    // Exclude Next.js internals, static folders, and all static file extensions (.webp, .png, .jpg, .svg, .css, .js, etc.)
+    // so Cloudflare edge serves them directly without wasting Worker CPU time.
+    '/((?!_next/static|_next/image|favicon.ico|fonts/|images/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|eot)$).*)',
+  ],
 };

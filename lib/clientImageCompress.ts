@@ -116,3 +116,4 @@ export async function compressImagesToWebP(
 ): Promise<File[]> {
   return Promise.all(files.map((f) => compressImageToWebP(f, options)));
 }
+
