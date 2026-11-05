@@ -120,10 +120,14 @@
 .notesGrid h2,
 .footerCta h2 {
     margin: 16px 0 0;
-    /* Scaled down heading size */
     font-size: clamp(32px, 3.5vw, 48px);
     line-height: 1.1;
-    letter-spacing: -.03em
+    letter-spacing: -.03em;
+    color: white;
+}
+
+.footerCta h2 {
+    color: #111
 }
 
 .contactGrid {

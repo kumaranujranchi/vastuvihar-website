@@ -27,6 +27,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/Ananta.jpg",
             "/ananta/ananta.webp",
             "/ananta/gallery-1.webp",
             "/ananta/gallery-2.webp",
@@ -116,6 +117,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/CEO.jpg",
             "/ceo/ceo.webp",
             "/ceo/modern-home-1.webp",
             "/ceo/modern-home-2.webp",
@@ -214,6 +216,7 @@ export const projectsData = {
             "Helps minimize differential soil settlement",
         ],
         gallery: [
+            "/thumb/classic-ceo.jpg",
             "/classic-ceo/Classic_CEO1.webp",
             "/classic-ceo/Classic_CEO2.webp",
             "/classic-ceo/Classic_CEO3.webp",
@@ -379,6 +382,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/Yamuna.jpg",
             "/yamuna/yamuna1.webp",
             "/yamuna/yamuna2.webp",
             "/yamuna/yamuna3.webp"
@@ -456,6 +460,7 @@ export const projectsData = {
 
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/Simplex.jpg",
             "/simplex/Simplex.jpg",
             "/villa/simplex.webp",
             "/simplex/simplex-row-building.webp",
@@ -548,6 +553,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement",
         ],
         gallery: [
+            "/thumb/business-bungalow.jpg",
             "/business-b/Business_bungalow1.webp",
             "/business-b/Business_bungalow2.webp",
             "/business-b/Business_bungalow3.webp",
@@ -657,6 +663,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/Godavari.jpg",
             "/godawari/godawari2.webp",
             "/godawari/godawari1.webp",
         ],
@@ -740,6 +747,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
+            "/thumb/Jayanti.jpg",
             "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
@@ -831,6 +839,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
+            "/thumb/Kaveri.jpg",
             "/kaveri/1.webp",
             "/kaveri/kaveri-exterior.webp",
             "/kaveri/kaveri-row.webp",
@@ -920,6 +929,7 @@ export const projectsData = {
         ],
         benefits: ["please contact to know more"],
         gallery: [
+            "/thumb/Gayatri.jpg",
             "/gayatri/thumb.webp",
         ],
         modelTypes: [
@@ -1037,6 +1047,7 @@ export const projectsData = {
             "Quality plumbing, drainage, sewerage, and electrical fixtures.",
         ],
         gallery: [
+            "/thumb/Rainbow.jpg",
             "/rainbow/gallery-rainbow-1.webp",
             "/rainbow/gallery-rainbow-2.webp",
             "/rainbow/gallery-rainbow-4.webp",
@@ -1100,6 +1111,7 @@ export const projectsData = {
             },
         ],
     },
+
     //complete
     "ambika-bungalow": {
         slug: "ambika-bungalow",
@@ -1137,6 +1149,7 @@ export const projectsData = {
             "Helps reduce differential soil settlement.",
         ],
         gallery: [
+            "/thumb/Ambika.jpg",
             "/ambika/thumb.webp",
         ],
 
@@ -1253,6 +1266,7 @@ export const projectsData = {
         ],
         benefits: ["please contact for benifits"],
         gallery: [
+            "/thumb/Ganga.jpg",
             "/ganga/thumb.webp",
         ],
         modelTypes: [
@@ -1326,6 +1340,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
+            "/thumb/Aditi.jpg",
             "/aditi/thumb.webp"
         ],
         modelTypes: [
@@ -1387,6 +1402,7 @@ export const projectsData = {
             "Ideal for individuals or small families",
         ],
         gallery: [
+            "/thumb/Nano.jpg",
             "/nano/thumb.webp",
         ],
         modelTypes: [

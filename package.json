@@ -25,7 +25,7 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "1.20.16",
+    "@opennextjs/cloudflare": "^1.20.16",
     "@prisma/adapter-d1": "5.22.0",
     "@prisma/client": "^5.22.0",
     "gsap": "^3.15.0",
