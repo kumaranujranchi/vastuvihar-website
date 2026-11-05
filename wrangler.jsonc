@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "vastuvihar-website",
-  "account_id": "7c744d89a9c22ae3cdd2ae56f60024f4",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-04",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -14,7 +13,6 @@
     {
       "binding": "DB",
       "database_name": "vastuvihar-db",
-      "database_id": "be4de6b9-143d-4d75-87a8-1f3b96a17b48",
       "migrations_dir": "migrations"
     }
   ],
