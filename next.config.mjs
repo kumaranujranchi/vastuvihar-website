@@ -70,6 +70,7 @@ const securityHeaders = [
 const nextConfig = {
   ...(isStaticExport ? { output: 'export' } : {}),
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   images: { unoptimized: true },
   poweredByHeader: false,
   // OpenNext patches the generated Prisma client so it runs on Workers.

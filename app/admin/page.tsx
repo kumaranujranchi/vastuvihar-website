@@ -114,7 +114,7 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch('/api/admin/auth');
+        const res = await fetch('/api/admin/auth/');
         const data = await res.json();
         if (!data.authenticated) {
           router.push('/admin/login');
@@ -226,8 +226,8 @@ export default function AdminDashboardPage() {
 
   // Handle Logout
   const handleLogout = async () => {
-    await fetch('/api/admin/auth', { method: 'DELETE' });
-    router.push('/admin/login');
+    await fetch('/api/admin/auth/', { method: 'DELETE' });
+    router.push('/admin/login/');
     router.refresh();
   };
 
@@ -1140,7 +1140,7 @@ export default function AdminDashboardPage() {
             <div>
               <div className={styles.filterBar}>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 800 }}>Manage Job Openings</h3>
+                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600 }}>Manage Job Openings</h3>
                   <span style={{ fontSize: '12px', color: '#64748b' }}>
                     Active vacancies show automatically on https://vastuvihar.com/careers
                   </span>

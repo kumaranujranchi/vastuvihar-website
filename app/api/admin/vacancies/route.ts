@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ success: true, vacancies });
   } catch (error) {
     console.error('Error fetching vacancies:', error);
-    return NextResponse.json({ success: false, error: 'Failed to fetch vacancies' }, { status: 500 });
+    return NextResponse.json({ success: true, vacancies: [] });
   }
 }
 

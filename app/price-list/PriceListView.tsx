@@ -21,7 +21,7 @@ type StateGroup = {
   state: string;
   cities: City[];
 };
-
+// { name: 'Phase 2 & 3', link: '/price-list/purnea-phase-2-3/' }, { name: 'Phase 2 Flats', link: '/price-list/purnea-phase-2-flats/' }, { name: 'Phase 4 Flats (1 & 3 BHK)', link: '/price-list/purnea-phase-4-flats-1-3-bhk/' }, { name: 'Phase 4 Flats (2 BHK)', link: '/price-list/purnea-phase-4-flats-2-bhk/' }, { name: 'Phase 4 Bungalows', link: '/price-list/purnea-phase-4-bungalows/' }, { name: 'Phase 4, 01 Ext. Flats', link: '/price-list/purnea-phase-4-01-ext-flats/' }, { name: 'Phase 4, 01 Ext. Bungalows', link: '/price-list/purnea-phase-4-01-ext-bungalows/' 
 const PRICE_LIST_DATA: StateGroup[] = [
   {
     state: 'Bihar',
@@ -30,7 +30,7 @@ const PRICE_LIST_DATA: StateGroup[] = [
       { name: 'Aurangabad', phases: [{ name: 'Phase 02', link: '/price-list/aurangabad-project-2/' }, { name: 'Phase 04', link: '/price-list/aurangabad-project-4/' }] },
       { name: 'Dehri on Sone', phases: [{ name: 'Phase 03', link: '/price-list/dehri-on-sone-project-3/' }] },
       { name: 'Katihar', phases: [{ name: 'Phase 02', link: '/price-list/katihar-phase-2/' }] },
-      { name: 'Purnea', phases: [{ name: 'Phase 2 & 3', link: '/price-list/purnea-phase-2-3/' }, { name: 'Phase 2 Flats', link: '/price-list/purnea-phase-2-flats/' }, { name: 'Phase 4 Flats (1 & 3 BHK)', link: '/price-list/purnea-phase-4-flats-1-3-bhk/' }, { name: 'Phase 4 Flats (2 BHK)', link: '/price-list/purnea-phase-4-flats-2-bhk/' }, { name: 'Phase 4 Bungalows', link: '/price-list/purnea-phase-4-bungalows/' }, { name: 'Phase 4, 01 Ext. Flats', link: '/price-list/purnea-phase-4-01-ext-flats/' }, { name: 'Phase 4, 01 Ext. Bungalows', link: '/price-list/purnea-phase-4-01-ext-bungalows/' }] },
+      { name: 'Purnea', phases: [] },
       { name: 'Gaya', phases: [] },
       { name: 'Patna', phases: [] },
       { name: 'Muzaffarpur', phases: [] },

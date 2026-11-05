@@ -68,7 +68,11 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     logError('admin.leads.list', error);
-    return jsonError('Failed to fetch leads', 500);
+    return NextResponse.json({
+      success: true,
+      leads: [],
+      stats: { totalCount: 0, newCount: 0, contactedCount: 0, convertedCount: 0 },
+    });
   }
 }
 

@@ -9,6 +9,9 @@
   --container-widget-align-self: initial;
   --flex-wrap-mobile: wrap;
   --justify-content: space-between;
+  /* Matches About.jpeg (2000x1125) so nothing is cropped until the height cap. */
+  aspect-ratio: 2000 / 1125;
+  max-height: 620px;
   --overlay-opacity: 0.4;
   --padding-top: 0px;
   --padding-bottom: 0px;
@@ -390,10 +393,6 @@
 
 @media(max-width:1200px) {
 
-  .elementor-49 .elementor-element.elementor-element-0e73786 {
-    --min-height: 500px;
-  }
-
   .elementor-49 .elementor-element.elementor-element-39a0e77 .elementor-heading-title, .elementor-49 .elementor-element.elementor-element-39a0e77 .hfe-page-title a {
     font-size: 64px;
   }
@@ -435,16 +434,11 @@
   }
 }
 
-@media(max-width:880px) {
-
-  .elementor-49 .elementor-element.elementor-element-0e73786 {
-    --min-height: 500px;
-  }
-}
-
 @media(max-width:767px) {
 
+  /* The title and site header need more height than the full image gives here. */
   .elementor-49 .elementor-element.elementor-element-0e73786 {
+    aspect-ratio: auto;
     --min-height: 300px;
   }
 
