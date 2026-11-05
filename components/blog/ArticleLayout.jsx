@@ -21,7 +21,7 @@ export default function ArticleLayout({
 }) {
   return (
     <PageLayout route={route}>
-      <div className="breadcrumb-wrap">
+      <div className="breadcrumb-wrap breadcrumb-wrap-article">
         <div className="breadcrumb-overlay" />
         <div data-elementor-type="wp-post" data-elementor-id="2399" className="elementor elementor-2399">
           <div

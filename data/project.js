@@ -304,6 +304,7 @@ export const projectsData = {
         ],
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
+            "/thumb/Yamuna-2.jpg",
             "/yamuna/Yamuna.webp",
             "/yamuna/yamuna3.webp",
             "/yamuna/yamuna1.webp",
@@ -747,7 +748,7 @@ export const projectsData = {
         ],
         benefits: ["Please contact to know more"],
         gallery: [
-            // "/thumb/Jayanti.webp",
+            "/thumb/Jayanti.jpg",
             "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
@@ -1266,7 +1267,7 @@ export const projectsData = {
         ],
         benefits: ["please contact for benifits"],
         gallery: [
-            "/thumb/Ganga.webp",
+            "/thumb/Ganga.jpg",
             "/ganga/thumb.webp",
         ],
         modelTypes: [

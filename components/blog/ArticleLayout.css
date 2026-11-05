@@ -2,6 +2,12 @@
 /* ==========================================
    VASTU VIHAR - ARTICLE LAYOUT
    ========================================== */
+ .breadcrumb-wrap-article{
+  background-image: url("/blog-hero.png") !important;
+
+}
+
+
 
 /* Main article container */
 .site-content .single-content {

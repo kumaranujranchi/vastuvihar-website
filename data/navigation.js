@@ -8,7 +8,6 @@ export const companyLinks = [
 
 export const contactLinks = [
   { label: 'Contact Us', href: '/contact/' },
-  { label: 'Our Blogs', href: '/blog/' },
   { label: 'Branch Offices', href: '/contact/branch-contact/' },
   { label: 'Site Offices', href: '/contact/site-contact/' },
 ];
