@@ -1,27 +1,31 @@
 
 /* ==========================================
-   VASTU VIHAR - BLOG ARTICLE STYLING
+   VASTU VIHAR - ARTICLE LAYOUT
    ========================================== */
 
 /* Main article container */
 .site-content .single-content {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 55px 24px 75px;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Article header */
+/* ==========================================
+   ARTICLE HEADER
+   ========================================== */
+
 .single-content .entry-header.header-post-thumbnail {
   margin-bottom: 32px;
-  padding-bottom: 0;
+  padding: 0;
 }
 
-/* Category and published date */
+/* Metadata */
 .single-content .entry-meta {
   margin-bottom: 18px;
 }
 
-
+/* Date styling */
 .single-content .posted-on,
 .single-content .posted-on a,
 .single-content .posted-on time {
@@ -31,7 +35,15 @@
   text-decoration: none;
 }
 
-/* Main blog heading */
+/* Hide updated date to avoid duplicate dates */
+.single-content .posted-on .updated {
+  display: none;
+}
+
+/* ==========================================
+   MAIN ARTICLE TITLE
+   ========================================== */
+
 .single-content .entry-header .entry-title {
   font-size: clamp(26px, 2.6vw, 38px);
   font-weight: 700;
@@ -47,7 +59,7 @@
   overflow-wrap: break-word;
 }
 
-/* Decorative accent under title */
+/* Red decorative underline */
 .single-content .entry-header .entry-title::after {
   content: "";
   position: absolute;
@@ -59,8 +71,13 @@
   background: var(--highlight, #ed3136);
 }
 
-/* Featured image */
+/* ==========================================
+   FEATURED IMAGE
+   ========================================== */
+
+.single-post .single-content .post-thumbnail,
 .single-content .post-thumbnail {
+  width: 100%;
   margin: 0 0 38px;
   border-radius: 16px;
   overflow: hidden;
@@ -75,7 +92,10 @@
   border-radius: 16px;
 }
 
-/* Blog body */
+/* ==========================================
+   ARTICLE CONTENT
+   ========================================== */
+
 .single-content .entry-content {
   margin-top: 25px;
   font-size: 16px;
@@ -83,15 +103,19 @@
   color: #444;
 }
 
-.single-content .entry-content p {
-  margin-bottom: 20px;
+.single-content .entry-content::before {
+  display: none;
 }
 
-/* Headings inside article */
+.single-content .entry-content p {
+  margin: 0 0 20px;
+}
+
 .single-content .entry-content h2 {
   font-size: clamp(22px, 2.2vw, 30px);
   font-weight: 700;
   line-height: 1.35;
+  letter-spacing: -0.3px;
   margin: 38px 0 16px;
   color: var(--text, #111111);
 }
@@ -104,13 +128,156 @@
   color: var(--text, #111111);
 }
 
+.single-content .entry-content h4 {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 24px 0 12px;
+  color: var(--text, #111111);
+}
+
+/* Links */
+.single-content .entry-content a {
+  color: var(--highlight, #ed3136);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.single-content .entry-content a:hover {
+  color: var(--highlight-hover, #c92227);
+}
+
+/* Lists */
+.single-content .entry-content ul,
+.single-content .entry-content ol {
+  margin: 0 0 24px;
+  padding-left: 25px;
+}
+
+.single-content .entry-content li {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+/* Images within article */
+.single-content .entry-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.single-content .entry-content .wp-block-image {
+  margin: 25px 0 30px;
+}
+
+.single-post .single-content .entry-content .wp-block-image img {
+  width: 100%;
+  height: auto;
+  max-height: 543px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Blockquotes */
+.single-content .entry-content blockquote {
+  margin: 30px 0;
+  padding: 20px 25px;
+  border-left: 4px solid var(--highlight, #ed3136);
+  background: #f8f8f8;
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+  color: #333;
+}
+
 /* ==========================================
-   RESPONSIVE STYLING
+   POST NAVIGATION
+   ========================================== */
+
+.single-content .post-navigation {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.single-content .post-navigation .nav-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.single-content .post-navigation .nav-previous,
+.single-content .post-navigation .nav-next {
+  min-width: 0;
+}
+
+.single-content .post-navigation .nav-next {
+  text-align: right;
+}
+
+.single-content .post-navigation a {
+  display: block;
+  text-decoration: none;
+  color: var(--text, #111111);
+  transition: color 0.2s ease;
+}
+
+.single-content .post-navigation a:hover {
+  color: var(--highlight, #ed3136);
+}
+
+.single-content .post-navigation .reader-text {
+  display: block;
+  margin-bottom: 8px;
+  color: #888;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.single-content .post-navigation .nav-content .title {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   SOCIAL SHARE
+   ========================================== */
+
+.single-post .spaciaz-social-share a {
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+.single-post .spaciaz-social-share a:hover {
+  color: var(--primary);
+}
+
+/* ==========================================
+   ADDITIONAL ORIGINAL STYLES
+   ========================================== */
+
+.single-post .single-content .entry-header-content {
+  margin-bottom: 32px;
+}
+
+.single-post .single-content .entry-title {
+  margin-bottom: 24px;
+}
+
+.single-post .hidden-spaciaz-title-single-yes .spaciaz-title {
+  display: none;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
    ========================================== */
 
 @media (max-width: 768px) {
   .site-content .single-content {
-    padding: 35px 18px 55px;
+    padding: 0;
   }
 
   .single-content .entry-header.header-post-thumbnail {
@@ -142,28 +309,110 @@
     font-size: 15px;
     line-height: 1.8;
   }
+
+  .single-content .entry-content h2 {
+    font-size: 25px;
+    margin: 30px 0 14px;
+  }
+
+  .single-content .entry-content h3 {
+    font-size: 21px;
+    margin: 24px 0 12px;
+  }
+
+  .single-content .post-navigation {
+    margin-top: 35px;
+  }
+
+  .single-content .post-navigation .nav-content .title {
+    font-size: 15px;
+  }
 }
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
 
 @media (max-width: 480px) {
   .site-content .single-content {
-    padding: 28px 15px 45px;
+    padding: 0;
+  }
+
+  .single-content .entry-header.header-post-thumbnail {
+    margin-bottom: 20px;
   }
 
   .single-content .entry-header .entry-title {
     font-size: 24px;
     line-height: 1.4;
+    letter-spacing: -0.2px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
   }
 
-  .single-content .entry-meta-inner {
-    gap: 8px 14px;
+  .single-content .entry-header .entry-title::after {
+    width: 45px;
+    height: 3px;
   }
 
-  .single-content .categories-link a {
-    font-size: 11px;
-    padding: 6px 12px;
+  .single-content .entry-meta {
+    margin-bottom: 14px;
   }
 
+  .single-content .posted-on,
+  .single-content .posted-on a,
   .single-content .posted-on time {
     font-size: 12px;
+  }
+
+  .single-content .post-thumbnail {
+    margin-bottom: 24px;
+    border-radius: 10px;
+  }
+
+  .single-content .post-thumbnail img {
+    border-radius: 10px;
+  }
+
+  .single-content .entry-content {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .single-content .entry-content p {
+    margin-bottom: 16px;
+  }
+
+  .single-content .entry-content h2 {
+    font-size: 22px;
+    margin: 26px 0 12px;
+  }
+
+  .single-content .entry-content h3 {
+    font-size: 19px;
+    margin: 22px 0 10px;
+  }
+
+  .single-content .entry-content h4 {
+    font-size: 17px;
+  }
+
+  .single-content .entry-content blockquote {
+    padding: 15px 18px;
+    margin: 22px 0;
+  }
+
+  .single-content .post-navigation .nav-links {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .single-content .post-navigation .nav-next {
+    text-align: left;
+  }
+
+  .single-content .post-navigation .nav-content .title {
+    font-size: 15px;
   }
 }
