@@ -37,7 +37,7 @@ export default function Footer() {
 
             <div className="footer-social-row">
               <a
-                href="https://www.facebook.com/vastu-vihar"
+                href="https://www.facebook.com/VastuViharOfficial/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn"
