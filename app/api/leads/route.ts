@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { ensureDatabaseReady } from '@/lib/dbBootstrap';
 import { guardPublicPost, jsonError, logError } from '@/lib/security/request';
 import { cleanText, isTrue, normalizeEmail, normalizePhone, oneOf, phoneMatchKey } from '@/lib/validation';
 import { isSuppressed, noticeLanguage, recordConsent } from '@/lib/privacy/consent';
@@ -10,6 +11,7 @@ const SOURCES = ['contact_section', 'project_enquiry_section'] as const;
 
 export async function POST(request: Request) {
   try {
+    await ensureDatabaseReady();
     const blocked = await guardPublicPost(request, 'leads', 5, 5 * 60 * 1000);
     if (blocked) return blocked;
 
