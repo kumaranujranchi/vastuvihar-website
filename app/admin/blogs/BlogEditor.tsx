@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import RichTextEditor from '@/components/admin/RichTextEditor';
+import { compressImageToWebP } from '@/lib/clientImageCompress';
 import styles from './new/new-blog.module.css';
 
 const CATEGORIES = [
@@ -122,15 +123,17 @@ export default function BlogEditor({ blogId }: { blogId?: string }) {
     }
   }, [excerpt, isMetaDescCustomized]);
 
-  const handleImageChange = (file: File | null) => {
-    setImageFile(file);
+  const handleImageChange = async (file: File | null) => {
     if (file) {
-      const url = URL.createObjectURL(file);
+      const compressed = await compressImageToWebP(file);
+      setImageFile(compressed);
+      const url = URL.createObjectURL(compressed);
       setImagePreview(url);
       if (!imageAlt) {
-        setImageAlt(title || file.name.split('.')[0]);
+        setImageAlt(title || compressed.name.split('.')[0]);
       }
     } else {
+      setImageFile(null);
       setImagePreview(null);
     }
   };

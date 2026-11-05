@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { compressImageToWebP } from '@/lib/clientImageCompress';
 import { useLoad } from './adminApi';
 import styles from './GalleryManager.module.css';
 
@@ -39,9 +40,10 @@ export default function GalleryManager() {
   const album = albums.find((item) => item.slug === selected) || albums[0];
 
   async function upload(file: File, extra: Record<string, string> = {}) {
+    const compressed = await compressImageToWebP(file);
     const body = new FormData();
     body.set('album', album.slug);
-    body.set('file', file);
+    body.set('file', compressed);
     Object.entries(extra).forEach(([key, value]) => body.set(key, value));
     await send('/api/admin/gallery', { method: 'POST', body });
   }

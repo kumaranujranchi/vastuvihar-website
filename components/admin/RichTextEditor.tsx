@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import { compressImageToWebP } from '@/lib/clientImageCompress';
 import styles from './RichTextEditor.module.css';
 
 interface RichTextEditorProps {
@@ -112,17 +113,18 @@ export default function RichTextEditor({
     if (!file) return;
 
     setIsUploading(true);
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
+      const compressed = await compressImageToWebP(file);
+      const formData = new FormData();
+      formData.append('file', compressed);
+
       const res = await fetch('/api/admin/blogs/upload', {
         method: 'POST',
         body: formData,
       });
       const data = await res.json();
       if (data.success && data.url) {
-        const altText = prompt('Enter Alt text for this image (recommended for SEO):', file.name.split('.')[0]) || '';
+        const altText = prompt('Enter Alt text for this image (recommended for SEO):', compressed.name.split('.')[0]) || '';
         const imgHtml = `
           <figure style="margin: 24px 0; text-align: center;">
             <img src="${data.url}" alt="${altText}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
