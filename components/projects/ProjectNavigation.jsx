@@ -21,7 +21,7 @@ export default function ProjectNavigation({ project }) {
                       aria-label={`Previous project: ${previous.title}`}
                     >
                       <span className="nav-content">
-                        <span className="reader-text">previous project</span>
+                        <span className="reader-text">prev.</span>
                       </span>
                     </Link>
                   </div>
@@ -35,7 +35,7 @@ export default function ProjectNavigation({ project }) {
                       aria-label={`Next project: ${next.title}`}
                     >
                       <span className="nav-content">
-                        <span className="reader-text">next project</span>
+                        <span className="reader-text">next</span>
                       </span>
                     </Link>
                   </div>
