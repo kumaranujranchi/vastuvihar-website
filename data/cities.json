@@ -1,0 +1,593 @@
+{
+  "patna": {
+    "slug": "patna",
+    "name": "Patna",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Mathiyapur, Patna",
+        "heading": "Patna Mathiyapur 'Phase-03' Introduction",
+        "description": "Patna Mathiyapur 'Phase-03' comprises of 61 No Of units. The Patna 'Phase-03' project has been come up with a combination of 47 number of overall Units having 5 BHK Bungalows, 3 BHK Apartment and 2 BHK Apartment having all new modern amenities which include Swimming Pool, Garden and Playgrounds.",
+        "siteAddress": "Mathiyapur, Opposite Omega Mission School Danapur-Shivala Road Saguna More, Patna.",
+        "email": "patna@vastuvihar.org",
+        "phone": "7488538119, 8102926293/4",
+        "rera": "BRERAP00015-8/239/R-814/2019",
+        "masterPlan": "/masterplan/patna/p3.jpg",
+        "models": [
+          "aditi"
+        ]
+      },
+      {
+        "id": "phase-04",
+        "label": "PH-04",
+        "location": "Ashopur, Patna",
+        "heading": "Patna Ashopur Phase-04 Introduction",
+        "description": "Patna Ashopur 'Phase-04' comprises of 61 No Of units. The Patna 'Phase-04' project has been come up with a combination of 5 BHK Bungalows, 3 BHK Apartment and 2 BHK Apartment having all new modern amenities which include Swimming Pool, Garden and Playgrounds.",
+        "siteAddress": "Ashopur Behind D.A.V. Saguna More, Patna.",
+        "email": "patna@vastuvihar.org",
+        "phone": "7488538119, 8102926293/4",
+        "rera": "BRERAP00015-11/238/R-637/2019",
+        "masterPlan": "/masterplan/patna/p4.jpg",
+        "models": [
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-06",
+        "label": "PH-06",
+        "location": "Bhusaula, Patna",
+        "heading": "Patna Phase-6 (AIIMS 1) Introduction",
+        "description": "Patna Ashopur 'Phase-06' comprises of 61 No Of units. The Patna 'Phase-06' project has been come up with a combination of 5 BHK Bungalows, 3 BHK Apartment and 2 BHK Apartment having all new modern amenities which include Swimming Pool, Garden and Playgrounds.",
+        "siteAddress": "Bhusaula, Near D.G.P. House Patna AIIMS – Naubatpur Road NH-98, Patna.",
+        "email": "patna@vastuvihar.org",
+        "phone": "7488538119, 8102926293/4",
+        "rera": "BRERAP0001-10/236/R-330/2019",
+        "masterPlan": "/masterplan/patna/p6.jpg",
+        "models": [
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-07",
+        "label": "PH-07",
+        "location": "Naharpura, Patna",
+        "heading": "Patna Phase-7 (AIIMS-2) Introduction",
+        "description": "Patna AIIMS-2 'Phase-07' comprises of 305 No Of units. The Patna 'Phase-07' project has been come up with a combination of 81 number 0f 3 BHK Bungalows, and 224 numbers of 1 BHK Apartments having all new modern amenities which include Swimming Pool, Garden and Playgrounds.",
+        "siteAddress": "Naharpura, Near Baggha Tola Patna AIIMS – Naubatpur Road, NH-98, Patna.",
+        "email": "patna@vastuvihar.org",
+        "phone": "7488538119, 8102926293/4",
+        "rera": "BRERAP00015-9/237/R-641/2019",
+        "masterPlan": "/masterplan/patna/p7.jpg",
+        "models": [
+          "jayanti-bungalow",
+          "gayatri-row-house"
+        ]
+      },
+      {
+        "id": "phase-08",
+        "label": "PH-08",
+        "location": "Bela, Patna",
+        "heading": "Patna Phase-8 Introduction",
+        "description": "Patna Siwala Phase-08 comprises of 305 No Of units. The Patna 'Phase-08' project has been come up with a combination of 81 number 0f 3 BHK Bungalows, and 224 numbers of 1 BHK Apartments having all new modern amenities which include Swimming Pool, Garden and Playgrounds.",
+        "siteAddress": "Bela, Patna - Bihta Road Near Shivala Chowk Patna.",
+        "email": "patna@vastuvihar.org",
+        "phone": "7488538119, 8102926293/4",
+        "rera": "Approved",
+        "masterPlan": "/masterplan/patna/p8.jpg",
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "gaya": {
+    "slug": "gaya",
+    "name": "Gaya",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Gaya, Bihar",
+        "heading": "Gaya Phase-02",
+        "description": "Gaya Phase-02 project details are pending verification.",
+        "siteAddress": "",
+        "email": "",
+        "phone": "",
+        "rera": "",
+        "masterPlan": null,
+        "models": []
+      },
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Gaya-Wazirganj Road, Gaya",
+        "heading": "Gaya Phase-3 Introduction",
+        "description": "Gaya Phase-3 will come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2,3 & 5-BHK with all new modern facilities.",
+        "siteAddress": "Front of D.A.V School Gaya wajirgunj road, Gaya.",
+        "email": "gaya@vastuvihar.org",
+        "phone": "7488535291, 7488047028",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow"
+        ]
+      },
+      {
+        "id": "phase-04",
+        "label": "PH-04",
+        "location": "Gaya-Dobhi Road, Gaya",
+        "heading": "Gaya Phase-4 Introduction",
+        "description": "Gaya Phase-4 will come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2,3 & 5-BHK with all new modern facilities.",
+        "siteAddress": "Gaya Dobhi Road Near Maharani Petrol Pump Gaya.",
+        "email": "gaya@vastuvihar.org",
+        "phone": "7488535291",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow"
+        ]
+      },
+      {
+        "id": "phase-05",
+        "label": "PH-05",
+        "location": "Gaya-Dobhi Road, Gaya",
+        "heading": "Gaya Phase-5 Introduction",
+        "description": "Gaya Phase-5 will come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2,3 & 5-BHK with all new modern facilities.",
+        "siteAddress": "Gaya Dobhi Road Near Maharani Petrol Pump Behind D.V.C colony Gaya.",
+        "email": "gaya@vastuvihar.org",
+        "phone": "7488535291",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-06",
+        "label": "PH-06",
+        "location": "Shekhwara, Gaya",
+        "heading": "Gaya Phase-6 Introduction",
+        "description": "Gaya Phase-6 will come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2,3 & 5-BHK with all new modern facilities.",
+        "siteAddress": "Gaya Dobhi Road In front of Shree Ravi Shankar Ashram Shekhwara, Gaya.",
+        "email": "gaya@vastuvihar.org",
+        "phone": "7488535291",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      }
+    ]
+  },
+  "bhagalpur": {
+    "slug": "bhagalpur",
+    "name": "Bhagalpur",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Pista Chowk, Bhagalpur",
+        "heading": "Bhagalpur Phase-1 Introduction",
+        "description": "Bhagalpur Phase-I is located at Pista Chowk on Dumka-Bounsi Road. Set on 9 acres of land, the project is planned with cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "Pista Chowk, Dumka-Bounsi Road, Near Shiv Mandir (Bhagalpur).",
+        "email": "bhagalpur@vastuvihar.org",
+        "phone": "7488535249, 7488538169",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Phulwaria, Bhagalpur",
+        "heading": "Bhagalpur Phase-2 Introduction",
+        "description": "Bhagalpur Phase-2 is located opposite Chauhan Public School, Phulwaria, on Dumka-Bounsi Road. The project comprises 87 units and includes cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations with modern amenities.",
+        "siteAddress": "Opp Chauhan Public School, Phulwaria, Dumka-Bounsi Road (Bhagalpur).",
+        "email": "bhagalpur@vastuvihar.org",
+        "phone": "7488535249, 7488538169",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "aditi",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "ara": {
+    "slug": "ara",
+    "name": "Ara",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Tetariya Mor, Ara",
+        "heading": "Ara Phase-1 Introduction",
+        "description": "Ara Phase-I project will come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2, 3 & 5-BHK with all new modern facilities.",
+        "siteAddress": "Tetariya mor, Piania Road Dakshini Akauna, Ara",
+        "email": "ara@vastuvihar.org",
+        "phone": "8102921821, 7488049821",
+        "rera": "BRERAP00015-15/365/R-615/2019",
+        "masterPlan": "/masterplan/ara/1.jpg",
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Kayamnagar, Ara",
+        "heading": "Ara Phase-2 Introduction",
+        "description": "Ara 'Phase-II' is located on Kayam Nagar (Ara). The Phase-II project will come up with a combination of apartments, Cottages, Bungalows, Row House & Apartments such as 1, 2, 3, 5 BHK & 7 BHK with all new modern facilities.",
+        "siteAddress": "Patna Road Kayamnagar Bridge, 100 Mtr In Birampur Road, Ara",
+        "email": "ara@vastuvihar.org",
+        "phone": "8102921821",
+        "rera": "BRERAP00015-2/364/R-711/2019",
+        "masterPlan": "/masterplan/ara/2.jpg",
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Koilwar, Ara",
+        "heading": "Ara Phase-3 Introduction",
+        "description": "Ara 'Phase-III' is located on Sakardih Pachavana Road Near Krish Farm Koilwar (Khesra/Plot No-1141, 1144; Khata No-65, 150; Thana No-135; Mauza-Kulharia). The Phase-III project will come up with a combination of Bungalows, Row House & Apartments such as 2, 3 BHK & 5 BHK with all new modern facilities.",
+        "siteAddress": "Sakardih Pachavana Road Near Krish Farm Koilwar, Mauza-Kulharia, Ara",
+        "email": "ara@vastuvihar.org",
+        "phone": "8102921821",
+        "rera": "BRERAP00015-80/114/R-1427/2022",
+        "masterPlan": "/masterplan/ara/3.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      }
+    ]
+  },
+  "aurangabad": {
+    "slug": "aurangabad",
+    "name": "Aurangabad",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Bijauli, Aurangabad",
+        "heading": "Aurangabad Phase-1 Introduction",
+        "description": "Aurangabad 'Phase-1' is located on Dalten Ganj Road, Bijauli, behind D.A.V. Public School, Aurangabad. Phase-1 comprises 188 units and includes cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations, as well as 1 BHK Nano Flats, with modern amenities.",
+        "siteAddress": "Dalten Ganj Road, Bijauli Behind D.A.V Public School Aurangabad.",
+        "email": "aurangabad@vastuvihar.org",
+        "phone": "9386256118, 7488041827",
+        "rera": "BRERAP00015-51/838/R-776/2019",
+        "masterPlan": "/masterplan/aurangabad/1.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "gayatri-row-house",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Patna Road, Aurangabad",
+        "heading": "Aurangabad Phase-2 Introduction",
+        "description": "Aurangabad 'Phase-2' comprises 188 units. The Phase-2 project includes cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations, as well as 1 BHK Nano Flats, with modern amenities.",
+        "siteAddress": "Patna Road Behind B.L Indo Public School Aurangabad.",
+        "email": "aurangabad@vastuvihar.org",
+        "phone": "9386256118, 7488041827",
+        "rera": "In Progress(Approved)",
+        "masterPlan": "/masterplan/aurangabad/2.jpg",
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "kaveri-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "biharsharif": {
+    "slug": "biharsharif",
+    "name": "Bihar Sharif",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Deep Nagar, Bihar Sharif",
+        "heading": "Bihar Sharif Phase-1 Introduction",
+        "description": "Bihar Sharif Phase-1 is located on Korai Road, Deep Nagar, Nalanda. The project is set on 9 acres of land and includes cottages, bungalows, row houses, apartments and smaller Nano flats, with 2, 3, 4 and 5 BHK residential options.",
+        "siteAddress": "Korai Road Deep Nagar, Nalanda, Bihar Sharif 803111",
+        "email": "biharsharif@vastuvihar.org",
+        "phone": "7488538197",
+        "rera": "",
+        "masterPlan": "/masterplan/biharsharif/1.JPG",
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Gulab Bigha, Mohanpur, Bihar Sharif",
+        "heading": "Bihar Sharif Phase-2 Introduction",
+        "description": "Bihar Sharif Phase-2 is located at Gulab Bigha More near Nalanda Police Station, Mohanpur. The project is set on 9 acres of land and is planned with cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "Gulab Bigha Near Nalanda Police Station, Mohanpur, Bihar Sharif 803111.",
+        "email": "biharsharif@vastuvihar.org",
+        "phone": "8102921825",
+        "rera": "BRERAP00015-14/367/R-509/2019",
+        "masterPlan": "/masterplan/biharsharif/2.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+
+  "buxar": {
+    "slug": "buxar",
+    "name": "Buxar",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Hukha Lalganj, Buxar",
+        "heading": "Buxar Phase-1 Introduction",
+        "description": "Buxar Phase-I is located in Buxar and is spread across 9 acres of thoughtfully planned land. The project offers a well-designed residential community featuring 2 BHK and 3 BHK apartments, providing a comfortable and modern lifestyle with quality infrastructure and essential amenities.",
+        "siteAddress": "Hukha Lalganj Etarhi Road, Buxar.",
+        "email": "buxar@vastuvihar.org",
+        "phone": "8102921842",
+        "rera": "",
+        "masterPlan": "/masterplan/buxar/1.jpg",
+        "models": [
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Hukha Lalganj, Buxar",
+        "heading": "Buxar Phase-2 Introduction",
+        "description": "Buxar Phase-II is the next phase of the township, designed to further enhance the residential experience. With carefully planned layouts and improved infrastructure, Phase-II offers a combination of 2 BHK and 3 BHK apartments, ensuring spacious living, modern amenities, and a well-connected community environment.",
+        "siteAddress": "Hukha Lalganj Etarhi Road, Buxar.",
+        "email": "buxar@vastuvihar.org",
+        "phone": "8102921842",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow"
+        ]
+      },
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Harikishnupur, Buxar",
+        "heading": "Buxar Phase-3 Introduction",
+        "description": "Buxar Phase-III is the latest expansion of the township, developed to meet the growing demand for premium residential living. This phase features thoughtfully designed 2 BHK and 3 BHK apartments, complemented by landscaped surroundings, quality construction, and modern lifestyle amenities for a comfortable and convenient living experience.",
+        "siteAddress": "Harikishnupur, Near Parari, 1km from Bxr Ara four lane, Buxar.",
+        "email": "buxar@vastuvihar.org",
+        "phone": "8102921842",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      }
+    ]
+  },
+
+  "dehri-on-sone": {
+    "slug": "dehri-on-sone",
+    "name": "Dehri-On-Sone",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Tilouthu Road, Katar, Dehri-On-Sone",
+        "heading": "Dehri-On-Sone Phase-1 Introduction",
+        "description": "Dehri on Sone 'Phase-I' has come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2, 3, 4 & 5-BHK with all new modern amenities.",
+        "siteAddress": "Tilouthu Road Near Sad Dev Jib Aashram Katar Dehri-On-Sone.",
+        "email": "dehrionsone@vastuvihar.org",
+        "phone": "9386256112, 9386256113",
+        "rera": "BRERA00015-52/837/R-786/2019",
+        "masterPlan": "/masterplan/dehri/1.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "gayatri-row-house",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Tilouthu Road, Katar, Dehri-On-Sone",
+        "heading": "Dehri-On-Sone Phase-2 Introduction",
+        "description": "Dehri on Sone 'Phase-2' has come up with a combination of Cottages, Bungalows, Row House & Apartments such as 1, 2, 3, 4 & 5-BHK with all new modern amenities.",
+        "siteAddress": "Tilouthu Road Near Sad Dev Jib Aashram Katar Dehri-On-Sone.",
+        "email": "dehrionsone@vastuvihar.org",
+        "phone": "9386256112, 9386256113",
+        "rera": "BRERA00015-63/1048/R-841/2019",
+        "masterPlan": "/masterplan/dehri/2.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "godawari-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+
+  "jehanabad": {
+    "slug": "jehanabad",
+    "name": "Jehanabad",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Ainwan, Jehanabad",
+        "heading": "Jehanabad Phase-1 Introduction",
+        "description": "Jehanabad Phase-1 comprises 320 units. The Phase-I project will come up with a combination of cottages, bungalows, row houses and apartments in 1, 2, 3 and 5 BHK configurations with modern facilities.",
+        "siteAddress": "Ainwan Jehanbad-Patna Road Near Piaggio Showroom Jehanabad, Bihar 804408",
+        "email": "jehanabad@vastuvihar.org",
+        "phone": "7488538120, 7488538179",
+        "rera": "BRERAP00015-24/762/R-635/2019",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "munger": {
+    "slug": "munger",
+    "name": "Munger",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Safiyabad Chowk, Jamalpur, Munger",
+        "heading": "Munger Phase-1 Introduction",
+        "description": "Munger Phase-I is located at Safiyabad Chowk, near Chandrapura, Jamalpur, Munger. The phase comprises 148 units, with potential expansion in the future. The project includes bungalows, row houses, apartments and Chota Flats, with 2, 3, 4 and 5 BHK bungalow options and 1 BHK Chota Flats, along with modern facilities.",
+        "siteAddress": "Safiyabad Chowk Near Chandrapura, Jamalpur Munger.",
+        "email": "munger@vastuvihar.org",
+        "phone": "07488538169, 09386256130",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "sasaram": {
+    "slug": "sasaram",
+    "name": "Sasaram",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Lalganj Tetri, Sasaram",
+        "heading": "Sasaram Phase-1 Introduction",
+        "description": "Sasaram Phase-I is located at Lalganj Tetri, Sasaram. It comprises 91 units and includes cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations with modern amenities.",
+        "siteAddress": "Lal ganj Tetri, Sasaram.",
+        "email": "sasaram@vastuvihar.org",
+        "phone": "7488047021, 8102921845",
+        "rera": "In Progress (Approved)",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Lalganj Tetri, Sasaram",
+        "heading": "Sasaram Phase-2 Introduction",
+        "description": "Sasaram Phase-II is also located at Lalganj Tetri, Sasaram. It comprises 27 units and includes cottages, bungalows, row houses and apartments in 2, 3, 4 and 5 BHK configurations, as well as 1 BHK Nano Flats, with modern amenities.",
+        "siteAddress": "Lal ganj Tetri, Sasaram.",
+        "email": "sasaram@vastuvihar.org",
+        "phone": "7488047021, 8102921845",
+        "rera": "In Progress (Approved)",
+        "masterPlan": null,
+        "models": [
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Kumhau Gate, Sasaram",
+        "heading": "Sasaram Phase-3 Introduction",
+        "description": "Sasaram Phase-3 is located at Kumhau Gate, near Toll Tax, Sasaram. It comprises 178 units and includes cottages, bungalows, row houses and apartments in 1, 2, 3 and 7 BHK configurations with modern amenities.",
+        "siteAddress": "Kumhau Gate, Near Toll Tax, Sasaram.",
+        "email": "sasaram@vastuvihar.org",
+        "phone": "7488047021, 8102921845",
+        "rera": "In Progress (Approved)",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  }
+
+
+}
