@@ -1,15 +1,19 @@
-import { getCloudflareContext } from '@opennextjs/cloudflare';
-import { PrismaD1 } from '@prisma/adapter-d1';
 import { PrismaClient } from '@prisma/client';
 
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
+
 // A Worker cannot reuse a database client across requests, so each request gets its own.
-// Keyed on the request's execution context, which also covers route handlers, where
-// React's cache() does not apply.
 const clients = new WeakMap<object, PrismaClient>();
 let fallbackClient: PrismaClient | null = null;
 
 function requestClient(): PrismaClient {
+  // 1. Try Cloudflare Worker D1 binding if present
   try {
+    // Dynamic import/require so Node.js environments (like AWS Lightsail) do not fail
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { getCloudflareContext } = require('@opennextjs/cloudflare');
     const cf = getCloudflareContext();
     const env = cf?.env;
     const ctx = cf?.ctx as object | undefined;
@@ -18,6 +22,8 @@ function requestClient(): PrismaClient {
       if (ctx && typeof ctx === 'object') {
         let client = clients.get(ctx);
         if (!client) {
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          const { PrismaD1 } = require('@prisma/adapter-d1');
           client = new PrismaClient({
             adapter: new PrismaD1(env.DB),
             log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
@@ -28,6 +34,8 @@ function requestClient(): PrismaClient {
       }
 
       if (!fallbackClient) {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const { PrismaD1 } = require('@prisma/adapter-d1');
         fallbackClient = new PrismaClient({
           adapter: new PrismaD1(env.DB),
           log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
@@ -36,18 +44,19 @@ function requestClient(): PrismaClient {
       return fallbackClient;
     }
   } catch {
-    // If outside Cloudflare context (e.g. standalone scripts or build)
+    // If outside Cloudflare context (AWS Lightsail, Docker, local dev, or standard Node.js server)
   }
 
-  if (!fallbackClient) {
-    fallbackClient = new PrismaClient({
+  // 2. Standard Node.js / AWS Lightsail environment (Singleton PrismaClient)
+  if (!globalForPrisma.prisma) {
+    globalForPrisma.prisma = new PrismaClient({
       log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
     });
   }
-  return fallbackClient;
+  return globalForPrisma.prisma;
 }
 
-/** Resolves to the current request's client on each use, so callers can import it normally. */
+/** Resolves to the active Prisma client on each use, so callers can import it normally. */
 export const prisma = new Proxy({} as PrismaClient, {
   get(_target, property) {
     const client = requestClient();

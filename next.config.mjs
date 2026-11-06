@@ -1,10 +1,12 @@
 const isStaticExport = process.env.STATIC_EXPORT === '1';
 const isDev = process.env.NODE_ENV !== 'production';
 
-// Gives `next dev` local versions of the D1 and R2 bindings in wrangler.jsonc.
-if (process.env.NODE_ENV === 'development') {
-  const { initOpenNextCloudflareForDev } = await import('@opennextjs/cloudflare');
-  await initOpenNextCloudflareForDev();
+// Gives `next dev` local versions of the D1 and R2 bindings if developing specifically for Cloudflare.
+if (process.env.NODE_ENV === 'development' && process.env.USE_CLOUDFLARE === '1') {
+  try {
+    const { initOpenNextCloudflareForDev } = await import('@opennextjs/cloudflare');
+    await initOpenNextCloudflareForDev();
+  } catch {}
 }
 
 // A tag's hosts are only allowed when its ID is set, so a site with no tags allows none.
@@ -68,7 +70,7 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  ...(isStaticExport ? { output: 'export' } : {}),
+  output: isStaticExport ? 'export' : (process.env.NO_STANDALONE === '1' ? undefined : 'standalone'),
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   images: { unoptimized: true },
