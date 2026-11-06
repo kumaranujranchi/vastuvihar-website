@@ -372,7 +372,6 @@
       }
     ]
   },
-
   "buxar": {
     "slug": "buxar",
     "name": "Buxar",
@@ -428,7 +427,6 @@
       }
     ]
   },
-
   "dehri-on-sone": {
     "slug": "dehri-on-sone",
     "name": "Dehri-On-Sone",
@@ -476,7 +474,6 @@
       }
     ]
   },
-
   "jehanabad": {
     "slug": "jehanabad",
     "name": "Jehanabad",
@@ -587,7 +584,278 @@
         ]
       }
     ]
+  },
+  "samastipur": {
+    "slug": "samastipur",
+    "name": "Samastipur",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Harpur Ailoth, Samastipur",
+        "heading": "Samastipur Phase-1 Introduction",
+        "description": "'Phase 1' is located on Harpur Ailoth, in front of HP Balaji Petrol Pump, Musri Ghrari Road, Samastipur. The project is set on 9 acres of land and is planned with cottages, bungalows, row houses and apartments in 1, 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "Vastu Vihar, Harpur Ailoth Musri Ghrari, Samastipur, Bihar 848101",
+        "email": "samastipur@vastuvihar.org",
+        "phone": "9386256139, 8102921860",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "varanasi": {
+    "slug": "varanasi",
+    "name": "Varanasi",
+    "state": "Uttar Pradesh",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Gopalpur Jiv Nathpur Road, Varanasi",
+        "heading": "Varanasi Phase-1 Introduction",
+        "description": "Varanasi Phase-1 has come up with a combination of cottages, bungalows, row houses and apartments such as 1, 2, 3 and 5 BHK with modern facilities.",
+        "siteAddress": "Gopalpur Jiv Nathpur Road Near Ram Nagar Tengra More P.O. Varanasi.",
+        "email": "varanasi@vastuvihar.org",
+        "phone": "9369997216, 7520064645",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Babatpur, Varanasi",
+        "heading": "Varanasi Phase-2 Introduction",
+        "description": "Varanasi Phase-2 has come up with a combination of cottages, bungalows, row houses and apartments such as 1, 2, 3 and 5 BHK with modern facilities.",
+        "siteAddress": "Behind BHEL Babatpur P.O. Varanasi.",
+        "email": "varanasi@vastuvihar.org",
+        "phone": "9369997216, 7520064645",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "gayatri-row-house",
+          "simplex-bungalow"
+        ]
+      }
+    ]
+  },
+  "deoghar": {
+    "slug": "deoghar",
+    "name": "Deoghar",
+    "state": "Jharkhand",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Kushmaha, Deoghar",
+        "heading": "Deoghar Phase-1 Introduction",
+        "description": "Deoghar Phase-1 project has come up with a combination of cottages, bungalows, row houses and apartments such as 1, 2, 3, 4 and 5 BHK with modern amenities.",
+        "siteAddress": "Kushmaha, Near - Paritran Medical College Toward Deoghar To Sultanganj Road.",
+        "email": "deoghar@vastuvihar.org",
+        "phone": "7488659801 / 6203212688 / 7488047026",
+        "rera": "",
+        "masterPlan": "/masterplan/deoghar/1.jpg",
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "sitamarhi": {
+    "slug": "sitamarhi",
+    "name": "Sitamarhi",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Kailashpuri, Bhau Prasad, Sitamarhi",
+        "heading": "Sitamarhi Phase-1 Introduction",
+        "description": "Sitamarhi Phase-I is located at Kailashpuri, Bhau Prasad near Kali Mandir, Sitamarhi. The project is set on 9 acres of land and comprises 193 units with cottages, bungalows, row houses and apartments in 1, 2, 3, 4, 5 and 7 BHK options.",
+        "siteAddress": "Kailashpuri, Bhau Prasad Near Kali Mandir Sitamarhi.",
+        "email": "sitamarhi@vastuvihar.org",
+        "phone": "7061383088",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "godawari-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "bettiah": {
+    "slug": "bettiah",
+    "name": "Bettiah",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Barwatsena, Bettiah",
+        "heading": "Bettiah Phase-1 Introduction",
+        "description": "Bettiah Phase-I project is planned with apartments, cottages, bungalows, row houses and apartments in 1, 2, 3, 5 and 7 BHK options with modern facilities.",
+        "siteAddress": "Areraj Road Near - Saraswati Vidya Mandir School Barwatsena Bettiah",
+        "email": "bettiah@vastuvihar.org",
+        "phone": "9386256109",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "yamuna-bungalow-7bhk",
+          "jayanti-bungalow",
+          "gayatri-row-house",
+          "kaveri-bungalow",
+          "simplex-bungalow"
+        ]
+      }
+    ]
+  },
+  "darbhanga": {
+    "slug": "darbhanga",
+    "name": "Darbhanga",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-01",
+        "label": "PH-01",
+        "location": "Sonki Road / Shahpur Chakka Chowk, Darbhanga",
+        "heading": "Darbhanga Phase-1 Introduction",
+        "description": "Darbhanga Phase-I is located on NH-57 near Reliance Petrol Pump at Shahpur Chakka Chowk, Darbhanga. The project is planned with cottages, bungalows and apartments in 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "Sonki road, Rampur Chowk Dhoi Ghat, Darbhanga.",
+        "email": "darbhanga@vastuvihar.org",
+        "phone": "7488538162, 7488047033",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      },
+      {
+        "id": "phase-02",
+        "label": "PH-02",
+        "location": "Koyla Asthan, Darbhanga",
+        "heading": "Darbhanga Phase-2 Introduction",
+        "description": "Darbhanga Phase-II is located on NH-105 towards Jaynagar Madhubani Highway at Koyla Asthan, Darbhanga. The project is planned with cottages, bungalows, row houses and apartments in 1, 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "NH-105 Towas jay Nagar Madhubani Highway at Koyla asthan Darbhanga",
+        "email": "darbhanga@vastuvihar.org",
+        "phone": "7488538162, 7488047033",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Sonki Road, Rampur Chowk, Darbhanga",
+        "heading": "Darbhanga Phase-3 Introduction",
+        "description": "Darbhanga Phase-III is located at Sonki Road, Rampur Chowk, Dhoi Ghat, Darbhanga. The project comprises 145 units and has cottages, bungalows, row houses and apartments in 1, 2, 3, 4 and 5 BHK configurations.",
+        "siteAddress": "Sonki road, Rampur Chowk Dhoi Ghat, Darbhanga",
+        "email": "darbhanga@vastuvihar.org",
+        "phone": "7488538162, 7488047033",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "godawari-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      }
+    ]
+  },
+  "hajipur": {
+    "slug": "hajipur",
+    "name": "Hajipur",
+    "state": "Bihar",
+    "phases": [
+      {
+        "id": "phase-03",
+        "label": "PH-03",
+        "location": "Industrial Area, Jandaha Road, Hajipur",
+        "heading": "Hajipur Phase-03 Introduction",
+        "description": "Hajipur Phase 3 is planned with cottages, bungalows, row houses and apartments such as 1, 2, 3 and 5 BHK with modern facilities.",
+        "siteAddress": "J. P. Evening Inter College, Near Vastu Vihar, Phase-II Industrial Area, Jandaha Road.",
+        "email": "hajipur@vastuvihar.org",
+        "phone": "7488538139,7488538151",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-05",
+        "label": "PH-05",
+        "location": "Paswan Chowk, Jandaha Road, Hajipur",
+        "heading": "Hajipur Phase-05 Introduction",
+        "description": "Hajipur Phase 5 is planned with cottages, bungalows, row houses and apartments such as 1, 2, 3 and 5 BHK with modern facilities.",
+        "siteAddress": "Paswan Chowk Jandaha Road Hilalpur Chowk, Hajipur",
+        "email": "hajipur@vastuvihar.org",
+        "phone": "7488538139,7488538151",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "yamuna-bungalow",
+          "jayanti-bungalow",
+          "kaveri-bungalow",
+          "simplex-bungalow",
+          "ganga-new-2bhk"
+        ]
+      },
+      {
+        "id": "phase-06",
+        "label": "PH-06",
+        "location": "CIPET College, Jandaha Road, Hajipur",
+        "heading": "Hajipur Phase-06 Introduction",
+        "description": "Hajipur Phase-VI is located near CIPET College, beside Subhai Railway Crossing, Industrial Area, Jandaha Road. The project is planned with cottages, bungalows, row houses and apartments.",
+        "siteAddress": "Cipet College Near Vastu VIhar Phase-I, Beside Subhai Railway Crossing Industrial Area, Jandaha Road",
+        "email": "hajipur@vastuvihar.org",
+        "phone": "8102921819,7488538151",
+        "rera": "",
+        "masterPlan": null,
+        "models": [
+          "jayanti-bungalow",
+          "simplex-bungalow"
+        ]
+      }
+    ]
   }
-
-
 }
