@@ -21,3 +21,4 @@ echo "=== [5/5] Reloading PM2 app (vastuvihar) ==="
 pm2 reload vastuvihar --update-env || pm2 restart vastuvihar
 
 echo "=== Deployment successful and live! ==="
+
