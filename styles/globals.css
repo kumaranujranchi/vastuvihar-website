@@ -14676,9 +14676,9 @@ body.rtl .elementor-widget-n-tabs {
         width: auto
     }
 
-    .elementor.elementor .elementor-widget-n-tabs.e-n-tabs-mobile .e-n-tab-title:not(:first-child) {
+    /* .elementor.elementor .elementor-widget-n-tabs.e-n-tabs-mobile .e-n-tab-title:not(:first-child) {
         margin-block-start: var(--n-tabs-title-gap)
-    }
+    } */
 
     .elementor.elementor .elementor-widget-n-tabs.e-n-tabs-mobile .e-n-tab-title[aria-selected=true] {
         margin-block-end: var(--n-tabs-gap)
