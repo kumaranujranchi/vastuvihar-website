@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   group: production-deploy
@@ -26,3 +27,4 @@ jobs:
           script: |
             cd /var/www/vastuvihar-website
             bash deploy/deploy.sh
+
