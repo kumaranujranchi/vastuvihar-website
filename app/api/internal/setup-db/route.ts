@@ -1,18 +1,23 @@
 import { NextResponse } from 'next/server';
-import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { INIT_SCHEMA_SQL } from '@/lib/dbBootstrap';
 
 export async function GET() {
   try {
-    const cf = getCloudflareContext();
+    let cf: any = null;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { getCloudflareContext } = require('@opennextjs/cloudflare');
+      cf = getCloudflareContext();
+    } catch {}
+
     const db = cf?.env?.DB;
 
     if (!db) {
       return NextResponse.json({
         success: false,
-        error: 'Cloudflare D1 binding (env.DB) is not available.',
+        error: 'Cloudflare D1 binding (env.DB) is not available. If running on AWS Lightsail or Node.js, run `npx prisma db push` to initialize tables.',
         envKeys: Object.keys(cf?.env || {}),
-      }, { status: 500 });
+      }, { status: 400 });
     }
 
     try {

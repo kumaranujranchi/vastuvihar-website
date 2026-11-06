@@ -1,4 +1,4 @@
-import { getCloudflareContext } from '@opennextjs/cloudflare';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { randomToken } from '@/lib/security/crypto';
 
@@ -9,6 +9,9 @@ const GALLERY_FOLDER = 'gallery';
 
 function safeEnv(): any {
   try {
+    // Dynamic require so non-Cloudflare environments (e.g. AWS Lightsail) do not error
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { getCloudflareContext } = require('@opennextjs/cloudflare');
     return getCloudflareContext()?.env || {};
   } catch {
     return {};
@@ -18,6 +21,15 @@ function safeEnv(): any {
 const privateFiles = () => safeEnv().PRIVATE_FILES;
 const media = () => safeEnv().MEDIA;
 const uploadsKv = () => safeEnv().UPLOADS_KV;
+
+function resumeDir(): string {
+  const base = process.env.PRIVATE_STORAGE_DIR || path.join(process.cwd(), 'storage', 'private');
+  return path.join(base, RESUME_FOLDER);
+}
+
+function uploadDiskDir(folder: string): string {
+  return path.join(process.cwd(), 'public', 'uploads', folder);
+}
 
 const RESUME_TYPES: Record<string, { mime: string; matches: (b: Buffer) => boolean }> = {
   '.pdf': {
@@ -51,14 +63,25 @@ export async function saveResume(file: File): Promise<{ path?: string; error?: s
   if (pf) {
     try {
       await pf.put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
+      return { path: `${PRIVATE_PREFIX}${name}` };
     } catch (err) {
       console.warn('R2 resume save failed:', err);
     }
   }
-  return { path: `${PRIVATE_PREFIX}${name}` };
+
+  // Filesystem storage for AWS Lightsail / VPS
+  try {
+    const dir = resumeDir();
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(path.join(dir, name), buffer, { mode: 0o600 });
+    return { path: `${PRIVATE_PREFIX}${name}` };
+  } catch (err) {
+    console.error('Disk resume save failed:', err);
+    return { error: 'Could not store resume file.' };
+  }
 }
 
-/** Maps a stored path to its object key, without allowing traversal. */
+/** Maps a stored path to its object key or file path, without allowing traversal. */
 function resumeKey(stored: string): string | null {
   if (!stored.startsWith(PRIVATE_PREFIX)) return null;
   return `${RESUME_FOLDER}/${path.basename(stored.slice(PRIVATE_PREFIX.length))}`;
@@ -67,17 +90,29 @@ function resumeKey(stored: string): string | null {
 export async function readResume(stored: string): Promise<{ data: Buffer; mime: string; ext: string } | null> {
   const key = resumeKey(stored);
   if (!key) return null;
+  const fileName = path.basename(key);
+  const ext = path.extname(fileName).toLowerCase();
+  const mime = RESUME_TYPES[ext]?.mime || 'application/octet-stream';
+
   const pf = privateFiles();
-  if (!pf) return null;
+  if (pf) {
+    try {
+      const object = await pf.get(key);
+      if (object) {
+        return {
+          data: Buffer.from(await object.arrayBuffer()),
+          ext,
+          mime,
+        };
+      }
+    } catch {}
+  }
+
+  // Filesystem read for AWS Lightsail / VPS
   try {
-    const object = await pf.get(key);
-    if (!object) return null;
-    const ext = path.extname(key).toLowerCase();
-    return {
-      data: Buffer.from(await object.arrayBuffer()),
-      ext,
-      mime: RESUME_TYPES[ext]?.mime || 'application/octet-stream',
-    };
+    const filePath = path.join(resumeDir(), fileName);
+    const data = await fs.readFile(filePath);
+    return { data, ext, mime };
   } catch {
     return null;
   }
@@ -86,14 +121,20 @@ export async function readResume(stored: string): Promise<{ data: Buffer; mime: 
 export async function deleteResume(stored: string | null | undefined): Promise<void> {
   if (!stored) return;
   const key = resumeKey(stored);
+  if (!key) return;
+  const fileName = path.basename(key);
+
   const pf = privateFiles();
-  if (key && pf) {
+  if (pf) {
     try {
       await pf.delete(key);
-    } catch {
-      // Ignore
-    }
+    } catch {}
   }
+
+  // Filesystem delete for AWS Lightsail / VPS
+  try {
+    await fs.rm(path.join(resumeDir(), fileName), { force: true });
+  } catch {}
 }
 
 const IMAGE_TYPES: Record<string, (b: Buffer) => boolean> = {
@@ -132,6 +173,8 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
 
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) || 'image';
   const name = `${Date.now()}_${safe}${ext}`;
+
+  // 1. Try Cloudflare R2 if configured
   const m = media();
   if (m) {
     try {
@@ -142,6 +185,7 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
     }
   }
 
+  // 2. Try Cloudflare KV if configured
   const kv = uploadsKv();
   if (kv) {
     try {
@@ -152,32 +196,51 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
     }
   }
 
-  // Fallback to inline Base64 data URL so publishing never fails if R2 is absent
+  // 3. Save to disk (for AWS Lightsail / VPS / local Node.js server)
+  try {
+    const dir = uploadDiskDir(BLOG_FOLDER);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(path.join(dir, name), buffer);
+    return { url: `/uploads/blogs/${name}` };
+  } catch (diskErr) {
+    console.warn('Disk blog image save failed, falling back to data URL:', diskErr);
+  }
+
+  // Fallback to inline Base64 data URL
   return { url: `data:${IMAGE_MIME[ext]};base64,${buffer.toString('base64')}` };
 }
 
 async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream | Buffer; contentType: string } | null> {
   const safe = path.basename(name);
-  const contentType = IMAGE_MIME[path.extname(safe).toLowerCase()];
+  const ext = path.extname(safe).toLowerCase();
+  const contentType = IMAGE_MIME[ext];
   if (!contentType) return null;
+
+  // 1. Check Cloudflare R2
   const m = media();
   if (m) {
     try {
       const object = await m.get(`${folder}/${safe}`);
       if (object) return { body: object.body as unknown as ReadableStream, contentType };
-    } catch {
-      // Ignore
-    }
+    } catch {}
   }
+
+  // 2. Check Cloudflare KV
   const kv = uploadsKv();
   if (kv) {
     try {
       const val = await kv.get(`${folder}:${safe}`, { type: 'arrayBuffer' });
       if (val) return { body: Buffer.from(val), contentType };
-    } catch {
-      // Ignore
-    }
+    } catch {}
   }
+
+  // 3. Check disk for AWS Lightsail / VPS
+  try {
+    const filePath = path.join(uploadDiskDir(folder), safe);
+    const data = await fs.readFile(filePath);
+    return { body: data, contentType };
+  } catch {}
+
   return null;
 }
 
@@ -188,6 +251,8 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
   const upload = await readImageUpload(file);
   if ('error' in upload) return { error: upload.error };
   const name = `${randomToken(24)}${upload.ext}`;
+
+  // 1. Try Cloudflare R2
   const m = media();
   if (m) {
     try {
@@ -197,6 +262,8 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
       console.warn('R2 gallery upload failed:', err);
     }
   }
+
+  // 2. Try Cloudflare KV
   const kv = uploadsKv();
   if (kv) {
     try {
@@ -206,6 +273,17 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
       console.warn('KV gallery upload failed:', err);
     }
   }
+
+  // 3. Save to disk for AWS Lightsail / VPS
+  try {
+    const dir = uploadDiskDir(GALLERY_FOLDER);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(path.join(dir, name), upload.buffer);
+    return { name };
+  } catch (err) {
+    console.error('Disk gallery save failed:', err);
+  }
+
   return { name };
 }
 
@@ -214,20 +292,22 @@ export const readGalleryImage = (name: string) => readMediaImage(GALLERY_FOLDER,
 export async function deleteGalleryImage(name: string | null | undefined): Promise<void> {
   const safe = name ? path.basename(name) : null;
   if (!safe) return;
+
   const m = media();
   if (m) {
     try {
       await m.delete(`${GALLERY_FOLDER}/${safe}`);
-    } catch {
-      // Ignore
-    }
+    } catch {}
   }
+
   const kv = uploadsKv();
   if (kv) {
     try {
       await kv.delete(`${GALLERY_FOLDER}:${safe}`);
-    } catch {
-      // Ignore
-    }
+    } catch {}
   }
+
+  try {
+    await fs.rm(path.join(uploadDiskDir(GALLERY_FOLDER), safe), { force: true });
+  } catch {}
 }

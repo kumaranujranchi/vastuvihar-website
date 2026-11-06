@@ -365,9 +365,21 @@ export async function ensureDatabaseReady(): Promise<void> {
 
   schemaPromise = (async () => {
     try {
-      const cf = getCloudflareContext();
+      let cf: any = null;
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const { getCloudflareContext } = require('@opennextjs/cloudflare');
+        cf = getCloudflareContext();
+      } catch {
+        // Not running on Cloudflare Workers (AWS Lightsail / Node.js)
+        schemaEnsured = true;
+        return;
+      }
       const db = cf?.env?.DB;
-      if (!db || typeof db.prepare !== 'function') return;
+      if (!db || typeof db.prepare !== 'function') {
+        schemaEnsured = true;
+        return;
+      }
 
       const check = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='Lead'").first();
       if (!check) {

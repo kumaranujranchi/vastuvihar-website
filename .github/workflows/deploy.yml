@@ -1,0 +1,52 @@
+name: Auto Deploy to AWS Lightsail
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Lightsail Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into Lightsail and Deploy
+        env:
+          SSH_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          SSH_USER: ${{ secrets.LIGHTSAIL_USERNAME }}
+          SSH_KEY: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          cat << 'EOF' > ~/.ssh/deploy_key
+          ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          EOF
+          chmod 600 ~/.ssh/deploy_key
+
+          # Test connection with verbose log
+          echo "Attempting SSH connection to $SSH_USER@$SSH_HOST..."
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" '
+            set -e
+            echo "=== [1/5] Navigating to /var/www/vastuvihar-website ==="
+            cd /var/www/vastuvihar-website
+
+            echo "=== [2/5] Pulling latest code from origin/main ==="
+            git pull origin main
+
+            echo "=== [3/5] Installing dependencies ==="
+            npm ci
+
+            echo "=== [4/5] Updating database schema & building ==="
+            npx prisma db push
+            npm run build
+
+            echo "=== [5/5] Reloading PM2 process ==="
+            pm2 reload vastuvihar --update-env || pm2 restart vastuvihar
+
+            echo "=== Auto-deployment complete and live! ==="
+          '
