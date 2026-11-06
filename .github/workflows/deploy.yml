@@ -22,9 +22,23 @@ jobs:
           host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ${{ secrets.LIGHTSAIL_USERNAME }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          port: ${{ secrets.LIGHTSAIL_PORT || 22 }}
+          port: 22
           script_stop: true
           script: |
+            echo "=== [1/5] Navigating to /var/www/vastuvihar-website ==="
             cd /var/www/vastuvihar-website
-            bash deploy/deploy.sh
 
+            echo "=== [2/5] Pulling latest code from origin/main ==="
+            git pull origin main
+
+            echo "=== [3/5] Installing dependencies ==="
+            npm ci
+
+            echo "=== [4/5] Updating database schema & building ==="
+            npx prisma db push
+            npm run build
+
+            echo "=== [5/5] Reloading PM2 process ==="
+            pm2 reload vastuvihar --update-env || pm2 restart vastuvihar
+
+            echo "=== Auto-deployment complete and live! ==="
