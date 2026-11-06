@@ -17,14 +17,17 @@ jobs:
 
     steps:
       - name: SSH into Lightsail and Deploy
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ${{ secrets.LIGHTSAIL_USERNAME }}
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          port: 22
-          script_stop: true
-          script: |
+        env:
+          SSH_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          SSH_USER: ${{ secrets.LIGHTSAIL_USERNAME }}
+          SSH_KEY: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" '
+            set -e
             echo "=== [1/5] Navigating to /var/www/vastuvihar-website ==="
             cd /var/www/vastuvihar-website
 
@@ -42,3 +45,4 @@ jobs:
             pm2 reload vastuvihar --update-env || pm2 restart vastuvihar
 
             echo "=== Auto-deployment complete and live! ==="
+          '
