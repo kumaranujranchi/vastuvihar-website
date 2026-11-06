@@ -17,7 +17,7 @@ export default function PartnersSection() {
         >
           <div className="elementor-widget-container">
             <h6 className="elementor-heading-title elementor-size-default">
-              We have partnered with India's leading nationalised and private banks to ensure seamless, secure, and rapid home loan approvals for your dream property.
+              Our finance partners
             </h6>{' '}
           </div>
         </div>
