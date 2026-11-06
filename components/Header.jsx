@@ -3,11 +3,13 @@
 
 import './layout/Header.css';
 import './layout/HeaderScroll.css';
+
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Navigation from './Navigation';
 import { site } from '@/data/site';
 
+const TOP_TOLERANCE = 2;
 const SCROLL_START = 110;
 const SCROLL_TOLERANCE = 18;
 const ANIMATION_DURATION = 700;
@@ -15,12 +17,23 @@ const ANIMATION_DURATION = 700;
 const FULL = 'inset(0px 0px 0px 0%)';
 const HIDDEN = 'inset(0px 0px 0px 100%)';
 
+/**
+ * Original Vastu Vihar header with animated
+ * scroll collapse and expansion.
+ *
+ * Original layout and elements remain unchanged.
+ */
 export default function Header() {
   const [compact, setCompact] = useState(false);
+  const [isAwayFromTop, setIsAwayFromTop] = useState(false);
 
   const originalHeaderRef = useRef(null);
   const compactRef = useRef(false);
   const animationRef = useRef(null);
+
+  /* ====================================================
+     EXPAND / COLLAPSE ORIGINAL HEADER
+     ==================================================== */
 
   const changeHeader = useCallback((nextCompact, instant = false) => {
     if (compactRef.current === nextCompact) return;
@@ -28,19 +41,22 @@ export default function Header() {
     const element = originalHeaderRef.current;
     if (!element) return;
 
-    const running = animationRef.current;
+    const runningAnimation = animationRef.current;
 
-    let from = running
+    let from = runningAnimation
       ? window.getComputedStyle(element).clipPath
       : compactRef.current
         ? HIDDEN
         : FULL;
 
-    if (!from || from === 'none') from = FULL;
+    if (!from || from === 'none') {
+      from = FULL;
+    }
 
-    if (running) {
-      running.onfinish = null;
-      running.cancel();
+    // Cancel an unfinished transition before reversing.
+    if (runningAnimation) {
+      runningAnimation.onfinish = null;
+      runningAnimation.cancel();
       animationRef.current = null;
     }
 
@@ -59,9 +75,12 @@ export default function Header() {
       } else {
         element.style.removeProperty('clip-path');
       }
+
       return;
     }
 
+    // Animate only visibility.
+    // Never change original width, height or flex layout.
     element.style.clipPath = from;
 
     const animation = element.animate(
@@ -84,6 +103,7 @@ export default function Header() {
       if (nextCompact) {
         element.style.clipPath = HIDDEN;
       } else {
+        // Restore original styling and dropdown behavior.
         element.style.removeProperty('clip-path');
       }
 
@@ -92,12 +112,19 @@ export default function Header() {
     };
   }, []);
 
+  /* ====================================================
+     SCROLL BEHAVIOR
+     ==================================================== */
+
   useEffect(() => {
     let previousY = Math.max(0, window.scrollY);
-    let previousDirection = 0;
-    let distance = 0;
+    let downwardDistance = 0;
     let frame = 0;
 
+    // Set correct background on initial page load.
+    setIsAwayFromTop(previousY > TOP_TOLERANCE);
+
+    // Restore compact header when loading a scrolled page.
     if (previousY > SCROLL_START) {
       changeHeader(true, true);
     }
@@ -110,27 +137,30 @@ export default function Header() {
 
       previousY = y;
 
-      if (y <= SCROLL_START) {
-        previousDirection = 0;
-        distance = 0;
+      // IMPORTANT:
+      // Away from top -> #00000057
+      // At top -> original Header.css background
+      setIsAwayFromTop(y > TOP_TOLERANCE);
+
+      // At the very top, expand automatically.
+      if (y <= TOP_TOLERANCE) {
+        downwardDistance = 0;
         changeHeader(false);
         return;
       }
 
-      if (Math.abs(delta) < 1) return;
-
-      const direction = delta > 0 ? 1 : -1;
-
-      if (direction !== previousDirection) {
-        previousDirection = direction;
-        distance = 0;
+      // Do not expand automatically when scrolling up.
+      if (y <= SCROLL_START || delta <= 0) {
+        downwardDistance = 0;
+        return;
       }
 
-      distance += Math.abs(delta);
+      // Collapse when scrolling down sufficiently.
+      downwardDistance += delta;
 
-      if (distance >= SCROLL_TOLERANCE) {
-        changeHeader(direction === 1);
-        distance = 0;
+      if (downwardDistance >= SCROLL_TOLERANCE) {
+        downwardDistance = 0;
+        changeHeader(true);
       }
     };
 
@@ -147,7 +177,9 @@ export default function Header() {
     return () => {
       window.removeEventListener('scroll', onScroll);
 
-      if (frame) cancelAnimationFrame(frame);
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
 
       if (animationRef.current) {
         animationRef.current.onfinish = null;
@@ -157,17 +189,25 @@ export default function Header() {
     };
   }, [changeHeader]);
 
-  // Floating hamburger:
-  // Desktop -> expand original header.
-  // Mobile/tablet -> expand original header + open mobile menu.
+  /* ====================================================
+     FLOATING HAMBURGER CLICK
+     ==================================================== */
+
   const handleFloatingHamburgerClick = () => {
-    const mobile = window.matchMedia(
+    const isMobile = window.matchMedia(
       '(max-width: 1100px)'
     ).matches;
 
+    // FIX: Update background state even without scrolling.
+    // React preserves this class during the header expansion.
+    setIsAwayFromTop(window.scrollY > TOP_TOLERANCE);
+
+    // Expand the ORIGINAL header.
     changeHeader(false);
 
-    if (mobile) {
+    // Mobile/tablet:
+    // Also activate the existing mobile navigation.
+    if (isMobile) {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           originalHeaderRef.current
@@ -178,12 +218,19 @@ export default function Header() {
     }
   };
 
+  /* ====================================================
+     ORIGINAL HEADER JSX
+     ==================================================== */
+
   return (
     <header
       id="masthead"
-      className={`site-header-home vv-scroll-header ${
-        compact ? 'vv-scroll-compact' : ''
-      }`}
+      className={[
+        'site-header-home',
+        'vv-scroll-header',
+        compact ? 'vv-scroll-compact' : '',
+        isAwayFromTop ? 'vv-scroll-away' : '',
+      ].filter(Boolean).join(' ')}
       itemScope
       itemType="https://schema.org/WPHeader"
     >
@@ -191,7 +238,7 @@ export default function Header() {
         <div className="elementor-element elementor-element-cc178a3 e-flex e-con-boxed e-con e-parent">
           <div className="e-con-inner vv-scroll-anchor">
 
-            {/* Original header layout */}
+            {/* ORIGINAL HEADER */}
             <div
               ref={originalHeaderRef}
               id="vv-original-header"
@@ -200,7 +247,7 @@ export default function Header() {
               inert={compact}
             >
 
-              {/* Original mobile menu button */}
+              {/* Original mobile hamburger */}
               <div className="elementor-element elementor-element-119b2fe elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra e-con-full e-flex e-con e-child">
                 <div className="elementor-element elementor-element-436cecf elementor-widget elementor-widget-spaciaz-menu-canvas">
                   <div className="elementor-widget-container">
@@ -224,7 +271,7 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Original logo and navigation */}
+              {/* ORIGINAL LOGO AND NAVIGATION */}
               <div className="elementor-element elementor-element-1888629 e-con-full e-flex e-con e-child">
                 <div className="elementor-element elementor-element-090dbea elementor-widget elementor-widget-site-logo">
                   <div className="elementor-widget-container">
@@ -260,7 +307,7 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Original contact and CTA */}
+              {/* ORIGINAL CONTACT SECTION */}
               <div className="elementor-element elementor-element-5173ec0 elementor-hidden-mobile e-con-full e-flex e-con e-child">
                 <div className="elementor-element elementor-element-e370c20 elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile_extra elementor-widget elementor-widget-heading">
                   <div className="elementor-widget-container">
@@ -310,7 +357,7 @@ export default function Header() {
               </div>
             </div>
 
-            {/* New floating hamburger add-on */}
+            {/* FLOATING HAMBURGER ADD-ON */}
             <button
               type="button"
               className="vv-scroll-fab"

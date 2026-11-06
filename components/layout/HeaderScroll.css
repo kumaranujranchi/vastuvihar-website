@@ -1,11 +1,11 @@
 
-/* ====================================================
+/* ===========================================================
    VASTU VIHAR - SCROLL HEADER ADD-ON
-   Original styling remains untouched.
-   ==================================================== */
+   Brand Color: #08AAEC
+   Scrolled Header Background: #00000057
+   =========================================================== */
 
-/* Fixed header */
-
+/* Original header stays fixed at the top */
 #masthead.vv-scroll-header {
   position: fixed !important;
   top: 0;
@@ -16,27 +16,45 @@
   pointer-events: none;
 }
 
-/* Floating button positioning anchor */
-
+/* Positioning anchor only */
 #masthead.vv-scroll-header .vv-scroll-anchor {
   position: relative;
 }
 
-/* Existing header remains interactive */
-
+/* Keep original navigation interactive */
 #masthead.vv-scroll-header .vv-scroll-original {
   pointer-events: auto;
 }
 
-/* Disable interaction while collapsed */
-
+/* Disable interaction when collapsed */
 #masthead.vv-scroll-compact .vv-scroll-original {
   pointer-events: none;
 }
 
-/* ====================================================
-   FLOATING HAMBURGER
-   ==================================================== */
+/* ===========================================================
+   SCROLLED HEADER BACKGROUND
+   =========================================================== */
+
+/*
+  When away from the top:
+  Original rounded header becomes #00000057.
+
+  Also works when the floating hamburger is clicked,
+  because the vv-scroll-away class is controlled by React.
+
+  At the top, this selector does not apply,
+  so original Header.css styling is restored.
+*/
+
+#masthead.vv-scroll-header.vv-scroll-away
+.elementor-420
+.elementor-element.elementor-element-2e0de30.vv-scroll-original:not(.elementor-motion-effects-element-type-background) {
+  background-color: #00000057 !important;
+}
+
+/* ===========================================================
+   FLOATING ROUND HAMBURGER
+   =========================================================== */
 
 #masthead.vv-scroll-header .vv-scroll-fab {
   position: absolute;
@@ -63,7 +81,6 @@
 
   background-color: #08AAEC;
   color: #FFFFFF;
-
   line-height: 1;
 
   box-shadow:
@@ -87,8 +104,7 @@
     box-shadow 250ms ease;
 }
 
-/* Visible after scrolling down */
-
+/* Visible after collapsing */
 #masthead.vv-scroll-compact .vv-scroll-fab {
   opacity: 1;
   visibility: visible;
@@ -106,8 +122,7 @@
     box-shadow 250ms ease;
 }
 
-/* Hover */
-
+/* Hamburger hover */
 #masthead.vv-scroll-header .vv-scroll-fab:hover {
   background-color: #08AAEC;
   color: #FFFFFF;
@@ -116,16 +131,15 @@
     0 10px 32px rgba(8, 170, 236, 0.40);
 }
 
-/* Keyboard accessibility */
-
+/* Keyboard focus */
 #masthead.vv-scroll-header .vv-scroll-fab:focus-visible {
   outline: 2px solid #08AAEC;
   outline-offset: 4px;
 }
 
-/* ====================================================
+/* ===========================================================
    HAMBURGER ICON
-   ==================================================== */
+   =========================================================== */
 
 #masthead .vv-scroll-fab-lines {
   display: flex;
@@ -143,6 +157,7 @@
 
   height: 2px;
   border-radius: 4px;
+
   background-color: #FFFFFF;
 
   transition:
@@ -161,17 +176,17 @@
   width: 20px;
 }
 
-/* All lines equal width on hover */
-
+/* Animate icon lines on hover */
 #masthead .vv-scroll-fab:hover
 .vv-scroll-fab-lines span {
   width: 24px;
 }
 
-/* ====================================================
+/* ===========================================================
    MOBILE
-   Only modify floating button dimensions.
-   ==================================================== */
+   Keep original mobile header styling.
+   Only change floating hamburger dimensions.
+   =========================================================== */
 
 @media (max-width: 767px) {
   #masthead.vv-scroll-header .vv-scroll-fab {
@@ -182,7 +197,9 @@
   }
 }
 
-/* Accessibility */
+/* ===========================================================
+   ACCESSIBILITY
+   =========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   #masthead.vv-scroll-header .vv-scroll-fab,

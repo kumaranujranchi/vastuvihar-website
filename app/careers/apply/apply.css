@@ -1,4 +1,3 @@
-
 /* =========================================
    VASTU VIHAR - CAREERS APPLICATION FORM
    File: app/careers/apply/apply.css
@@ -86,7 +85,9 @@
 }
 
 
-.apply-form-textarea {border-radius: 20px !important;}
+.apply-form-textarea {
+  border-radius: 20px !important;
+}
 
 .apply-form-textarea {
   resize: vertical !important;
@@ -372,6 +373,7 @@
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   .apply-form-input,
   .apply-form-textarea,
   .apply-form-file,
