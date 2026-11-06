@@ -36,3 +36,4 @@ await prisma.auditLog.create({
 });
 await prisma.$disconnect();
 console.log(`Admin account ready: ${normalized} (${role})`);
+
