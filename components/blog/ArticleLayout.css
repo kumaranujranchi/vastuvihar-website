@@ -3,7 +3,7 @@
    VASTU VIHAR - ARTICLE LAYOUT
    ========================================== */
  .breadcrumb-wrap-article{
-  background-image: url("/blog-hero.png") !important;
+  background-image: url("/blog-hero.webp") !important;
 
 }
 
@@ -87,7 +87,6 @@
   display: block;
   width: 100%;
   height: auto;
-  max-height: 550px;
   object-fit: cover;
   border-radius: 16px;
 }

@@ -1,0 +1,192 @@
+
+/* ====================================================
+   VASTU VIHAR - SCROLL HEADER ADD-ON
+   Original styling remains untouched.
+   ==================================================== */
+
+/* Fixed header */
+
+#masthead.vv-scroll-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Floating button positioning anchor */
+
+#masthead.vv-scroll-header .vv-scroll-anchor {
+  position: relative;
+}
+
+/* Existing header remains interactive */
+
+#masthead.vv-scroll-header .vv-scroll-original {
+  pointer-events: auto;
+}
+
+/* Disable interaction while collapsed */
+
+#masthead.vv-scroll-compact .vv-scroll-original {
+  pointer-events: none;
+}
+
+/* ====================================================
+   FLOATING HAMBURGER
+   ==================================================== */
+
+#masthead.vv-scroll-header .vv-scroll-fab {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  min-height: 58px;
+
+  margin: 0;
+  padding: 0;
+
+  appearance: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50% !important;
+
+  background-color: #08AAEC;
+  color: #FFFFFF;
+
+  line-height: 1;
+
+  box-shadow:
+    0 8px 28px rgba(8, 170, 236, 0.24);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%)
+    scale(0.7)
+    rotate(-35deg);
+
+  transition:
+    opacity 300ms ease,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 300ms,
+    box-shadow 250ms ease;
+}
+
+/* Visible after scrolling down */
+
+#masthead.vv-scroll-compact .vv-scroll-fab {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform:
+    translateY(-50%)
+    scale(1)
+    rotate(0deg);
+
+  transition:
+    opacity 300ms ease 150ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s,
+    box-shadow 250ms ease;
+}
+
+/* Hover */
+
+#masthead.vv-scroll-header .vv-scroll-fab:hover {
+  background-color: #08AAEC;
+  color: #FFFFFF;
+
+  box-shadow:
+    0 10px 32px rgba(8, 170, 236, 0.40);
+}
+
+/* Keyboard accessibility */
+
+#masthead.vv-scroll-header .vv-scroll-fab:focus-visible {
+  outline: 2px solid #08AAEC;
+  outline-offset: 4px;
+}
+
+/* ====================================================
+   HAMBURGER ICON
+   ==================================================== */
+
+#masthead .vv-scroll-fab-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  gap: 5px;
+}
+
+#masthead .vv-scroll-fab-lines span {
+  display: block;
+
+  height: 2px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+
+  transition:
+    width 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#masthead .vv-scroll-fab-lines span:nth-child(1) {
+  width: 24px;
+}
+
+#masthead .vv-scroll-fab-lines span:nth-child(2) {
+  width: 16px;
+}
+
+#masthead .vv-scroll-fab-lines span:nth-child(3) {
+  width: 20px;
+}
+
+/* All lines equal width on hover */
+
+#masthead .vv-scroll-fab:hover
+.vv-scroll-fab-lines span {
+  width: 24px;
+}
+
+/* ====================================================
+   MOBILE
+   Only modify floating button dimensions.
+   ==================================================== */
+
+@media (max-width: 767px) {
+  #masthead.vv-scroll-header .vv-scroll-fab {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  #masthead.vv-scroll-header .vv-scroll-fab,
+  #masthead.vv-scroll-header .vv-scroll-fab-lines span {
+    transition-duration: 0.01ms !important;
+  }
+}

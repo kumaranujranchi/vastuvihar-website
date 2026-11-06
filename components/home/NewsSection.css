@@ -280,3 +280,78 @@
     margin: 30px 0px 0px 0px;
   }
 }
+
+
+
+/* ============================================
+   VASTU VIHAR - FULLY CLICKABLE NEWS CARDS
+   Brand: #08AAEC
+============================================ */
+
+/* Whole featured and list cards are clickable */
+.elementor-post-special a.vv-news-card-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* Preserve original card layout */
+.elementor-post-special .blog-style-grid,
+.elementor-post-special .blog-column article {
+  position: relative;
+}
+
+/* Prevent default anchor styling */
+.elementor-post-special .vv-news-card-link:hover,
+.elementor-post-special .vv-news-card-link:focus,
+.elementor-post-special .vv-news-card-link:active {
+  text-decoration: none !important;
+}
+
+/* Category text */
+.elementor-post-special .vv-news-card-link .vv-news-category {
+  display: inline;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Blog titles */
+.elementor-post-special .vv-news-card-link .vv-news-title {
+  font: inherit;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* Preserve original text styling */
+.elementor-post-special .vv-news-card-link .entry-title,
+.elementor-post-special .vv-news-card-link .posted-on,
+.elementor-post-special .vv-news-card-link .categories-link {
+  text-decoration: none;
+}
+
+/* Ensure all card areas indicate clickability */
+.elementor-post-special .vv-news-card-link,
+.elementor-post-special .vv-news-card-link * {
+  cursor: pointer;
+}
+
+/* Keyboard focus */
+.elementor-post-special .vv-news-card-link:focus-visible {
+  outline: 2px solid #08AAEC;
+  outline-offset: 4px;
+}
+
+/* Keep featured card filling its wrapper */
+.elementor-post-special .blog-style-grid > .vv-news-card-link {
+  height: 100%;
+}
+
+/* Keep smaller cards filling their wrappers */
+.elementor-post-special .blog-column article > .vv-news-card-link {
+  height: 100%;
+}

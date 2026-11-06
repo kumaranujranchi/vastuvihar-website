@@ -25,6 +25,7 @@
   padding: 4px 10px !important;
   text-align: center;
   width: auto;
+  border-radius: 40px;
 }
 
 .languageActive {

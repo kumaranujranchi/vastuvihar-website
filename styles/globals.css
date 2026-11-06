@@ -26374,8 +26374,8 @@ body.loading:before {
 
 .elementor-widget-spaciaz-post-grid .post-inner .post-thumbnail img {
     max-height: 100%;
-    transform: translate3d(-6.66%, 0, 0) scale(1.2);
-    -webkit-transform: translate3d(-6.66%, 0, 0) scale(1.2);
+    /* transform: translate3d(-6.66%, 0, 0) scale(1.2); */
+    /* -webkit-transform: translate3d(-6.66%, 0, 0) scale(1.2); */
     transition: opacity 0.35s, transform 0.45s, filter 0.35s;
 }
 

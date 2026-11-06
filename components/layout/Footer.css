@@ -81,7 +81,6 @@
   display: inline-block;
   width: fit-content;
   max-width: 100%;
-
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
   color: #ffffff;
@@ -110,15 +109,16 @@
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Hover animation */
-.footer-contact-link:hover {
-  color: #268ddc;
-}
 
 .footer-contact-link:hover::after,
 .footer-contact-link:focus-visible::after {
   transform: scaleX(1);
 }
+
+.footer-contact-link:hover{
+  color: white;
+}
+
 
 /* On mouse leave, retract from right to left */
 .footer-contact-link:not(:hover)::after {
