@@ -14519,7 +14519,8 @@ body.rtl .elementor-widget-n-tabs {
     align-items: center;
     display: flex;
     font-size: var(--n-tabs-title-font-size);
-    text-align: var(--n-tabs-title-text-align)
+    text-align: var(--n-tabs-title-text-align);
+    color: white;
 }
 
 .elementor-widget-n-tabs .e-n-tab-title .e-n-tab-icon {
