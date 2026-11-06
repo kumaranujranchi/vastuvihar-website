@@ -23,6 +23,7 @@
 
 .elementor-6353 .elementor-element.elementor-element-71f6b7a::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-background-video-container::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .e-con-inner > .elementor-background-video-container::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-background-slideshow::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .e-con-inner > .elementor-background-slideshow::before, .elementor-6353 .elementor-element.elementor-element-71f6b7a > .elementor-motion-effects-container > .elementor-motion-effects-layer::before {
   background-color: #000000;
+  z-index: 2;
   --background-overlay: '';
 }
 

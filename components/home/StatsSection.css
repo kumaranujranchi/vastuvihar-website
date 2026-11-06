@@ -1065,7 +1065,7 @@
 }
 
 @media (max-width: 410px) {
-    .elementor-6353 .elementor-element.elementor-element-9e460eb .elementor-counter-number-wrapper {
+    .elementor-6353 .elementor-element.elementor-element-9e460eb .elementor-counter-number-wrapper, .elementor-counter-number {
         font-size: 50px !important;
     }
 }
