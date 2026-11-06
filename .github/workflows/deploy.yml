@@ -1,0 +1,28 @@
+name: Auto Deploy to AWS Lightsail
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Lightsail Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into Lightsail and Deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USERNAME }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          port: ${{ secrets.LIGHTSAIL_PORT || 22 }}
+          script_stop: true
+          script: |
+            cd /var/www/vastuvihar-website
+            bash deploy/deploy.sh
