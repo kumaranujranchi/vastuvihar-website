@@ -113,7 +113,7 @@ export default function CookieConsent() {
         <p className={styles.description} lang={language}>
           {COOKIE_NOTICE[language]}
         </p>
-        <div role="group" aria-label="Notice language" style={{ display: 'flex', gap: '12px', fontSize: '13px' }}>
+        <div role="group" aria-label="Notice language" style={{ display: 'flex', gap: '10px', fontSize: '12px', marginBottom: '4px' }}>
           {LANGUAGES.map(({ code, label }) => (
             <button
               key={code}
@@ -199,9 +199,11 @@ export default function CookieConsent() {
 
         {/* Footer Actions */}
         <div className={styles.actionRow}>
-          <Link href="/privacy-policy" className={styles.policyLink}>
-            Read DPDP Privacy Policy
-          </Link>
+          <div className={styles.policyRow}>
+            <Link href="/privacy-policy" className={styles.policyLink}>
+              Read DPDP Privacy Policy
+            </Link>
+          </div>
 
           <div className={styles.buttonsGroup}>
             <button
