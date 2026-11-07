@@ -1,0 +1,69 @@
+/* Floating WhatsApp button. Sits above the scroll-to-top button (.scrollup)
+   on tablet/desktop; .scrollup is hidden at <=768px so it drops lower there.
+   z-index stays below the mobile nav overlay (997) and cookie banner. */
+.button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 996;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25d366;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: bounce 2.4s ease-in-out infinite;
+}
+
+/* Two quick hops, then rest for the remainder of the cycle */
+@keyframes bounce {
+  0%, 40%, 100% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-14px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  28% {
+    transform: translateY(-6px);
+  }
+}
+
+.button:hover,
+.button:focus-visible {
+  color: #fff;
+  animation: none;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.button:focus-visible {
+  outline: 3px solid #128c7e;
+  outline-offset: 3px;
+}
+
+@media (min-width: 769px) {
+  .button {
+    right: 37px;
+    bottom: 165px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    bottom: 115px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+    animation: none;
+  }
+}
