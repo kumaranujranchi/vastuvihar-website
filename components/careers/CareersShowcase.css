@@ -263,3 +263,10 @@
 .elementor-6007 .elementor-element.elementor-element-7638691 p {
   margin-block-end: 0px;
 }
+
+/* Job description and requirements text is justified in the job details popup. */
+.careers-slide .careers-description .elementor-widget-text-editor p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
