@@ -3,7 +3,6 @@ import '@/styles/pages/blog.css';
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import Link from 'next/link';
-import { connection } from 'next/server';
 import { orEmpty, prisma } from '@/lib/prisma';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -12,6 +11,9 @@ export const metadata = createPageMetadata({
   description: 'Vastu Vihar Latest News and Updates',
   path: '/blog/',
 });
+
+// Cached, and refreshed when a blog post changes (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', {
@@ -25,9 +27,6 @@ const formatCategorySlug = (cat: string) =>
   cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export default async function BlogGridPage() {
-  // Read posts per request, so the build does not need the database.
-  await connection();
-
   const posts = await prisma.blogPost
     .findMany({
       where: { isPublished: true },

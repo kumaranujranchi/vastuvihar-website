@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { requirePermission } from '@/lib/adminAuth';
 import { audit } from '@/lib/audit';
+import { revalidateCareers } from '@/lib/revalidate';
 
 const textValue = (value: unknown): string =>
   typeof value === 'string' ? value.trim() : '';
@@ -99,6 +100,7 @@ export async function POST(request: Request) {
     } catch (error) {
       return operationError(error, 'create');
     }
+    revalidateCareers();
 
     // Once the DB insert succeeds, an audit-write failure must not tell the UI
     // that posting failed; doing so can cause users to publish duplicates.
@@ -161,6 +163,7 @@ export async function PATCH(request: Request) {
     } catch (error) {
       return operationError(error, 'update');
     }
+    revalidateCareers();
 
     try {
       await audit(admin, 'vacancy.updated', 'vacancy', id);
@@ -188,6 +191,7 @@ export async function DELETE(request: Request) {
     } catch (error) {
       return operationError(error, 'delete');
     }
+    revalidateCareers();
 
     try {
       await audit(admin, 'vacancy.deleted', 'vacancy', id);

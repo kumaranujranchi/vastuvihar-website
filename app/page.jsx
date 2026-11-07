@@ -11,6 +11,9 @@ import HeroSection from '@/components/home/HeroSection';
 import PageLayout from '@/components/PageLayout';
 import { createPageMetadata } from '@/lib/metadata';
 
+// Cached, and refreshed when a blog post changes (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
+
 export const metadata = createPageMetadata({
   title: 'Vastu Vihar: Bungalows & Flats in Bihar & Eastern India',
   description:

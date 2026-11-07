@@ -13,9 +13,19 @@ const formatDate = (date: Date) => {
 
 const formatCategorySlug = (cat: string) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
+// Cached, and refreshed when a blog post changes (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
+
+// Only the known categories have a page; any other slug is a 404.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return Object.keys(CATEGORY_MAP).map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const categoryName = CATEGORY_MAP[slug] || slug.replace('-', ' ');
+  const categoryName = CATEGORY_MAP[slug] || slug.replace(/-/g, ' ');
 
   return createPageMetadata({
     title: `${categoryName} Archives | Vastu Vihar`,
