@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development' && process.env.USE_CLOUDFLARE === '1'
 }
 
 // A tag's hosts are only allowed when its ID is set, so a site with no tags allows none.
-const isSet = (name) => Boolean((process.env[name] || '').trim());
+const isSet = (name) => Boolean((process.env[name] || (name === 'NEXT_PUBLIC_META_PIXEL_ID' ? '4516919088573710' : name === 'NEXT_PUBLIC_CLARITY_ID' ? 'z9slby3c2m' : '')).trim());
 const tagHosts = [
   ...(isSet('NEXT_PUBLIC_GA4_ID')
     ? [{
@@ -33,6 +33,13 @@ const tagHosts = [
         connect: 'https://www.facebook.com https://connect.facebook.net',
         img: 'https://www.facebook.com',
         frame: 'https://www.facebook.com',
+      }]
+    : []),
+  ...(isSet('NEXT_PUBLIC_CLARITY_ID')
+    ? [{
+        script: 'https://www.clarity.ms https://*.clarity.ms',
+        connect: 'https://*.clarity.ms https://c.bing.com',
+        img: 'https://*.clarity.ms https://c.bing.com',
       }]
     : []),
 ];
