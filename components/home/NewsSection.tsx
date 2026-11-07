@@ -2,7 +2,6 @@
 import './NewsSection.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
-import { connection } from 'next/server';
 import { orEmpty, prisma } from '@/lib/prisma';
 import StaticPill from '../common/StaticPill';
 
@@ -20,9 +19,6 @@ const formatCategorySlug = (cat: string) =>
   cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export default async function NewsSection() {
-  // Read posts per request
-  await connection();
-
   // Fetch latest 4 published posts
   const posts = await prisma.blogPost
     .findMany({

@@ -1,12 +1,13 @@
 
 import Link from 'next/link';
-import { connection } from 'next/server';
 
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/metadata';
 import { getGalleryAlbums } from '@/lib/gallery';
+import ArrowUpRightIcon from './ArrowUpRightIcon';
 import Cta from './Cta';
+import FramesOfTrust from './FramesOfTrust';
 
 import heroStyles from './hero.module.css';
 import './GalleryPage.css';
@@ -17,6 +18,9 @@ export const metadata = createPageMetadata({
     'Explore Vastu Vihar events, projects, expos and memorable moments.',
   path: '/gallery/',
 });
+
+// Cached, and refreshed when an admin changes the photos (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
 
 /* =========================================
    TYPES
@@ -121,54 +125,10 @@ function createBentoGroups(
 }
 
 /* =========================================
-   RANDOM IMAGES
-========================================= */
-
-function shuffle<T>(items: T[]): T[] {
-  const result = [...items];
-
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [result[i], result[j]] = [
-      result[j],
-      result[i],
-    ];
-  }
-
-  return result;
-}
-
-/* =========================================
-   SVG ICONS
-========================================= */
-
-function ArrowUpRightIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M7 17 17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
-  );
-}
-
-/* =========================================
    MAIN PAGE
 ========================================= */
 
 export default async function GalleryMainPage() {
-  await connection();
-
   const albums =
     (await getGalleryAlbums()) as GalleryAlbum[];
 
@@ -178,18 +138,12 @@ export default async function GalleryMainPage() {
 
   const bentoGroups = createBentoGroups(categories);
 
-  // Random images from every folder.
-  const framesOfTrust = shuffle(
-    categories.flatMap((album) =>
-      shuffle(album.images)
-        .slice(0, 3)
-        .map((image) => ({
-          ...image,
-          folderName: album.title,
-          folderSlug: album.slug,
-        }))
-    )
-  );
+  // Only what Frames of Trust needs, which picks random photos from every folder.
+  const framesAlbums = categories.map(({ slug, title, images }) => ({
+    slug,
+    title,
+    images: images.map(({ id, src, alt }) => ({ id, src, alt })),
+  }));
 
   return (
     <PageLayout route="gallery">
@@ -338,59 +292,7 @@ export default async function GalleryMainPage() {
             FRAMES OF TRUST
         ================================= */}
 
-        {framesOfTrust.length > 0 && (
-          <section
-            className="vv-gallery-best-section"
-            aria-labelledby="vv-frames-heading"
-          >
-
-            <div className="vv-gallery-best-header">
-              <h2 id="vv-frames-heading">
-                Frames of Trust
-              </h2>
-            </div>
-
-            <div className="vv-gallery-best-grid">
-
-              {framesOfTrust.map((shot, index) => (
-                <Link
-                  key={shot.id}
-                  href={`/gallery/${shot.folderSlug}`}
-                  className="vv-gallery-best-card"
-                  style={{
-                    animationDelay: `${Math.min(index, 12) * 65
-                      }ms`,
-                  }}
-                >
-
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    loading="lazy"
-                  />
-
-                  <div className="vv-gallery-best-overlay">
-
-                    <span className="vv-gallery-best-folder">
-                      {shot.folderName}
-                    </span>
-
-                    <span
-                      className="vv-gallery-best-arrow"
-                      aria-hidden="true"
-                    >
-                      <ArrowUpRightIcon />
-                    </span>
-
-                  </div>
-
-                </Link>
-              ))}
-
-            </div>
-
-          </section>
-        )}
+        <FramesOfTrust albums={framesAlbums} />
 
         <Cta />
 

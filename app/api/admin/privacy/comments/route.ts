@@ -4,6 +4,7 @@ import { requirePermission } from '@/lib/adminAuth';
 import { audit } from '@/lib/audit';
 import { jsonError, logError } from '@/lib/security/request';
 import { cleanText } from '@/lib/validation';
+import { revalidateBlogComments } from '@/lib/revalidate';
 
 export async function GET(request: Request) {
   const { admin, response } = await requirePermission(request, 'comments:moderate');
@@ -30,6 +31,7 @@ export async function PATCH(request: Request) {
     if (!id) return jsonError('Comment ID required', 400);
     const isApproved = body.isApproved === true;
     await prisma.comment.update({ where: { id }, data: { isApproved } });
+    revalidateBlogComments();
     await audit(admin, isApproved ? 'comment.approved' : 'comment.unpublished', 'comment', id);
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -45,6 +47,7 @@ export async function DELETE(request: Request) {
     const id = cleanText(new URL(request.url).searchParams.get('id'), 64);
     if (!id) return jsonError('Comment ID required', 400);
     await prisma.comment.delete({ where: { id } });
+    revalidateBlogComments();
     await audit(admin, 'comment.deleted', 'comment', id);
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -1,5 +1,4 @@
 import '../../styles/pages/careers.css';
-import { connection } from 'next/server';
 import Breadcrumb from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
@@ -15,10 +14,10 @@ export const metadata = createPageMetadata({
   path: '/careers/',
 });
 
-export default async function CareersPage() {
-  // Read vacancies per request, so the build does not need the database.
-  await connection();
+// Cached, and refreshed when a vacancy changes (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
 
+export default async function CareersPage() {
   // Dynamically fetch active job vacancies directly from the database
   const activeJobs = await prisma.jobVacancy.findMany({
     where: { isActive: true },

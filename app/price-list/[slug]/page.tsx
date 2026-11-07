@@ -10,6 +10,13 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Price lists are fixed data, so every page is prerendered at build time.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return priceLists.map(({ slug }) => ({ slug }));
+}
+
 /** The lowest home price in rupees, ignoring shops, parking and per-sq.ft. rates. */
 function lowestHomePrice(project: (typeof priceLists)[number]) {
   const prices = [...(project.bungalows || []), ...(project.flats || [])]

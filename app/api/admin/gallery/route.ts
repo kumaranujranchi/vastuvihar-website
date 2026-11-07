@@ -5,6 +5,7 @@ import { getGalleryAlbums, isBuiltInPhoto, isGalleryAlbum } from '@/lib/gallery'
 import { deleteGalleryImage, saveGalleryImage } from '@/lib/privateStorage';
 import { prisma } from '@/lib/prisma';
 import { jsonError, logError } from '@/lib/security/request';
+import { revalidateGallery } from '@/lib/revalidate';
 
 export async function GET(request: Request) {
   const { admin, response } = await requirePermission(request, 'gallery:manage');
@@ -62,6 +63,8 @@ export async function POST(request: Request) {
       id = (await prisma.galleryImage.create({ data: { album, storageKey: savedName } })).id;
     }
 
+    revalidateGallery();
+
     // The database now points at the new file, so a failure here only leaves an unused file.
     await deleteGalleryImage(previousName).catch((error) => logError('admin.gallery.cleanup', error));
     await audit(admin, uploadId || builtInName ? 'gallery.image_replaced' : 'gallery.image_added', 'gallery_image', id, { album });
@@ -103,6 +106,7 @@ export async function DELETE(request: Request) {
         : await prisma.galleryImage.create({ data: { album, builtInName, storageKey: null } });
       id = row.id;
     }
+    revalidateGallery();
 
     await deleteGalleryImage(previousName).catch((error) => logError('admin.gallery.cleanup', error));
     await audit(admin, 'gallery.image_deleted', 'gallery_image', id, { album });
