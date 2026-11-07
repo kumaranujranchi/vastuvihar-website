@@ -120,12 +120,23 @@ export default function MetaCtaTracker() {
         const lowerHref = href.toLowerCase();
         const currentPath = window.location.pathname;
 
+        const fireClarity = (eventName) => {
+          if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+            try {
+              window.clarity('event', eventName);
+            } catch {}
+          }
+        };
+
         const fireFbq = (type, eventName, params = {}) => {
           if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
             window.fbq(type, eventName, { ...params, page_path: currentPath });
             if (process.env.NODE_ENV !== 'production') {
               console.log(`[Meta Pixel ${type}]`, eventName, params);
             }
+          }
+          if (type === 'trackCustom') {
+            fireClarity(eventName);
           }
         };
 
@@ -286,3 +297,4 @@ export default function MetaCtaTracker() {
 
   return null;
 }
+
