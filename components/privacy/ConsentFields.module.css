@@ -71,3 +71,24 @@
   padding: 0;
   width: 18px;
 }
+
+/* Compact mode: the notice folds into a disclosure above the checkbox. */
+.details {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.summary {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.summaryLink {
+  text-decoration: underline;
+}
+
+.detailsBody {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
