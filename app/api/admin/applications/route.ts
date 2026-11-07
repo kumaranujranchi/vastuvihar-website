@@ -21,10 +21,10 @@ export async function GET(request: Request) {
     if (status) where.status = status;
     if (search) {
       where.OR = [
-        { fullName: { contains: search } },
-        { email: { contains: search } },
+        { fullName: { contains: search, mode: 'insensitive' } },
+        { email: { contains: search, mode: 'insensitive' } },
         { phone: { contains: search } },
-        { jobTitle: { contains: search } },
+        { jobTitle: { contains: search, mode: 'insensitive' } },
       ];
     }
 

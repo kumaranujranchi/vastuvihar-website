@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Lead" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "fullName" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "email" TEXT,
@@ -17,20 +17,22 @@ CREATE TABLE "Lead" (
     "noticeVersion" TEXT,
     "noticeLanguage" TEXT,
     "marketingConsent" BOOLEAN NOT NULL DEFAULT false,
-    "marketingConsentAt" DATETIME,
-    "marketingWithdrawnAt" DATETIME,
+    "marketingConsentAt" TIMESTAMP(3),
+    "marketingWithdrawnAt" TIMESTAMP(3),
     "adChannel" TEXT,
     "adUtmSource" TEXT,
     "adUtmMedium" TEXT,
     "adUtmCampaign" TEXT,
     "legalHoldReason" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Lead_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "JobVacancy" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "department" TEXT,
     "location" TEXT NOT NULL DEFAULT 'Ranchi, JH',
@@ -38,13 +40,15 @@ CREATE TABLE "JobVacancy" (
     "description" TEXT NOT NULL,
     "requirements" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "JobVacancy_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "JobApplication" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "fullName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
@@ -56,32 +60,37 @@ CREATE TABLE "JobApplication" (
     "noticeVersion" TEXT,
     "noticeLanguage" TEXT,
     "legalHoldReason" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "JobApplication_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "ChatSession" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "userId" TEXT,
     "title" TEXT DEFAULT 'New Chat',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ChatSession_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "ChatMessage" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "sessionId" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "content" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "ChatMessage_sessionId_fkey" FOREIGN KEY ("sessionId") REFERENCES "ChatSession" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChatMessage_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "BlogPost" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "category" TEXT NOT NULL DEFAULT 'Uncategorized',
@@ -95,13 +104,15 @@ CREATE TABLE "BlogPost" (
     "author" TEXT DEFAULT 'Vastu Vihar',
     "readingTime" TEXT,
     "isPublished" BOOLEAN NOT NULL DEFAULT true,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "BlogPost_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Comment" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "postId" TEXT NOT NULL,
     "authorName" TEXT NOT NULL,
     "authorEmail" TEXT,
@@ -109,13 +120,14 @@ CREATE TABLE "Comment" (
     "isApproved" BOOLEAN NOT NULL DEFAULT false,
     "noticeVersion" TEXT,
     "noticeLanguage" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "BlogPost" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Comment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "ConsentRecord" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "phoneKey" TEXT,
     "emailKey" TEXT,
     "browserKey" TEXT,
@@ -126,12 +138,14 @@ CREATE TABLE "ConsentRecord" (
     "noticeVersion" TEXT NOT NULL,
     "language" TEXT NOT NULL DEFAULT 'en',
     "source" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ConsentRecord_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "VisitorEvent" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "browserKey" TEXT NOT NULL,
     "kind" TEXT NOT NULL,
     "category" TEXT NOT NULL,
@@ -144,76 +158,89 @@ CREATE TABLE "VisitorEvent" (
     "provider" TEXT,
     "eventName" TEXT,
     "noticeVersion" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "VisitorEvent_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "NewsletterSubscriber" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'SUBSCRIBED',
     "noticeVersion" TEXT NOT NULL,
     "noticeLanguage" TEXT NOT NULL DEFAULT 'en',
-    "unsubscribedAt" DATETIME,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "unsubscribedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "NewsletterSubscriber_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "MarketingSuppression" (
-    "key" TEXT NOT NULL PRIMARY KEY,
+    "key" TEXT NOT NULL,
     "source" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "MarketingSuppression_pkey" PRIMARY KEY ("key")
 );
 
 -- CreateTable
 CREATE TABLE "RateLimitHit" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "bucket" TEXT NOT NULL,
     "keyHash" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "RateLimitHit_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "AdminUser" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "passwordHash" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "failedLogins" INTEGER NOT NULL DEFAULT 0,
-    "lockedUntil" DATETIME,
-    "lastLoginAt" DATETIME,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "lockedUntil" TIMESTAMP(3),
+    "lastLoginAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "AdminUser_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "AdminSession" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "tokenHash" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "expiresAt" DATETIME NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "AdminSession_userId_fkey" FOREIGN KEY ("userId") REFERENCES "AdminUser" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "AdminSession_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "AuditLog" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "actorId" TEXT,
     "actorEmail" TEXT,
     "action" TEXT NOT NULL,
     "entityType" TEXT,
     "entityId" TEXT,
     "metadata" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "AuditLog_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "PrivacyRequest" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "ticketNo" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "category" TEXT,
@@ -228,38 +255,41 @@ CREATE TABLE "PrivacyRequest" (
     "actingAs" TEXT NOT NULL DEFAULT 'SELF',
     "language" TEXT NOT NULL DEFAULT 'en',
     "status" TEXT NOT NULL DEFAULT 'RECEIVED',
-    "verifiedAt" DATETIME,
+    "verifiedAt" TIMESTAMP(3),
     "verifiedBy" TEXT,
     "verifyMethod" TEXT,
     "verifiedChannels" TEXT,
     "outcome" TEXT,
     "retentionNote" TEXT,
-    "dueAt" DATETIME NOT NULL,
-    "resolvedAt" DATETIME,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "dueAt" TIMESTAMP(3) NOT NULL,
+    "resolvedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "PrivacyRequest_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "PrivacyRequestEvent" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "requestId" TEXT NOT NULL,
     "actorEmail" TEXT,
     "action" TEXT NOT NULL,
     "note" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "PrivacyRequestEvent_requestId_fkey" FOREIGN KEY ("requestId") REFERENCES "PrivacyRequest" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PrivacyRequestEvent_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "BreachIncident" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "reference" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'DETECTED',
     "severity" TEXT NOT NULL DEFAULT 'UNASSESSED',
-    "detectedAt" DATETIME NOT NULL,
-    "occurredAt" DATETIME,
+    "detectedAt" TIMESTAMP(3) NOT NULL,
+    "occurredAt" TIMESTAMP(3),
     "nature" TEXT,
     "scope" TEXT,
     "affectedDataTypes" TEXT,
@@ -268,33 +298,37 @@ CREATE TABLE "BreachIncident" (
     "remediationActions" TEXT,
     "likelyConsequences" TEXT,
     "ownerEmail" TEXT,
-    "boardDueAt" DATETIME,
-    "boardIntimatedAt" DATETIME,
-    "boardReportedAt" DATETIME,
+    "boardDueAt" TIMESTAMP(3),
+    "boardIntimatedAt" TIMESTAMP(3),
+    "boardReportedAt" TIMESTAMP(3),
     "boardReference" TEXT,
-    "principalsNotifiedAt" DATETIME,
+    "principalsNotifiedAt" TIMESTAMP(3),
     "principalsNotifiedCount" INTEGER,
     "notificationNotes" TEXT,
     "createdBy" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "BreachIncident_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "RetentionPolicy" (
-    "category" TEXT NOT NULL PRIMARY KEY,
+    "category" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "retentionDays" INTEGER,
     "action" TEXT NOT NULL DEFAULT 'DELETE',
     "legalBasis" TEXT,
     "approvedBy" TEXT,
-    "approvedAt" DATETIME,
-    "updatedAt" DATETIME NOT NULL
+    "approvedAt" TIMESTAMP(3),
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "RetentionPolicy_pkey" PRIMARY KEY ("category")
 );
 
 -- CreateTable
 CREATE TABLE "RetentionLog" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "runId" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "action" TEXT NOT NULL,
@@ -302,15 +336,31 @@ CREATE TABLE "RetentionLog" (
     "dryRun" BOOLEAN NOT NULL,
     "trigger" TEXT NOT NULL,
     "note" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "RetentionLog_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "GalleryImage" (
+    "id" TEXT NOT NULL,
+    "album" TEXT NOT NULL,
+    "builtInName" TEXT,
+    "storageKey" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "GalleryImage_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "PrivacySetting" (
-    "key" TEXT NOT NULL PRIMARY KEY,
+    "key" TEXT NOT NULL,
     "value" TEXT NOT NULL,
     "updatedBy" TEXT,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "PrivacySetting_pkey" PRIMARY KEY ("key")
 );
 
 -- CreateIndex
@@ -453,3 +503,22 @@ CREATE INDEX "RetentionLog_runId_idx" ON "RetentionLog"("runId");
 
 -- CreateIndex
 CREATE INDEX "RetentionLog_createdAt_idx" ON "RetentionLog"("createdAt");
+
+-- CreateIndex
+CREATE INDEX "GalleryImage_album_createdAt_idx" ON "GalleryImage"("album", "createdAt");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "GalleryImage_album_builtInName_key" ON "GalleryImage"("album", "builtInName");
+
+-- AddForeignKey
+ALTER TABLE "ChatMessage" ADD CONSTRAINT "ChatMessage_sessionId_fkey" FOREIGN KEY ("sessionId") REFERENCES "ChatSession"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "BlogPost"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "AdminSession" ADD CONSTRAINT "AdminSession_userId_fkey" FOREIGN KEY ("userId") REFERENCES "AdminUser"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PrivacyRequestEvent" ADD CONSTRAINT "PrivacyRequestEvent_requestId_fkey" FOREIGN KEY ("requestId") REFERENCES "PrivacyRequest"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+

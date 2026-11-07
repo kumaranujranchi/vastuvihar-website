@@ -12,7 +12,7 @@ echo "=== [2/5] Installing dependencies ==="
 npm ci
 
 echo "=== [3/5] Updating database schema ==="
-npx prisma db push
+npx prisma migrate deploy
 
 echo "=== [4/5] Building Next.js production build ==="
 npm run build

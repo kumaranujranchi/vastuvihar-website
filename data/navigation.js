@@ -2,6 +2,7 @@
 export const companyLinks = [
   { label: 'About Us', href: '/about-us/' },
   { label: 'Core Values', href: '/core-values/' },
+  { label: 'Quality Policy', href: '/quality-policy/' },
   { label: 'Our Awards', href: '/our-awards/' },
   { label: 'FAQs', href: '/faqs/' },
 ];
@@ -23,7 +24,7 @@ export const navigation = [
 ];
 
 export const footerGroups = [
-  { title: 'Company', links: companyLinks.slice(0, 3) },
+  { title: 'Company', links: companyLinks.filter((link) => link.href !== '/faqs/') },
   {
     title: 'Explore',
     links: [
@@ -37,7 +38,7 @@ export const footerGroups = [
     title: 'Get in Touch',
     links: [
       { label: 'Careers', href: '/careers/' },
-      companyLinks[3],
+      { label: 'FAQs', href: '/faqs/' },
       { label: 'Contact Us', href: '/contact/' },
     ],
   },

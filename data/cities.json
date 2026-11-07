@@ -14,7 +14,7 @@
         "email": "patna@vastuvihar.org",
         "phone": "7488538119, 8102926293/4",
         "rera": "BRERAP00015-8/239/R-814/2019",
-        "masterPlan": "/masterplan/patna/p3.jpg",
+        "masterPlan": "/masterplan/patna/p3.webp",
         "models": [
           "aditi"
         ]
@@ -29,7 +29,7 @@
         "email": "patna@vastuvihar.org",
         "phone": "7488538119, 8102926293/4",
         "rera": "BRERAP00015-11/238/R-637/2019",
-        "masterPlan": "/masterplan/patna/p4.jpg",
+        "masterPlan": "/masterplan/patna/p4.webp",
         "models": [
           "ganga-new-2bhk"
         ]
@@ -44,7 +44,7 @@
         "email": "patna@vastuvihar.org",
         "phone": "7488538119, 8102926293/4",
         "rera": "BRERAP0001-10/236/R-330/2019",
-        "masterPlan": "/masterplan/patna/p6.jpg",
+        "masterPlan": "/masterplan/patna/p6.webp",
         "models": [
           "ganga-new-2bhk"
         ]
@@ -59,7 +59,7 @@
         "email": "patna@vastuvihar.org",
         "phone": "7488538119, 8102926293/4",
         "rera": "BRERAP00015-9/237/R-641/2019",
-        "masterPlan": "/masterplan/patna/p7.jpg",
+        "masterPlan": "/masterplan/patna/p7.webp",
         "models": [
           "jayanti-bungalow",
           "gayatri-row-house"
@@ -75,7 +75,7 @@
         "email": "patna@vastuvihar.org",
         "phone": "7488538119, 8102926293/4",
         "rera": "Approved",
-        "masterPlan": "/masterplan/patna/p8.jpg",
+        "masterPlan": "/masterplan/patna/p8.webp",
         "models": [
           "yamuna-bungalow-7bhk",
           "yamuna-bungalow",
@@ -236,7 +236,7 @@
         "email": "ara@vastuvihar.org",
         "phone": "8102921821, 7488049821",
         "rera": "BRERAP00015-15/365/R-615/2019",
-        "masterPlan": "/masterplan/ara/1.jpg",
+        "masterPlan": "/masterplan/ara/1.webp",
         "models": [
           "yamuna-bungalow-7bhk",
           "yamuna-bungalow",
@@ -255,7 +255,7 @@
         "email": "ara@vastuvihar.org",
         "phone": "8102921821",
         "rera": "BRERAP00015-2/364/R-711/2019",
-        "masterPlan": "/masterplan/ara/2.jpg",
+        "masterPlan": "/masterplan/ara/2.webp",
         "models": [
           "yamuna-bungalow-7bhk",
           "yamuna-bungalow",
@@ -274,7 +274,7 @@
         "email": "ara@vastuvihar.org",
         "phone": "8102921821",
         "rera": "BRERAP00015-80/114/R-1427/2022",
-        "masterPlan": "/masterplan/ara/3.jpg",
+        "masterPlan": "/masterplan/ara/3.webp",
         "models": [
           "yamuna-bungalow",
           "jayanti-bungalow",
@@ -298,7 +298,7 @@
         "email": "aurangabad@vastuvihar.org",
         "phone": "9386256118, 7488041827",
         "rera": "BRERAP00015-51/838/R-776/2019",
-        "masterPlan": "/masterplan/aurangabad/1.jpg",
+        "masterPlan": "/masterplan/aurangabad/1.webp",
         "models": [
           "yamuna-bungalow",
           "jayanti-bungalow",
@@ -318,7 +318,7 @@
         "email": "aurangabad@vastuvihar.org",
         "phone": "9386256118, 7488041827",
         "rera": "In Progress(Approved)",
-        "masterPlan": "/masterplan/aurangabad/2.jpg",
+        "masterPlan": "/masterplan/aurangabad/2.webp",
         "models": [
           "yamuna-bungalow-7bhk",
           "jayanti-bungalow",
@@ -344,7 +344,7 @@
         "email": "biharsharif@vastuvihar.org",
         "phone": "7488538197",
         "rera": "",
-        "masterPlan": "/masterplan/biharsharif/1.JPG",
+        "masterPlan": "/masterplan/biharsharif/1.webp",
         "models": [
           "yamuna-bungalow",
           "jayanti-bungalow",
@@ -361,7 +361,7 @@
         "email": "biharsharif@vastuvihar.org",
         "phone": "8102921825",
         "rera": "BRERAP00015-14/367/R-509/2019",
-        "masterPlan": "/masterplan/biharsharif/2.jpg",
+        "masterPlan": "/masterplan/biharsharif/2.webp",
         "models": [
           "yamuna-bungalow",
           "yamuna-bungalow-7bhk",
@@ -387,7 +387,7 @@
         "email": "buxar@vastuvihar.org",
         "phone": "8102921842",
         "rera": "",
-        "masterPlan": "/masterplan/buxar/1.jpg",
+        "masterPlan": "/masterplan/buxar/1.webp",
         "models": [
           "jayanti-bungalow",
           "simplex-bungalow"
@@ -442,7 +442,7 @@
         "email": "dehrionsone@vastuvihar.org",
         "phone": "9386256112, 9386256113",
         "rera": "BRERA00015-52/837/R-786/2019",
-        "masterPlan": "/masterplan/dehri/1.jpg",
+        "masterPlan": "/masterplan/dehri/1.webp",
         "models": [
           "yamuna-bungalow",
           "jayanti-bungalow",
@@ -461,7 +461,7 @@
         "email": "dehrionsone@vastuvihar.org",
         "phone": "9386256112, 9386256113",
         "rera": "BRERA00015-63/1048/R-841/2019",
-        "masterPlan": "/masterplan/dehri/2.jpg",
+        "masterPlan": "/masterplan/dehri/2.webp",
         "models": [
           "yamuna-bungalow",
           "yamuna-bungalow-7bhk",
@@ -670,7 +670,7 @@
         "email": "deoghar@vastuvihar.org",
         "phone": "7488659801 / 6203212688 / 7488047026",
         "rera": "",
-        "masterPlan": "/masterplan/deoghar/1.jpg",
+        "masterPlan": "/masterplan/deoghar/1.webp",
         "models": [
           "yamuna-bungalow",
           "jayanti-bungalow",

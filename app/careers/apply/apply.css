@@ -16,6 +16,16 @@
   align-items: center;
 }
 
+/* The careers header ends with an empty ticker container that carries
+   100px/60px margins; on the apply page it only adds a blank gap. */
+.careers-apply-page .elementor-element-2fe4001 {
+  display: none;
+}
+
+.careers-apply-page .apply-form-wrapper {
+  padding-top: 40px;
+}
+
 .apply-form-container {
   width: 100%;
   max-width: 800px;
@@ -321,6 +331,10 @@
 @media (max-width: 480px) {
   .apply-form-wrapper {
     padding: 35px 12px;
+  }
+
+  .careers-apply-page .apply-form-wrapper {
+    padding-top: 24px;
   }
 
   .apply-form-container {

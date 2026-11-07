@@ -128,6 +128,14 @@
     "description": "Core values HomeCore values Whether you’re building, remodeling, buying, or selling, we bring seamless project execution under one roof. · What makes us different · What makes us different · What makes us different · What makes us different"
   },
   {
+    "route": "quality-policy",
+    "path": "/quality-policy/",
+    "title": "Quality Policy - Vastu Vihar",
+    "type": "Page",
+    "bodyClass": "wp-singular page-template page-template-template-homepage page-template-template-homepage-php page wp-custom-logo wp-embed-responsive wp-theme-spaciaz ehf-header ehf-footer ehf-template-spaciaz chrome theme-spaciaz no-wc-breadcrumb elementor-default elementor-kit-4 elementor-page",
+    "description": "Vastu Vihar quality policy: our commitment to quality, safety, health, environment, customers, R&D and employees."
+  },
+  {
     "route": "our-awards",
     "path": "/our-awards/",
     "title": "Our awards",

@@ -176,7 +176,7 @@ function ApplyForm() {
               <input type="text" name="website_url" tabIndex={-1} autoComplete="off" />
             </div>
 
-            <ConsentFields form="application" />
+            <ConsentFields form="application" compact />
 
             <button
               disabled={isSubmitting}
@@ -199,7 +199,7 @@ export default function ApplyPage() {
         <div className="col-fluid">
           <div id="primary" className="content-area">
             <main id="main" className="site-main">
-              <div className="elementor elementor-57">
+              <div className="elementor elementor-57 careers-apply-page">
                 <CareersHeader />
                 <Suspense fallback={
                   <div className="apply-form-wrapper">
