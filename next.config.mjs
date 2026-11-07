@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development' && process.env.USE_CLOUDFLARE === '1'
 }
 
 // A tag's hosts are only allowed when its ID is set, so a site with no tags allows none.
-const isSet = (name) => Boolean((process.env[name] || '').trim());
+const isSet = (name) => Boolean((process.env[name] || (name === 'NEXT_PUBLIC_META_PIXEL_ID' ? '4516919088573710' : '')).trim());
 const tagHosts = [
   ...(isSet('NEXT_PUBLIC_GA4_ID')
     ? [{
