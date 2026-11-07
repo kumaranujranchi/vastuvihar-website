@@ -64,6 +64,13 @@ function ApplyForm() {
 
       if (response.ok) {
         setSuccess(true);
+        const win = typeof window !== 'undefined' ? (window as unknown as { fbq?: (...args: unknown[]) => void }) : null;
+        if (typeof win?.fbq === 'function') {
+          win.fbq('track', 'SubmitApplication');
+          win.fbq('trackCustom', 'Job_Application_Submitted', {
+            jobTitle: formData.jobTitle || 'General',
+          });
+        }
       } else {
         setError(result.error || 'Failed to submit application.');
       }

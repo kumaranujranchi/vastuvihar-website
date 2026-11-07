@@ -61,6 +61,13 @@ export default function ContactForm({ children, className = '', ...props }) {
       setMessage(result?.message || 'Thank you. Your message has been submitted.');
       form.reset();
       trackLead();
+      if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+        window.fbq('trackCustom', 'Lead_Form_Submitted', {
+          project: values.project || '',
+          city: values.city || '',
+          source: values.source || 'contact_form',
+        });
+      }
     } catch (err) {
       setStatus('error');
       setMessage(err.message || 'Your message could not be sent. Please try again.');
