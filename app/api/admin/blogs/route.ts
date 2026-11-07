@@ -1,4 +1,3 @@
-import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { ensureDatabaseReady } from '@/lib/dbBootstrap';
@@ -7,17 +6,7 @@ import { audit } from '@/lib/audit';
 import { saveBlogImage } from '@/lib/privateStorage';
 import { sanitizeBlogHtml } from '@/lib/sanitizeHtml';
 import { jsonError, logError } from '@/lib/security/request';
-
-// These pages are prerendered from the post list, so a change must refresh them.
-function revalidateBlogPages(...slugs: string[]) {
-  try {
-    for (const path of ['/', '/blog', '/sitemap.xml', ...slugs.map((slug) => `/blog/${slug}`)]) {
-      revalidatePath(path);
-    }
-  } catch (err) {
-    console.warn('revalidateBlogPages error:', err);
-  }
-}
+import { revalidateBlog } from '@/lib/revalidate';
 
 function estimateReadingTime(content: string): string {
   const wordCount = content.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
@@ -113,7 +102,7 @@ export async function POST(request: Request) {
     });
 
     await audit(admin, 'blog.created', 'blog', blog.id);
-    revalidateBlogPages();
+    revalidateBlog();
     return NextResponse.json({ success: true, blog });
   } catch (error: any) {
     logError('admin.blogs.create', error);
@@ -176,7 +165,7 @@ export async function PATCH(request: Request) {
     const blog = await prisma.blogPost.update({ where: { id }, data });
 
     await audit(admin, 'blog.updated', 'blog', id);
-    revalidateBlogPages(existing.slug, slug);
+    revalidateBlog();
     return NextResponse.json({ success: true, blog });
   } catch (error) {
     logError('admin.blogs.update', error);
@@ -231,7 +220,7 @@ export async function DELETE(request: Request) {
 
     const deleted = await prisma.blogPost.delete({ where: { id } });
     await audit(admin, 'blog.deleted', 'blog', id);
-    revalidateBlogPages(deleted.slug);
+    revalidateBlog();
     return NextResponse.json({ success: true, message: 'Blog post deleted' });
   } catch (error) {
     console.error('Error deleting blog:', error);

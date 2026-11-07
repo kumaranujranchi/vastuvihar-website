@@ -67,13 +67,25 @@ export const prisma = new Proxy({} as PrismaClient, {
 
 export default prisma;
 
-// Public pages render without their database content when the database is unavailable.
+/**
+ * What a cached public page does when the database is unavailable.
+ *
+ * In production the error is rethrown: Next.js then keeps serving the last good copy
+ * of the page (ISR) instead of caching an empty one, and a page never cached returns a
+ * 500, which search engines retry, rather than a 404 or an empty page they may index.
+ * During `next build` and in development it falls back to `value`, so an outage never
+ * blocks a deploy; the page then refreshes on its next revalidation.
+ */
+export function databaseFallback<T>(where: string, value: T) {
+  return (error: unknown): T => {
+    const tolerate =
+      process.env.NEXT_PHASE === 'phase-production-build' || process.env.NODE_ENV !== 'production';
+    console.error(`${where}: database unavailable.`, error);
+    if (!tolerate) throw error;
+    return value;
+  };
+}
+
 // Use as .catch(orEmpty('page')).
-export const orEmpty = (where: string) => (error: unknown) => {
-  console.error(`${where}: database unavailable.`, error);
-  return [] as never[];
-};
-export const orNull = (where: string) => (error: unknown) => {
-  console.error(`${where}: database unavailable.`, error);
-  return null;
-};
+export const orEmpty = (where: string) => databaseFallback(where, [] as never[]);
+export const orNull = (where: string) => databaseFallback(where, null);

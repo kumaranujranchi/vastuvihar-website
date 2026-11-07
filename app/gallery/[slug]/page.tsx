@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/metadata';
-import { connection } from 'next/server';
-import { getGalleryAlbumBySlug } from '@/lib/gallery';
+import { GALLERY_ALBUM_SLUGS, getGalleryAlbumBySlug } from '@/lib/gallery';
 import GalleryLightbox from '../GalleryLightbox';
 
 import './GallerySlug.css';
@@ -14,6 +13,16 @@ import Cta from '../Cta';
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+// Cached, and refreshed when an admin changes the photos (lib/revalidate.ts), or hourly.
+export const revalidate = 3600;
+
+// Only the configured albums have a page; any other slug is a 404.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return GALLERY_ALBUM_SLUGS.map((slug) => ({ slug }));
+}
 
 function BackArrowIcon() {
   return (
@@ -54,9 +63,6 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function GallerySlugPage({
   params,
 }: PageProps) {
-  // Admins can change the photos at any time, so this always renders fresh.
-  await connection();
-
   const { slug } = await params;
 
   const album = await getGalleryAlbumBySlug(slug);

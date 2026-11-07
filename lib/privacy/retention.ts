@@ -3,6 +3,7 @@ import { audit } from '@/lib/audit';
 import { deleteResume } from '@/lib/privateStorage';
 import { randomToken } from '@/lib/security/crypto';
 import { logError } from '@/lib/security/request';
+import { revalidateBlogComments } from '@/lib/revalidate';
 
 export const RETENTION_CATEGORIES = [
   { category: 'LEAD', description: 'Enquiries not converted, measured from the last update' },
@@ -69,7 +70,10 @@ const handlers: Record<string, Handler> = {
   async COMMENT(cutoff, dryRun) {
     const where = { createdAt: { lt: cutoff } };
     if (dryRun) return prisma.comment.count({ where });
-    return (await prisma.comment.deleteMany({ where })).count;
+    const { count } = await prisma.comment.deleteMany({ where });
+    // Expired comments must also leave the cached post pages.
+    if (count) revalidateBlogComments();
+    return count;
   },
   async NEWSLETTER_UNSUBSCRIBED(cutoff, dryRun) {
     const where = { status: 'UNSUBSCRIBED', unsubscribedAt: { lt: cutoff } };

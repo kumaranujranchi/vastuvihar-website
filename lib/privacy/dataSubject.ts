@@ -4,6 +4,7 @@ import { emailKey, phoneKey } from './consent';
 import { propagate } from './connectors';
 import { matchingApplications, matchingLeads, type Contact } from './matching';
 import { PROCESSORS } from '@/data/privacy/processors';
+import { revalidateBlogComments } from '@/lib/revalidate';
 
 export type { Contact };
 
@@ -127,6 +128,8 @@ export async function applyCorrection(
   const comments = contact.email && Object.keys(commentData).length
     ? await prisma.comment.updateMany({ where: { authorEmail: contact.email.toLowerCase() }, data: commentData })
     : { count: 0 };
+  // Published comments show the author's name on cached post pages.
+  if (comments.count) revalidateBlogComments();
 
   // If the corrected address is already listed, that entry and its status stand.
   let newsletter = 0;
@@ -174,6 +177,8 @@ export async function eraseContact(contact: Contact) {
   const appIds = eraseApps.map((app) => app.id);
   await prisma.lead.deleteMany({ where: { id: { in: leadIds }, legalHoldReason: null } });
   await prisma.comment.deleteMany({ where: { id: { in: comments.map((comment) => comment.id) } } });
+  // Erased comments must also leave the cached post pages.
+  if (comments.length) revalidateBlogComments();
   if (newsletter) await prisma.newsletterSubscriber.deleteMany({ where: { id: newsletter.id } });
   const held = await prisma.jobApplication.findMany({
     where: { id: { in: appIds }, NOT: { legalHoldReason: null } },
