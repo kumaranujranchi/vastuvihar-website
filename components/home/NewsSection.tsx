@@ -163,8 +163,8 @@ export default async function NewsSection() {
                           <img
                             loading="lazy"
                             decoding="async"
-                            width={900}
-                            height={599}
+                            width={1000}
+                            height={800}
                             src={featuredPost.imagePath}
                             className="attachment-large size-large wp-post-image"
                             alt={featuredPost.title}
@@ -260,8 +260,8 @@ export default async function NewsSection() {
                                   <img
                                     loading="lazy"
                                     decoding="async"
-                                    width={900}
-                                    height={599}
+                                    width={1000}
+                                    height={800}
                                     src={post.imagePath}
                                     className="attachment-large size-large wp-post-image"
                                     alt={post.title}

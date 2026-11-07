@@ -19976,8 +19976,15 @@ article.article-default:first-of-type {
 }
 
 .blog-grid .post-thumbnail {
-    padding-top: 68.5%;
+    aspect-ratio: 5 / 4;
+    padding-top: 0;
     margin-bottom: 20px;
+}
+
+@supports not (aspect-ratio: 5 / 4) {
+    .blog-grid .post-thumbnail {
+        padding-top: 80%;
+    }
 }
 
 .blog-grid .entry-excerpt {
@@ -20051,7 +20058,8 @@ article.article-default:first-of-type {
 
 @media (min-width: 568px) {
     .blog-list1 .post-thumbnail {
-        padding-top: 100%;
+        aspect-ratio: 5 / 4;
+        padding-top: 0;
         margin-bottom: 0;
     }
 }

@@ -355,3 +355,64 @@
 .elementor-post-special .blog-column article > .vv-news-card-link {
   height: 100%;
 }
+
+/* ========================================================
+   5:4 RATIO FOR BLOG IMAGES (PREVENTS CROPPING)
+   Ensures 5:4 ratio images display in full without cropping
+======================================================== */
+
+/* Featured Blog Post (Left Side Large Card) */
+.elementor-post-special .blog-style-grid .post-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4 !important;
+  padding-top: 0 !important;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: #f7f7f7;
+}
+
+.elementor-post-special .blog-style-grid .post-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 30px;
+  display: block;
+}
+
+/* List Blog Posts (Right Column Smaller Cards) */
+.elementor-post-special .blog-column .blog-list1 .post-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #f7f7f7;
+}
+
+.elementor-post-special .blog-column .blog-list1 .post-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  display: block;
+}
+
+/* Fallback for legacy browsers without aspect-ratio support */
+@supports not (aspect-ratio: 5 / 4) {
+  .elementor-post-special .blog-style-grid .post-thumbnail,
+  .elementor-post-special .blog-column .blog-list1 .post-thumbnail {
+    padding-top: 80% !important; /* 4/5 = 80% */
+  }
+}
