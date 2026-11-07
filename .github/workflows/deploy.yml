@@ -35,8 +35,10 @@ jobs:
             echo "=== [1/5] Navigating to /var/www/vastuvihar-website ==="
             cd /var/www/vastuvihar-website
 
-            echo "=== [2/5] Pulling latest code from origin/main ==="
-            git pull origin main
+            echo "=== [2/5] Fetching and syncing latest code from origin/main ==="
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
 
             echo "=== [3/5] Installing dependencies ==="
             npm ci
