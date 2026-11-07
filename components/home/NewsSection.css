@@ -385,34 +385,58 @@
   display: block;
 }
 
-/* List Blog Posts (Right Column Smaller Cards) */
-.elementor-post-special .blog-column .blog-list1 .post-thumbnail {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 5 / 4 !important;
-  padding-top: 0 !important;
-  margin-bottom: 0;
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: #f7f7f7;
-}
-
-.elementor-post-special .blog-column .blog-list1 .post-thumbnail img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 20px;
-  display: block;
-}
-
 /* Fallback for legacy browsers without aspect-ratio support */
 @supports not (aspect-ratio: 5 / 4) {
-  .elementor-post-special .blog-style-grid .post-thumbnail,
-  .elementor-post-special .blog-column .blog-list1 .post-thumbnail {
+  .elementor-post-special .blog-style-grid .post-thumbnail {
     padding-top: 80% !important; /* 4/5 = 80% */
+  }
+}
+
+/* ========================================================
+   GRID OF 3 EQUAL CARDS
+   3 columns on desktop, 2 on tablet, 1 on mobile
+======================================================== */
+
+.elementor-post-special .vv-news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 2.5vw, 40px);
+}
+
+/* Each card stacks normally inside the grid (theme adds a bottom margin below 960px) */
+.elementor-post-special .vv-news-grid .blog-style-grid {
+  margin-bottom: 0;
+}
+
+.elementor-post-special .vv-news-grid .blog-grid,
+.elementor-post-special .vv-news-grid .blog-grid .entry-title {
+  margin-bottom: 0;
+}
+
+/* The theme's 36px featured title is too large for a third-width card */
+.elementor-post-special .vv-news-grid .entry-title {
+  font-size: clamp(20px, 1.6vw, 24px);
+  line-height: 1.35;
+  margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .elementor-post-special .vv-news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Two columns fit two cards; hide the third so no row is left half empty */
+  .elementor-post-special .vv-news-grid .blog-style-grid:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-post-special .vv-news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .elementor-post-special .vv-news-grid .blog-style-grid:nth-child(3) {
+    display: block;
   }
 }

@@ -1,4 +1,3 @@
-
 import './NewsSection.css';
 import '../common/ScrollingTicker.css';
 import Link from 'next/link';
@@ -14,24 +13,17 @@ const formatDate = (date: Date) => {
   });
 };
 
-// Format category for CSS and URLs
-const formatCategorySlug = (cat: string) =>
-  cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
 export default async function NewsSection() {
-  // Fetch latest 4 published posts
+  // Latest 3 published posts, shown as a grid of equal cards
   const posts = await prisma.blogPost
     .findMany({
       where: { isPublished: true },
       orderBy: { createdAt: 'desc' },
-      take: 4,
+      take: 3,
     })
     .catch(orEmpty('Home news'));
 
   if (posts.length === 0) return null;
-
-  const featuredPost = posts[0];
-  const listPosts = posts.slice(1, 4);
 
   return (
     <div
@@ -124,7 +116,7 @@ export default async function NewsSection() {
         </div>
 
         {/* ==========================================
-            BLOG CARDS
+            BLOG CARDS - GRID OF 3, WHOLE CARD CLICKABLE
         ========================================== */}
 
         <div
@@ -136,193 +128,61 @@ export default async function NewsSection() {
         >
           <div className="elementor-widget-container">
             <div className="elementor-post-wrapper elementor-post-special">
-              <div className="d-grid">
-
-                {/* ====================================
-                    FEATURED BLOG - LEFT
-                    ENTIRE CARD CLICKABLE
-                ==================================== */}
-
-                {featuredPost && (
-                  <div className="blog-style-grid">
-
+              <div className="vv-news-grid">
+                {posts.map((post) => (
+                  <div key={post.id} className="blog-style-grid">
                     <Link
-                      href={`/blog/${featuredPost.slug}/`}
+                      href={`/blog/${post.slug}/`}
                       prefetch={false}
                       className="post-inner blog-grid vv-news-card-link"
-                      aria-label={`Read ${featuredPost.title}`}
+                      aria-label={`Read ${post.title}`}
                     >
-                      {/* Featured Image */}
-
-                      {featuredPost.imagePath && (
+                      {post.imagePath && (
                         <div className="post-thumbnail">
                           <img
                             loading="lazy"
                             decoding="async"
                             width={1000}
                             height={800}
-                            src={featuredPost.imagePath}
+                            src={post.imagePath}
                             className="attachment-large size-large wp-post-image"
-                            alt={featuredPost.title}
+                            alt={post.title}
                           />
                         </div>
                       )}
 
-                      {/* Featured Content */}
-
                       <div className="post-content">
                         <div className="entry-meta">
                           <div className="entry-meta-inner">
-
-                            {/* Category */}
-
                             <div className="categories-link">
-                              <span className="screen-reader-text">
-                                Categories
-                              </span>
-
-                              <span className="vv-news-category">
-                                {featuredPost.category}
-                              </span>
+                              <span className="screen-reader-text">Categories</span>
+                              <span className="vv-news-category">{post.category}</span>
                             </div>
-
-                            {/* Date */}
 
                             <div className="posted-on">
                               <time
                                 className="entry-date published"
-                                dateTime={featuredPost.createdAt.toISOString()}
+                                dateTime={post.createdAt.toISOString()}
                               >
-                                {formatDate(featuredPost.createdAt)}
+                                {formatDate(post.createdAt)}
                               </time>
-
                               <time
                                 className="updated"
-                                dateTime={featuredPost.updatedAt.toISOString()}
+                                dateTime={post.updatedAt.toISOString()}
                               >
-                                {formatDate(featuredPost.updatedAt)}
+                                {formatDate(post.updatedAt)}
                               </time>
                             </div>
-
                           </div>
                         </div>
 
-                        {/* Featured Title */}
-
                         <h3 className="omega entry-title">
-                          <span className="vv-news-title">
-                            {featuredPost.title}
-                          </span>
+                          <span className="vv-news-title">{post.title}</span>
                         </h3>
                       </div>
-
                     </Link>
                   </div>
-                )}
-
-                {/* ====================================
-                    RIGHT SIDE BLOG LIST
-                    ENTIRE ARTICLES CLICKABLE
-                ==================================== */}
-
-                <div className="blog-column">
-
-                  {listPosts.map((post) => {
-                    const postUrl = `/blog/${post.slug}/`;
-
-                    return (
-                      <article
-                        key={post.id}
-                        className={`article-default post type-post status-publish format-standard has-post-thumbnail hentry category-${formatCategorySlug(
-                          post.category
-                        )}`}
-                      >
-
-                        {/* Whole article card link */}
-
-                        <Link
-                          href={postUrl}
-                          prefetch={false}
-                          className="post-inner blog-list1 vv-news-card-link"
-                          aria-label={`Read ${post.title}`}
-                        >
-                          <div className="post-content">
-
-                            {/* Left: Blog Image */}
-
-                            <div className="post-left">
-                              {post.imagePath && (
-                                <div className="post-thumbnail">
-                                  <img
-                                    loading="lazy"
-                                    decoding="async"
-                                    width={1000}
-                                    height={800}
-                                    src={post.imagePath}
-                                    className="attachment-large size-large wp-post-image"
-                                    alt={post.title}
-                                  />
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Right: Blog Information */}
-
-                            <div className="post-right">
-                              <div className="entry-meta">
-                                <div className="entry-meta-inner">
-
-                                  {/* Category */}
-
-                                  <div className="categories-link">
-                                    <span className="screen-reader-text">
-                                      Categories
-                                    </span>
-
-                                    <span className="vv-news-category">
-                                      {post.category}
-                                    </span>
-                                  </div>
-
-                                  {/* Date */}
-
-                                  <div className="posted-on">
-                                    <time
-                                      className="entry-date published"
-                                      dateTime={post.createdAt.toISOString()}
-                                    >
-                                      {formatDate(post.createdAt)}
-                                    </time>
-
-                                    <time
-                                      className="updated"
-                                      dateTime={post.updatedAt.toISOString()}
-                                    >
-                                      {formatDate(post.updatedAt)}
-                                    </time>
-                                  </div>
-
-                                </div>
-                              </div>
-
-                              {/* Blog Title */}
-
-                              <h3 className="omega entry-title">
-                                <span className="vv-news-title">
-                                  {post.title}
-                                </span>
-                              </h3>
-
-                            </div>
-                          </div>
-                        </Link>
-
-                      </article>
-                    );
-                  })}
-
-                </div>
-
+                ))}
               </div>
             </div>
           </div>
