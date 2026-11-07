@@ -44,7 +44,7 @@ jobs:
             npm ci
 
             echo "=== [4/5] Updating database schema & building ==="
-            npx prisma migrate deploy
+            npx prisma db push
             npm run build
 
             echo "=== [5/5] Reloading PM2 process ==="
