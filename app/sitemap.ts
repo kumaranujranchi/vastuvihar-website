@@ -21,6 +21,7 @@ const STATIC_PATHS = [
   '/contact/site-contact/',
   '/careers/',
   '/core-values/',
+  '/quality-policy/',
   '/our-awards/',
   '/faqs/',
   '/privacy-policy/',
