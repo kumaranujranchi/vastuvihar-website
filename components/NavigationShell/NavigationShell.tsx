@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 // import CustomCursor from '@/components/CustomCursor/CustomCursor';
 // import LeadModal from '@/components/LeadModal/LeadModal';
-// import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
+import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 
 interface NavigationShellProps {
   header: React.ReactNode;
@@ -28,6 +28,7 @@ export default function NavigationShell({
   return (
     <>
       {children}
+      <WhatsAppButton />
       {cookieConsent}
     </>
   );
