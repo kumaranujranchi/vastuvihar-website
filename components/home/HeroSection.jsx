@@ -60,24 +60,6 @@ export default function HeroSection() {
       >
         <div className="e-con-inner">
           <div
-            className="elementor-element elementor-element-9593ae9 e-con-full e-flex e-con e-child"
-            data-id="9593ae9"
-            data-element_type="container"
-          >
-            <div
-              className="elementor-element elementor-element-ee6dccb elementor-widget__width-initial animated-fast elementor-invisible elementor-widget elementor-widget-text-editor"
-              data-id="ee6dccb"
-              data-element_type="widget"
-              data-settings={'{"_animation":"opal-move-right"}'}
-              data-widget_type="text-editor.default"
-            >
-              <div className="elementor-widget-container">
-                Discover homes that bring together modern living, smart design and a brighter tomorrow.
-                {' '}
-              </div>
-            </div>
-          </div>
-          <div
             className="elementor-element elementor-element-d8f80a9 e-con-full e-flex e-con e-child"
             data-id="d8f80a9"
             data-element_type="container"

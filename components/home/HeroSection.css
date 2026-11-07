@@ -208,11 +208,12 @@ body.rtl .elementor-6353 .elementor-element.elementor-element-88c322d {
   }
 
   .elementor-6353 .elementor-element.elementor-element-9593ae9 {
-    --width: 37%;
+    --width: 0%;
+    display: none;
   }
 
   .elementor-6353 .elementor-element.elementor-element-d8f80a9 {
-    --width: 63%;
+    --width: 100%;
   }
 }
 
