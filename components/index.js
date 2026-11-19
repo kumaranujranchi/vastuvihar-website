@@ -7,7 +7,7 @@ export { default as SiteLayout } from './layout/SiteLayout';
 export { default as PageLayout } from './layout/PageLayout';
 
 // Common UI components
-export { default as Breadcrumb } from './common/Breadcrumb';
+export { default as Breadcrumb } from './Breadcrumb';
 export { default as ContactForm } from './common/ContactForm';
 export { default as SearchDialog } from './common/SearchDialog';
 export { default as SearchForm } from './common/SearchForm';

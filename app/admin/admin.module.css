@@ -32,32 +32,82 @@
 }
 
 .sidebarHeader {
-  padding: 24px 20px 20px;
+  padding: 20px 18px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebarHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
 }
 
 .brandRow {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .brandLogoImg {
-  height: 44px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
 }
 
 .portalBadge {
-  font-size: 11.5px;
+  font-size: 11px;
   text-transform: uppercase;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: #ffffff;
-  padding-left: 12px;
+  padding-left: 10px;
   border-left: 1px solid rgba(255, 255, 255, 0.25);
   line-height: 1.3;
+  white-space: nowrap;
+}
+
+.sidebarCloseBtn {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.sidebarCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebarOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(1, 18, 61, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: fadeInOverlay 0.25s ease-out;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sidebarOpen {
+  transform: translateX(0) !important;
+  box-shadow: 4px 0 35px rgba(0, 0, 0, 0.45) !important;
+  z-index: 999 !important;
 }
 
 /* Sidebar Nav */
@@ -230,15 +280,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   position: sticky;
   top: 0;
   z-index: 40;
 }
 
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
 .topBarTitleArea {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pageHeading {
@@ -247,18 +305,25 @@
   color: #0f172a;
   letter-spacing: -0.3px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pageSubheading {
   font-size: 13px;
   color: #64748b;
   margin: 3px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .topBarRight {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .datePill {
@@ -273,6 +338,7 @@
   align-items: center;
   gap: 8px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  white-space: nowrap;
 }
 
 .notifBtn {
@@ -288,6 +354,7 @@
   position: relative;
   transition: background 0.2s;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0;
 }
 
 .notifBtn:hover {
@@ -315,6 +382,7 @@
   border-radius: 14px;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0;
 }
 
 .avatar {
@@ -328,12 +396,14 @@
   justify-content: center;
   font-size: 13px;
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 .profileName {
   font-size: 13.5px;
   font-weight: 700;
   color: #1e293b;
+  white-space: nowrap;
 }
 
 .chevron {
@@ -344,11 +414,23 @@
 /* Mobile Menu Button */
 .mobileMenuBtn {
   display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #0f172a;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  color: #011c5b;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.mobileMenuBtn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
 }
 
 /* Content Body */
@@ -666,6 +748,16 @@
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: 14px;
+}
+
+.tableResponsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tableResponsive::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 .table {
@@ -673,22 +765,23 @@
   border-collapse: collapse;
   text-align: left;
   font-size: 13.5px;
-  min-width: 800px;
+  min-width: 960px;
 }
 
 .table thead th {
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  padding: 16px 20px;
+  padding: 14px 18px;
   color: #334155;
   font-weight: 800;
   border-bottom: 2px solid #e2e8f0;
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 0.7px;
+  white-space: nowrap;
 }
 
 .table td {
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-bottom: 1px solid #f1f5f9;
   vertical-align: middle;
 }
@@ -726,6 +819,7 @@
   font-weight: 700;
   color: #011c5b;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .inquirySourceBadge {
@@ -740,6 +834,7 @@
   border-radius: 6px;
   margin-top: 3px;
   border: 1px solid #e2e8f0;
+  white-space: nowrap;
 }
 
 .inquirySourceDot {
@@ -762,6 +857,8 @@
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
   transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .callPill:hover {
@@ -782,6 +879,8 @@
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
   transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .whatsappPill:hover {
@@ -800,6 +899,7 @@
   border: 1px solid #bae6fd;
   padding: 3px 9px;
   border-radius: 7px;
+  white-space: nowrap;
 }
 
 .budgetBadge {
@@ -814,6 +914,7 @@
   font-weight: 800;
   font-size: 12.5px;
   box-shadow: 0 1px 3px rgba(245, 158, 11, 0.15);
+  white-space: nowrap;
 }
 
 .dateBadge {
@@ -827,6 +928,7 @@
   border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .statusDropdown {
@@ -1493,199 +1595,285 @@
   }
 }
 
-/* ================= RESPONSIVE MEDIA QUERIES ================= */
+/* ================= RESPONSIVE MEDIA QUERIES & FILTER BAR ================= */
 
+/* Default Filter Bar (Desktop) */
+.filterBar {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  width: 100%;
+}
+
+.filterControls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.searchWrapper {
+  position: relative;
+  flex: 1 1 240px;
+  min-width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 8px 14px 8px 36px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  background: #ffffff;
+  border-color: #08aaec;
+  box-shadow: 0 0 0 3px rgba(8, 170, 236, 0.12);
+}
+
+.filterSelect {
+  height: 40px;
+  padding: 0 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+  flex: 1 1 130px;
+  min-width: 125px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:focus {
+  background: #ffffff;
+  border-color: #08aaec;
+}
+
+.exportPrimaryBtn,
+.exportCrimsonBtn {
+  height: 40px;
+  padding: 0 18px;
+  background: #08aaec;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(8, 170, 236, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.exportPrimaryBtn:hover,
+.exportCrimsonBtn:hover {
+  background: #068bc2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(8, 170, 236, 0.35);
+}
+
+/* Tablets & Small Laptops (<= 1200px) */
 @media (max-width: 1200px) {
   .statsRow {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
+/* Medium Tablets & Mobile Landscape (<= 992px) */
 @media (max-width: 992px) {
   .sidebar {
     transform: translateX(-100%);
   }
 
+  .sidebarCloseBtn {
+    display: inline-flex;
+  }
+
   .mainContent {
-    margin-left: 0;
+    margin-left: 0 !important;
+    width: 100%;
   }
 
   .mobileMenuBtn {
-    display: block;
+    display: inline-flex;
   }
 
   .topBar {
-    padding: 16px 20px;
+    padding: 14px 20px;
   }
 
   .contentArea {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .statsRow {
-    grid-template-columns: 1fr;
+    padding: 20px 16px;
   }
 
   .filterBar {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 14px;
+    gap: 12px;
   }
 
   .filterControls {
-    flex-direction: column;
-    align-items: stretch;
+    width: 100%;
+  }
+
+  .searchWrapper {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .filterSelect {
+    flex: 1 1 calc(50% - 6px);
   }
 
   .exportPrimaryBtn,
-  .clearFilterBtn {
+  .exportCrimsonBtn {
     width: 100%;
-    justify-content: center;
+  }
+}
+
+/* Mobile Portrait (<= 768px) */
+@media (max-width: 768px) {
+  .topBar {
+    padding: 12px 14px;
   }
 
-  .topBarRight {
-    gap: 8px;
+  .pageHeading {
+    font-size: 17px;
   }
 
-  .datePill,
+  .pageSubheading {
+    display: none;
+  }
+
+  .datePill {
+    display: none;
+  }
+
   .profileName {
     display: none;
-    /* Hide non-essentials on mobile topbar */
+  }
+
+  .adminProfile {
+    padding: 4px;
+  }
+
+  .adminProfile .chevron {
+    display: none;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .statCard {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .statIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .statIconBox svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .statNumber {
+    font-size: 19px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .statTrend {
+    font-size: 9.5px;
+  }
+
+  .sparkline {
+    display: none;
+  }
+
+  .filterBar {
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+  }
+
+  .filterSelect {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .table td,
+  .table thead th {
+    padding: 12px 14px;
   }
 
   .emptyStateContainer {
-    padding: 40px 16px;
+    padding: 32px 16px;
+  }
+
+  .jobCardsGrid,
+  .appsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
-/* ================= FILTER BAR - FORCED HORIZONTAL LAYOUT ================= */
-.filterBar {
-  background: #ffffff !important;
-  border: 1px solid #eef2f6 !important;
-  border-radius: 16px !important;
-  padding: 12px 18px !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: nowrap !important;
-  gap: 14px !important;
-  margin-bottom: 24px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
-  width: 100% !important;
-}
-
-.filterControls {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 12px !important;
-  flex: 1 !important;
-  flex-wrap: nowrap !important;
-  width: auto !important;
-}
-
-.searchWrapper {
-  position: relative !important;
-  flex: 1 !important;
-  min-width: 200px !important;
-  width: auto !important;
-  display: block !important;
-}
-
-.searchInput {
-  width: 100% !important;
-  padding: 10px 14px 10px 38px !important;
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 12px !important;
-  font-size: 13.5px !important;
-  outline: none !important;
-  transition: all 0.2s !important;
-  color: #0f172a !important;
-  box-sizing: border-box !important;
-}
-
-.filterSelect {
-  padding: 10px 16px !important;
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 12px !important;
-  font-size: 13px !important;
-  outline: none !important;
-  cursor: pointer !important;
-  font-weight: 600 !important;
-  color: #334155 !important;
-  width: auto !important;
-  min-width: 140px !important;
-  flex-shrink: 0 !important;
-  box-sizing: border-box !important;
-  display: inline-block !important;
-}
-
-.exportPrimaryBtn {
-  background: #08aaec !important;
-  color: #ffffff !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 12px !important;
-  font-size: 13.5px !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  box-shadow: 0 4px 12px rgba(8, 170, 236, 0.25) !important;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  height: 42px !important;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 992px) {
-
-  .filterBar,
-  .filterControls {
-    flex-wrap: wrap !important;
+/* Extra Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .searchWrapper,
-  .filterSelect {
-    flex: 1 1 100% !important;
-    min-width: 100% !important;
+  .statCard {
+    padding: 12px;
   }
 
-  .exportPrimaryBtn {
-    width: 100% !important;
-    justify-content: center !important;
+  .contentArea {
+    padding: 14px 10px;
   }
-}
 
-.exportPrimaryBtn,
-.exportCrimsonBtn {
-  /* Included just in case you haven't changed the HTML class yet */
-  background: #08aaec !important;
-  color: #ffffff !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 12px !important;
-  font-size: 13.5px !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  box-shadow: 0 4px 12px rgba(8, 170, 236, 0.25) !important;
-  white-space: nowrap !important;
-  height: 42px !important;
-  flex-shrink: 0 !important;
-  transition: background 0.2s, transform 0.2s !important;
-}
+  .topBar {
+    padding: 10px 12px;
+  }
 
-.exportPrimaryBtn:hover,
-.exportCrimsonBtn:hover {
-  background: #068bc2 !important;
-  transform: translateY(-1px) !important;
+  .pageHeading {
+    font-size: 15px;
+  }
 }

@@ -36,7 +36,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: 30px;
-  background: url('/stats-bg.png') center / cover no-repeat;
+  background: url('/stats-bg.webp') center / cover no-repeat;
 }
 
 .about-stats__visual {

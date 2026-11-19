@@ -90,6 +90,7 @@ const TAB_HEADINGS: Record<AdminTab, { title: string; subtitle: string }> = {
 export default function AdminDashboardPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<AdminTab>('leads');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [permissions, setPermissions] = useState<string[]>([]);
   const [currentAdminId, setCurrentAdminId] = useState('');
@@ -460,21 +461,48 @@ export default function AdminDashboardPage() {
     }
   };
 
+  const handleNavTab = (tab: AdminTab) => {
+    setActiveTab(tab);
+    setSidebarOpen(false);
+  };
+
   return (
     <div className={styles.dashboardContainer}>
-      {/* ================= EXACT REPLICA SIDEBAR (CRIMSON DARK) ================= */}
-      <aside className={styles.sidebar}>
+      {/* Mobile Backdrop Overlay */}
+      {sidebarOpen && (
+        <div
+          className={styles.sidebarOverlay}
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* ================= EXACT REPLICA SIDEBAR (DARK BLUE) ================= */}
+      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
         <div className={styles.sidebarHeader}>
-          <div className={styles.brandRow}>
-            <Image
-              src="/images/logo.svg"
-              alt="Vastu Vihar"
-              width={130}
-              height={42}
-              className={styles.brandLogoImg}
-              priority
-            />
-            <span className={styles.portalBadge}>ADMIN PORTAL</span>
+          <div className={styles.sidebarHeaderRow}>
+            <div className={styles.brandRow}>
+              <Image
+                src="/images/logo.svg"
+                alt="Vastu Vihar"
+                width={130}
+                height={42}
+                className={styles.brandLogoImg}
+                priority
+              />
+              <span className={styles.portalBadge}>ADMIN PORTAL</span>
+            </div>
+            <button
+              type="button"
+              className={styles.sidebarCloseBtn}
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close sidebar menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -483,7 +511,7 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Property Leads */}
           {can('leads:read') && <button
-            onClick={() => setActiveTab('leads')}
+            onClick={() => handleNavTab('leads')}
             className={`${styles.navItem} ${activeTab === 'leads' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -499,7 +527,7 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Job Openings */}
           {can('vacancies:manage') && <button
-            onClick={() => setActiveTab('vacancies')}
+            onClick={() => handleNavTab('vacancies')}
             className={`${styles.navItem} ${activeTab === 'vacancies' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -516,7 +544,7 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Job Applications */}
           {can('applications:read') && <button
-            onClick={() => setActiveTab('applications')}
+            onClick={() => handleNavTab('applications')}
             className={`${styles.navItem} ${activeTab === 'applications' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -535,7 +563,7 @@ export default function AdminDashboardPage() {
           </button>}
           {/* Nav Item: Blog Posts */}
           {can('blogs:manage') && <button
-            onClick={() => setActiveTab('blogs')}
+            onClick={() => handleNavTab('blogs')}
             className={`${styles.navItem} ${activeTab === 'blogs' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -551,7 +579,7 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Gallery */}
           {can('gallery:manage') && <button
-            onClick={() => setActiveTab('gallery')}
+            onClick={() => handleNavTab('gallery')}
             className={`${styles.navItem} ${activeTab === 'gallery' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -568,7 +596,7 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Users */}
           {can('users:manage') && <button
-            onClick={() => setActiveTab('users')}
+            onClick={() => handleNavTab('users')}
             className={`${styles.navItem} ${activeTab === 'users' ? styles.navItemActive : ''}`}
           >
             <div className={styles.navItemLeft}>
@@ -586,7 +614,13 @@ export default function AdminDashboardPage() {
 
           {/* Nav Item: Privacy & Compliance */}
           {(can('privacy:read') || can('comments:moderate') || can('users:manage')) && (
-            <button onClick={() => router.push('/admin/privacy/')} className={styles.navItem}>
+            <button
+              onClick={() => {
+                setSidebarOpen(false);
+                router.push('/admin/privacy/');
+              }}
+              className={styles.navItem}
+            >
               <div className={styles.navItemLeft}>
                 <span className={styles.navIcon}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -600,9 +634,13 @@ export default function AdminDashboardPage() {
 
           <div className={styles.navSectionTitle}>QUICK ACTIONS</div>
 
-          {/* //blog button */}
-
-          {can('blogs:manage') && <button onClick={() => router.push('/admin/blogs/new')} className={styles.navItem}>
+          {can('blogs:manage') && <button
+            onClick={() => {
+              setSidebarOpen(false);
+              router.push('/admin/blogs/new');
+            }}
+            className={styles.navItem}
+          >
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -614,9 +652,13 @@ export default function AdminDashboardPage() {
             </div>
           </button>}
 
-
-
-          {can('vacancies:manage') && <button onClick={() => setShowJobModal(true)} className={styles.navItem}>
+          {can('vacancies:manage') && <button
+            onClick={() => {
+              setSidebarOpen(false);
+              setShowJobModal(true);
+            }}
+            className={styles.navItem}
+          >
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -628,7 +670,13 @@ export default function AdminDashboardPage() {
             </div>
           </button>}
 
-          {can('leads:export') && <button onClick={exportLeadsCSV} className={styles.navItem}>
+          {can('leads:export') && <button
+            onClick={() => {
+              setSidebarOpen(false);
+              exportLeadsCSV();
+            }}
+            className={styles.navItem}
+          >
             <div className={styles.navItemLeft}>
               <span className={styles.navIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -660,7 +708,6 @@ export default function AdminDashboardPage() {
             <span>View Live Website</span>
           </a>
 
-
           <button onClick={handleLogout} className={`${styles.sidebarActionBtn} ${styles.logoutBtn}`}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -676,9 +723,23 @@ export default function AdminDashboardPage() {
       <div className={styles.mainContent}>
         {/* Top Header Bar */}
         <header className={styles.topBar}>
-          <div className={styles.topBarTitleArea}>
-            <h1 className={styles.pageHeading}>{TAB_HEADINGS[activeTab].title}</h1>
-            <p className={styles.pageSubheading}>{TAB_HEADINGS[activeTab].subtitle}</p>
+          <div className={styles.topBarLeft}>
+            <button
+              type="button"
+              className={styles.mobileMenuBtn}
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open sidebar menu"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+            <div className={styles.topBarTitleArea}>
+              <h1 className={styles.pageHeading}>{TAB_HEADINGS[activeTab].title}</h1>
+              <p className={styles.pageSubheading}>{TAB_HEADINGS[activeTab].subtitle}</p>
+            </div>
           </div>
 
           <div className={styles.topBarRight}>
@@ -938,7 +999,8 @@ export default function AdminDashboardPage() {
                     </button>
                   </div>
                 ) : (
-                  <table className={styles.table}>
+                  <div className={styles.tableResponsive}>
+                    <table className={styles.table}>
                     <thead>
                       <tr>
                         <th>Customer</th>
@@ -1086,6 +1148,7 @@ export default function AdminDashboardPage() {
                       })}
                     </tbody>
                   </table>
+                  </div>
                 )}
               </div>
             </div>
@@ -1130,7 +1193,8 @@ export default function AdminDashboardPage() {
                     </p>
                   </div>
                 ) : (
-                  <table className={styles.table}>
+                  <div className={styles.tableResponsive}>
+                    <table className={styles.table}>
                     <thead>
                       <tr>
                         <th>Title</th>
@@ -1195,6 +1259,7 @@ export default function AdminDashboardPage() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 )}
               </div>
             </div>

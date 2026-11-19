@@ -406,5 +406,13 @@
     "type": "Page",
     "bodyClass": "page-template-default page page-id-gallery",
     "description": "Explore photos and albums from Vastu Vihar company events, property expos, sports tournaments, and press coverage."
+  },
+  {
+    "route": "cities",
+    "path": "/cities/",
+    "title": "Residential Projects by City - Vastu Vihar",
+    "type": "Page",
+    "bodyClass": "page-template-default page page-id-cities",
+    "description": "Browse Vastu Vihar residential projects by city and state, with project phases in Bihar, Jharkhand, Uttar Pradesh, West Bengal and Odisha."
   }
 ]

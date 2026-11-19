@@ -11,7 +11,7 @@
   width: 100%;
   aspect-ratio: 16/9;
   max-height: 500px;
-  background: #011c5b url('/core-v.png') center center / cover no-repeat;
+  background: #011c5b url('/core-v.webp') center center / cover no-repeat;
   color: #fff;
   padding-bottom: 40px;
 }

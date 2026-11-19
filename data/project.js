@@ -664,7 +664,7 @@ export const projectsData = {
         benefits: RAFT_FOUNDATION_BENEFITS,
         gallery: [
             "/thumb/Godavari.webp",
-            "/godawari/godawari2.png",
+            "/godawari/godawari2.webp",
             "/godawari/godawari1.webp",
         ],
         modelTypes: [
@@ -751,8 +751,6 @@ export const projectsData = {
             "/jayanti/5.webp",
             "/jayanti/1.webp",
             "/jayanti/2.webp",
-            // "/jayanti/3.webp",
-            // "/jayanti/4.webp",
             "/jayanti/6.webp",
             "/jayanti/8.webp",
         ],

@@ -1,4 +1,4 @@
-export { default as Breadcrumb } from './Breadcrumb';
+export { default as Breadcrumb } from '../Breadcrumb';
 export { default as ContactForm } from './ContactForm';
 export { default as SearchDialog } from './SearchDialog';
 export { default as SearchForm } from './SearchForm';

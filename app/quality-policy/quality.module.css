@@ -4,7 +4,7 @@
 
 /* Banner: the shared Breadcrumb hero, with its own photo. */
 .banner :global(.vv-breadcrumb-banner) {
-  background-image: url('/core-v.png');
+  background-image: url('/core-v.webp');
 }
 
 .page {
