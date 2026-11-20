@@ -10,7 +10,7 @@
   display: flex;
   width: 100%;
   min-height: 530px;
-  background: #011c5b url('/faq.webp') center center / cover no-repeat;
+  background: #011c5b url('/FAQ.webp') center bottom / cover no-repeat;
   color: #fff;
 }
 

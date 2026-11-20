@@ -1,0 +1,30 @@
+siwan
+samstipur
+patna
+dehri
+biharsharif
+bettiah
+ara,
+sitamari
+munger
+saharsa
+madhubani
+raxaul
+muzzafarpur
+jehanabad
+darbhanga
+aurangabad
+
+
+hajipur p3 and p5 are missing
+gaya 2,3,4,5,6 missing
+purnia p1 and p2 missing
+bokaro 1,2,3, missing
+sasaram 1,2,3 are missing
+motihari 1, 2 missing
+katihar 1 missing
+
+
+bhagalapur empty
+dhanbad empty 
+chapra empty
