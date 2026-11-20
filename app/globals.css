@@ -14565,32 +14565,6 @@ body {
   outline-offset: 3px;
 }
 
-.next-route-error {
-  max-width: 920px;
-  margin: auto;
-  padding: 130px 24px;
-  text-align: center;
-}
-
-.next-route-error h1 {
-  font-family: Involve, sans-serif;
-  font-size: clamp(48px, 8vw, 100px);
-  line-height: 1.1;
-}
-
-.next-route-error p {
-  font-size: 19px;
-}
-
-.next-route-error a {
-  display: inline-flex;
-  background: #e4ed64;
-  padding: 14px 28px;
-  border-radius: 30px;
-  color: #111;
-  margin-top: 20px;
-}
-
 .elementor-invisible {
   visibility: visible !important;
 }

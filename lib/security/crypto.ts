@@ -10,10 +10,21 @@ const scryptAsync = promisify(scrypt) as (
 
 const SCRYPT = { N: 2 ** 15, r: 8, p: 1, maxmem: 128 * 1024 * 1024 };
 
+const DEVELOPMENT_SECRET = 'development-only-privacy-hash-secret-vastuvihar-2026';
+
+/**
+ * The key for consent-ledger hashes, rate-limit keys and signed admin cookies. A
+ * running production server never falls back to the public development key: it
+ * fails instead, because anyone could sign an admin cookie with that key.
+ */
 function hashSecret(): string {
   const secret = process.env.PRIVACY_HASH_SECRET;
   if (secret && secret.length >= 32) return secret;
-  return 'development-only-privacy-hash-secret-vastuvihar-2026';
+  const building = process.env.NEXT_PHASE === 'phase-production-build';
+  if (process.env.NODE_ENV === 'production' && !building) {
+    throw new Error('PRIVACY_HASH_SECRET must be set to at least 32 characters in production.');
+  }
+  return DEVELOPMENT_SECRET;
 }
 
 /** Keyed hash, so a leaked table cannot be reversed by hashing every phone number. */

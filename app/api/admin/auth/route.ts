@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { ensureDatabaseReady } from '@/lib/dbBootstrap';
 import { endSession, getCurrentAdmin, startFallbackSession, startSession } from '@/lib/adminAuth';
 import { audit } from '@/lib/audit';
 import { hashPassword, verifyPassword } from '@/lib/security/crypto';
@@ -15,7 +14,6 @@ const INVALID = 'Invalid email or password.';
 const decoyHash = hashPassword('decoy-password-for-constant-time-login');
 
 export async function GET() {
-  await ensureDatabaseReady();
   const admin = await getCurrentAdmin();
   if (!admin) return NextResponse.json({ authenticated: false });
   return NextResponse.json({ authenticated: true, user: admin });
@@ -23,7 +21,6 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    await ensureDatabaseReady();
     const blocked = await guardPublicPost(request, 'admin-login', 10, 15 * 60 * 1000);
     if (blocked) return blocked;
 

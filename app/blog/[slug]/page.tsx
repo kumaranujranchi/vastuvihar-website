@@ -8,8 +8,9 @@ import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import CommentForm from '../CommentForm';
 import '../BlogComments.css';
 
-// Revalidated when a post or its comments change, or after one hour.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
 type BlogParams = { params: Promise<{ slug: string }> };
 
@@ -23,13 +24,6 @@ const formatDate = (date: Date) =>
 const categorySlug = (category: string) =>
   category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
-export async function generateStaticParams() {
-  const posts = await prisma.blogPost
-    .findMany({ where: { isPublished: true }, select: { slug: true } })
-    .catch(orEmpty('Blog post list'));
-
-  return posts.map(({ slug }) => ({ slug }));
-}
 
 const getPost = cache((slug: string) =>
   prisma.blogPost

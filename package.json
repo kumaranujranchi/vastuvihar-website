@@ -6,23 +6,28 @@
   "scripts": {
     "dev": "next dev --webpack",
     "compress": "node scripts/auto-compress.mjs && node scripts/gallery-manifest.mjs",
-    "prebuild:next": "node scripts/auto-compress.mjs && node scripts/gallery-manifest.mjs",
-    "build:next": "next build --webpack",
-    "build": "node scripts/auto-compress.mjs && node scripts/gallery-manifest.mjs && prisma generate && next build",
+    "build:next": "node scripts/gallery-manifest.mjs && next build --webpack",
+    "build": "node scripts/gallery-manifest.mjs && prisma generate && next build",
     "start": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:build": "node scripts/cf.mjs build local",
+    "cf:preview": "node scripts/cf.mjs build local && opennextjs-cloudflare preview",
     "export": "node scripts/export.mjs",
     "verify": "node scripts/verify.mjs",
     "postinstall": "prisma generate",
-    "cf:migrate": "wrangler d1 migrations apply DB --remote",
-    "cf:migrate:local": "wrangler d1 migrations apply DB --local",
+    "cf:migrate:local": "node scripts/cf.mjs migrate local",
     "db:push": "prisma db push",
     "admin:create": "node scripts/create-admin.mjs",
     "admin:create:d1": "node scripts/create-admin-d1.mjs",
-    "test:dpdp": "node scripts/dpdp-compliance-test.mjs"
+    "test:dpdp": "node scripts/dpdp-compliance-test.mjs",
+    "cf:build:production": "node scripts/cf.mjs build production",
+    "cf:preflight:production": "node scripts/cf.mjs preflight production",
+    "cf:upload:production": "node scripts/cf.mjs upload production --confirm-production",
+    "cf:deploy:production": "node scripts/cf.mjs deploy production --confirm-production",
+    "cf:migrate:production": "node scripts/cf.mjs migrate production",
+    "migrate:export": "node --experimental-sqlite --no-warnings scripts/export-sqlite-to-d1.mjs",
+    "migrate:files": "node scripts/upload-files-to-r2.mjs",
+    "test:unit": "node --experimental-strip-types --no-warnings --test \"scripts/tests/*.test.mjs\""
   },
   "engines": {
     "node": ">=20.9.0"
@@ -45,5 +50,12 @@
     "prisma": "^5.22.0",
     "typescript": "7.0.2",
     "wrangler": "4.157.0"
+  },
+  "allowScripts": {
+    "@prisma/client@5.22.0": true,
+    "@prisma/engines@5.22.0": true,
+    "esbuild@0.28.2": true,
+    "prisma@5.22.0": true,
+    "workerd@1.20261103.1": true
   }
 }

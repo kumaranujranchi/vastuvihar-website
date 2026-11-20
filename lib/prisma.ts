@@ -70,11 +70,11 @@ export default prisma;
 /**
  * What a cached public page does when the database is unavailable.
  *
- * In production the error is rethrown: Next.js then keeps serving the last good copy
- * of the page (ISR) instead of caching an empty one, and a page never cached returns a
- * 500, which search engines retry, rather than a 404 or an empty page they may index.
- * During `next build` and in development it falls back to `value`, so an outage never
- * blocks a deploy; the page then refreshes on its next revalidation.
+ * In production the error is rethrown, so the page returns a 500, which search engines
+ * retry, rather than a 404 or an empty page they may index. Pages that read the
+ * database render on each request (export const dynamic = 'force-dynamic'), so
+ * nothing empty is ever cached. During `next build` and in development it falls back
+ * to `value`, so an outage never blocks a build.
  */
 export function databaseFallback<T>(where: string, value: T) {
   return (error: unknown): T => {

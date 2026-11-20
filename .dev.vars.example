@@ -1,0 +1,11 @@
+# Copy to .dev.vars (git ignores it) for `npm run cf:preview`, which runs the Worker
+# locally with local D1 and R2. Never use production values here.
+PRIVACY_HASH_SECRET="local-only-replace-with-48-random-characters-0000000000"
+RETENTION_CRON_SECRET="local-only-replace-with-48-random-characters-1111111111"
+
+# Locally there is no Cloudflare Access in front of the Worker, so the gate is off.
+REQUIRE_CF_ACCESS="0"
+
+# Rate limits key on cf-connecting-ip in production. Locally every request shares one
+# address, so read x-forwarded-for instead (an empty value means "use x-forwarded-for").
+CLIENT_IP_HEADER=""

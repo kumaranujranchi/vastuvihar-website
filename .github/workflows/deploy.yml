@@ -1,9 +1,9 @@
 name: Auto Deploy to AWS Lightsail
 
+# Manual only. Push-to-main auto-deploy was turned off when main switched to the
+# Cloudflare build, which this Lightsail server has not been tested with. vastuvihar.org
+# keeps serving the last Lightsail deploy until the domain moves to Cloudflare.
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:

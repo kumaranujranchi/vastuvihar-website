@@ -20,7 +20,7 @@ Everything the website collects, where it goes, and why. Update this file and `d
 
 **Not on this website:** newsletter, callback, site visit or account registration forms, and any chat widget. Booking KYC (PAN, Aadhaar, bank details) is collected offline and sits outside this codebase, so it needs its own review.
 
-**Unused code:** `components/common/ContactForm.jsx` has no consent controls. Nothing renders it. Delete it or add `ConsentFields` before using it.
+**Unused code:** the old `components/common/ContactForm.jsx`, which had no consent controls, has been deleted.
 
 ## Data categories
 

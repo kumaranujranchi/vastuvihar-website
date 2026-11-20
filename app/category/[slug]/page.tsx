@@ -13,15 +13,11 @@ type CategoryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-// Cached and refreshed when a blog post changes, or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
-// Only categories declared in BLOG_CATEGORIES have an archive route.
-export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return Object.keys(CATEGORY_MAP).map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({ params }: CategoryPageProps) {
   const { slug } = await params;

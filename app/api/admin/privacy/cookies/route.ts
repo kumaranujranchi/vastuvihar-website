@@ -79,7 +79,7 @@ export async function GET(request: Request) {
       summary: summary.map((group) => ({ purpose: group.purpose, action: group.action, count: group._count._all })),
       purposes: COOKIE_PURPOSES,
       offered: OFFERED_CATEGORIES,
-      tags: { googleAnalytics: Boolean(TAG_IDS.ga4), googleAds: Boolean(TAG_IDS.googleAds), metaPixel: Boolean(TAG_IDS.metaPixel) },
+      tags: { googleAnalytics: Boolean(TAG_IDS.ga4), googleAds: Boolean(TAG_IDS.googleAds), metaPixel: Boolean(TAG_IDS.metaPixel), clarity: Boolean(TAG_IDS.clarity) },
       inventory: COOKIE_INVENTORY,
     });
   } catch (error) {

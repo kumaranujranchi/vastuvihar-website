@@ -1,0 +1,64 @@
+name: Cloudflare
+
+# Pull requests: build and test only, no secrets, nothing deployed.
+# Pushes to `main` are deployed by Cloudflare Workers Builds (dashboard), not here.
+# Manual run: upload a production version without moving traffic, from `main`, behind the
+# `production` environment's required reviewers; promote it with `wrangler versions deploy`.
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Where to deploy
+        type: choice
+        options: [production]
+        default: production
+
+concurrency:
+  group: cloudflare-${{ github.event.inputs.target || github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run test:unit
+      - name: Build the Worker (production settings, no tags)
+        run: node scripts/cf.mjs build local
+      - name: Check the bundle with Wrangler
+        run: npx wrangler deploy --dry-run --outdir dist-dry-run
+
+  upload-production:
+    name: Upload production version (no traffic)
+    needs: check
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'production' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      # Build-time tag IDs. Leave unset until the privacy wording is approved.
+      NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
+      NEXT_PUBLIC_GOOGLE_ADS_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_ADS_ID }}
+      NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL: ${{ vars.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL }}
+      NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.NEXT_PUBLIC_META_PIXEL_ID }}
+      NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run cf:upload:production

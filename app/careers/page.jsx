@@ -13,8 +13,9 @@ export const metadata = createPageMetadata({
   path: '/careers/',
 });
 
-// Cached, and refreshed when a vacancy changes (lib/revalidate.ts), or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
 export default async function CareersPage() {
   const activeJobs = await prisma.jobVacancy.findMany({

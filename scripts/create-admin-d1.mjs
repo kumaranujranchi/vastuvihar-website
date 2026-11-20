@@ -1,6 +1,7 @@
 // Creates the first administrator on D1, or resets an existing account's password.
-//   ADMIN_BOOTSTRAP_PASSWORD='...' node scripts/create-admin-d1.mjs --remote <email> "<name>" [role]
-// Use --local for the local development database. The password comes from the environment
+//   ADMIN_BOOTSTRAP_PASSWORD='...' node scripts/create-admin-d1.mjs --remote [--env uat] <email> "<name>" [role]
+// Use --local for the local development database, and --env uat for the UAT database
+// (without --env it targets the production database). The password comes from the environment
 // so it never lands in shell history as an argument.
 import { spawnSync } from 'node:child_process';
 import { randomBytes, randomUUID, scrypt as scryptCallback } from 'node:crypto';
@@ -12,11 +13,14 @@ import { promisify } from 'node:util';
 const scrypt = promisify(scryptCallback);
 const ROLES = ['SUPER_ADMIN', 'PRIVACY_OFFICER', 'SALES', 'HR', 'CONTENT'];
 
-const [target, email, name, role = 'SUPER_ADMIN'] = process.argv.slice(2);
+const args = process.argv.slice(2);
+const envIndex = args.indexOf('--env');
+const wranglerEnv = envIndex >= 0 ? args.splice(envIndex, 2)[1] : null;
+const [target, email, name, role = 'SUPER_ADMIN'] = args;
 const password = process.env.ADMIN_BOOTSTRAP_PASSWORD || '';
 
 if (!['--local', '--remote'].includes(target) || !email || !name || !ROLES.includes(role)) {
-  console.error(`Usage: node scripts/create-admin-d1.mjs --local|--remote <email> "<name>" [${ROLES.join('|')}]`);
+  console.error(`Usage: node scripts/create-admin-d1.mjs --local|--remote [--env uat] <email> "<name>" [${ROLES.join('|')}]`);
   process.exit(1);
 }
 if (password.length < 12) {
@@ -52,12 +56,12 @@ try {
   fs.writeFileSync(file, statements, { mode: 0o600 });
   const result = spawnSync(
     process.execPath,
-    ['node_modules/wrangler/bin/wrangler.js', 'd1', 'execute', 'DB', target, '--file', file, '--yes'],
+    ['node_modules/wrangler/bin/wrangler.js', 'd1', 'execute', 'DB', target, ...(wranglerEnv ? ['--env', wranglerEnv] : []), '--file', file, '--yes'],
     { stdio: ['ignore', 'ignore', 'inherit'] },
   );
   status = result.status ?? 1;
 } finally {
   fs.rmSync(dir, { recursive: true, force: true });
 }
-if (status === 0) console.log(`Admin account ready: ${normalized} (${role}) on ${target.slice(2)} D1`);
+if (status === 0) console.log(`Admin account ready: ${normalized} (${role}) on ${target.slice(2)} D1${wranglerEnv ? ` (${wranglerEnv})` : ''}`);
 process.exit(status);

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { useCookieChoice } from '@/lib/privacy/cookieChoices';
 
 /**
  * MetaCtaTracker
@@ -15,21 +16,25 @@ import { usePathname } from 'next/navigation';
  * - Enquiry Buttons -> fbq('track', 'Contact') + fbq('trackCustom', 'Enquiry_CTA_Click')
  * - Career Apply Clicks -> fbq('trackCustom', 'Job_Apply_Click')
  * - All other buttons & CTAs -> fbq('trackCustom', 'CTA_Click')
- * - Next.js SPA Page transitions -> fbq('track', 'PageView') + contextual ViewContent/FindLocation
+ * - Next.js SPA page transitions -> contextual ViewContent/FindLocation
+ *
+ * Meta events only run after the visitor allows Advertising, and Clarity events only
+ * after they allow Analytics. PageView is sent by lib/privacy/tags.js, not here.
  */
 export default function MetaCtaTracker() {
   const pathname = usePathname();
-  const isFirstRender = useRef(true);
+  const choice = useCookieChoice();
+  const advertising = choice?.advertising === true;
+  const analytics = choice?.analytics === true;
+  // The click listener reads the latest choice without being re-added on every change.
+  const consent = useRef({ advertising, analytics });
+  consent.current = { advertising, analytics };
 
   // 1. SPA Route changes: PageView and contextual page events
   useEffect(() => {
-    if (!pathname || pathname.startsWith('/admin')) return;
+    if (!pathname || pathname.startsWith('/admin') || !advertising) return;
 
     if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      // Don't duplicate initial PageView on first mount (layout.jsx already tracks it)
-      if (!isFirstRender.current) {
-        window.fbq('track', 'PageView');
-      }
 
       // Track ViewContent for project models
       if (pathname.startsWith('/projects/') && pathname.length > 10) {
@@ -69,10 +74,7 @@ export default function MetaCtaTracker() {
       }
     }
 
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    }
-  }, [pathname]);
+  }, [pathname, advertising]);
 
   // 2. Global CTA Click Event Listener
   useEffect(() => {
@@ -121,7 +123,7 @@ export default function MetaCtaTracker() {
         const currentPath = window.location.pathname;
 
         const fireClarity = (eventName) => {
-          if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+          if (consent.current.analytics && typeof window !== 'undefined' && typeof window.clarity === 'function') {
             try {
               window.clarity('event', eventName);
             } catch {}
@@ -129,7 +131,7 @@ export default function MetaCtaTracker() {
         };
 
         const fireFbq = (type, eventName, params = {}) => {
-          if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          if (consent.current.advertising && typeof window !== 'undefined' && typeof window.fbq === 'function') {
             window.fbq(type, eventName, { ...params, page_path: currentPath });
             if (process.env.NODE_ENV !== 'production') {
               console.log(`[Meta Pixel ${type}]`, eventName, params);

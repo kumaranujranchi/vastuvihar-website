@@ -604,27 +604,8 @@ function MediaCarousel({
 
   return (
     <>
-      <div
-        className={
-          carouselStyles.carouselScope +
-          ' ' +
-          'elementor-element elementor-element-37fe374 enable-title-yes overflow-to-both elementor-widget__width-initial elementor-widget elementor-widget-spaciaz-image-carousel vv-media-carousel'
-        }
-      >
-
-        <div
-          className={
-            carouselStyles.carouselScope +
-            ' elementor-widget-container'
-          }
-        >
-
-          <div
-            className={
-              carouselStyles.carouselScope +
-              ' spaciaz-swiper vv-media-slider'
-            }
-          >
+      <div className={`${carouselStyles.carouselScope} vv-media-carousel`}>
+          <div className={`${carouselStyles.carouselScope} vv-media-slider`}>
 
             {/* TRACK */}
 
@@ -825,7 +806,6 @@ function MediaCarousel({
             )}
 
           </div>
-        </div>
       </div>
 
 
@@ -930,321 +910,84 @@ export default function ProjectMedia({
   ];
 
 
+  const m = mediaStyles.mediaScope;
+
+  const handleTabKeyDown = (event, index) => {
+    const direction = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+    if (!direction) return;
+
+    event.preventDefault();
+    const next = tabs[(index + direction + tabs.length) % tabs.length].id;
+    setActive(next);
+    requestAnimationFrame(() => {
+      document.getElementById(`model-media-${project.slug}-${next}`)?.focus();
+    });
+  };
+
   return (
-    <div
-      className={
-        mediaStyles.mediaScope +
-        ' ' +
-        'elementor-element elementor-element-886b5dc e-flex e-con-boxed e-con e-parent vv-project-media'
-      }
-      data-id="886b5dc"
-      data-element_type="container"
-    >
+    <section className={`${m} vv-project-media`} aria-label={`Media for ${project.title}`}>
+      <div className={`${m} vv-media-toolbar`}>
+        <h3 className={`${m} vv-media-title`}>Media</h3>
+
+        <div className={`${m} vv-media-buttons`} role="tablist" aria-label="Media type">
+          {tabs.map((tab, index) => {
+            const selected = active === tab.id;
+            return (
+              <button
+                type="button"
+                key={tab.id}
+                id={`model-media-${project.slug}-${tab.id}`}
+                className={`${m} vv-media-tab${selected ? ' is-active' : ''}`}
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`model-panel-${project.slug}-${tab.id}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActive(tab.id)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+              >
+                <span className={`${m} vv-media-tab-svg`} aria-hidden="true">
+                  <TabIcon name={tab.id} />
+                </span>
+                <span className={`${m} vv-media-tab-text`}>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       <div
-        className={
-          mediaStyles.mediaScope +
-          ' e-con-inner'
-        }
+        id={`model-panel-${project.slug}-${active}`}
+        role="tabpanel"
+        aria-labelledby={`model-media-${project.slug}-${active}`}
+        className={`${m} vv-media-content`}
       >
+        {active === 'photos' && (
+          <MediaCarousel key={`${project.slug}-photos`} items={photos} title={project.title} />
+        )}
 
-        <div
-          className={
-            mediaStyles.mediaScope +
-            ' ' +
-            'elementor-element elementor-element-e125a3f elementor-tabs-style-default e-n-tabs-mobile elementor-widget elementor-widget-n-tabs vv-media-widget'
-          }
-          data-id="e125a3f"
-          data-element_type="widget"
-          data-widget_type="nested-tabs.default"
-        >
+        {active === 'plans' && (
+          <MediaCarousel key={`${project.slug}-plans`} items={plans} title={project.title} isPlan />
+        )}
 
-          <div
-            className={
-              mediaStyles.mediaScope +
-              ' elementor-widget-container'
-            }
-          >
-
-            <div
-              className={
-                mediaStyles.mediaScope +
-                ' e-n-tabs vv-media-tabs'
-              }
-              aria-label={`Media for ${project.title}`}
-            >
-
-              {/* HEADER */}
-
-              <div
-                className={
-                  mediaStyles.mediaScope +
-                  ' vv-media-toolbar'
-                }
-              >
-
-                <div
-                  className={
-                    mediaStyles.mediaScope +
-                    ' ' +
-                    'elementor-element elementor-element-9458c68 elementor-widget elementor-widget-heading'
-                  }
-                  data-id="9458c68"
-                  data-element_type="widget"
-                  data-widget_type="heading.default"
-                >
-                  <div
-                    className={
-                      mediaStyles.mediaScope +
-                      ' elementor-widget-container'
-                    }
-                  >
-                    <h3
-                      className={
-                        mediaStyles.mediaScope +
-                        ' elementor-heading-title elementor-size-default'
-                      }
-                    >
-                      Media
-                    </h3>
-                  </div>
-                </div>
-
-
-                {/* TABS */}
-
-                <div
-                  className={
-                    mediaStyles.mediaScope +
-                    ' e-n-tabs-heading vv-media-buttons'
-                  }
-                  role="tablist"
-                  aria-label="Media type"
-                >
-
-                  {tabs.map(
-                    (
-                      tab,
-                      index
-                    ) => (
-                      <button
-                        type="button"
-                        key={tab.id}
-                        id={`model-media-${project.slug}-${tab.id}`}
-                        className={
-                          mediaStyles.mediaScope +
-                          ' ' +
-                          `e-n-tab-title vv-media-tab ${
-                            active ===
-                            tab.id
-                              ? 'e-active'
-                              : ''
-                          }`
-                        }
-                        aria-selected={
-                          active ===
-                          tab.id
-                        }
-                        role="tab"
-                        tabIndex={
-                          active ===
-                          tab.id
-                            ? 0
-                            : -1
-                        }
-                        aria-controls={`model-panel-${project.slug}-${tab.id}`}
-                        onClick={() =>
-                          setActive(
-                            tab.id
-                          )
-                        }
-                        onKeyDown={(
-                          event
-                        ) => {
-                          const direction =
-                            event.key ===
-                            'ArrowRight'
-                              ? 1
-                              : event.key ===
-                                'ArrowLeft'
-                              ? -1
-                              : 0;
-
-
-                          if (!direction) {
-                            return;
-                          }
-
-
-                          event.preventDefault();
-
-
-                          const next =
-                            tabs[
-                              (
-                                index +
-                                direction +
-                                tabs.length
-                              ) %
-                                tabs.length
-                            ].id;
-
-
-                          setActive(next);
-
-
-                          requestAnimationFrame(
-                            () => {
-                              document
-                                .getElementById(
-                                  `model-media-${project.slug}-${next}`
-                                )
-                                ?.focus();
-                            }
-                          );
-                        }}
-                      >
-
-                        <span
-                          className={
-                            mediaStyles.mediaScope +
-                            ' vv-media-tab-svg'
-                          }
-                          aria-hidden="true"
-                        >
-                          <TabIcon
-                            name={tab.id}
-                          />
-                        </span>
-
-
-                        <span
-                          className={
-                            mediaStyles.mediaScope +
-                            ' e-n-tab-title-text'
-                          }
-                        >
-                          {tab.label}
-                        </span>
-
-                      </button>
-                    )
-                  )}
-
-                </div>
-              </div>
-
-
-              {/* CONTENT */}
-
-              <div
-                className={
-                  mediaStyles.mediaScope +
-                  ' e-n-tabs-content vv-media-content'
-                }
-              >
-
-                <div
-                  id={`model-panel-${project.slug}-${active}`}
-                  role="tabpanel"
-                  aria-labelledby={`model-media-${project.slug}-${active}`}
-                  className={
-                    mediaStyles.mediaScope +
-                    ' elementor-element e-active e-con-full e-flex e-con e-child'
-                  }
-                >
-
-                  {active ===
-                    'photos' && (
-                    <MediaCarousel
-                      key={`${project.slug}-photos`}
-                      items={photos}
-                      title={
-                        project.title
-                      }
-                    />
-                  )}
-
-
-                  {active ===
-                    'plans' && (
-                    <MediaCarousel
-                      key={`${project.slug}-plans`}
-                      items={plans}
-                      title={
-                        project.title
-                      }
-                      isPlan
-                    />
-                  )}
-
-
-                  {active ===
-                    'video' &&
-                    (
-                      hasVideo ? (
-                        <div
-                          className={
-                            mediaStyles.mediaScope +
-                            ' ' +
-                            'elementor-element elementor-element-df017db elementor-widget elementor-widget-video vv-video-frame'
-                          }
-                        >
-
-                          <div
-                            className={
-                              mediaStyles.mediaScope +
-                              ' elementor-widget-container'
-                            }
-                          >
-
-                            <div
-                              className={
-                                mediaStyles.mediaScope +
-                                ' elementor-wrapper elementor-open-inline'
-                              }
-                            >
-
-                              <ConsentEmbed provider="YouTube">
-                                <iframe
-                                  className={
-                                    mediaStyles.mediaScope
-                                  }
-                                  key={
-                                    project.youtubeId
-                                  }
-                                  src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
-                                  title={`${project.title} video`}
-                                  loading="lazy"
-                                  allowFullScreen
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                  referrerPolicy="strict-origin-when-cross-origin"
-                                />
-                              </ConsentEmbed>
-
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <div
-                          className={
-                            mediaStyles.mediaScope +
-                            ' vv-media-empty'
-                          }
-                        >
-                          Video not available
-                        </div>
-                      )
-                    )}
-
-                </div>
-              </div>
-
-            </div>
+        {active === 'video' && (hasVideo ? (
+          <div className={`${m} vv-video-frame`}>
+            <ConsentEmbed provider="YouTube">
+              <iframe
+                className={m}
+                key={project.youtubeId}
+                src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
+                title={`${project.title} video`}
+                loading="lazy"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </ConsentEmbed>
           </div>
-        </div>
-
+        ) : (
+          <div className={`${m} vv-media-empty`}>Video not available</div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

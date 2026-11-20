@@ -18,6 +18,15 @@ const pages = JSON.parse(read(path.join(root, 'data/pages.json')));
 const routes = new Set(pages.map((page) => key(page.path)));
 const removed = /^(?:home-\d+(?:\/|$)|services(?:\/|-|$)|projects-list(?:\/|$)|all-pages(?:\/|$))/;
 const problem = (file, text) => errors.add(`${relative(file)}: ${text}`);
+const exactCase = (target) => {
+  const parts = path.relative(root, target).split(path.sep);
+  let dir = root;
+  for (const part of parts) {
+    if (!fs.readdirSync(dir).includes(part)) return false;
+    dir = path.join(dir, part);
+  }
+  return true;
+};
 
 for (const required of ['', 'about-us', 'projects', 'contact', 'careers', 'core-values', 'our-awards', 'faqs']) {
   if (!routes.has(required)) errors.add(`Missing required route: /${required}`);
@@ -62,6 +71,8 @@ function checkReference(raw, file, kind = 'asset') {
   const target = bare.startsWith('/') ? path.join(root, 'public', bare) : path.resolve(path.dirname(file), bare);
   assetCount++;
   if (!fs.existsSync(target) || !fs.statSync(target).isFile()) problem(file, `Missing asset: ${value}`);
+  // Windows and macOS ignore case, but Cloudflare's asset store does not.
+  else if (!exactCase(target)) problem(file, `Asset path differs in letter case from the file: ${value}`);
 }
 
 const files = ['app', 'components', 'animations', 'data', 'styles'].flatMap((dir) => walk(path.join(root, dir)));
@@ -79,7 +90,9 @@ for (const file of files) {
     }
     for (const match of text.matchAll(/(?<![\w-])(src|href|poster|action|xlinkHref)\s*=\s*(?:\{\s*)?(["'])((?:\\.|(?!\2)[^\\])*)\2/g)) checkReference(match[3], file, (match[1] === 'href' || match[1] === 'action') ? 'link' : 'asset');
     // Asset paths and navigation config held in ordinary JS data objects.
-    if (relative(file).startsWith('data/')) for (const match of text.matchAll(/(['"])(\/[^'"\n]+)\1/g)) checkReference(match[2], file, /\.(?:svg|png|jpe?g|webp|woff2?)(?:[?#]|$)/.test(match[2]) ? 'asset' : 'link');
+    // Whole-line // comments are skipped, so commented-out entries are not checked.
+    const code = text.replace(/^\s*\/\/.*$/gm, '');
+    if (relative(file).startsWith('data/')) for (const match of code.matchAll(/(['"])(\/[^'"\n]+)\1/g)) checkReference(match[2], file, /\.(?:svg|png|jpe?g|webp|woff2?)(?:[?#]|$)/.test(match[2]) ? 'asset' : 'link');
   }
 }
 for (const item of JSON.parse(read(path.join(root, 'data/search-index.json')))) {

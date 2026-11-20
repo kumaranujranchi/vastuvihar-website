@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { ensureDatabaseReady } from '@/lib/dbBootstrap';
 import { requirePermission } from '@/lib/adminAuth';
 import { audit } from '@/lib/audit';
 import { saveBlogImage } from '@/lib/privateStorage';
@@ -42,7 +41,6 @@ async function getUniqueSlug(baseSlug: string, excludeId?: string): Promise<stri
 }
 
 export async function POST(request: Request) {
-  await ensureDatabaseReady();
   const { admin, response } = await requirePermission(request, 'blogs:manage');
   if (!admin) return response;
 
@@ -112,7 +110,6 @@ export async function POST(request: Request) {
 
 // Saves an edited post. The image stays unless a new one is sent or removeImage is set.
 export async function PATCH(request: Request) {
-  await ensureDatabaseReady();
   const { admin, response } = await requirePermission(request, 'blogs:manage');
   if (!admin) return response;
 
@@ -175,7 +172,6 @@ export async function PATCH(request: Request) {
 
 // GET endpoint to fetch all blogs for the admin table, or one post with ?id=
 export async function GET(request: Request) {
-  await ensureDatabaseReady();
   const { admin, response } = await requirePermission(request, 'blogs:manage');
   if (!admin) return response;
 

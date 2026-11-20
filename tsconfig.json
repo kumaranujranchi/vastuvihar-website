@@ -37,6 +37,8 @@
     "**/*.tsx"
 , "app/careers/apply/page.jsx"  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cloudflare",
+    ".open-next"
   ]
 }

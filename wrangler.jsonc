@@ -1,24 +1,49 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
+  // Deploy with scripts/cf.mjs (npm run cf:deploy:production), which refuses to deploy
+  // while a REPLACE_ value remains. This file describes PRODUCTION only. UAT was removed
+  // from the config for now; its Worker and D1 still exist in Cloudflare.
+  "account_id": "7c744d89a9c22ae3cdd2ae56f60024f4",
   "name": "vastuvihar-website",
-  "main": ".open-next/worker.js",
+  // Wraps the OpenNext worker to add the daily retention job (cloudflare/worker.ts).
+  "main": "cloudflare/worker.ts",
   "compatibility_date": "2026-11-04",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  // Create these once; see "Deploying to Cloudflare" in the README.
+  "observability": { "enabled": true },
+  // TEMPORARY: workers.dev is on until vastuvihar.org moves to Cloudflare, so the site can
+  // be checked. Set this back to false at cutover so nothing routes around the WAF. The
+  // workers.dev copy is marked noindex (cloudflare/worker.ts) and /admin stays behind Access.
+  "workers_dev": true,
+  "preview_urls": false,
+  // 02:00 IST daily. A no-op until retention periods are approved in the admin panel.
+  "triggers": { "crons": ["30 20 * * *"] },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "vastuvihar-db",
+      "database_id": "be4de6b9-143d-4d75-87a8-1f3b96a17b48",
       "migrations_dir": "migrations"
     }
   ],
+  // Keep public access off on both buckets.
+  "r2_buckets": [
+    { "binding": "PRIVATE_FILES", "bucket_name": "vastuvihar-private" },
+    { "binding": "MEDIA", "bucket_name": "vastuvihar-media" }
+  ],
   "vars": {
+    "APP_ENV": "production",
     // Set by Cloudflare on every request, and a client cannot forge it.
-    "CLIENT_IP_HEADER": "cf-connecting-ip"
+    "CLIENT_IP_HEADER": "cf-connecting-ip",
+    // The admin area requires a Cloudflare Access token (lib/security/cfAccess.ts). With
+    // placeholder values the admin area answers 503, so it fails closed.
+    "REQUIRE_CF_ACCESS": "1",
+    "CF_ACCESS_TEAM_DOMAIN": "REPLACE_WITH_TEAM.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "REPLACE_WITH_PRODUCTION_ACCESS_AUD"
   },
-  "observability": { "enabled": true }
+  // Secrets (npx wrangler secret put <NAME>): PRIVACY_HASH_SECRET, RETENTION_CRON_SECRET.
+  // Optional: ADMIN_PASSWORD, ADMIN_EMAIL.
 }

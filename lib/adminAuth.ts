@@ -1,8 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { ensureDatabaseReady } from '@/lib/dbBootstrap';
-import { keyedHash, randomToken, sha256 } from '@/lib/security/crypto';
+import { keyedHash, randomToken, safeEqual, sha256 } from '@/lib/security/crypto';
 import { isSameOrigin, jsonError } from '@/lib/security/request';
 
 export const COOKIE_NAME = 'vv_admin_session';
@@ -66,7 +65,6 @@ export const MASTER_ADMIN: AdminPrincipal = {
 };
 
 export async function getCurrentAdmin(): Promise<AdminPrincipal | null> {
-  await ensureDatabaseReady();
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
@@ -76,7 +74,7 @@ export async function getCurrentAdmin(): Promise<AdminPrincipal | null> {
     const [payloadB64, sig] = token.split('.');
     try {
       const payloadStr = Buffer.from(payloadB64, 'base64url').toString('utf8');
-      if (keyedHash(payloadStr) === sig) {
+      if (sig && safeEqual(keyedHash(payloadStr), sig)) {
         const payload = JSON.parse(payloadStr);
         if (payload.exp > Date.now()) {
           return {
@@ -125,7 +123,6 @@ export async function requirePermission(
 }
 
 export async function startSession(userId: string): Promise<void> {
-  await ensureDatabaseReady();
   const token = randomToken();
   const maxAge = SESSION_HOURS * 60 * 60;
   try {

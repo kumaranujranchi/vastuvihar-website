@@ -137,56 +137,46 @@ npm run start
 
 `verify` checks the required pages, imports, local assets, removed routes, navigation links, and search entries. `build:next` creates the optimized website; `start` serves it at http://localhost:3000.
 
-`npm run build` creates the Cloudflare Workers build in `.open-next/`, which `npm run start` runs locally in the Workers runtime and `npx wrangler deploy` uploads.
+`npm run build` builds for a Node.js server (AWS Lightsail). Cloudflare builds go through `scripts/cf.mjs`; see below.
 
 ## Local setup
 
-The site reads its database and files through Cloudflare bindings, and local runs use local copies of them, stored in `.wrangler/`.
+For a local Cloudflare Worker with local D1 and R2 (stored in `.wrangler/`):
 
 ```bash
 npm install
+cp .dev.vars.example .dev.vars          # then fill in two random secrets
 npm run cf:migrate:local
-ADMIN_BOOTSTRAP_PASSWORD='choose-12-or-more-characters' npm run admin:create -- --local you@vastuvihar.org "Your Name" SUPER_ADMIN
-npm run dev
+ADMIN_BOOTSTRAP_PASSWORD='choose-12-or-more-characters' npm run admin:create:d1 -- --local you@vastuvihar.org "Your Name" SUPER_ADMIN
+npm run cf:preview                      # http://localhost:8787
 ```
 
-`npm run start` runs in production mode, so it also needs `PRIVACY_HASH_SECRET` in a `.dev.vars` file, which git ignores.
+`npm run dev` runs the plain Next.js dev server against `DATABASE_URL` (SQLite).
+
+## Tests
+
+```bash
+npm run verify       # routes, imports, assets (including letter case), navigation, search
+npm run test:unit    # Cloudflare Access token checks
+npm run test:dpdp    # end-to-end privacy suite against a local server; see the script header
+```
 
 ## Deploying to Cloudflare
 
-The site runs on Cloudflare Workers, with D1 for the database and R2 for files. Worker settings are in `wrangler.jsonc`. Do this once, while logged in with `npx wrangler login`:
+Read **docs/CLOUDFLARE_DEPLOYMENT.md** first: environments, the mandatory Cloudflare
+Access setup, data migration from Lightsail, cutover and rollback. In short:
 
-1. **Create the database,** then add the `database_id` it prints to the `d1_databases` entry in `wrangler.jsonc` and commit it:
-   ```bash
-   npx wrangler d1 create vastuvihar-db
-   ```
-2. **Create the file storage.** Leave public access off on both buckets:
-   ```bash
-   npx wrangler r2 bucket create vastuvihar-private
-   npx wrangler r2 bucket create vastuvihar-media
-   ```
-3. **Create the tables:**
-   ```bash
-   npm run cf:migrate
-   ```
-4. **Connect the repository** in Workers & Pages, under Settings > Builds, with:
-   - Build command: `npm run build`
-   - Deploy command: `npm run cf:migrate && npx wrangler deploy`
-   - Build variable: `NEXT_PUBLIC_SITE_URL`, and any tag IDs from `.env.example`. These are read at build time.
-5. **Set the secrets,** using at least 32 random characters for each:
-   ```bash
-   npx wrangler secret put PRIVACY_HASH_SECRET
-   npx wrangler secret put RETENTION_CRON_SECRET
-   ```
-6. **Create the first admin:**
-   ```bash
-   ADMIN_BOOTSTRAP_PASSWORD='...' npm run admin:create -- --remote you@vastuvihar.org "Your Name" SUPER_ADMIN
-   ```
-7. **Schedule the retention job.** See `docs/dpdp/retention-plan.md`.
+```bash
+npm run cf:preflight:uat && npm run cf:deploy:uat
+npm run cf:preflight:production && npm run cf:upload:production   # then promote the version
+```
 
-The site needs the **Workers Paid plan**. Admin sign-in deliberately takes about 170 ms of CPU to hash the password, and the free plan stops a request at 10 ms.
-
-D1 has no transactions. Each statement is applied on its own, so a multi-step operation that fails can stop partway. See `docs/dpdp/security.md` for the full checklist.
+Cloudflare never reads `.env` files. Secrets are set with `npx wrangler secret put`, and
+the build refuses to run for UAT or production while a `.env` file is present, because
+OpenNext would bundle it into the Worker. The site needs the **Workers Paid plan**: admin
+sign-in takes about 170 ms of CPU and the free plan stops a request at 10 ms. D1 has no
+transactions, so a multi-step operation that fails can stop partway; see
+`docs/dpdp/security.md`.
 
 ## Optional static export
 

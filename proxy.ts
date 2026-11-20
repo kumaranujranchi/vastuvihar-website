@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { accessSetting, accessToken, verifyAccessToken } from '@/lib/security/cfAccess';
 
 const SESSION_COOKIE = 'vv_admin_session';
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Legacy resume location. Files that remain there must never be served publicly.
@@ -26,6 +27,21 @@ export function proxy(request: NextRequest) {
     secure.protocol = 'https:';
     secure.port = '';
     return NextResponse.redirect(secure, 308);
+  }
+
+  // The admin area sits behind Cloudflare Access when REQUIRE_CF_ACCESS=1. See
+  // lib/security/cfAccess.ts for why the app checks the token itself.
+  if (normalized.startsWith('/admin') || normalized.startsWith('/api/admin')) {
+    const access = accessSetting();
+    if (access.required) {
+      const noStore = { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' };
+      if (!access.config) {
+        return new NextResponse('Admin access is not configured.', { status: 503, headers: noStore });
+      }
+      if (!(await verifyAccessToken(accessToken(request.headers), access.config))) {
+        return new NextResponse('Forbidden', { status: 403, headers: noStore });
+      }
+    }
   }
 
   if (pathname.startsWith('/admin')) {

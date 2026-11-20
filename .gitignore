@@ -4,6 +4,7 @@ out/
 .open-next/
 .wrangler/
 .dev.vars*
+!.dev.vars.example
 .env*
 !.env.example
 *.log

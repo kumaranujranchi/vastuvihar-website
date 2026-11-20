@@ -1,8 +1,9 @@
 import { revalidatePath } from 'next/cache';
 
-// Public pages that read the database are cached (ISR) and refreshed here whenever an
-// admin or privacy action changes what they show. Each page also refreshes hourly as a
-// safety net. Route patterns refresh every matching page on its next visit.
+// Public pages that read the database now render on each request (force-dynamic), so
+// on Cloudflare these calls have nothing to refresh. They are kept so that turning page
+// caching back on (an R2 incremental cache plus a tag cache in open-next.config.ts) needs
+// no change to the admin routes. Route patterns refresh every matching page.
 
 // With trailingSlash: true the cached sitemap is tagged '/sitemap.xml/' and
 // '/sitemap.xml/layout', so a plain revalidatePath('/sitemap.xml') matches neither.

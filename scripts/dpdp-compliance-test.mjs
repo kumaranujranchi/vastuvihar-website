@@ -4,8 +4,21 @@
 //   BASE_URL=http://localhost:3100 TEST_ADMIN_EMAIL=... TEST_ADMIN_PASSWORD=... \
 //   DATABASE_URL=file:/path/to/throwaway.db RETENTION_CRON_SECRET=... \
 //   node scripts/dpdp-compliance-test.mjs [report.md]
+//
+// Against the Worker (npm run cf:preview, on http://127.0.0.1:8787), set TEST_D1=1
+// instead of DATABASE_URL. The suite then reads and writes the local D1 through
+// Prisma's D1 adapter, as the Worker does. Node's SQLite driver would store dates as
+// integers, which the D1 adapter cannot read.
 import fs from 'node:fs';
 import { PrismaClient } from '@prisma/client';
+
+async function testDatabase() {
+  if (process.env.TEST_D1 !== '1') return { client: new PrismaClient(), dispose: async () => {} };
+  const { getPlatformProxy } = await import('wrangler');
+  const { PrismaD1 } = await import('@prisma/adapter-d1');
+  const proxy = await getPlatformProxy({ configPath: 'wrangler.jsonc', persist: true });
+  return { client: new PrismaClient({ adapter: new PrismaD1(proxy.env.DB) }), dispose: proxy.dispose };
+}
 
 const BASE = process.env.BASE_URL || 'http://localhost:3100';
 const ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL;
@@ -19,7 +32,8 @@ if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
   process.exit(2);
 }
 
-const prisma = new PrismaClient();
+const database = await testDatabase();
+const prisma = database.client;
 const results = [];
 let ipCounter = 10;
 const uniqueIp = () => `203.0.113.${ipCounter++ % 250}`;
@@ -1057,6 +1071,7 @@ await check('Audit', 'Administrative actions are logged without personal data', 
 });
 
 await prisma.$disconnect();
+await database.dispose();
 
 // ---------------------------------------------------------------- report
 const passed = results.filter((row) => row.pass).length;

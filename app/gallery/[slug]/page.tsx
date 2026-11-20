@@ -14,15 +14,11 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-// Cached, and refreshed when an admin changes the photos (lib/revalidate.ts), or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
-// Only the configured albums have a page; any other slug is a 404.
-export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return GALLERY_ALBUM_SLUGS.map((slug) => ({ slug }));
-}
 
 function BackArrowIcon() {
   return (

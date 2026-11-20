@@ -1,35 +1,52 @@
 :global(.vv-project-media).mediaScope {
-  /* Share the same width as the other model sections instead of Elementor's 1140px boxed default. */
-  --content-width: 100%;
-  width: 100%;
-  max-width: none;
-  overflow: visible;
-  margin-bottom: 60px;
-}
-
-
-:global(.vv-project-media).mediaScope
-  > :global(.e-con-inner).mediaScope {
+  box-sizing: border-box;
   display: block;
   width: 100%;
   max-width: none;
-  padding-inline: 0;
+  overflow: visible;
+  margin: 1px 0 2px;
+  padding: 35px 0 34px;
 }
 
 
-:global(.vv-media-widget).mediaScope,
-:global(.vv-media-widget).mediaScope
-  > :global(.elementor-widget-container).mediaScope,
-:global(.vv-media-tabs).mediaScope,
 :global(.vv-media-content).mediaScope {
+  box-sizing: border-box;
   width: 100%;
   max-width: none;
   overflow: visible;
+  padding: 10px;
 }
 
 
-:global(.vv-media-tabs).mediaScope {
-  display: block;
+/* Base tab styles (formerly supplied by the global nested-tabs theme). */
+:global(.vv-media-buttons).mediaScope {
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+:global(.vv-media-tab).mediaScope {
+  position: relative;
+  user-select: none;
+}
+
+:global(.vv-media-tab).mediaScope svg {
+  transition: color 0.3s, fill 0.3s;
+}
+
+:global(.vv-media-title).mediaScope {
+  min-width: 0;
+  min-height: 0;
+}
+
+:global(.vv-project-media).mediaScope img {
+  transition: all 0.3s;
+}
+
+:global(.vv-media-tab-text).mediaScope {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 
@@ -110,26 +127,13 @@
 
   padding: 11px 24px;
 
-  border:
-    1px solid
-    var(
-      --e-global-color-border,
-      #dedede
-    );
+  border: 1px solid var(--e-global-color-border, #dedede);
 
   border-radius: 999px;
 
-  background:
-    var(
-      --e-global-color-background,
-      #fff
-    );
+  background: var(--e-global-color-background, #fff);
 
-  color:
-    var(
-      --e-global-color-accent,
-      #111
-    );
+  color: var(--e-global-color-accent, #111);
 
   font-size: 15px;
 
@@ -164,7 +168,7 @@
 
 
 :global(.vv-media-buttons).mediaScope
-  :global(.vv-media-tab):global(.e-active).mediaScope,
+  :global(.vv-media-tab):global(.is-active).mediaScope,
 :global(.vv-media-buttons).mediaScope
   :global(.vv-media-tab)[aria-selected='true'].mediaScope {
   background:
@@ -179,7 +183,7 @@
       #e3ec64
     ) !important;
 
-  color: #111 !important;
+  color: #fff !important;
 }
 
 
@@ -219,7 +223,7 @@
 
   fill: none !important;
 
-  stroke: white !important;
+  stroke: currentColor !important;
 }
 
 

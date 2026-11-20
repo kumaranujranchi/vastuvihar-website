@@ -74,6 +74,19 @@ export const PROCESSORS = [
         location: 'Outside India (review against government transfer restrictions)',
       }]
     : []),
+  ...(TAG_IDS.clarity
+    ? [{
+        name: 'Microsoft Clarity',
+        role: 'Pending: confirm under Microsoft\'s terms',
+        purpose: 'Understanding how pages are used (heatmaps and session replays)',
+        data: 'IP address, browser details, pages viewed, scrolls and clicks, and cookies',
+        receivesPersonalData: false,
+        trigger: 'Only after the visitor allows Analytics',
+        legalBasis: 'Consent',
+        contract: 'Pending: accept and review Microsoft Clarity\'s terms',
+        location: 'Outside India (review against government transfer restrictions)',
+      }]
+    : []),
   ...(TAG_IDS.googleAds
     ? [{
         name: 'Google Ads',

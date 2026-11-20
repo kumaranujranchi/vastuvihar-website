@@ -20,7 +20,23 @@ function safeEnv(): any {
 
 const privateFiles = () => safeEnv().PRIVATE_FILES;
 const media = () => safeEnv().MEDIA;
-const uploadsKv = () => safeEnv().UPLOADS_KV;
+
+/**
+ * True inside a Cloudflare Worker. A Worker has no writable disk, so there every file
+ * goes to R2 and a missing bucket is an error, never a silent fallback.
+ */
+const onWorkers = () => typeof navigator !== 'undefined' && navigator.userAgent === 'Cloudflare-Workers';
+
+/** The bucket for this upload, or an error when a Worker has no such binding. */
+function bucket(get: () => any, binding: string): { store: any } | { error: string } {
+  const store = get();
+  if (store) return { store };
+  if (onWorkers()) {
+    console.error(`[storage] R2 binding ${binding} is missing from this Worker.`);
+    return { error: 'File storage is not available. Please try again later.' };
+  }
+  return { store: null };
+}
 
 function resumeDir(): string {
   const base = process.env.PRIVATE_STORAGE_DIR || path.join(process.cwd(), 'storage', 'private');
@@ -59,13 +75,15 @@ export async function saveResume(file: File): Promise<{ path?: string; error?: s
   if (!type.matches(buffer)) return { error: 'The file does not look like a valid PDF or Word document.' };
 
   const name = `${randomToken(24)}${ext}`;
-  const pf = privateFiles();
-  if (pf) {
+  const target = bucket(privateFiles, 'PRIVATE_FILES');
+  if ('error' in target) return { error: target.error };
+  if (target.store) {
     try {
-      await pf.put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
+      await target.store.put(`${RESUME_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: type.mime } });
       return { path: `${PRIVATE_PREFIX}${name}` };
     } catch (err) {
-      console.warn('R2 resume save failed:', err);
+      console.error('R2 resume save failed:', err);
+      return { error: 'Could not store resume file.' };
     }
   }
 
@@ -174,40 +192,29 @@ export async function saveBlogImage(file: File, baseName: string): Promise<{ url
   const safe = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) || 'image';
   const name = `${Date.now()}_${safe}${ext}`;
 
-  // 1. Try Cloudflare R2 if configured
-  const m = media();
-  if (m) {
+  // Cloudflare: R2 only.
+  const target = bucket(media, 'MEDIA');
+  if ('error' in target) return { error: target.error };
+  if (target.store) {
     try {
-      await m.put(`${BLOG_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: IMAGE_MIME[ext] } });
+      await target.store.put(`${BLOG_FOLDER}/${name}`, buffer, { httpMetadata: { contentType: IMAGE_MIME[ext] } });
       return { url: `/uploads/blogs/${name}` };
     } catch (err) {
-      console.warn('R2 blog image upload failed:', err);
+      console.error('R2 blog image upload failed:', err);
+      return { error: 'Could not store the image.' };
     }
   }
 
-  // 2. Try Cloudflare KV if configured
-  const kv = uploadsKv();
-  if (kv) {
-    try {
-      await kv.put(`${BLOG_FOLDER}:${name}`, buffer, { metadata: { contentType: IMAGE_MIME[ext] } });
-      return { url: `/uploads/blogs/${name}` };
-    } catch (err) {
-      console.warn('KV blog image upload failed:', err);
-    }
-  }
-
-  // 3. Save to disk (for AWS Lightsail / VPS / local Node.js server)
+  // Node.js server (AWS Lightsail, Docker, local): disk.
   try {
     const dir = uploadDiskDir(BLOG_FOLDER);
     await fs.mkdir(dir, { recursive: true });
     await fs.writeFile(path.join(dir, name), buffer);
     return { url: `/uploads/blogs/${name}` };
   } catch (diskErr) {
-    console.warn('Disk blog image save failed, falling back to data URL:', diskErr);
+    console.error('Disk blog image save failed:', diskErr);
+    return { error: 'Could not store the image.' };
   }
-
-  // Fallback to inline Base64 data URL
-  return { url: `data:${IMAGE_MIME[ext]};base64,${buffer.toString('base64')}` };
 }
 
 async function readMediaImage(folder: string, name: string): Promise<{ body: ReadableStream | Buffer; contentType: string } | null> {
@@ -225,16 +232,9 @@ async function readMediaImage(folder: string, name: string): Promise<{ body: Rea
     } catch {}
   }
 
-  // 2. Check Cloudflare KV
-  const kv = uploadsKv();
-  if (kv) {
-    try {
-      const val = await kv.get(`${folder}:${safe}`, { type: 'arrayBuffer' });
-      if (val) return { body: Buffer.from(val), contentType };
-    } catch {}
-  }
+  if (onWorkers()) return null;
 
-  // 3. Check disk for AWS Lightsail / VPS
+  // Disk, on a Node.js server.
   try {
     const filePath = path.join(uploadDiskDir(folder), safe);
     const data = await fs.readFile(filePath);
@@ -252,29 +252,20 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
   if ('error' in upload) return { error: upload.error };
   const name = `${randomToken(24)}${upload.ext}`;
 
-  // 1. Try Cloudflare R2
-  const m = media();
-  if (m) {
+  // Cloudflare: R2 only.
+  const target = bucket(media, 'MEDIA');
+  if ('error' in target) return { error: target.error };
+  if (target.store) {
     try {
-      await m.put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
+      await target.store.put(`${GALLERY_FOLDER}/${name}`, upload.buffer, { httpMetadata: { contentType: IMAGE_MIME[upload.ext] } });
       return { name };
     } catch (err) {
-      console.warn('R2 gallery upload failed:', err);
+      console.error('R2 gallery upload failed:', err);
+      return { error: 'Could not store the image.' };
     }
   }
 
-  // 2. Try Cloudflare KV
-  const kv = uploadsKv();
-  if (kv) {
-    try {
-      await kv.put(`${GALLERY_FOLDER}:${name}`, upload.buffer, { metadata: { contentType: IMAGE_MIME[upload.ext] } });
-      return { name };
-    } catch (err) {
-      console.warn('KV gallery upload failed:', err);
-    }
-  }
-
-  // 3. Save to disk for AWS Lightsail / VPS
+  // Node.js server: disk. A failed write is reported, so no row points at a missing file.
   try {
     const dir = uploadDiskDir(GALLERY_FOLDER);
     await fs.mkdir(dir, { recursive: true });
@@ -282,9 +273,8 @@ export async function saveGalleryImage(file: File): Promise<{ name?: string; err
     return { name };
   } catch (err) {
     console.error('Disk gallery save failed:', err);
+    return { error: 'Could not store the image.' };
   }
-
-  return { name };
 }
 
 export const readGalleryImage = (name: string) => readMediaImage(GALLERY_FOLDER, name);
@@ -297,13 +287,6 @@ export async function deleteGalleryImage(name: string | null | undefined): Promi
   if (m) {
     try {
       await m.delete(`${GALLERY_FOLDER}/${safe}`);
-    } catch {}
-  }
-
-  const kv = uploadsKv();
-  if (kv) {
-    try {
-      await kv.delete(`${GALLERY_FOLDER}:${safe}`);
     } catch {}
   }
 

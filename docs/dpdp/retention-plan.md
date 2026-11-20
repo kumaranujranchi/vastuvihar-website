@@ -29,7 +29,9 @@ A legal hold, placed on a verified request with its reason, stops both erasure a
 
 **Preview first:** the Retention tab has a preview that counts what would be deleted, changing nothing. Review it before approving a period or running deletion.
 
-**Schedule:** call the protected endpoint daily from the server. For example, in cron:
+**Schedule on Cloudflare:** automatic. A Cron Trigger (`triggers.crons` in `wrangler.jsonc`, handled in `cloudflare/worker.ts`) calls the endpoint daily at 02:00 IST, using the Worker's `RETENTION_CRON_SECRET`. Do not also run a server cron against the Cloudflare site.
+
+**Schedule on a Node.js server (Lightsail):** call the protected endpoint daily from the server. For example, in cron:
 
 ```
 0 2 * * * curl -fsS -X POST -H "Authorization: Bearer $RETENTION_CRON_SECRET" https://vastuvihar.org/api/internal/retention/

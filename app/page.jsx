@@ -13,8 +13,9 @@ import HomeMotion from '@/components/home/HomeMotion';
 import PageLayout from '@/components/PageLayout';
 import { createPageMetadata } from '@/lib/metadata';
 
-// Cached, and refreshed when a blog post changes (lib/revalidate.ts), or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
 export const metadata = createPageMetadata({
   title: 'Vastu Vihar: Bungalows & Flats in Bihar & Eastern India',

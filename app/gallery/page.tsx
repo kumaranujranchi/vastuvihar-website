@@ -19,8 +19,9 @@ export const metadata = createPageMetadata({
   path: '/gallery/',
 });
 
-// Cached, and refreshed when an admin changes the photos (lib/revalidate.ts), or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
 /* =========================================
    TYPES

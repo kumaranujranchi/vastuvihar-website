@@ -19,7 +19,7 @@ export const metadata = createPageMetadata({
 const Icon = ({ children }) => <span className={styles.icon} aria-hidden="true">{children}</span>;
 
 // The policy only describes tags this deployment has switched on.
-const hasAnalytics = Boolean(TAG_IDS.ga4);
+const hasAnalytics = Boolean(TAG_IDS.ga4 || TAG_IDS.clarity);
 const hasAdvertising = Boolean(TAG_IDS.googleAds || TAG_IDS.metaPixel);
 const hasTags = hasAnalytics || hasAdvertising;
 
@@ -97,7 +97,8 @@ export default function PrivacyPage() {
                 <li><strong>Our hosting provider</strong> stores the website, database and resumes on our behalf as a Data Processor.</li>
                 <li><strong>Google (YouTube, Google Maps) and Vimeo</strong> receive your IP address and browser details only after you allow videos and maps. They act independently under their own privacy policies, and may process data outside India.</li>
                 <li><strong>WhatsApp (Meta):</strong> if our sales team replies to your enquiry on WhatsApp, your name and phone number are used on that service.</li>
-                {hasAnalytics && <li><strong>Google Analytics</strong> receives the data described in section 07 only after you allow analytics, and may process it outside India.</li>}
+                {TAG_IDS.clarity && <li><strong>Microsoft Clarity</strong> records the pages you view and how you scroll and click on them, only after you allow analytics, and may process it outside India.</li>}
+                {TAG_IDS.ga4 && <li><strong>Google Analytics</strong> receives the data described in section 07 only after you allow analytics, and may process it outside India.</li>}
                 {hasAdvertising && <li><strong>Our advertising partners</strong> receive the data described in section 07 only after you allow advertising and remarketing, and may process it outside India.</li>}
               </ul>
               <p>We do not sell personal data. The website does not send what you type into its forms to a CRM, email or advertising platform. Authorities receive data only where the law requires it.</p>

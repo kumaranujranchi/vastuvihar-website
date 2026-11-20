@@ -7,8 +7,9 @@ import { getGalleryAlbums } from '@/lib/gallery';
 import { SITE_URL } from '@/lib/metadata';
 import { databaseFallback, prisma } from '@/lib/prisma';
 
-// Cached, and refreshed when a blog post or the gallery changes (lib/revalidate.ts), or hourly.
-export const revalidate = 3600;
+// Rendered on each request, because it reads the database. The Cloudflare build has no
+// writable page cache (open-next.config.ts), so a cached copy would never refresh.
+export const dynamic = 'force-dynamic';
 
 // Left out on purpose: /admin, /careers/apply (a form), and the /our-team and /our-team/<slug>
 // pages, which still hold theme placeholder content.
